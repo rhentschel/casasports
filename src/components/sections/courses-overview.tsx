@@ -60,11 +60,11 @@ export function CoursesOverview() {
 
         {/* Slider */}
         <div className="mt-10 overflow-hidden" ref={emblaRef}>
-          <div className="flex gap-4 pl-[max(2rem,calc((100vw-1280px)/2+4rem))]">
+          <div className="flex gap-[3px]">
             {courses.map((course) => (
               <div
                 key={course.name}
-                className="group relative min-w-0 flex-[0_0_72%] sm:flex-[0_0_38%] lg:flex-[0_0_27%]"
+                className="group relative min-w-0 flex-[0_0_85%] sm:flex-[0_0_42%] lg:flex-[0_0_26%]"
               >
                 <div className="relative aspect-[3/4] overflow-hidden">
                   <Image
