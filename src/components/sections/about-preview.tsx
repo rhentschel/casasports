@@ -32,20 +32,20 @@ const team = [
       "Jeder Mensch hat das Potenzial, seine Ziele zu erreichen. Ich helfe dir dabei.",
   },
   {
-    name: "Renate",
-    role: "Trainerin",
-    image: "/images/team-renate.avif",
-    video: null,
-    quote:
-      "Fitness ist kein Ziel, sondern eine Lebenseinstellung. Gemeinsam machen wir den ersten Schritt.",
-  },
-  {
     name: "Eren",
     role: "Auszubildender",
     image: "/images/team-eren.avif",
     video: "/videos/eren.mp4",
     quote:
       "Jeden Tag lerne ich etwas Neues. Die Leidenschaft für Fitness steckt an.",
+  },
+  {
+    name: "Renate",
+    role: "Trainerin",
+    image: "/images/team-renate.avif",
+    video: null,
+    quote:
+      "Fitness ist kein Ziel, sondern eine Lebenseinstellung. Gemeinsam machen wir den ersten Schritt.",
   },
 ];
 
