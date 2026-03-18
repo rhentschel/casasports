@@ -15,51 +15,51 @@ import { useReveal } from "@/lib/use-reveal";
 
 const benefits = [
   {
-    title: "Persönliche Betreuung",
+    title: "Individuelle Trainingspläne",
     description:
-      "Dein Trainer kennt dich. Individuelle Pläne statt Massenabfertigung.",
+      "Kein Schema F. Dein Plan wird auf dein Ziel, dein Level und deinen Alltag zugeschnitten.",
     icon: <Users className="h-6 w-6" />,
   },
   {
-    title: "Modernste Geräte",
+    title: "Hochwertige Ausstattung",
     description:
-      "Erstklassiges Equipment für Kraft, Ausdauer und Functional Training.",
+      "Von Freihantel bis Kabelzug. Professionelles Equipment auf Studiofläche.",
     icon: <Dumbbell className="h-6 w-6" />,
   },
   {
-    title: "KLAFS Sauna & Infrarot",
+    title: "Wellness nach dem Workout",
     description:
-      "Premium Wellness von KLAFS und Röger. Regeneration auf höchstem Niveau.",
+      "Sauna und Infrarotkabine direkt im Studio. Training und Recovery unter einem Dach.",
     icon: <Flame className="h-6 w-6" />,
   },
   {
     title: "7 Tage geöffnet",
     description:
-      "Trainiere wann es dir passt. Flexible Zeiten, die zu deinem Alltag passen.",
+      "Frühmorgens oder nach Feierabend. Dein Zeitplan bestimmt, wann du kommst.",
     icon: <Clock className="h-6 w-6" />,
   },
   {
-    title: "12-Wochen-Programm",
+    title: "12-Wochen-Challenge",
     description:
-      "Strukturierte Transformation mit messbaren Ergebnissen. Dein neues Ich.",
+      "Verbindliches Programm mit Fortschrittskontrolle und echten Ergebnissen.",
     icon: <Trophy className="h-6 w-6" />,
   },
   {
-    title: "6+ Kursangebote",
+    title: "Vielfältige Kurse",
     description:
-      "Power, Cycling, Functional, Cardio, Zirkel und mehr. Für jedes Level.",
+      "Von Einsteiger bis Fortgeschritten. Gruppentraining, das motiviert.",
     icon: <Zap className="h-6 w-6" />,
   },
   {
-    title: "Probetraining gratis",
+    title: "Ernährungsberatung",
     description:
-      "Komm vorbei und überzeug dich selbst. Ohne Verpflichtung, ohne Risiko.",
+      "80% passiert in der Küche. Wir zeigen dir was auf den Teller gehört.",
     icon: <Gift className="h-6 w-6" />,
   },
   {
-    title: "Community & Motivation",
+    title: "Starke Community",
     description:
-      "Mehr als ein Studio. Eine Gemeinschaft, die dich pusht und trägt.",
+      "Leute die sich gegenseitig pushen. Kein anonymes Laufband-Studio.",
     icon: <Heart className="h-6 w-6" />,
   },
 ];

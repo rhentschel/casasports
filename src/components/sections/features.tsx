@@ -6,18 +6,18 @@ import { useReveal } from "@/lib/use-reveal";
 const features = [
   {
     image: "/images/casasports-geraete.webp",
-    title: "Modernste Geräte",
-    text: "Erstklassiges Equipment für effektives Kraft- und Ausdauertraining.",
+    title: "Training",
+    text: "Dein Körper verdient das beste Equipment. Punkt.",
   },
   {
     image: "/images/casasports-personal-training.webp",
-    title: "Personal Training",
-    text: "Dein Trainer kennt deinen Namen, nicht nur deine Mitgliedsnummer.",
+    title: "Betreuung",
+    text: "Hier bist du keine Nummer. Hier bist du Name, Ziel und Plan.",
   },
   {
     image: "/images/casasports-klafs-sauna.webp",
-    title: "Premium Wellness",
-    text: "KLAFS Sauna und Röger Infrarot. Regeneration auf höchstem Niveau.",
+    title: "Regeneration",
+    text: "Nach dem Training beginnt das Wachstum. Sauna, Infrarot, Ruhe.",
   },
 ];
 
