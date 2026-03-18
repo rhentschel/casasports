@@ -68,7 +68,7 @@ export function BenefitsGrid() {
   const ref = useReveal();
 
   return (
-    <section className="bg-cs-gray-900 py-32 md:py-40">
+    <section className="bg-cs-black py-32 md:py-40">
       <div ref={ref} className="reveal mx-auto max-w-7xl px-8 md:px-16">
         <p className="text-xs font-medium uppercase tracking-[0.2em] text-cs-accent">
           Deine Vorteile
