@@ -11,7 +11,7 @@ export function WellnessPreview() {
   return (
     <section ref={ref} className="reveal bg-cs-black">
       {/* Full-width immersive hero image */}
-      <div className="relative h-[70vh] min-h-[500px] overflow-hidden">
+      <div className="relative h-[45vh] min-h-[320px] overflow-hidden">
         <Image
           src="/images/casasports-wellness-bereich-1.webp"
           alt="Wellness-Bereich Casa Sports"
@@ -53,7 +53,7 @@ export function WellnessPreview() {
           ].map((item) => (
             <div
               key={item.label}
-              className="group relative aspect-[16/9] cursor-pointer overflow-hidden"
+              className="group relative aspect-[16/10] cursor-pointer overflow-hidden"
             >
               <Image
                 src={item.image}
