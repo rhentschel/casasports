@@ -58,3 +58,12 @@ body {
   background-color: var(--cs-accent);
   color: var(--cs-white);
 }
+
+@keyframes kenburns {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.08);
+  }
+}
