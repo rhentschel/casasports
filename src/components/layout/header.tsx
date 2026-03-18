@@ -48,7 +48,7 @@ export function Header() {
           scrolled ? "bg-cs-black/90 backdrop-blur-xl" : "bg-transparent"
         )}
       >
-        <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-8 md:px-16">
+        <div className="mx-auto flex h-20 max-w-[1440px] items-center justify-between px-6 md:px-10">
           <Link href="/" className="relative h-10 w-36">
             <Image
               src="/images/casa-sports-logo.webp"
