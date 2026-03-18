@@ -2,24 +2,25 @@
 
 :root {
   --cs-black: #0a0a0a;
-  --cs-white: #fafafa;
-  --cs-gray-50: #f5f5f5;
-  --cs-gray-100: #e5e5e5;
-  --cs-gray-200: #d4d4d4;
-  --cs-gray-300: #a3a3a3;
-  --cs-gray-400: #737373;
-  --cs-gray-500: #525252;
-  --cs-gray-600: #404040;
+  --cs-white: #f5f5f0;
+  --cs-gray-100: #e5e5df;
+  --cs-gray-200: #d4d4ce;
+  --cs-gray-300: #a0a0a0;
+  --cs-gray-400: #777777;
+  --cs-gray-500: #555555;
+  --cs-gray-600: #3a3a3a;
   --cs-gray-700: #262626;
   --cs-gray-800: #171717;
-  --cs-gray-900: #0f0f0f;
+  --cs-gray-900: #111111;
   --cs-accent: #e63946;
   --cs-accent-hover: #d62836;
-  --cs-gold: #c9a84c;
-  --cs-gold-hover: #b8963e;
+  --cs-gold: #c8a96e;
 
   --background: var(--cs-black);
   --foreground: var(--cs-white);
+
+  --ease-premium: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-hover: cubic-bezier(0.33, 1, 0.68, 1);
 }
 
 @theme inline {
@@ -27,7 +28,6 @@
   --color-foreground: var(--foreground);
   --color-cs-black: var(--cs-black);
   --color-cs-white: var(--cs-white);
-  --color-cs-gray-50: var(--cs-gray-50);
   --color-cs-gray-100: var(--cs-gray-100);
   --color-cs-gray-200: var(--cs-gray-200);
   --color-cs-gray-300: var(--cs-gray-300);
@@ -40,7 +40,6 @@
   --color-cs-accent: var(--cs-accent);
   --color-cs-accent-hover: var(--cs-accent-hover);
   --color-cs-gold: var(--cs-gold);
-  --color-cs-gold-hover: var(--cs-gold-hover);
   --font-sans: var(--font-inter);
 }
 
@@ -52,6 +51,11 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-sans), system-ui, sans-serif;
+  font-size: 16px;
+}
+
+@media (min-width: 768px) {
+  body { font-size: 17px; }
 }
 
 ::selection {
@@ -59,19 +63,25 @@ body {
   color: var(--cs-white);
 }
 
+/* Cinematic image treatment */
+.img-cinema {
+  filter: contrast(1.1) brightness(0.9) saturate(0.85);
+}
+
+/* Scroll reveal */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 1.2s var(--ease-premium), transform 1.2s var(--ease-premium);
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 @keyframes kenburns {
   0% { transform: scale(1); }
   100% { transform: scale(1.06); }
-}
-
-@keyframes reveal-up {
-  0% { transform: translateY(100%); }
-  100% { transform: translateY(0); }
-}
-
-@keyframes fade-in {
-  0% { opacity: 0; }
-  100% { opacity: 1; }
 }
 
 @keyframes marquee {

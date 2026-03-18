@@ -5,8 +5,8 @@ import { siteConfig } from "@/data/site";
 
 export function Footer() {
   return (
-    <footer className="border-t border-cs-gray-800 bg-cs-black">
-      <div className="mx-auto max-w-7xl px-6 py-20">
+    <footer className="border-t border-white/[0.04] bg-cs-black">
+      <div className="mx-auto max-w-7xl px-8 py-20 md:px-16">
         <div className="grid gap-16 lg:grid-cols-12">
           {/* Brand */}
           <div className="lg:col-span-4">

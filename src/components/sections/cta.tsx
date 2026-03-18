@@ -1,34 +1,36 @@
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowRight } from "lucide-react";
 
 export function CTA() {
   return (
-    <section className="relative flex min-h-[80vh] items-center justify-center overflow-hidden">
+    <section className="relative flex min-h-[70vh] items-center justify-center overflow-hidden">
       <Image
         src="/images/casasports-bodyhealth.webp"
         alt="Casa Sports"
         fill
-        className="object-cover"
+        className="img-cinema object-cover"
       />
-      <div className="absolute inset-0 bg-black/70" />
+      <div className="absolute inset-0 bg-black/65" />
+      <div className="absolute inset-0 bg-gradient-to-t from-cs-black/40 to-transparent" />
 
-      <div className="relative text-center">
-        <h2 className="text-5xl font-black uppercase tracking-tight leading-[1.1] text-white md:text-7xl">
+      <div className="relative z-10 text-center">
+        <p className="text-xs font-medium uppercase tracking-[0.2em] text-cs-accent">
+          Starte jetzt
+        </p>
+        <h2 className="mt-6 text-4xl font-black uppercase leading-[0.9] tracking-[-0.04em] text-white md:text-6xl lg:text-7xl">
           Dein erstes Training
           <br />
           geht <span className="text-cs-accent">auf uns.</span>
         </h2>
-        <p className="mx-auto mt-6 max-w-md text-sm text-white/40">
+        <p className="mx-auto mt-8 max-w-sm text-[15px] leading-relaxed text-white/35">
           Komm vorbei, lern das Team kennen und trainiere einen Tag kostenlos.
           Ohne Verpflichtung.
         </p>
         <Link
           href="/probetraining"
-          className="group mt-10 inline-flex items-center gap-3 bg-cs-accent px-10 py-4 text-sm tracking-wider text-white transition-all duration-500 hover:bg-white hover:text-cs-black"
+          className="group mt-10 inline-flex items-center gap-3 border border-cs-accent bg-cs-accent px-8 py-4 text-[13px] font-medium uppercase tracking-[0.15em] text-white transition-all duration-500 hover:bg-transparent"
         >
           Gratis Probetraining
-          <ArrowRight className="h-4 w-4 transition-transform duration-500 group-hover:translate-x-1" />
         </Link>
       </div>
     </section>

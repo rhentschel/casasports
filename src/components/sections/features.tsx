@@ -1,4 +1,7 @@
+"use client";
+
 import Image from "next/image";
+import { useReveal } from "@/lib/use-reveal";
 
 const features = [
   {
@@ -19,14 +22,19 @@ const features = [
 ];
 
 export function Features() {
+  const ref = useReveal();
+
   return (
-    <section className="bg-cs-black py-32">
-      <div className="mx-auto max-w-7xl px-6">
-        <h2 className="text-center text-4xl font-black uppercase tracking-tight text-cs-white md:text-5xl">
+    <section className="bg-cs-black py-40 md:py-48">
+      <div ref={ref} className="reveal mx-auto max-w-7xl px-8 md:px-16">
+        <p className="text-xs font-medium uppercase tracking-[0.2em] text-cs-accent">
           Was uns ausmacht
+        </p>
+        <h2 className="mt-4 text-3xl font-black uppercase leading-[0.9] tracking-[-0.03em] text-cs-white md:text-5xl">
+          Drei Gründe.
         </h2>
 
-        <div className="mt-20 grid gap-5 md:grid-cols-3">
+        <div className="mt-16 grid gap-5 md:grid-cols-3">
           {features.map((feature) => (
             <div
               key={feature.title}
@@ -36,18 +44,18 @@ export function Features() {
                 src={feature.image}
                 alt={feature.title}
                 fill
-                className="object-cover transition-transform duration-[1s] ease-out group-hover:scale-110"
+                className="img-cinema object-cover transition-transform duration-[1.2s] ease-[var(--ease-premium)] group-hover:scale-[1.05]"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent transition-all duration-500 group-hover:from-black/60" />
+              <div className="absolute inset-0 bg-gradient-to-t from-cs-black/90 via-cs-black/20 to-transparent" />
 
-              {/* Bottom accent line */}
-              <div className="absolute bottom-0 left-0 h-[2px] w-0 bg-cs-accent transition-all duration-700 ease-out group-hover:w-full" />
+              {/* Accent line bottom */}
+              <div className="absolute bottom-0 left-0 h-[2px] w-0 bg-cs-accent transition-all duration-[800ms] ease-[var(--ease-hover)] group-hover:w-full" />
 
-              <div className="absolute bottom-0 left-0 right-0 translate-y-2 p-8 transition-transform duration-500 group-hover:translate-y-0">
-                <h3 className="text-2xl font-black uppercase tracking-tight text-white">
+              <div className="absolute bottom-0 left-0 right-0 p-8">
+                <h3 className="text-lg font-black uppercase tracking-[-0.01em] text-white">
                   {feature.title}
                 </h3>
-                <p className="mt-3 text-sm leading-relaxed text-white/0 transition-all duration-500 group-hover:text-white/60">
+                <p className="mt-3 max-h-0 overflow-hidden text-[14px] leading-relaxed text-white/50 transition-all duration-[600ms] ease-[var(--ease-hover)] group-hover:max-h-24">
                   {feature.text}
                 </p>
               </div>
