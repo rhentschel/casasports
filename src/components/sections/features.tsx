@@ -15,9 +15,9 @@ const features = [
     text: "Hier bist du keine Nummer. Hier bist du Name, Ziel und Plan.",
   },
   {
-    image: "/images/casasports-klafs-sauna.webp",
-    title: "Regeneration",
-    text: "Nach dem Training beginnt das Wachstum. Sauna, Infrarot, Ruhe.",
+    image: "/images/casasports-gruppentraining.webp",
+    title: "Community",
+    text: "Zusammen trainieren, zusammen wachsen. Kein anonymes Studio.",
   },
 ];
 
