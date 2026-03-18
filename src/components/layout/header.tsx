@@ -1,21 +1,39 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
-import { Menu, X, Phone } from "lucide-react";
+import Image from "next/image";
+import { Menu, X } from "lucide-react";
 import { navigation, siteConfig } from "@/data/site";
 import { cn } from "@/lib/utils";
 
 export function Header() {
   const [isOpen, setIsOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 50);
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
-    <header className="fixed top-0 z-50 w-full border-b border-cs-gray-800/50 bg-cs-black/80 backdrop-blur-xl">
+    <header
+      className={cn(
+        "fixed top-0 z-50 w-full transition-all duration-300",
+        scrolled
+          ? "bg-cs-black/95 backdrop-blur-xl"
+          : "bg-transparent"
+      )}
+    >
       <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-6">
-        <Link href="/" className="flex items-center gap-3">
-          <span className="text-2xl font-bold tracking-tight text-cs-white">
-            CASA<span className="text-cs-accent">SPORTS</span>
-          </span>
+        <Link href="/" className="relative h-10 w-40">
+          <Image
+            src="/images/casa-sports-logo.webp"
+            alt={siteConfig.name}
+            fill
+            className="object-contain object-left"
+          />
         </Link>
 
         <nav className="hidden items-center gap-1 lg:flex">
@@ -23,32 +41,25 @@ export function Header() {
             <Link
               key={item.href}
               href={item.href}
-              className="rounded-lg px-4 py-2 text-sm font-medium text-cs-gray-300 transition-colors hover:bg-cs-gray-800 hover:text-cs-white"
+              className="px-4 py-2 text-xs font-bold uppercase tracking-wider text-white/70 transition-colors hover:text-white"
             >
               {item.label}
             </Link>
           ))}
         </nav>
 
-        <div className="hidden items-center gap-4 lg:flex">
-          <a
-            href={`tel:${siteConfig.phone.replace(/\s/g, "")}`}
-            className="flex items-center gap-2 text-sm text-cs-gray-300 transition-colors hover:text-cs-white"
-          >
-            <Phone className="h-4 w-4" />
-            {siteConfig.phone}
-          </a>
+        <div className="hidden items-center gap-6 lg:flex">
           <Link
             href="/probetraining"
-            className="rounded-lg bg-cs-accent px-6 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-cs-accent-hover"
+            className="bg-cs-accent px-6 py-2.5 text-xs font-bold uppercase tracking-wider text-white transition-all hover:bg-white hover:text-cs-black"
           >
-            Kostenloses Probetraining
+            Probetraining
           </Link>
         </div>
 
         <button
           onClick={() => setIsOpen(!isOpen)}
-          className="rounded-lg p-2 text-cs-gray-300 transition-colors hover:bg-cs-gray-800 hover:text-cs-white lg:hidden"
+          className="text-white lg:hidden"
           aria-label={isOpen ? "Menü schließen" : "Menü öffnen"}
         >
           {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
@@ -57,31 +68,38 @@ export function Header() {
 
       <div
         className={cn(
-          "overflow-hidden border-t border-cs-gray-800/50 bg-cs-black/95 backdrop-blur-xl transition-all duration-300 lg:hidden",
-          isOpen ? "max-h-screen" : "max-h-0 border-t-0"
+          "fixed inset-0 z-40 bg-cs-black transition-all duration-500 lg:hidden",
+          isOpen
+            ? "opacity-100 pointer-events-auto"
+            : "opacity-0 pointer-events-none"
         )}
       >
-        <nav className="flex flex-col gap-1 px-6 py-4">
-          {navigation.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              onClick={() => setIsOpen(false)}
-              className="rounded-lg px-4 py-3 text-base font-medium text-cs-gray-300 transition-colors hover:bg-cs-gray-800 hover:text-cs-white"
-            >
-              {item.label}
-            </Link>
-          ))}
-          <div className="mt-4 border-t border-cs-gray-800 pt-4">
+        <div className="flex h-full flex-col justify-center px-12">
+          <nav className="flex flex-col gap-2">
+            {navigation.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                onClick={() => setIsOpen(false)}
+                className="text-4xl font-black uppercase tracking-tight text-white/40 transition-colors hover:text-white"
+              >
+                {item.label}
+              </Link>
+            ))}
+          </nav>
+          <div className="mt-12 border-t border-cs-gray-800 pt-8">
             <Link
               href="/probetraining"
               onClick={() => setIsOpen(false)}
-              className="block rounded-lg bg-cs-accent px-6 py-3 text-center text-base font-semibold text-white transition-colors hover:bg-cs-accent-hover"
+              className="inline-block bg-cs-accent px-8 py-4 text-sm font-bold uppercase tracking-wider text-white"
             >
-              Kostenloses Probetraining
+              Gratis Probetraining
             </Link>
+            <p className="mt-6 text-sm text-cs-gray-400">
+              {siteConfig.phone} &middot; {siteConfig.email}
+            </p>
           </div>
-        </nav>
+        </div>
       </div>
     </header>
   );

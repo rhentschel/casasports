@@ -1,77 +1,86 @@
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowRight, Star } from "lucide-react";
 import { siteConfig } from "@/data/site";
 
 export function Hero() {
   return (
-    <section className="relative flex min-h-screen items-center overflow-hidden bg-cs-black pt-20">
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_rgba(230,57,70,0.08)_0%,_transparent_50%)]" />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,_rgba(201,168,76,0.05)_0%,_transparent_50%)]" />
+    <section className="relative h-screen min-h-[700px] overflow-hidden">
+      <Image
+        src="/images/casasports-hero-1.webp"
+        alt="Casa Sports Fitnessstudio"
+        fill
+        className="object-cover"
+        priority
+        quality={90}
+      />
+      <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-transparent" />
+      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/20" />
 
-      <div className="relative mx-auto max-w-7xl px-6 py-32">
-        <div className="max-w-3xl">
-          <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-cs-gray-700 bg-cs-gray-800/50 px-4 py-2">
-            <div className="flex items-center gap-0.5">
-              {Array.from({ length: 5 }).map((_, i) => (
-                <Star
-                  key={i}
-                  className="h-3.5 w-3.5 fill-cs-gold text-cs-gold"
-                />
-              ))}
+      <div className="relative flex h-full items-end pb-20 md:items-center md:pb-0">
+        <div className="mx-auto w-full max-w-7xl px-6">
+          <div className="max-w-2xl">
+            <div className="mb-8 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 backdrop-blur-sm">
+              <div className="flex gap-0.5">
+                {Array.from({ length: 5 }).map((_, i) => (
+                  <Star
+                    key={i}
+                    className="h-3.5 w-3.5 fill-cs-gold text-cs-gold"
+                  />
+                ))}
+              </div>
+              <span className="text-sm text-white/80">
+                {siteConfig.rating.score}/5 auf Google
+              </span>
             </div>
-            <span className="text-sm text-cs-gray-300">
-              {siteConfig.rating.score}/{siteConfig.rating.max} &mdash;{" "}
-              {siteConfig.rating.label}
-            </span>
-          </div>
 
-          <p className="mb-4 text-sm font-semibold uppercase tracking-[0.2em] text-cs-accent">
-            {siteConfig.tagline}
-          </p>
+            <h1 className="text-5xl font-black uppercase leading-[0.95] tracking-tight text-white md:text-7xl lg:text-8xl">
+              Dein neues
+              <br />
+              <span className="text-cs-accent">Ich</span> beginnt
+              <br />
+              hier.
+            </h1>
 
-          <h1 className="text-5xl font-bold leading-[1.1] tracking-tight text-cs-white md:text-7xl">
-            Dein Fitnessstudio
-            <br />
-            in{" "}
-            <span className="bg-gradient-to-r from-cs-white to-cs-gray-400 bg-clip-text text-transparent">
-              Oer-Erkenschwick
-            </span>
-          </h1>
+            <p className="mt-6 max-w-md text-lg text-white/70">
+              Fitnessstudio, Kurse, Wellness und Sauna in Oer-Erkenschwick.
+              Persönlich betreut, nicht anonym.
+            </p>
 
-          <p className="mt-6 max-w-xl text-lg leading-relaxed text-cs-gray-400 md:text-xl">
-            Jeder Tag ist eine neue Chance auf das Leben, das du verdienst.
-            Fitness, Wellness und Kurse unter einem Dach.
-          </p>
-
-          <div className="mt-10 flex flex-col gap-4 sm:flex-row">
-            <Link
-              href="/probetraining"
-              className="group inline-flex items-center justify-center gap-2 rounded-lg bg-cs-accent px-8 py-4 text-base font-semibold text-white transition-all hover:bg-cs-accent-hover hover:gap-3"
-            >
-              Kostenloses Probetraining
-              <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-0.5" />
-            </Link>
-            <Link
-              href="/fitness"
-              className="inline-flex items-center justify-center rounded-lg border border-cs-gray-700 px-8 py-4 text-base font-semibold text-cs-white transition-colors hover:border-cs-gray-500 hover:bg-cs-gray-800"
-            >
-              Studio entdecken
-            </Link>
+            <div className="mt-10 flex flex-col gap-4 sm:flex-row">
+              <Link
+                href="/probetraining"
+                className="group inline-flex items-center justify-center gap-2 rounded-none bg-cs-accent px-8 py-4 text-sm font-bold uppercase tracking-wider text-white transition-all hover:bg-white hover:text-cs-black"
+              >
+                Gratis Probetraining
+                <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+              </Link>
+              <a
+                href={`tel:${siteConfig.phone.replace(/\s/g, "")}`}
+                className="inline-flex items-center justify-center border border-white/20 px-8 py-4 text-sm font-bold uppercase tracking-wider text-white backdrop-blur-sm transition-all hover:border-white hover:bg-white/10"
+              >
+                {siteConfig.phone}
+              </a>
+            </div>
           </div>
         </div>
+      </div>
 
-        <div className="mt-20 grid grid-cols-2 gap-8 border-t border-cs-gray-800 pt-12 md:grid-cols-4">
+      <div className="absolute bottom-0 left-0 right-0 border-t border-white/10 bg-black/40 backdrop-blur-md">
+        <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
           {[
-            { value: "500+", label: "Aktive Mitglieder" },
-            { value: "6+", label: "Kursangebote" },
-            { value: "4,8", label: "Google Bewertung" },
-            { value: "7/7", label: "Tage geöffnet" },
+            { value: "500+", label: "Mitglieder" },
+            { value: "6", label: "Kursarten" },
+            { value: "4,8\u2605", label: "Google" },
+            { value: "7/7", label: "Tage offen" },
           ].map((stat) => (
-            <div key={stat.label}>
-              <p className="text-3xl font-bold text-cs-white md:text-4xl">
+            <div key={stat.label} className="text-center">
+              <p className="text-lg font-bold text-white md:text-xl">
                 {stat.value}
               </p>
-              <p className="mt-1 text-sm text-cs-gray-400">{stat.label}</p>
+              <p className="text-xs uppercase tracking-wider text-white/50">
+                {stat.label}
+              </p>
             </div>
           ))}
         </div>
