@@ -89,15 +89,43 @@ function CardPattern({
   );
 }
 
-const characters =
-  "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+const words = [
+  "KRAFT",
+  "STÄRKE",
+  "FOKUS",
+  "DISZIPLIN",
+  "AUSDAUER",
+  "POWER",
+  "MOTIVATION",
+  "ENERGIE",
+  "GRENZEN",
+  "ÜBERWINDEN",
+  "ZIEL",
+  "WACHSTUM",
+  "DURCHHALTEN",
+  "TRANSFORM",
+  "PUSH",
+  "FIGHT",
+  "BELIEVE",
+  "UNSTOPPABLE",
+  "WILLENSKRAFT",
+  "ERGEBNIS",
+  "EHRGEIZ",
+  "MUT",
+  "LEIDENSCHAFT",
+  "CHAMPION",
+  "ANFANGEN",
+  "VERÄNDERUNG",
+  "MEIN NEUES ICH",
+];
 
 const generateRandomString = (length: number) => {
   let result = "";
-  for (let i = 0; i < length; i++) {
-    result += characters.charAt(Math.floor(Math.random() * characters.length));
+  while (result.length < length) {
+    result +=
+      words[Math.floor(Math.random() * words.length)] + " ";
   }
-  return result;
+  return result.slice(0, length);
 };
 
 export const Icon = ({

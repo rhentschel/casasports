@@ -27,7 +27,7 @@ export function ProgramCards() {
   const ref = useReveal();
 
   return (
-    <section className="bg-cs-gray-900 py-32 md:py-40">
+    <section className="bg-cs-black py-32 md:py-40">
       <div ref={ref} className="reveal mx-auto max-w-7xl px-8 md:px-16">
         <p className="text-xs font-medium uppercase tracking-[0.2em] text-cs-accent">
           Dein Start
@@ -40,10 +40,10 @@ export function ProgramCards() {
           {programs.map((program) => (
             <div
               key={program.title}
-              className="relative flex flex-col items-start border border-white/[0.08] p-5"
+              className="relative flex flex-col items-start border border-cs-accent/20 p-5 transition-all duration-500 hover:border-cs-accent/40"
             >
-              <Icon className="absolute -left-3 -top-3 h-6 w-6 text-white/20" />
-              <Icon className="absolute -bottom-3 -right-3 h-6 w-6 text-white/20" />
+              <Icon className="absolute -left-3 -top-3 h-6 w-6 text-cs-accent/30" />
+              <Icon className="absolute -bottom-3 -right-3 h-6 w-6 text-cs-accent/30" />
 
               <div className="h-[280px] w-full">
                 <EvervaultCard text={program.text} />
