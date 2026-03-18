@@ -81,7 +81,7 @@ export function Header() {
                 key={item.href}
                 href={item.href}
                 onClick={() => setIsOpen(false)}
-                className="font-[family-name:var(--font-display)] text-4xl italic text-white/30 transition-colors duration-300 hover:text-white"
+                className="text-4xl font-black uppercase tracking-tight text-white/30 transition-colors duration-300 hover:text-white"
               >
                 {item.label}
               </Link>

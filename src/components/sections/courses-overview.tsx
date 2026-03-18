@@ -29,7 +29,7 @@ export function CoursesOverview() {
     <section className="bg-cs-black py-32">
       <div className="mx-auto max-w-7xl px-6">
         <div className="flex items-end justify-between">
-          <h2 className="font-[family-name:var(--font-display)] text-4xl italic tracking-tight text-cs-white md:text-5xl">
+          <h2 className="text-4xl font-black uppercase tracking-tight text-cs-white md:text-5xl">
             Unsere Kurse
           </h2>
           <div className="hidden items-center gap-2 sm:flex">
@@ -69,7 +69,7 @@ export function CoursesOverview() {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
                 <div className="absolute bottom-0 left-0 h-[2px] w-0 bg-cs-accent transition-all duration-700 ease-out group-hover:w-full" />
                 <div className="absolute bottom-0 left-0 right-0 p-6">
-                  <h3 className="font-[family-name:var(--font-display)] text-2xl italic text-white">
+                  <h3 className="text-2xl font-black uppercase tracking-tight text-white">
                     {course.name}
                   </h3>
                 </div>

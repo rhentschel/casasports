@@ -14,7 +14,7 @@ export function CTA() {
       <div className="absolute inset-0 bg-black/70" />
 
       <div className="relative text-center">
-        <h2 className="font-[family-name:var(--font-display)] text-5xl italic leading-[1.1] text-white md:text-7xl">
+        <h2 className="text-5xl font-black uppercase tracking-tight leading-[1.1] text-white md:text-7xl">
           Dein erstes Training
           <br />
           geht <span className="text-cs-accent">auf uns.</span>

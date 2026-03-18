@@ -22,7 +22,7 @@ export function Features() {
   return (
     <section className="bg-cs-black py-32">
       <div className="mx-auto max-w-7xl px-6">
-        <h2 className="text-center font-[family-name:var(--font-display)] text-4xl italic tracking-tight text-cs-white md:text-5xl">
+        <h2 className="text-center text-4xl font-black uppercase tracking-tight text-cs-white md:text-5xl">
           Was uns ausmacht
         </h2>
 
@@ -44,7 +44,7 @@ export function Features() {
               <div className="absolute bottom-0 left-0 h-[2px] w-0 bg-cs-accent transition-all duration-700 ease-out group-hover:w-full" />
 
               <div className="absolute bottom-0 left-0 right-0 translate-y-2 p-8 transition-transform duration-500 group-hover:translate-y-0">
-                <h3 className="font-[family-name:var(--font-display)] text-2xl italic text-white">
+                <h3 className="text-2xl font-black uppercase tracking-tight text-white">
                   {feature.title}
                 </h3>
                 <p className="mt-3 text-sm leading-relaxed text-white/0 transition-all duration-500 group-hover:text-white/60">

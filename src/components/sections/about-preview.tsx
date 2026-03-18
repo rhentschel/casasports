@@ -24,7 +24,7 @@ export function AboutPreview() {
             <span className="text-xs uppercase tracking-[0.3em] text-cs-accent">
               Dein Studio
             </span>
-            <h2 className="mt-6 font-[family-name:var(--font-display)] text-5xl italic leading-[1.1] text-cs-white md:text-6xl">
+            <h2 className="mt-6 text-5xl font-black uppercase tracking-tight leading-[1.1] text-cs-white md:text-6xl">
               Persönlich.
               <br />
               Nicht anonym.
@@ -37,7 +37,7 @@ export function AboutPreview() {
             </p>
 
             <blockquote className="mt-10 border-l border-cs-accent/30 pl-6">
-              <p className="font-[family-name:var(--font-display)] text-xl italic text-white/70">
+              <p className="text-lg leading-relaxed text-white/50">
                 &ldquo;Wahre Stärke zeigt sich nicht darin, was du kannst,
                 sondern darin, was du überwindest.&rdquo;
               </p>

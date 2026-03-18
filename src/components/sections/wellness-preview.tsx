@@ -24,7 +24,7 @@ export function WellnessPreview() {
   return (
     <section className="bg-cs-gray-900 py-32">
       <div className="mx-auto max-w-7xl px-6">
-        <h2 className="text-center font-[family-name:var(--font-display)] text-4xl italic tracking-tight text-cs-white md:text-5xl">
+        <h2 className="text-center text-4xl font-black uppercase tracking-tight text-cs-white md:text-5xl">
           Wellness & Sauna
         </h2>
         <p className="mx-auto mt-4 max-w-lg text-center text-sm leading-relaxed text-cs-gray-400">
@@ -53,7 +53,7 @@ export function WellnessPreview() {
                     {item.brand}
                   </span>
                 )}
-                <h3 className="font-[family-name:var(--font-display)] text-2xl italic text-white">
+                <h3 className="text-2xl font-black uppercase tracking-tight text-white">
                   {item.label}
                 </h3>
               </div>
