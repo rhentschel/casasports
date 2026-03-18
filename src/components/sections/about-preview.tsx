@@ -30,10 +30,16 @@ const team = [
       "Fitness ist kein Ziel, sondern eine Lebenseinstellung. Gemeinsam machen wir den ersten Schritt.",
   },
   {
-    name: "Das Team",
-    role: "Personal Training",
+    name: "Hidayet",
+    role: "Studioleiter",
     image: "/images/team-training-1.webp",
-    quote: "Persönliche Betreuung statt Massenabfertigung. Das ist Casa Sports.",
+    quote: "Ein gutes Studio lebt von seinem Team. Hier stimmt alles.",
+  },
+  {
+    name: "Eren",
+    role: "Auszubildender",
+    image: "/images/team-training-2.webp",
+    quote: "Jeden Tag lerne ich etwas Neues. Die Leidenschaft für Fitness steckt an.",
   },
 ];
 
