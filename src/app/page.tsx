@@ -1,6 +1,7 @@
 import { Hero } from "@/components/sections/hero";
 import { Marquee } from "@/components/sections/marquee";
 import { Features } from "@/components/sections/features";
+import { BenefitsGrid } from "@/components/sections/benefits-grid";
 import { AboutPreview } from "@/components/sections/about-preview";
 import { CoursesOverview } from "@/components/sections/courses-overview";
 import { WellnessPreview } from "@/components/sections/wellness-preview";
@@ -13,6 +14,7 @@ export default function HomePage() {
       <Hero />
       <Marquee />
       <Features />
+      <BenefitsGrid />
       <AboutPreview />
       <CoursesOverview />
       <WellnessPreview />
