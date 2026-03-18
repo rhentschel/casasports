@@ -126,7 +126,7 @@ export function AboutPreview() {
 
   const [emblaRef, emblaApi] = useEmblaCarousel(
     { loop: true, align: "start" },
-    [Autoplay({ delay: 6000, stopOnInteraction: true })]
+    [Autoplay({ delay: 10000, stopOnInteraction: true })]
   );
 
   const scrollPrev = useCallback(() => emblaApi?.scrollPrev(), [emblaApi]);
