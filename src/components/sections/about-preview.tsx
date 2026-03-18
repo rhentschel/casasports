@@ -2,44 +2,47 @@ import Image from "next/image";
 
 export function AboutPreview() {
   return (
-    <section className="flex min-h-screen items-center bg-cs-gray-900 py-24">
-      <div className="mx-auto w-full max-w-7xl px-6">
-        <div className="grid items-center gap-20 lg:grid-cols-2">
-          {/* Image */}
+    <section className="bg-cs-gray-900 py-32">
+      <div className="mx-auto max-w-7xl px-6">
+        <div className="grid items-center gap-16 lg:grid-cols-2 lg:gap-24">
+          {/* Image with offset frame */}
           <div className="relative">
-            <div className="group relative aspect-[3/4] overflow-hidden">
+            <div className="group relative overflow-hidden">
               <Image
                 src="/images/naim-casasports.webp"
                 alt="Naim Obeid"
-                fill
-                className="object-cover transition-transform duration-[800ms] ease-out group-hover:scale-[1.03]"
+                width={600}
+                height={800}
+                className="w-full object-cover transition-transform duration-[1s] ease-out group-hover:scale-[1.03]"
               />
             </div>
-            {/* Decorative frame offset */}
-            <div className="absolute -bottom-4 -right-4 -z-10 hidden h-full w-full border border-cs-accent/20 lg:block" />
+            <div className="absolute -bottom-3 -right-3 -z-10 hidden h-full w-full border border-cs-accent/15 lg:block" />
           </div>
 
           {/* Text */}
           <div>
-            <p className="text-sm font-light uppercase tracking-[0.3em] text-cs-accent">
-              Naim Obeid
-            </p>
-            <h2 className="mt-6 text-5xl font-extralight leading-[1.1] tracking-tight text-cs-white md:text-6xl">
+            <span className="text-xs uppercase tracking-[0.3em] text-cs-accent">
+              Dein Studio
+            </span>
+            <h2 className="mt-6 font-[family-name:var(--font-display)] text-5xl italic leading-[1.1] text-cs-white md:text-6xl">
               Persönlich.
               <br />
-              <span className="font-bold">Nicht anonym.</span>
+              Nicht anonym.
             </h2>
 
-            <p className="mt-10 text-lg font-light leading-relaxed text-cs-gray-400">
+            <p className="mt-10 text-base leading-relaxed text-cs-gray-400">
               Casa Sports ist anders. Hier kennt man sich, hier wird trainiert
               und hier wird Ergebnis geliefert. Inhaber Naim Obeid und sein Team
               stehen für persönliche Betreuung statt Massenabfertigung.
             </p>
 
-            <blockquote className="mt-10 border-l border-cs-accent/40 pl-6">
-              <p className="text-lg font-light italic leading-relaxed text-white/60">
+            <blockquote className="mt-10 border-l border-cs-accent/30 pl-6">
+              <p className="font-[family-name:var(--font-display)] text-xl italic text-white/70">
                 &ldquo;Wahre Stärke zeigt sich nicht darin, was du kannst,
                 sondern darin, was du überwindest.&rdquo;
+              </p>
+              <p className="mt-4 text-xs uppercase tracking-[0.2em] text-cs-gray-500">
+                Naim Obeid
               </p>
             </blockquote>
           </div>

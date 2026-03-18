@@ -42,6 +42,7 @@
   --color-cs-gold: var(--cs-gold);
   --color-cs-gold-hover: var(--cs-gold-hover);
   --font-sans: var(--font-inter);
+  --font-display: var(--font-display);
 }
 
 html {
@@ -72,4 +73,9 @@ body {
 @keyframes fade-in {
   0% { opacity: 0; }
   100% { opacity: 1; }
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
 }

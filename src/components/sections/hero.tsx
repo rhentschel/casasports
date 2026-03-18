@@ -11,13 +11,14 @@ export function Hero() {
   const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
-    setLoaded(true);
+    const t = setTimeout(() => setLoaded(true), 100);
+    return () => clearTimeout(t);
   }, []);
 
   return (
-    <section className="relative flex h-screen min-h-[700px] items-center overflow-hidden bg-cs-black">
-      {/* Ken Burns Background */}
-      <div className="absolute inset-0 animate-[kenburns_25s_ease-in-out_infinite_alternate]">
+    <section className="relative h-screen min-h-[800px] overflow-hidden bg-cs-black">
+      {/* Cinematic background */}
+      <div className="absolute inset-0 animate-[kenburns_30s_ease-in-out_infinite_alternate]">
         <Image
           src="/images/casasports-hero-1.webp"
           alt="Casa Sports Fitnessstudio"
@@ -27,103 +28,82 @@ export function Hero() {
           quality={90}
         />
       </div>
-      <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/50 to-black/30" />
-      <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-black/30" />
+      <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/40 to-black/20" />
+      <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-black/30" />
 
-      {/* Thin decorative line */}
-      <div className="absolute left-[calc(50%-600px)] top-0 hidden h-full w-px bg-gradient-to-b from-transparent via-white/[0.06] to-transparent xl:block" />
-
-      {/* Content */}
-      <div className="relative mx-auto w-full max-w-7xl px-6">
-        {/* Rating */}
+      {/* Center content */}
+      <div className="relative flex h-full flex-col items-center justify-center text-center">
+        {/* Stars */}
         <div
           className={cn(
-            "mb-12 flex items-center gap-3 transition-all duration-1000",
+            "flex items-center gap-2 transition-all duration-1000 delay-500",
             loaded ? "opacity-100" : "opacity-0"
           )}
         >
-          <div className="flex gap-0.5">
+          <div className="flex gap-1">
             {Array.from({ length: 5 }).map((_, i) => (
-              <Star key={i} className="h-3.5 w-3.5 fill-cs-gold text-cs-gold" />
+              <Star key={i} className="h-3 w-3 fill-cs-gold text-cs-gold" />
             ))}
           </div>
-          <span className="text-sm font-light tracking-wide text-white/50">
-            {siteConfig.rating.score}/5 Google
+          <span className="text-xs tracking-widest text-white/40">
+            {siteConfig.rating.score}/5
           </span>
         </div>
 
-        {/* Headline with clip reveal */}
-        <div className="overflow-hidden">
+        {/* Display headline */}
+        <div className="mt-8 overflow-hidden">
           <h1
             className={cn(
-              "text-[clamp(3.5rem,9vw,8rem)] font-extralight leading-[0.9] tracking-[-0.03em] text-white transition-transform duration-1000 ease-out",
-              loaded ? "translate-y-0" : "translate-y-full"
+              "font-[family-name:var(--font-display)] text-[clamp(3rem,10vw,9rem)] italic leading-[0.95] tracking-[-0.02em] text-white transition-transform duration-[1200ms] ease-[cubic-bezier(0.22,1,0.36,1)]",
+              loaded ? "translate-y-0" : "translate-y-[120%]"
             )}
           >
-            Dein neues
-          </h1>
-        </div>
-        <div className="overflow-hidden">
-          <h1
-            className={cn(
-              "text-[clamp(3.5rem,9vw,8rem)] font-black leading-[0.9] tracking-[-0.03em] text-white transition-transform delay-150 duration-1000 ease-out",
-              loaded ? "translate-y-0" : "translate-y-full"
-            )}
-          >
-            <span className="text-cs-accent">Ich</span> beginnt hier.
+            Dein neues Ich
           </h1>
         </div>
 
         {/* Subline */}
         <p
           className={cn(
-            "mt-10 max-w-md text-lg font-light leading-relaxed text-white/40 transition-all delay-500 duration-1000",
-            loaded ? "translate-y-0 opacity-100" : "translate-y-6 opacity-0"
+            "mt-6 max-w-md text-base tracking-wide text-white/40 transition-all duration-1000 delay-700",
+            loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
           )}
         >
-          Fitness, Kurse, Wellness und Sauna.
+          Fitness, Kurse, Wellness & Sauna in Oer-Erkenschwick.
           <br />
-          Persönlich betreut in Oer-Erkenschwick.
+          Persönlich betreut, nicht anonym.
         </p>
 
-        {/* CTAs */}
+        {/* CTA */}
         <div
           className={cn(
-            "mt-12 flex flex-col gap-4 sm:flex-row transition-all delay-700 duration-1000",
-            loaded ? "translate-y-0 opacity-100" : "translate-y-6 opacity-0"
+            "mt-10 flex items-center gap-6 transition-all duration-1000 delay-900",
+            loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
           )}
         >
           <Link
             href="/probetraining"
-            className="group inline-flex items-center gap-3 bg-cs-accent px-10 py-5 text-sm font-medium tracking-wider text-white transition-all duration-500 hover:bg-white hover:text-cs-black"
+            className="group flex items-center gap-3 bg-cs-accent px-10 py-4 text-sm tracking-wider text-white transition-all duration-500 hover:bg-white hover:text-cs-black"
           >
             Gratis Probetraining
             <ArrowRight className="h-4 w-4 transition-transform duration-500 group-hover:translate-x-1" />
           </Link>
           <a
             href={`tel:${siteConfig.phone.replace(/\s/g, "")}`}
-            className="inline-flex items-center px-10 py-5 text-sm font-light tracking-wider text-white/40 transition-all duration-500 hover:text-white"
+            className="hidden text-sm tracking-wider text-white/30 transition-colors duration-300 hover:text-white sm:block"
           >
             {siteConfig.phone}
           </a>
         </div>
       </div>
 
-      {/* Minimal bottom stats */}
-      <div className="absolute bottom-0 left-0 right-0">
-        <div className="mx-auto flex max-w-7xl justify-start gap-16 px-6 py-8">
-          {[
-            { value: "500+", label: "Mitglieder" },
-            { value: "6", label: "Kursarten" },
-            { value: "7/7", label: "Tage offen" },
-          ].map((stat) => (
-            <div key={stat.label}>
-              <p className="text-lg font-light text-white/60">{stat.value}</p>
-              <p className="text-[10px] uppercase tracking-[0.25em] text-white/20">
-                {stat.label}
-              </p>
-            </div>
-          ))}
+      {/* Scroll indicator */}
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2">
+        <div className="flex flex-col items-center gap-2">
+          <span className="text-[9px] uppercase tracking-[0.4em] text-white/20">
+            Scroll
+          </span>
+          <div className="h-10 w-px bg-gradient-to-b from-white/20 to-transparent" />
         </div>
       </div>
     </section>

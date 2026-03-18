@@ -41,7 +41,7 @@ export function Header() {
             <Link
               key={item.href}
               href={item.href}
-              className="px-4 py-2 text-xs font-bold uppercase tracking-wider text-white/70 transition-colors hover:text-white"
+              className="px-4 py-2 text-[11px] uppercase tracking-[0.15em] text-white/50 transition-colors duration-300 hover:text-white"
             >
               {item.label}
             </Link>
@@ -51,7 +51,7 @@ export function Header() {
         <div className="hidden items-center gap-6 lg:flex">
           <Link
             href="/probetraining"
-            className="bg-cs-accent px-6 py-2.5 text-xs font-bold uppercase tracking-wider text-white transition-all hover:bg-white hover:text-cs-black"
+            className="bg-cs-accent px-6 py-2.5 text-[11px] uppercase tracking-[0.15em] text-white transition-all duration-500 hover:bg-white hover:text-cs-black"
           >
             Probetraining
           </Link>
@@ -81,7 +81,7 @@ export function Header() {
                 key={item.href}
                 href={item.href}
                 onClick={() => setIsOpen(false)}
-                className="text-4xl font-black uppercase tracking-tight text-white/40 transition-colors hover:text-white"
+                className="font-[family-name:var(--font-display)] text-4xl italic text-white/30 transition-colors duration-300 hover:text-white"
               >
                 {item.label}
               </Link>
