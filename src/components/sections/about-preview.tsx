@@ -32,13 +32,13 @@ const team = [
   {
     name: "Hidayet",
     role: "Studioleiter",
-    image: "/images/team-training-1.webp",
+    image: "/images/team-hidayet.avif",
     quote: "Ein gutes Studio lebt von seinem Team. Hier stimmt alles.",
   },
   {
     name: "Eren",
     role: "Auszubildender",
-    image: "/images/team-training-2.webp",
+    image: "/images/team-eren.avif",
     quote: "Jeden Tag lerne ich etwas Neues. Die Leidenschaft für Fitness steckt an.",
   },
 ];
