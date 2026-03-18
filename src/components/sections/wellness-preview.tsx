@@ -4,96 +4,79 @@ import { ArrowRight } from "lucide-react";
 
 export function WellnessPreview() {
   return (
-    <section className="bg-cs-gray-900 py-32">
-      <div className="mx-auto max-w-7xl px-6">
+    <section className="flex min-h-screen items-center bg-cs-gray-900 py-24">
+      <div className="mx-auto w-full max-w-7xl px-6">
         {/* Header */}
-        <div className="mb-20 flex items-end justify-between">
-          <div>
-            <p className="text-sm font-bold uppercase tracking-[0.3em] text-cs-gold">
-              Wellness & Sauna
-            </p>
-            <h2 className="mt-3 text-4xl font-black uppercase tracking-tight text-cs-white md:text-5xl">
-              Regeneration
-              <br />
-              auf höchstem Niveau.
-            </h2>
-          </div>
-          <div className="hidden h-px flex-1 bg-gradient-to-r from-cs-gray-800 to-transparent ml-12 md:block" />
+        <div className="text-center">
+          <p className="text-sm font-light uppercase tracking-[0.3em] text-cs-gold">
+            Wellness & Sauna
+          </p>
+          <h2 className="mt-4 text-4xl font-extralight tracking-tight text-cs-white md:text-5xl">
+            Regeneration auf <span className="font-bold">höchstem Niveau.</span>
+          </h2>
+          <p className="mx-auto mt-6 max-w-lg text-base font-light text-cs-gray-400">
+            KLAFS Sauna, Röger Infrarotkabine und ein Wellness-Bereich, der
+            keine Wünsche offen lässt.
+          </p>
         </div>
 
-        {/* Bento Grid */}
-        <div className="grid gap-4 md:grid-cols-3 md:grid-rows-2">
-          {/* Large panorama */}
-          <div className="group relative overflow-hidden border border-cs-gray-800 transition-all duration-500 hover:border-cs-gray-600 md:col-span-2 md:row-span-2">
-            <div className="relative aspect-[4/3] h-full min-h-[400px]">
+        {/* Image grid: 3 equal columns */}
+        <div className="mt-16 grid gap-4 md:grid-cols-3">
+          {[
+            {
+              image: "/images/casasports-wellness-bereich-1.webp",
+              label: "Wellness-Bereich",
+              brand: "",
+            },
+            {
+              image: "/images/casasports-klafs-sauna.webp",
+              label: "Sauna",
+              brand: "KLAFS",
+            },
+            {
+              image: "/images/casasports-infrarotkabine-roeger-web.webp",
+              label: "Infrarotkabine",
+              brand: "Röger",
+            },
+          ].map((item) => (
+            <div
+              key={item.label}
+              className="group relative aspect-[3/4] overflow-hidden"
+            >
               <Image
-                src="/images/casasports-wellness-bereich-1.webp"
-                alt="Wellness-Bereich"
+                src={item.image}
+                alt={item.label}
                 fill
-                className="object-cover transition-transform duration-700 group-hover:scale-105"
+                className="object-cover transition-transform duration-[800ms] ease-out group-hover:scale-105"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-black/20" />
-            </div>
-            <div className="absolute bottom-0 left-0 right-0 p-8">
-              <div className="mb-4 h-px w-8 bg-cs-gold transition-all duration-500 group-hover:w-16" />
-              <h3 className="text-3xl font-bold uppercase tracking-wide text-white">
-                Wellness-Bereich
-              </h3>
-              <p className="mt-3 max-w-md text-sm leading-relaxed text-white/50">
-                Training und Recovery gehören zusammen. Unser Wellness-Bereich
-                bietet dir alles für die perfekte Regeneration nach dem Workout.
-              </p>
-              <Link
-                href="/wellness"
-                className="group/link mt-6 inline-flex items-center gap-2 text-sm font-bold uppercase tracking-wider text-cs-gold transition-all duration-300 hover:gap-3 hover:text-white"
-              >
-                Wellness entdecken
-                <ArrowRight className="h-4 w-4" />
-              </Link>
-            </div>
-          </div>
+              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
 
-          {/* Sauna */}
-          <div className="group relative overflow-hidden border border-cs-gray-800 transition-all duration-500 hover:border-cs-gray-600">
-            <div className="relative aspect-square">
-              <Image
-                src="/images/casasports-klafs-sauna.webp"
-                alt="KLAFS Sauna"
-                fill
-                className="object-cover transition-transform duration-700 group-hover:scale-110"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
-            </div>
-            <div className="absolute bottom-0 left-0 right-0 p-6">
-              <span className="mb-2 inline-block border border-cs-gold/30 bg-black/40 px-2 py-0.5 text-[10px] font-bold uppercase tracking-[0.2em] text-cs-gold backdrop-blur-sm">
-                KLAFS
-              </span>
-              <h3 className="text-xl font-bold uppercase tracking-wide text-white">
-                Sauna
-              </h3>
-            </div>
-          </div>
+              {/* Bottom accent line */}
+              <div className="absolute bottom-0 left-0 h-[2px] w-0 bg-cs-gold transition-all duration-700 group-hover:w-full" />
 
-          {/* Infrarot */}
-          <div className="group relative overflow-hidden border border-cs-gray-800 transition-all duration-500 hover:border-cs-gray-600">
-            <div className="relative aspect-square">
-              <Image
-                src="/images/casasports-infrarotkabine-roeger-web.webp"
-                alt="Röger Infrarotkabine"
-                fill
-                className="object-cover transition-transform duration-700 group-hover:scale-110"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
+              <div className="absolute bottom-0 left-0 right-0 p-6">
+                {item.brand && (
+                  <span className="mb-2 inline-block text-[10px] font-light uppercase tracking-[0.3em] text-cs-gold">
+                    {item.brand}
+                  </span>
+                )}
+                <h3 className="text-lg font-bold tracking-wide text-white">
+                  {item.label}
+                </h3>
+              </div>
             </div>
-            <div className="absolute bottom-0 left-0 right-0 p-6">
-              <span className="mb-2 inline-block border border-cs-gold/30 bg-black/40 px-2 py-0.5 text-[10px] font-bold uppercase tracking-[0.2em] text-cs-gold backdrop-blur-sm">
-                Röger
-              </span>
-              <h3 className="text-xl font-bold uppercase tracking-wide text-white">
-                Infrarotkabine
-              </h3>
-            </div>
-          </div>
+          ))}
+        </div>
+
+        {/* Link */}
+        <div className="mt-12 text-center">
+          <Link
+            href="/wellness"
+            className="group inline-flex items-center gap-3 text-sm font-light tracking-wider text-cs-gold transition-all duration-300 hover:text-white"
+          >
+            Wellness entdecken
+            <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+          </Link>
         </div>
       </div>
     </section>

@@ -4,70 +4,53 @@ const features = [
   {
     image: "/images/casasports-geraete.webp",
     title: "Modernste Geräte",
-    text: "Erstklassiges Equipment für effektives Kraft- und Ausdauertraining.",
-    num: "01",
+    text: "Erstklassiges Equipment für Kraft und Ausdauer.",
   },
   {
     image: "/images/casasports-personal-training.webp",
     title: "Personal Training",
-    text: "Dein Trainer kennt deinen Namen, nicht nur deine Mitgliedsnummer.",
-    num: "02",
+    text: "Individuelle Betreuung, die dich wirklich weiterbringt.",
   },
   {
     image: "/images/casasports-klafs-sauna.webp",
     title: "Premium Wellness",
-    text: "KLAFS Sauna und Röger Infrarotkabine. Regeneration auf höchstem Niveau.",
-    num: "03",
+    text: "KLAFS Sauna und Röger Infrarot. Regeneration pur.",
   },
 ];
 
 export function Features() {
   return (
-    <section className="bg-cs-black py-32">
-      <div className="mx-auto max-w-7xl px-6">
-        {/* Section header */}
-        <div className="mb-20 flex items-end justify-between">
-          <div>
-            <p className="text-sm font-bold uppercase tracking-[0.3em] text-cs-accent">
-              Was uns ausmacht
-            </p>
-            <h2 className="mt-3 text-4xl font-black uppercase tracking-tight text-cs-white md:text-5xl">
-              Drei Gründe
-            </h2>
-          </div>
-          <div className="hidden h-px flex-1 bg-gradient-to-r from-cs-gray-800 to-transparent ml-12 md:block" />
-        </div>
+    <section className="flex min-h-screen items-center bg-cs-black py-24">
+      <div className="mx-auto w-full max-w-7xl px-6">
+        <p className="text-center text-sm font-light uppercase tracking-[0.3em] text-cs-accent">
+          Was uns ausmacht
+        </p>
+        <h2 className="mt-4 text-center text-4xl font-extralight tracking-tight text-cs-white md:text-5xl">
+          Drei <span className="font-bold">Gründe.</span>
+        </h2>
 
-        {/* Cards */}
-        <div className="grid gap-8 lg:grid-cols-3">
+        <div className="mt-20 grid gap-6 md:grid-cols-3">
           {features.map((feature) => (
             <div
-              key={feature.num}
-              className="group relative overflow-hidden border border-cs-gray-800 transition-all duration-500 hover:border-cs-gray-600"
+              key={feature.title}
+              className="group relative aspect-[3/4] overflow-hidden"
             >
-              {/* Image */}
-              <div className="relative aspect-[3/4] overflow-hidden">
-                <Image
-                  src={feature.image}
-                  alt={feature.title}
-                  fill
-                  className="object-cover transition-transform duration-700 group-hover:scale-110"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-cs-black via-cs-black/30 to-transparent" />
+              <Image
+                src={feature.image}
+                alt={feature.title}
+                fill
+                className="object-cover transition-transform duration-[800ms] ease-out group-hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent transition-colors duration-500 group-hover:from-black/70" />
 
-                {/* Number overlay */}
-                <span className="absolute right-6 top-6 text-7xl font-black text-white/5 transition-colors duration-500 group-hover:text-cs-accent/10">
-                  {feature.num}
-                </span>
-              </div>
+              {/* Accent line */}
+              <div className="absolute bottom-0 left-0 h-[2px] w-0 bg-cs-accent transition-all duration-700 group-hover:w-full" />
 
-              {/* Text */}
               <div className="absolute bottom-0 left-0 right-0 p-8">
-                <div className="mb-4 h-px w-8 bg-cs-accent transition-all duration-500 group-hover:w-16" />
-                <h3 className="text-xl font-bold uppercase tracking-wide text-white">
+                <h3 className="text-lg font-bold tracking-wide text-white">
                   {feature.title}
                 </h3>
-                <p className="mt-3 text-sm leading-relaxed text-white/50 transition-colors duration-500 group-hover:text-white/70">
+                <p className="mt-2 text-sm font-light text-white/50 transition-colors duration-500 group-hover:text-white/70">
                   {feature.text}
                 </p>
               </div>
