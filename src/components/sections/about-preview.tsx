@@ -3,7 +3,7 @@
 import Image from "next/image";
 import useEmblaCarousel from "embla-carousel-react";
 import Autoplay from "embla-carousel-autoplay";
-import { useCallback, useState, useEffect } from "react";
+import { useCallback, useState, useEffect, useRef } from "react";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { useReveal } from "@/lib/use-reveal";
 
@@ -12,13 +12,22 @@ const team = [
     name: "Naim Obeid",
     role: "Inhaber & Gründer",
     image: "/images/naim-casasports.webp",
+    video: "/videos/naim.mp4",
     quote:
       "Wahre Stärke zeigt sich nicht darin, was du kannst, sondern darin, was du überwindest.",
+  },
+  {
+    name: "Hidayet",
+    role: "Studioleiter",
+    image: "/images/team-hidayet.avif",
+    video: "/videos/hidayet.mp4",
+    quote: "Ein gutes Studio lebt von seinem Team. Hier stimmt alles.",
   },
   {
     name: "Jennifer",
     role: "Trainerin",
     image: "/images/team-jennifer.avif",
+    video: "/videos/jennifer.mp4",
     quote:
       "Jeder Mensch hat das Potenzial, seine Ziele zu erreichen. Ich helfe dir dabei.",
   },
@@ -26,22 +35,90 @@ const team = [
     name: "Renate",
     role: "Trainerin",
     image: "/images/team-renate.avif",
+    video: null,
     quote:
       "Fitness ist kein Ziel, sondern eine Lebenseinstellung. Gemeinsam machen wir den ersten Schritt.",
-  },
-  {
-    name: "Hidayet",
-    role: "Studioleiter",
-    image: "/images/team-hidayet.avif",
-    quote: "Ein gutes Studio lebt von seinem Team. Hier stimmt alles.",
   },
   {
     name: "Eren",
     role: "Auszubildender",
     image: "/images/team-eren.avif",
-    quote: "Jeden Tag lerne ich etwas Neues. Die Leidenschaft für Fitness steckt an.",
+    video: "/videos/eren.mp4",
+    quote:
+      "Jeden Tag lerne ich etwas Neues. Die Leidenschaft für Fitness steckt an.",
   },
 ];
+
+function TeamSlide({
+  member,
+}: {
+  member: (typeof team)[number];
+}) {
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [isHovered, setIsHovered] = useState(false);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    if (isHovered) {
+      video.play().catch(() => {});
+    } else {
+      video.pause();
+      video.currentTime = 0;
+    }
+  }, [isHovered]);
+
+  return (
+    <div
+      className="relative min-w-0 flex-[0_0_100%]"
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
+      <div className="relative flex min-h-[80vh] items-end overflow-hidden pb-20 md:pb-28">
+        {/* Image (always visible) */}
+        <Image
+          src={member.image}
+          alt={member.name}
+          fill
+          className="img-cinema object-cover object-top"
+        />
+
+        {/* Video overlay on hover */}
+        {member.video && (
+          <video
+            ref={videoRef}
+            src={member.video}
+            muted
+            loop
+            playsInline
+            preload="none"
+            className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-700 ${
+              isHovered ? "opacity-100" : "opacity-0"
+            }`}
+          />
+        )}
+
+        {/* Gradients */}
+        <div className="absolute inset-0 bg-gradient-to-t from-cs-black via-cs-black/40 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-r from-cs-black/50 to-transparent" />
+
+        {/* Content */}
+        <div className="relative z-10 mx-auto w-full max-w-7xl px-8 md:px-16">
+          <p className="text-xs font-medium uppercase tracking-[0.2em] text-cs-accent">
+            {member.role}
+          </p>
+          <h2 className="mt-3 text-4xl font-black uppercase leading-[0.9] tracking-[-0.03em] text-cs-white md:text-5xl">
+            {member.name}
+          </h2>
+          <p className="mt-4 max-w-md text-[15px] leading-[1.7] text-white/35">
+            &ldquo;{member.quote}&rdquo;
+          </p>
+        </div>
+      </div>
+    </div>
+  );
+}
 
 export function AboutPreview() {
   const ref = useReveal();
@@ -70,42 +147,14 @@ export function AboutPreview() {
       <div className="overflow-hidden" ref={emblaRef}>
         <div className="flex">
           {team.map((member) => (
-            <div
-              key={member.name}
-              className="relative min-w-0 flex-[0_0_100%]"
-            >
-              <div className="relative flex min-h-[80vh] items-end overflow-hidden pb-20 md:pb-28">
-                <Image
-                  src={member.image}
-                  alt={member.name}
-                  fill
-                  className="img-cinema object-cover object-top"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-cs-black via-cs-black/40 to-transparent" />
-                <div className="absolute inset-0 bg-gradient-to-r from-cs-black/50 to-transparent" />
-
-                {/* Content */}
-                <div className="relative z-10 mx-auto w-full max-w-7xl px-8 md:px-16">
-                  <p className="text-xs font-medium uppercase tracking-[0.2em] text-cs-accent">
-                    {member.role}
-                  </p>
-                  <h2 className="mt-3 text-4xl font-black uppercase leading-[0.9] tracking-[-0.03em] text-cs-white md:text-5xl">
-                    {member.name}
-                  </h2>
-                  <p className="mt-4 max-w-md text-[15px] leading-[1.7] text-white/35">
-                    &ldquo;{member.quote}&rdquo;
-                  </p>
-                </div>
-              </div>
-            </div>
+            <TeamSlide key={member.name} member={member} />
           ))}
         </div>
       </div>
 
-      {/* Controls overlay */}
+      {/* Controls */}
       <div className="absolute bottom-6 left-0 right-0 z-20 md:bottom-10">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-8 md:px-16">
-          {/* Dots */}
           <div className="flex items-center gap-2">
             {team.map((_, i) => (
               <button
@@ -121,7 +170,6 @@ export function AboutPreview() {
             ))}
           </div>
 
-          {/* Arrows */}
           <div className="flex items-center gap-2">
             <button
               onClick={scrollPrev}
