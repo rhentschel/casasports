@@ -1,35 +1,138 @@
 "use client";
 
 import Image from "next/image";
+import useEmblaCarousel from "embla-carousel-react";
+import Autoplay from "embla-carousel-autoplay";
+import { useCallback, useState, useEffect } from "react";
+import { ArrowLeft, ArrowRight } from "lucide-react";
 import { useReveal } from "@/lib/use-reveal";
+
+const team = [
+  {
+    name: "Naim Obeid",
+    role: "Inhaber & Gründer",
+    image: "/images/naim-casasports.webp",
+    quote:
+      "Wahre Stärke zeigt sich nicht darin, was du kannst, sondern darin, was du überwindest.",
+  },
+  {
+    name: "Jennifer",
+    role: "Trainerin",
+    image: "/images/team-jennifer.avif",
+    quote:
+      "Jeder Mensch hat das Potenzial, seine Ziele zu erreichen. Ich helfe dir dabei.",
+  },
+  {
+    name: "Renate",
+    role: "Trainerin",
+    image: "/images/team-renate.avif",
+    quote:
+      "Fitness ist kein Ziel, sondern eine Lebenseinstellung. Gemeinsam machen wir den ersten Schritt.",
+  },
+  {
+    name: "Das Team",
+    role: "Personal Training",
+    image: "/images/team-training-1.webp",
+    quote: "Persönliche Betreuung statt Massenabfertigung. Das ist Casa Sports.",
+  },
+];
 
 export function AboutPreview() {
   const ref = useReveal();
+  const [selectedIndex, setSelectedIndex] = useState(0);
+
+  const [emblaRef, emblaApi] = useEmblaCarousel(
+    { loop: true, align: "start" },
+    [Autoplay({ delay: 6000, stopOnInteraction: true })]
+  );
+
+  const scrollPrev = useCallback(() => emblaApi?.scrollPrev(), [emblaApi]);
+  const scrollNext = useCallback(() => emblaApi?.scrollNext(), [emblaApi]);
+
+  useEffect(() => {
+    if (!emblaApi) return;
+    const onSelect = () => setSelectedIndex(emblaApi.selectedScrollSnap());
+    emblaApi.on("select", onSelect);
+    return () => {
+      emblaApi.off("select", onSelect);
+    };
+  }, [emblaApi]);
 
   return (
-    <section className="relative flex min-h-[80vh] items-end overflow-hidden bg-cs-black py-20 md:py-28">
-      {/* Full-bleed Naim image */}
-      <Image
-        src="/images/naim-casasports.webp"
-        alt="Naim Obeid - Inhaber Casa Sports"
-        fill
-        className="img-cinema object-cover object-top"
-      />
-      <div className="absolute inset-0 bg-gradient-to-t from-cs-black via-cs-black/50 to-transparent" />
-      <div className="absolute inset-0 bg-gradient-to-r from-cs-black/60 to-transparent" />
+    <section ref={ref} className="reveal relative bg-cs-black">
+      {/* Slider */}
+      <div className="overflow-hidden" ref={emblaRef}>
+        <div className="flex">
+          {team.map((member) => (
+            <div
+              key={member.name}
+              className="relative min-w-0 flex-[0_0_100%]"
+            >
+              <div className="relative flex min-h-[80vh] items-end overflow-hidden pb-20 md:pb-28">
+                <Image
+                  src={member.image}
+                  alt={member.name}
+                  fill
+                  className="img-cinema object-cover object-top"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-cs-black via-cs-black/40 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-r from-cs-black/50 to-transparent" />
 
-      {/* Content at bottom */}
-      <div ref={ref} className="reveal relative z-10 mx-auto w-full max-w-7xl px-8 md:px-16">
-        <p className="text-xs font-medium uppercase tracking-[0.2em] text-cs-accent">
-          Dein Studio
-        </p>
-        <h2 className="mt-4 max-w-lg text-3xl font-black uppercase leading-[0.9] tracking-[-0.03em] text-cs-white md:text-5xl">
-          Persönlich. Nicht anonym.
-        </h2>
-        <p className="mt-6 max-w-md text-[15px] leading-[1.7] text-white/40">
-          Inhaber Naim Obeid und sein Team stehen für persönliche Betreuung
-          statt Massenabfertigung. Hier kennt man sich.
-        </p>
+                {/* Content */}
+                <div className="relative z-10 mx-auto w-full max-w-7xl px-8 md:px-16">
+                  <p className="text-xs font-medium uppercase tracking-[0.2em] text-cs-accent">
+                    {member.role}
+                  </p>
+                  <h2 className="mt-3 text-4xl font-black uppercase leading-[0.9] tracking-[-0.03em] text-cs-white md:text-5xl">
+                    {member.name}
+                  </h2>
+                  <p className="mt-4 max-w-md text-[15px] leading-[1.7] text-white/35">
+                    &ldquo;{member.quote}&rdquo;
+                  </p>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Controls overlay */}
+      <div className="absolute bottom-6 left-0 right-0 z-20 md:bottom-10">
+        <div className="mx-auto flex max-w-7xl items-center justify-between px-8 md:px-16">
+          {/* Dots */}
+          <div className="flex items-center gap-2">
+            {team.map((_, i) => (
+              <button
+                key={i}
+                onClick={() => emblaApi?.scrollTo(i)}
+                className={`h-[3px] transition-all duration-500 ${
+                  i === selectedIndex
+                    ? "w-8 bg-cs-accent"
+                    : "w-4 bg-white/20 hover:bg-white/40"
+                }`}
+                aria-label={`Slide ${i + 1}`}
+              />
+            ))}
+          </div>
+
+          {/* Arrows */}
+          <div className="flex items-center gap-2">
+            <button
+              onClick={scrollPrev}
+              className="flex h-10 w-10 items-center justify-center border border-white/10 text-white/30 transition-all duration-300 hover:border-white/30 hover:text-white"
+              aria-label="Vorheriges Teammitglied"
+            >
+              <ArrowLeft className="h-4 w-4" />
+            </button>
+            <button
+              onClick={scrollNext}
+              className="flex h-10 w-10 items-center justify-center border border-white/10 text-white/30 transition-all duration-300 hover:border-white/30 hover:text-white"
+              aria-label="Nächstes Teammitglied"
+            >
+              <ArrowRight className="h-4 w-4" />
+            </button>
+          </div>
+        </div>
       </div>
     </section>
   );

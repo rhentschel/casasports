@@ -4,6 +4,7 @@ import { Features } from "@/components/sections/features";
 import { AboutPreview } from "@/components/sections/about-preview";
 import { CoursesOverview } from "@/components/sections/courses-overview";
 import { WellnessPreview } from "@/components/sections/wellness-preview";
+import { ProgramCards } from "@/components/sections/program-cards";
 import { CTA } from "@/components/sections/cta";
 
 export default function HomePage() {
@@ -15,6 +16,7 @@ export default function HomePage() {
       <AboutPreview />
       <CoursesOverview />
       <WellnessPreview />
+      <ProgramCards />
       <CTA />
     </>
   );

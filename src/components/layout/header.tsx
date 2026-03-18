@@ -3,13 +3,15 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Sun, Moon, Dumbbell, Mail } from "lucide-react";
 import { navigation, siteConfig } from "@/data/site";
+import { ExpandableTabs } from "@/components/ui/expandable-tabs";
 import { cn } from "@/lib/utils";
 
 export function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [isDark, setIsDark] = useState(true);
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
@@ -17,13 +19,32 @@ export function Header() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const quickTabs = [
+    {
+      title: "Probetraining",
+      icon: Dumbbell,
+      href: "/probetraining",
+    },
+    {
+      title: "Newsletter",
+      icon: Mail,
+      onClick: () => {
+        /* TODO: Newsletter modal */
+      },
+    },
+    { type: "separator" as const },
+    {
+      title: isDark ? "Light Mode" : "Dark Mode",
+      icon: isDark ? Sun : Moon,
+      onClick: () => setIsDark(!isDark),
+    },
+  ];
+
   return (
     <header
       className={cn(
         "fixed top-0 z-50 w-full transition-all duration-500",
-        scrolled
-          ? "bg-cs-black/90 backdrop-blur-xl"
-          : "bg-transparent"
+        scrolled ? "bg-cs-black/90 backdrop-blur-xl" : "bg-transparent"
       )}
     >
       <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-8 md:px-16">
@@ -36,7 +57,7 @@ export function Header() {
           />
         </Link>
 
-        <nav className="hidden items-center gap-1 lg:flex">
+        <nav className="hidden items-center gap-1 xl:flex">
           {navigation.map((item) => (
             <Link
               key={item.href}
@@ -48,7 +69,10 @@ export function Header() {
           ))}
         </nav>
 
-        <div className="hidden items-center lg:flex">
+        <div className="hidden items-center gap-4 lg:flex">
+          {/* Expandable quick actions */}
+          <ExpandableTabs tabs={quickTabs} />
+
           <Link
             href="/probetraining"
             className="border border-cs-accent bg-cs-accent px-6 py-2.5 text-[11px] font-medium uppercase tracking-[0.12em] text-white transition-all duration-500 hover:bg-transparent"
@@ -70,7 +94,9 @@ export function Header() {
       <div
         className={cn(
           "fixed inset-0 z-40 bg-cs-black transition-opacity duration-500 lg:hidden",
-          isOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
+          isOpen
+            ? "pointer-events-auto opacity-100"
+            : "pointer-events-none opacity-0"
         )}
       >
         <div className="flex h-full flex-col justify-center px-12">
