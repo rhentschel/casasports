@@ -30,8 +30,8 @@ export function Hero() {
       </div>
 
       {/* Heavy overlay - cinematic */}
-      <div className="absolute inset-0 bg-black/[0.55]" />
-      <div className="absolute inset-0 bg-gradient-to-t from-cs-black via-transparent to-cs-black/40" />
+      <div className="absolute inset-0 bg-black/[0.4]" />
+      <div className="absolute inset-0 bg-gradient-to-t from-cs-black via-transparent to-cs-black/30" />
 
       {/* Content at bottom left */}
       <div className="relative z-10 mx-auto w-full max-w-7xl px-8 md:px-16">
