@@ -26,10 +26,10 @@ export function CoursesOverview() {
   const scrollNext = useCallback(() => emblaApi?.scrollNext(), [emblaApi]);
 
   return (
-    <section className="bg-cs-black py-32">
+    <section className="bg-cs-black py-24">
       <div className="mx-auto max-w-7xl px-6">
         <div className="flex items-end justify-between">
-          <h2 className="text-4xl font-black uppercase tracking-tight text-cs-white md:text-5xl">
+          <h2 className="text-3xl font-black uppercase tracking-tight text-cs-white md:text-4xl">
             Unsere Kurse
           </h2>
           <div className="hidden items-center gap-2 sm:flex">
@@ -52,8 +52,8 @@ export function CoursesOverview() {
       </div>
 
       {/* Slider */}
-      <div className="mt-14 overflow-hidden" ref={emblaRef}>
-        <div className="flex gap-5 pl-[max(1.5rem,calc((100vw-1280px)/2+1.5rem))]">
+      <div className="mt-8 overflow-hidden" ref={emblaRef}>
+        <div className="flex gap-4 pl-[max(1.5rem,calc((100vw-1280px)/2+1.5rem))]">
           {courses.map((course) => (
             <div
               key={course.name}
@@ -79,7 +79,7 @@ export function CoursesOverview() {
         </div>
       </div>
 
-      <div className="mx-auto mt-10 max-w-7xl px-6">
+      <div className="mx-auto mt-8 max-w-7xl px-6">
         <Link
           href="/kurse"
           className="group inline-flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-cs-gray-500 transition-colors duration-300 hover:text-white"
