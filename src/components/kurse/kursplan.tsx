@@ -77,104 +77,119 @@ function DetailOverlay({
 
   return (
     <div className="fixed inset-0 z-[100] flex items-center justify-center px-4">
-      {/* Backdrop */}
       <div
-        className="absolute inset-0 bg-black/60 backdrop-blur-sm"
+        className="absolute inset-0 bg-black/70 backdrop-blur-md"
         onClick={onClose}
       />
 
-      {/* Card */}
-      <div className="relative w-full max-w-sm rounded-2xl border border-white/[0.12] bg-[#141420]/80 p-7 shadow-[0_24px_64px_rgba(0,0,0,0.7)] backdrop-blur-2xl backdrop-saturate-150">
-        {/* Glass highlight edges */}
-        <div className="pointer-events-none absolute inset-x-0 top-0 h-px rounded-t-2xl bg-gradient-to-r from-transparent via-white/25 to-transparent" />
-        <div className="pointer-events-none absolute inset-y-0 left-0 w-px bg-gradient-to-b from-white/15 via-transparent to-transparent" />
+      <div className="relative w-full max-w-md overflow-hidden bg-cs-black shadow-[0_32px_80px_rgba(0,0,0,0.8)]">
+        {/* Accent glow bar top */}
+        <div className={cn("h-1 w-full", cfg.dot)} />
+        <div
+          className={cn(
+            "pointer-events-none absolute left-0 right-0 top-0 h-32 opacity-20 blur-3xl",
+            cfg.dot
+          )}
+        />
 
-        <button
-          onClick={onClose}
-          className="absolute right-5 top-5 flex h-8 w-8 items-center justify-center rounded-full bg-white/[0.06] text-white/40 transition-all hover:bg-white/[0.12] hover:text-white"
-          aria-label="Schliessen"
-        >
-          <X className="h-4 w-4" />
-        </button>
+        <div className="relative px-8 pb-8 pt-10">
+          {/* Close */}
+          <button
+            onClick={onClose}
+            className="absolute right-6 top-6 text-white/20 transition-colors hover:text-white"
+            aria-label="Schliessen"
+          >
+            <X className="h-5 w-5" />
+          </button>
 
-        {/* Header */}
-        <div className="flex items-center gap-3">
-          <span className={cn("inline-block rounded-lg px-3 py-1.5 text-[11px] font-bold uppercase tracking-[0.15em]", cfg.bg, cfg.text)}>
+          {/* Overline */}
+          <p className={cn("text-[10px] font-bold uppercase tracking-[0.3em]", cfg.text)}>
+            {day}
+          </p>
+
+          {/* Course name as big headline */}
+          <h3 className="mt-2 text-3xl font-black uppercase leading-[0.95] tracking-[-0.03em] text-cs-white md:text-4xl">
             {entry.name}
-          </span>
-          <span className="text-[12px] text-white/30">{day}</span>
-        </div>
+          </h3>
 
-        {/* Details */}
-        <div className="mt-6 space-y-4">
-          <div className="flex items-center gap-3">
-            <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-cs-accent/10">
-              <Clock className="h-4 w-4 text-cs-accent" />
-            </div>
-            <div>
-              <p className="text-[15px] font-semibold text-white">{entry.time} Uhr</p>
-              <p className="text-[12px] text-white/40">{entry.duration} Minuten</p>
-            </div>
+          {/* Time prominent */}
+          <div className="mt-6 flex items-baseline gap-3">
+            <span className="text-4xl font-black tabular-nums tracking-[-0.04em] text-white">
+              {entry.time}
+            </span>
+            <span className="text-[13px] text-white/30">
+              {entry.duration} Min
+            </span>
           </div>
-          <div className="flex items-center gap-3">
-            <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-cs-accent/10">
-              <User className="h-4 w-4 text-cs-accent" />
-            </div>
-            <div>
-              <p className="text-[15px] font-semibold text-white">{entry.trainer}</p>
-              <p className="text-[12px] text-white/40">Trainer</p>
-            </div>
-          </div>
-          <div className="flex items-center gap-3">
-            <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-cs-accent/10">
-              <MapPin className="h-4 w-4 text-cs-accent" />
-            </div>
-            <div>
-              <p className="text-[15px] font-semibold text-white">{entry.room}</p>
-              <p className="text-[12px] text-white/40">Raum</p>
-            </div>
-          </div>
-          <div className="flex items-center gap-3">
-            <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-cs-accent/10">
-              <Zap className="h-4 w-4 text-cs-accent" />
-            </div>
-            <div>
-              <p className="text-[13px] text-white/60">Intensitaet</p>
-              <IntensityDots level={entry.intensity} />
-            </div>
-          </div>
-        </div>
 
-        {/* Actions */}
-        <div className="mt-7 flex gap-2">
-          <button
-            onClick={onToggleFav}
-            className={cn(
-              "flex h-11 w-11 items-center justify-center rounded-xl border transition-all duration-300",
-              isFav
-                ? "border-cs-accent/40 bg-cs-accent/15 text-cs-accent"
-                : "border-white/10 bg-white/[0.04] text-white/40 hover:border-white/20 hover:text-white"
-            )}
-            aria-label={isFav ? "Aus meinem Plan entfernen" : "Zu meinem Plan hinzufuegen"}
-          >
-            <Heart className={cn("h-4 w-4", isFav && "fill-current")} />
-          </button>
-          <a
-            href={googleCalendarUrl(entry)}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex h-11 flex-1 items-center justify-center gap-2 rounded-xl border border-white/10 bg-white/[0.04] text-[11px] font-medium uppercase tracking-[0.1em] text-white/60 transition-all duration-300 hover:border-white/20 hover:bg-white/[0.08] hover:text-white"
-          >
-            <Calendar className="h-3.5 w-3.5" />
-            Google Kalender
-          </a>
-          <button
-            onClick={() => downloadIcs(entry)}
-            className="flex h-11 flex-1 items-center justify-center gap-2 rounded-xl border border-white/10 bg-white/[0.04] text-[11px] font-medium uppercase tracking-[0.1em] text-white/60 transition-all duration-300 hover:border-white/20 hover:bg-white/[0.08] hover:text-white"
-          >
-            <Download className="h-3.5 w-3.5" />
-            .ics Datei
-          </button>
+          {/* Divider */}
+          <div className="mt-6 h-px bg-white/[0.06]" />
+
+          {/* Meta grid */}
+          <div className="mt-6 grid grid-cols-3 gap-4">
+            <div>
+              <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-white/25">
+                Trainer
+              </p>
+              <p className="mt-1 text-[15px] font-semibold text-white">
+                {entry.trainer}
+              </p>
+            </div>
+            <div>
+              <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-white/25">
+                Raum
+              </p>
+              <p className="mt-1 text-[15px] font-semibold text-white">
+                {entry.room}
+              </p>
+            </div>
+            <div>
+              <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-white/25">
+                Intensitaet
+              </p>
+              <div className="mt-2">
+                <IntensityDots level={entry.intensity} />
+              </div>
+            </div>
+          </div>
+
+          {/* Divider */}
+          <div className="mt-6 h-px bg-white/[0.06]" />
+
+          {/* Actions */}
+          <div className="mt-6 flex gap-3">
+            <button
+              onClick={onToggleFav}
+              className={cn(
+                "flex h-12 w-12 shrink-0 items-center justify-center border transition-all duration-300",
+                isFav
+                  ? "border-cs-accent bg-cs-accent/10 text-cs-accent"
+                  : "border-white/[0.08] text-white/25 hover:border-white/20 hover:text-white"
+              )}
+              aria-label={isFav ? "Entfernen" : "Merken"}
+            >
+              <Heart className={cn("h-5 w-5", isFav && "fill-current")} />
+            </button>
+            <a
+              href={googleCalendarUrl(entry)}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex h-12 flex-1 items-center justify-center gap-2 border border-white/[0.08] text-[11px] font-medium uppercase tracking-[0.15em] text-white/40 transition-all duration-300 hover:border-white/20 hover:text-white"
+            >
+              <Calendar className="h-4 w-4" />
+              Google
+            </a>
+            <button
+              onClick={() => downloadIcs(entry)}
+              className={cn(
+                "flex h-12 flex-1 items-center justify-center gap-2 border text-[11px] font-medium uppercase tracking-[0.15em] transition-all duration-500",
+                "border-cs-accent bg-cs-accent text-white hover:bg-transparent"
+              )}
+            >
+              <Download className="h-4 w-4" />
+              Kalender
+            </button>
+          </div>
         </div>
       </div>
     </div>
