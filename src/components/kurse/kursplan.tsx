@@ -61,7 +61,7 @@ function IntensityDots({ level }: { level: 1 | 2 | 3 }) {
   );
 }
 
-function DetailCard({
+function DetailOverlay({
   entry,
   isFav,
   onToggleFav,
@@ -73,73 +73,109 @@ function DetailCard({
   onClose: () => void;
 }) {
   const cfg = kursTypeConfig[entry.name];
+  const day = dayNamesFull[entry.day];
 
   return (
-    <div className="absolute left-1/2 top-full z-50 mt-3 w-80 -translate-x-1/2 rounded-xl border border-white/[0.15] bg-white/[0.06] p-6 shadow-[0_8px_40px_rgba(0,0,0,0.6),0_0_0_1px_rgba(255,255,255,0.05)] backdrop-blur-2xl backdrop-saturate-150">
-      {/* Glass highlight edge */}
-      <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
-
-      <button
+    <div className="fixed inset-0 z-[100] flex items-center justify-center px-4">
+      {/* Backdrop */}
+      <div
+        className="absolute inset-0 bg-black/60 backdrop-blur-sm"
         onClick={onClose}
-        className="absolute right-4 top-4 flex h-7 w-7 items-center justify-center rounded-full bg-white/[0.08] text-white/40 transition-all hover:bg-white/[0.15] hover:text-white"
-        aria-label="Schliessen"
-      >
-        <X className="h-3.5 w-3.5" />
-      </button>
+      />
 
-      <span className={cn("inline-block rounded-md px-3 py-1.5 text-[11px] font-bold uppercase tracking-[0.15em]", cfg.bg, cfg.text)}>
-        {entry.name}
-      </span>
+      {/* Card */}
+      <div className="relative w-full max-w-sm rounded-2xl border border-white/[0.12] bg-[#141420]/80 p-7 shadow-[0_24px_64px_rgba(0,0,0,0.7)] backdrop-blur-2xl backdrop-saturate-150">
+        {/* Glass highlight edges */}
+        <div className="pointer-events-none absolute inset-x-0 top-0 h-px rounded-t-2xl bg-gradient-to-r from-transparent via-white/25 to-transparent" />
+        <div className="pointer-events-none absolute inset-y-0 left-0 w-px bg-gradient-to-b from-white/15 via-transparent to-transparent" />
 
-      <div className="mt-5 space-y-3.5">
-        <div className="flex items-center gap-3 text-[14px] text-white/70">
-          <Clock className="h-4 w-4 shrink-0 text-cs-accent" />
-          <span><span className="font-semibold text-white">{entry.time} Uhr</span> · {entry.duration} Min</span>
-        </div>
-        <div className="flex items-center gap-3 text-[14px] text-white/70">
-          <User className="h-4 w-4 shrink-0 text-cs-accent" />
-          <span className="font-semibold text-white">{entry.trainer}</span>
-        </div>
-        <div className="flex items-center gap-3 text-[14px] text-white/70">
-          <MapPin className="h-4 w-4 shrink-0 text-cs-accent" />
-          {entry.room}
-        </div>
-        <div className="flex items-center gap-3 text-[14px] text-white/70">
-          <Zap className="h-4 w-4 shrink-0 text-cs-accent" />
-          Intensitaet
-          <IntensityDots level={entry.intensity} />
-        </div>
-      </div>
-
-      <div className="mt-6 flex gap-2">
         <button
-          onClick={onToggleFav}
-          className={cn(
-            "flex h-10 w-10 items-center justify-center rounded-lg border transition-all duration-300",
-            isFav
-              ? "border-cs-accent/40 bg-cs-accent/15 text-cs-accent"
-              : "border-white/10 bg-white/[0.04] text-white/40 hover:border-white/20 hover:text-white"
-          )}
-          aria-label={isFav ? "Aus meinem Plan entfernen" : "Zu meinem Plan hinzufuegen"}
+          onClick={onClose}
+          className="absolute right-5 top-5 flex h-8 w-8 items-center justify-center rounded-full bg-white/[0.06] text-white/40 transition-all hover:bg-white/[0.12] hover:text-white"
+          aria-label="Schliessen"
         >
-          <Heart className={cn("h-4 w-4", isFav && "fill-current")} />
+          <X className="h-4 w-4" />
         </button>
-        <a
-          href={googleCalendarUrl(entry)}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="flex h-10 flex-1 items-center justify-center gap-2 rounded-lg border border-white/10 bg-white/[0.04] text-[11px] font-medium uppercase tracking-[0.1em] text-white/60 transition-all duration-300 hover:border-white/20 hover:bg-white/[0.08] hover:text-white"
-        >
-          <Calendar className="h-3.5 w-3.5" />
-          Google
-        </a>
-        <button
-          onClick={() => downloadIcs(entry)}
-          className="flex h-10 flex-1 items-center justify-center gap-2 rounded-lg border border-white/10 bg-white/[0.04] text-[11px] font-medium uppercase tracking-[0.1em] text-white/60 transition-all duration-300 hover:border-white/20 hover:bg-white/[0.08] hover:text-white"
-        >
-          <Download className="h-3.5 w-3.5" />
-          .ics
-        </button>
+
+        {/* Header */}
+        <div className="flex items-center gap-3">
+          <span className={cn("inline-block rounded-lg px-3 py-1.5 text-[11px] font-bold uppercase tracking-[0.15em]", cfg.bg, cfg.text)}>
+            {entry.name}
+          </span>
+          <span className="text-[12px] text-white/30">{day}</span>
+        </div>
+
+        {/* Details */}
+        <div className="mt-6 space-y-4">
+          <div className="flex items-center gap-3">
+            <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-cs-accent/10">
+              <Clock className="h-4 w-4 text-cs-accent" />
+            </div>
+            <div>
+              <p className="text-[15px] font-semibold text-white">{entry.time} Uhr</p>
+              <p className="text-[12px] text-white/40">{entry.duration} Minuten</p>
+            </div>
+          </div>
+          <div className="flex items-center gap-3">
+            <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-cs-accent/10">
+              <User className="h-4 w-4 text-cs-accent" />
+            </div>
+            <div>
+              <p className="text-[15px] font-semibold text-white">{entry.trainer}</p>
+              <p className="text-[12px] text-white/40">Trainer</p>
+            </div>
+          </div>
+          <div className="flex items-center gap-3">
+            <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-cs-accent/10">
+              <MapPin className="h-4 w-4 text-cs-accent" />
+            </div>
+            <div>
+              <p className="text-[15px] font-semibold text-white">{entry.room}</p>
+              <p className="text-[12px] text-white/40">Raum</p>
+            </div>
+          </div>
+          <div className="flex items-center gap-3">
+            <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-cs-accent/10">
+              <Zap className="h-4 w-4 text-cs-accent" />
+            </div>
+            <div>
+              <p className="text-[13px] text-white/60">Intensitaet</p>
+              <IntensityDots level={entry.intensity} />
+            </div>
+          </div>
+        </div>
+
+        {/* Actions */}
+        <div className="mt-7 flex gap-2">
+          <button
+            onClick={onToggleFav}
+            className={cn(
+              "flex h-11 w-11 items-center justify-center rounded-xl border transition-all duration-300",
+              isFav
+                ? "border-cs-accent/40 bg-cs-accent/15 text-cs-accent"
+                : "border-white/10 bg-white/[0.04] text-white/40 hover:border-white/20 hover:text-white"
+            )}
+            aria-label={isFav ? "Aus meinem Plan entfernen" : "Zu meinem Plan hinzufuegen"}
+          >
+            <Heart className={cn("h-4 w-4", isFav && "fill-current")} />
+          </button>
+          <a
+            href={googleCalendarUrl(entry)}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex h-11 flex-1 items-center justify-center gap-2 rounded-xl border border-white/10 bg-white/[0.04] text-[11px] font-medium uppercase tracking-[0.1em] text-white/60 transition-all duration-300 hover:border-white/20 hover:bg-white/[0.08] hover:text-white"
+          >
+            <Calendar className="h-3.5 w-3.5" />
+            Google Kalender
+          </a>
+          <button
+            onClick={() => downloadIcs(entry)}
+            className="flex h-11 flex-1 items-center justify-center gap-2 rounded-xl border border-white/10 bg-white/[0.04] text-[11px] font-medium uppercase tracking-[0.1em] text-white/60 transition-all duration-300 hover:border-white/20 hover:bg-white/[0.08] hover:text-white"
+          >
+            <Download className="h-3.5 w-3.5" />
+            .ics Datei
+          </button>
+        </div>
       </div>
     </div>
   );
@@ -155,7 +191,10 @@ export function Kursplan() {
   const [countdown, setCountdown] = useState("");
   const [nextKurs, setNextKurs] = useState<KursEntry | null>(null);
   const [currentKurs, setCurrentKurs] = useState<KursEntry | null>(null);
-  const detailRef = useRef<HTMLDivElement>(null);
+
+  const selectedKurs = selectedEntry
+    ? schedule.find((e) => e.id === selectedEntry) ?? null
+    : null;
 
   useEffect(() => {
     setFavorites(loadFavorites());
@@ -175,13 +214,11 @@ export function Kursplan() {
   }, []);
 
   useEffect(() => {
-    function handleClick(e: MouseEvent) {
-      if (detailRef.current && !detailRef.current.contains(e.target as Node)) {
-        setSelectedEntry(null);
-      }
+    function handleEsc(e: KeyboardEvent) {
+      if (e.key === "Escape") setSelectedEntry(null);
     }
-    document.addEventListener("mousedown", handleClick);
-    return () => document.removeEventListener("mousedown", handleClick);
+    document.addEventListener("keydown", handleEsc);
+    return () => document.removeEventListener("keydown", handleEsc);
   }, []);
 
   const toggleFilter = useCallback((name: KursTypeName) => {
@@ -390,16 +427,6 @@ export function Kursplan() {
                             </button>
                           </div>
 
-                          {isSelected && (
-                            <div ref={detailRef}>
-                              <DetailCard
-                                entry={entry}
-                                isFav={isFav}
-                                onToggleFav={() => toggleFav(entry.id)}
-                                onClose={() => setSelectedEntry(null)}
-                              />
-                            </div>
-                          )}
                         </td>
                       );
                     })}
@@ -451,8 +478,9 @@ export function Kursplan() {
                 return (
                   <div
                     key={entry.id}
+                    onClick={() => setSelectedEntry(entry.id)}
                     className={cn(
-                      "border border-white/[0.06] p-5 transition-all duration-300",
+                      "cursor-pointer border border-white/[0.06] p-5 transition-all duration-300 active:scale-[0.99]",
                       !visible && "scale-[0.98] opacity-10",
                       isCurrent && "border-emerald-400/30"
                     )}
@@ -547,6 +575,16 @@ export function Kursplan() {
           Aenderungen vorbehalten. Aktuelle Zeiten im Studio erfragen.
         </p>
       </div>
+
+      {/* Detail Overlay */}
+      {selectedKurs && (
+        <DetailOverlay
+          entry={selectedKurs}
+          isFav={favorites.has(selectedKurs.id)}
+          onToggleFav={() => toggleFav(selectedKurs.id)}
+          onClose={() => setSelectedEntry(null)}
+        />
+      )}
     </section>
   );
 }
