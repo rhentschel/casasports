@@ -148,7 +148,7 @@ function TerminModal({ onClose }: { onClose: () => void }) {
               </div>
               <div>
                 <p className="text-[15px] font-semibold text-white">
-                  @casasports_oe
+                  @casa__sports
                 </p>
                 <p className="text-[12px] text-white/30">
                   DM auf Instagram

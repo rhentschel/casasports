@@ -16,7 +16,7 @@ export const siteConfig = {
   taxId: "DE257097414",
   rating: { score: 4.8, max: 5, label: "Viele glückliche Kunden" },
   social: {
-    instagram: "https://www.instagram.com/casasports_oe/",
+    instagram: "https://www.instagram.com/casa__sports/",
     facebook: "https://www.facebook.com/casasportsoe/",
   },
 } as const;
