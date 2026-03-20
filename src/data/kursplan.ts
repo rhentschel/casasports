@@ -12,12 +12,12 @@ export interface KursEntry {
 }
 
 export const kursTypeConfig = {
-  "Power Training": { bg: "bg-cs-accent/10", text: "text-cs-accent", dot: "bg-cs-accent" },
-  "Cycling": { bg: "bg-blue-500/10", text: "text-blue-400", dot: "bg-blue-400" },
-  "Functional": { bg: "bg-emerald-500/10", text: "text-emerald-400", dot: "bg-emerald-400" },
-  "Cardio": { bg: "bg-orange-500/10", text: "text-orange-400", dot: "bg-orange-400" },
-  "Zirkeltraining": { bg: "bg-purple-500/10", text: "text-purple-400", dot: "bg-purple-400" },
-  "Gruppentraining": { bg: "bg-cs-gold/10", text: "text-cs-gold", dot: "bg-cs-gold" },
+  "Power Training": { bg: "bg-cs-accent/10", text: "text-cs-accent", dot: "bg-cs-accent", image: "/images/casasports-krafttraining-1.webp" },
+  "Cycling": { bg: "bg-blue-500/10", text: "text-blue-400", dot: "bg-blue-400", image: "/images/casasports-spinning-kurs-1.webp" },
+  "Functional": { bg: "bg-emerald-500/10", text: "text-emerald-400", dot: "bg-emerald-400", image: "/images/casasports-functional-training.webp" },
+  "Cardio": { bg: "bg-orange-500/10", text: "text-orange-400", dot: "bg-orange-400", image: "/images/casasports-kardio-power.webp" },
+  "Zirkeltraining": { bg: "bg-purple-500/10", text: "text-purple-400", dot: "bg-purple-400", image: "/images/casasports-kurse-fuer-alle.webp" },
+  "Gruppentraining": { bg: "bg-cs-gold/10", text: "text-cs-gold", dot: "bg-cs-gold", image: "/images/casasports-gruppentraining.webp" },
 } as const;
 
 export type KursTypeName = keyof typeof kursTypeConfig;

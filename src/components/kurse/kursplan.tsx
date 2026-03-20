@@ -1,6 +1,7 @@
 "use client";
 
-import { useState, useEffect, useCallback, useRef } from "react";
+import { useState, useEffect, useCallback } from "react";
+import Image from "next/image";
 import {
   Calendar,
   Download,
@@ -74,47 +75,88 @@ function DetailOverlay({
 }) {
   const cfg = kursTypeConfig[entry.name];
   const day = dayNamesFull[entry.day];
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    const t = requestAnimationFrame(() => setVisible(true));
+    return () => cancelAnimationFrame(t);
+  }, []);
 
   return (
     <div className="fixed inset-0 z-[100] flex items-center justify-center px-4">
       <div
-        className="absolute inset-0 bg-black/70 backdrop-blur-md"
+        className={cn(
+          "absolute inset-0 bg-black/70 backdrop-blur-md transition-opacity duration-500",
+          visible ? "opacity-100" : "opacity-0"
+        )}
         onClick={onClose}
       />
 
-      <div className="relative w-full max-w-md overflow-hidden bg-cs-black shadow-[0_32px_80px_rgba(0,0,0,0.8)]">
-        {/* Accent glow bar top */}
-        <div className={cn("h-1 w-full", cfg.dot)} />
-        <div
-          className={cn(
-            "pointer-events-none absolute left-0 right-0 top-0 h-32 opacity-20 blur-3xl",
-            cfg.dot
-          )}
-        />
+      <div
+        className={cn(
+          "relative w-full max-w-md overflow-hidden bg-cs-black shadow-[0_32px_80px_rgba(0,0,0,0.8)] transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]",
+          visible
+            ? "scale-100 opacity-100 translate-y-0"
+            : "scale-95 opacity-0 translate-y-4"
+        )}
+      >
+        {/* Image header with Ken Burns */}
+        <div className="relative h-48 overflow-hidden sm:h-56">
+          <div className="absolute inset-0 animate-[kenburns_20s_ease-in-out_infinite_alternate]">
+            <Image
+              src={cfg.image}
+              alt={entry.name}
+              fill
+              className="img-cinema object-cover"
+            />
+          </div>
+          {/* Gradient overlays */}
+          <div className="absolute inset-0 bg-gradient-to-t from-cs-black via-cs-black/40 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-r from-cs-black/60 to-transparent" />
 
-        <div className="relative px-8 pb-8 pt-10">
-          {/* Close */}
+          {/* Accent line bottom */}
+          <div className={cn("absolute bottom-0 left-0 right-0 h-[2px]", cfg.dot)} />
+
+          {/* Close button on image */}
           <button
             onClick={onClose}
-            className="absolute right-6 top-6 text-white/20 transition-colors hover:text-white"
+            className="absolute right-4 top-4 flex h-9 w-9 items-center justify-center bg-black/40 text-white/60 backdrop-blur-sm transition-all hover:bg-black/60 hover:text-white"
             aria-label="Schliessen"
           >
-            <X className="h-5 w-5" />
+            <X className="h-4 w-4" />
           </button>
 
-          {/* Overline */}
-          <p className={cn("text-[10px] font-bold uppercase tracking-[0.3em]", cfg.text)}>
-            {day}
-          </p>
+          {/* Favorite on image */}
+          <button
+            onClick={onToggleFav}
+            className={cn(
+              "absolute left-4 top-4 flex h-9 w-9 items-center justify-center backdrop-blur-sm transition-all",
+              isFav
+                ? "bg-cs-accent/80 text-white"
+                : "bg-black/40 text-white/60 hover:bg-black/60 hover:text-white"
+            )}
+            aria-label={isFav ? "Entfernen" : "Merken"}
+          >
+            <Heart className={cn("h-4 w-4", isFav && "fill-current")} />
+          </button>
 
-          {/* Course name as big headline */}
-          <h3 className="mt-2 text-3xl font-black uppercase leading-[0.95] tracking-[-0.03em] text-cs-white md:text-4xl">
-            {entry.name}
-          </h3>
+          {/* Content overlaid on image bottom */}
+          <div className="absolute bottom-0 left-0 right-0 px-8 pb-5">
+            <p className={cn("text-[10px] font-bold uppercase tracking-[0.3em]", cfg.text)}>
+              {day}
+            </p>
+            <h3 className="mt-1 text-2xl font-black uppercase leading-[0.95] tracking-[-0.03em] text-cs-white sm:text-3xl">
+              {entry.name}
+            </h3>
+          </div>
+        </div>
 
+        {/* Content area */}
+        <div className="px-8 pb-8 pt-6">
           {/* Time prominent */}
-          <div className="mt-6 flex items-baseline gap-3">
-            <span className="text-4xl font-black tabular-nums tracking-[-0.04em] text-white">
+          <div className="flex items-baseline gap-3">
+            <Clock className={cn("h-5 w-5 -translate-y-0.5", cfg.text)} />
+            <span className="text-3xl font-black tabular-nums tracking-[-0.04em] text-white sm:text-4xl">
               {entry.time}
             </span>
             <span className="text-[13px] text-white/30">
@@ -123,10 +165,10 @@ function DetailOverlay({
           </div>
 
           {/* Divider */}
-          <div className="mt-6 h-px bg-white/[0.06]" />
+          <div className="mt-5 h-px bg-white/[0.06]" />
 
           {/* Meta grid */}
-          <div className="mt-6 grid grid-cols-3 gap-4">
+          <div className="mt-5 grid grid-cols-3 gap-4">
             <div>
               <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-white/25">
                 Trainer
@@ -154,22 +196,10 @@ function DetailOverlay({
           </div>
 
           {/* Divider */}
-          <div className="mt-6 h-px bg-white/[0.06]" />
+          <div className="mt-5 h-px bg-white/[0.06]" />
 
           {/* Actions */}
-          <div className="mt-6 flex gap-3">
-            <button
-              onClick={onToggleFav}
-              className={cn(
-                "flex h-12 w-12 shrink-0 items-center justify-center border transition-all duration-300",
-                isFav
-                  ? "border-cs-accent bg-cs-accent/10 text-cs-accent"
-                  : "border-white/[0.08] text-white/25 hover:border-white/20 hover:text-white"
-              )}
-              aria-label={isFav ? "Entfernen" : "Merken"}
-            >
-              <Heart className={cn("h-5 w-5", isFav && "fill-current")} />
-            </button>
+          <div className="mt-5 flex gap-3">
             <a
               href={googleCalendarUrl(entry)}
               target="_blank"
@@ -181,10 +211,7 @@ function DetailOverlay({
             </a>
             <button
               onClick={() => downloadIcs(entry)}
-              className={cn(
-                "flex h-12 flex-1 items-center justify-center gap-2 border text-[11px] font-medium uppercase tracking-[0.15em] transition-all duration-500",
-                "border-cs-accent bg-cs-accent text-white hover:bg-transparent"
-              )}
+              className="flex h-12 flex-1 items-center justify-center gap-2 border border-cs-accent bg-cs-accent text-[11px] font-medium uppercase tracking-[0.15em] text-white transition-all duration-500 hover:bg-transparent"
             >
               <Download className="h-4 w-4" />
               Kalender
