@@ -75,47 +75,50 @@ function DetailCard({
   const cfg = kursTypeConfig[entry.name];
 
   return (
-    <div className="absolute left-1/2 top-full z-50 mt-2 w-72 -translate-x-1/2 border border-white/[0.08] bg-cs-gray-900/95 p-5 shadow-2xl backdrop-blur-xl">
+    <div className="absolute left-1/2 top-full z-50 mt-3 w-80 -translate-x-1/2 rounded-xl border border-white/[0.15] bg-white/[0.06] p-6 shadow-[0_8px_40px_rgba(0,0,0,0.6),0_0_0_1px_rgba(255,255,255,0.05)] backdrop-blur-2xl backdrop-saturate-150">
+      {/* Glass highlight edge */}
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+
       <button
         onClick={onClose}
-        className="absolute right-3 top-3 text-white/30 transition-colors hover:text-white"
+        className="absolute right-4 top-4 flex h-7 w-7 items-center justify-center rounded-full bg-white/[0.08] text-white/40 transition-all hover:bg-white/[0.15] hover:text-white"
         aria-label="Schliessen"
       >
-        <X className="h-4 w-4" />
+        <X className="h-3.5 w-3.5" />
       </button>
 
-      <span className={cn("inline-block rounded-sm px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.15em]", cfg.bg, cfg.text)}>
+      <span className={cn("inline-block rounded-md px-3 py-1.5 text-[11px] font-bold uppercase tracking-[0.15em]", cfg.bg, cfg.text)}>
         {entry.name}
       </span>
 
-      <div className="mt-4 space-y-3">
-        <div className="flex items-center gap-2.5 text-[13px] text-white/50">
-          <Clock className="h-3.5 w-3.5 shrink-0 text-cs-accent" />
-          {entry.time} Uhr · {entry.duration} Min
+      <div className="mt-5 space-y-3.5">
+        <div className="flex items-center gap-3 text-[14px] text-white/70">
+          <Clock className="h-4 w-4 shrink-0 text-cs-accent" />
+          <span><span className="font-semibold text-white">{entry.time} Uhr</span> · {entry.duration} Min</span>
         </div>
-        <div className="flex items-center gap-2.5 text-[13px] text-white/50">
-          <User className="h-3.5 w-3.5 shrink-0 text-cs-accent" />
-          {entry.trainer}
+        <div className="flex items-center gap-3 text-[14px] text-white/70">
+          <User className="h-4 w-4 shrink-0 text-cs-accent" />
+          <span className="font-semibold text-white">{entry.trainer}</span>
         </div>
-        <div className="flex items-center gap-2.5 text-[13px] text-white/50">
-          <MapPin className="h-3.5 w-3.5 shrink-0 text-cs-accent" />
+        <div className="flex items-center gap-3 text-[14px] text-white/70">
+          <MapPin className="h-4 w-4 shrink-0 text-cs-accent" />
           {entry.room}
         </div>
-        <div className="flex items-center gap-2.5 text-[13px] text-white/50">
-          <Zap className="h-3.5 w-3.5 shrink-0 text-cs-accent" />
+        <div className="flex items-center gap-3 text-[14px] text-white/70">
+          <Zap className="h-4 w-4 shrink-0 text-cs-accent" />
           Intensitaet
           <IntensityDots level={entry.intensity} />
         </div>
       </div>
 
-      <div className="mt-5 flex gap-2">
+      <div className="mt-6 flex gap-2">
         <button
           onClick={onToggleFav}
           className={cn(
-            "flex h-9 w-9 items-center justify-center border transition-all duration-300",
+            "flex h-10 w-10 items-center justify-center rounded-lg border transition-all duration-300",
             isFav
-              ? "border-cs-accent bg-cs-accent/10 text-cs-accent"
-              : "border-white/10 text-white/30 hover:border-white/30 hover:text-white"
+              ? "border-cs-accent/40 bg-cs-accent/15 text-cs-accent"
+              : "border-white/10 bg-white/[0.04] text-white/40 hover:border-white/20 hover:text-white"
           )}
           aria-label={isFav ? "Aus meinem Plan entfernen" : "Zu meinem Plan hinzufuegen"}
         >
@@ -125,14 +128,14 @@ function DetailCard({
           href={googleCalendarUrl(entry)}
           target="_blank"
           rel="noopener noreferrer"
-          className="flex h-9 flex-1 items-center justify-center gap-2 border border-white/10 text-[11px] font-medium uppercase tracking-[0.1em] text-white/50 transition-all duration-300 hover:border-white/30 hover:text-white"
+          className="flex h-10 flex-1 items-center justify-center gap-2 rounded-lg border border-white/10 bg-white/[0.04] text-[11px] font-medium uppercase tracking-[0.1em] text-white/60 transition-all duration-300 hover:border-white/20 hover:bg-white/[0.08] hover:text-white"
         >
           <Calendar className="h-3.5 w-3.5" />
           Google
         </a>
         <button
           onClick={() => downloadIcs(entry)}
-          className="flex h-9 flex-1 items-center justify-center gap-2 border border-white/10 text-[11px] font-medium uppercase tracking-[0.1em] text-white/50 transition-all duration-300 hover:border-white/30 hover:text-white"
+          className="flex h-10 flex-1 items-center justify-center gap-2 rounded-lg border border-white/10 bg-white/[0.04] text-[11px] font-medium uppercase tracking-[0.1em] text-white/60 transition-all duration-300 hover:border-white/20 hover:bg-white/[0.08] hover:text-white"
         >
           <Download className="h-3.5 w-3.5" />
           .ics
