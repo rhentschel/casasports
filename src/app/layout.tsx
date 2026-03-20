@@ -19,12 +19,27 @@ export const metadata: Metadata = {
   },
   description: siteConfig.description,
   metadataBase: new URL(siteConfig.url),
+  icons: {
+    icon: [
+      { url: "/favicon.ico", sizes: "32x32" },
+      { url: "/icon-192.png", sizes: "192x192", type: "image/png" },
+    ],
+    apple: "/apple-touch-icon.png",
+  },
   openGraph: {
     type: "website",
     locale: "de_DE",
     siteName: siteConfig.name,
     title: `${siteConfig.name} - ${siteConfig.tagline}`,
     description: siteConfig.description,
+    images: [
+      {
+        url: "/images/casasports-hero-1.webp",
+        width: 1200,
+        height: 630,
+        alt: `${siteConfig.name} - Fitnessstudio Oer-Erkenschwick`,
+      },
+    ],
   },
 };
 
