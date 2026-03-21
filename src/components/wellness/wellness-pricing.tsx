@@ -149,24 +149,24 @@ export function WellnessPricing() {
                 ))}
               </ul>
 
-              {/* CTA — mt-auto pushes to bottom for equal height */}
-              <div className="mt-auto pt-8">
-                <Link
-                  href="/probetraining"
-                  className={cn(
-                    "group flex items-center justify-center gap-3 px-8 py-4 text-[13px] font-medium uppercase tracking-[0.15em] transition-all duration-500",
-                    plan.highlighted
-                      ? "border border-cs-gold bg-cs-gold text-cs-black hover:bg-transparent hover:text-cs-gold"
-                      : "border border-white/20 text-white/60 hover:border-white/40 hover:text-white"
-                  )}
-                >
-                  {plan.cta}
-                  <ArrowRight className="h-4 w-4 transition-transform duration-[400ms] group-hover:translate-x-1" />
-                </Link>
+              {/* CTA — mt-auto pushes button to same height in both cards */}
+              <Link
+                href="/probetraining"
+                className={cn(
+                  "group mt-auto flex items-center justify-center gap-3 px-8 py-4 text-[13px] font-medium uppercase tracking-[0.15em] transition-all duration-500",
+                  plan.highlighted
+                    ? "border border-cs-gold bg-cs-gold text-cs-black hover:bg-transparent hover:text-cs-gold"
+                    : "border border-white/20 text-white/60 hover:border-white/40 hover:text-white"
+                )}
+              >
+                {plan.cta}
+                <ArrowRight className="h-4 w-4 transition-transform duration-[400ms] group-hover:translate-x-1" />
+              </Link>
 
-                {/* Social proof note */}
+              {/* Social proof note — fixed height so cards stay aligned */}
+              <div className="flex h-8 items-center justify-center">
                 {plan.note && (
-                  <p className="mt-4 text-center text-[11px] text-cs-gold/40">
+                  <p className="text-center text-[11px] text-cs-gold/40">
                     {plan.note}
                   </p>
                 )}
