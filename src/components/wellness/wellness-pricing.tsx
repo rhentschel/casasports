@@ -129,7 +129,7 @@ export function WellnessPricing() {
               />
 
               {/* Features */}
-              <ul className="mt-6 flex-1 space-y-3">
+              <ul className="mt-6 flex-1 space-y-3 pb-8">
                 {plan.features.map((feature) => (
                   <li key={feature.text} className="flex items-center gap-3">
                     <span
