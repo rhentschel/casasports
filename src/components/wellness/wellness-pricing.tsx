@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import {
-  CheckCircle2,
   Star,
   ArrowRight,
   Dumbbell,
@@ -174,16 +173,6 @@ export function WellnessPricing() {
           ))}
         </div>
 
-        {/* Anchoring nudge */}
-        <div className="mx-auto mt-12 max-w-lg text-center">
-          <div className="inline-flex items-center gap-3 border border-cs-gold/15 bg-cs-gold/[0.03] px-6 py-3">
-            <CheckCircle2 className="h-4 w-4 shrink-0 text-cs-gold/50" />
-            <p className="text-[13px] text-white/40">
-              <span className="font-semibold text-cs-gold/70">+15 € zum Sauna-Tarif</span>{" "}
-              = Fitness, Kurse und Wellness. Alles drin, nichts extra.
-            </p>
-          </div>
-        </div>
       </div>
     </section>
   );
