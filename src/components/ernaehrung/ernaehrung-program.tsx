@@ -1,30 +1,52 @@
 "use client";
 
-import Image from "next/image";
-import Link from "next/link";
-import { ArrowRight, Flame, Utensils, TrendingUp, Users } from "lucide-react";
+import {
+  Beef,
+  CalendarCheck,
+  Droplets,
+  Pill,
+  Timer,
+  Fingerprint,
+} from "lucide-react";
+import { cn } from "@/lib/utils";
 import { useReveal } from "@/lib/use-reveal";
 
-const steps = [
+const pillars = [
   {
-    icon: <Utensils className="h-5 w-5" />,
-    title: "Analyse",
-    text: "Wir schauen uns an, wie du dich aktuell ernaehrst und wo die Stellschrauben sind.",
+    icon: <Beef className="h-6 w-6" />,
+    title: "Proteinversorgung",
+    description:
+      "Genug Eiweiss ist die Basis. Wir zeigen dir, wie du deinen Bedarf deckst, ohne jeden Tag Haehnchen zu essen.",
   },
   {
-    icon: <Flame className="h-5 w-5" />,
-    title: "Strategie",
-    text: "Gemeinsam entwickeln wir eine Ernaehrungsstrategie, die zu deinem Training und Alltag passt.",
+    icon: <CalendarCheck className="h-6 w-6" />,
+    title: "Mahlzeitenstruktur",
+    description:
+      "Kein Mealprep-Zwang. Eine einfache Struktur, die in deinen Alltag passt. Fruehstueck, Mittag, Abend.",
   },
   {
-    icon: <TrendingUp className="h-5 w-5" />,
-    title: "Umsetzung",
-    text: "Schritt fuer Schritt setzen wir um. Keine radikale Umstellung, sondern nachhaltige Anpassungen.",
+    icon: <Droplets className="h-6 w-6" />,
+    title: "Hydration",
+    description:
+      "2% Dehydrierung kostet dich 20% Leistung. Wasser trinken ist der einfachste Performance-Hack.",
   },
   {
-    icon: <Users className="h-5 w-5" />,
-    title: "Begleitung",
-    text: "Unser Team begleitet dich. Fragen, Anpassungen, Motivation. Du bist nicht allein.",
+    icon: <Pill className="h-6 w-6" />,
+    title: "Supplementierung",
+    description:
+      "Was sinnvoll ist, was rausgeworfenes Geld ist. Ehrliche Beratung ohne Verkaufsdruck.",
+  },
+  {
+    icon: <Timer className="h-6 w-6" />,
+    title: "Naehrstoff-Timing",
+    description:
+      "Was du vor und nach dem Training isst, macht einen Unterschied. Kein Hexenwerk, aber wichtig.",
+  },
+  {
+    icon: <Fingerprint className="h-6 w-6" />,
+    title: "Individuell",
+    description:
+      "Dein Alter, dein Alltag, deine Ziele. Kein Copy-Paste-Plan, sondern etwas, das zu dir passt.",
   },
 ];
 
@@ -34,81 +56,50 @@ export function ErnaehrungProgram() {
   return (
     <section className="bg-cs-black py-32 md:py-40">
       <div ref={ref} className="reveal mx-auto max-w-7xl px-8 md:px-16">
-        <div className="grid items-center gap-16 lg:grid-cols-2">
-          {/* Image */}
-          <div className="relative aspect-[4/5] overflow-hidden">
-            <Image
-              src="/images/team-training-1.webp"
-              alt="Ernaehrungsprogramm Casa Sports"
-              fill
-              className="img-cinema object-cover"
-            />
-            <div className="absolute inset-0 bg-gradient-to-r from-cs-black/20 to-transparent lg:bg-gradient-to-l" />
+        <div className="mx-auto max-w-2xl text-center">
+          <p className="text-xs font-medium uppercase tracking-[0.2em] text-cs-accent">
+            Die Grundlagen
+          </p>
+          <h2 className="mt-4 text-3xl font-black uppercase leading-[0.9] tracking-[-0.03em] text-cs-white md:text-4xl">
+            Sechs Dinge, die
+            <br />
+            <span className="text-cs-accent">wirklich zaehlen.</span>
+          </h2>
+          <p className="mt-6 text-[15px] leading-relaxed text-white/35">
+            Vergiss Superfoods und Wunder-Shakes. Diese sechs Prinzipien
+            machen 95% des Unterschieds.
+          </p>
+        </div>
 
-            {/* Overlay badge */}
-            <div className="absolute bottom-8 left-8 right-8">
-              <div className="border border-white/10 bg-cs-black/80 px-6 py-4 backdrop-blur-sm">
-                <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-cs-accent">
-                  Mein Neues Ich
-                </p>
-                <p className="mt-1 text-[14px] font-semibold text-white">
-                  12-Wochen-Programm
-                </p>
-                <p className="mt-1 text-[12px] text-white/35">
-                  Training + Ernaehrung + Betreuung. Alles in einem Programm.
-                </p>
+        <div className="relative z-10 mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+          {pillars.map((pillar, index) => (
+            <div
+              key={pillar.title}
+              className={cn(
+                "group/feature relative flex flex-col border-white/[0.06] py-10",
+                "lg:border-r",
+                (index === 0 || index === 3) && "lg:border-l",
+                index < 3 && "lg:border-b"
+              )}
+            >
+              <div className="pointer-events-none absolute inset-0 h-full w-full bg-gradient-to-t from-cs-accent/[0.04] to-transparent opacity-0 transition duration-300 group-hover/feature:opacity-100" />
+
+              <div className="relative z-10 mb-4 px-8 text-cs-gray-500 transition-colors duration-300 group-hover/feature:text-cs-accent">
+                {pillar.icon}
               </div>
-            </div>
-          </div>
 
-          {/* Content */}
-          <div>
-            <p className="text-xs font-medium uppercase tracking-[0.2em] text-cs-accent">
-              So laeuft es ab
-            </p>
-            <h2 className="mt-4 text-3xl font-black uppercase leading-[0.9] tracking-[-0.03em] text-cs-white md:text-4xl">
-              In vier Schritten
-              <br />
-              <span className="text-cs-accent">zu besserer Ernaehrung.</span>
-            </h2>
-            <p className="mt-6 max-w-sm text-[15px] leading-relaxed text-white/35">
-              Ob du abnehmen, Muskeln aufbauen oder einfach gesuender leben
-              willst. Wir starten dort, wo du gerade stehst.
-            </p>
+              <div className="relative z-10 mb-2 px-8 text-[15px] font-bold">
+                <div className="absolute inset-y-0 left-0 h-6 w-[2px] origin-center rounded-r-full bg-cs-gray-700 transition-all duration-300 group-hover/feature:h-8 group-hover/feature:bg-cs-accent" />
+                <span className="inline-block text-cs-white transition-transform duration-300 group-hover/feature:translate-x-2">
+                  {pillar.title}
+                </span>
+              </div>
 
-            <div className="mt-10 space-y-6">
-              {steps.map((step, index) => (
-                <div key={step.title} className="flex gap-5">
-                  <div className="flex h-12 w-12 shrink-0 items-center justify-center border border-white/[0.08] text-cs-accent/60">
-                    {step.icon}
-                  </div>
-                  <div>
-                    <div className="flex items-baseline gap-3">
-                      <span className="text-[11px] font-bold text-cs-accent/40">
-                        0{index + 1}
-                      </span>
-                      <h3 className="text-[15px] font-bold text-cs-white">
-                        {step.title}
-                      </h3>
-                    </div>
-                    <p className="mt-1 text-[13px] leading-relaxed text-white/40">
-                      {step.text}
-                    </p>
-                  </div>
-                </div>
-              ))}
+              <p className="relative z-10 max-w-xs px-8 text-[13px] leading-relaxed text-cs-gray-400">
+                {pillar.description}
+              </p>
             </div>
-
-            <div className="mt-10">
-              <Link
-                href="/mein-neues-ich"
-                className="group inline-flex items-center gap-3 border border-cs-accent/30 px-8 py-4 text-[13px] font-medium uppercase tracking-[0.15em] text-cs-accent transition-all duration-500 hover:border-cs-accent hover:bg-cs-accent/10"
-              >
-                Mehr zum Programm
-                <ArrowRight className="h-4 w-4 transition-transform duration-[400ms] group-hover:translate-x-1" />
-              </Link>
-            </div>
-          </div>
+          ))}
         </div>
       </div>
     </section>

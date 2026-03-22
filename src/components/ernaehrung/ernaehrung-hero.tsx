@@ -15,7 +15,7 @@ export function ErnaehrungHero() {
   }, []);
 
   return (
-    <section className="relative flex h-[85svh] min-h-[600px] items-end overflow-hidden bg-cs-black pb-24 md:pb-32">
+    <section className="relative flex h-[100svh] min-h-[700px] items-end overflow-hidden bg-cs-black pb-24 md:pb-32">
       <div className="absolute inset-0 animate-[kenburns_30s_ease-in-out_infinite_alternate]">
         <Image
           src="/images/casasports-bodyhealth.webp"
@@ -27,7 +27,7 @@ export function ErnaehrungHero() {
         />
       </div>
 
-      <div className="absolute inset-0 bg-black/[0.5]" />
+      <div className="absolute inset-0 bg-black/[0.4]" />
       <div className="absolute inset-0 bg-gradient-to-t from-cs-black via-transparent to-cs-black/30" />
 
       <div className="relative z-10 mx-auto w-full max-w-7xl px-8 md:px-16">
@@ -43,33 +43,34 @@ export function ErnaehrungHero() {
         <div className="overflow-hidden">
           <h1
             className={cn(
-              "text-[clamp(2.4rem,6vw,5.5rem)] font-black uppercase leading-[0.9] tracking-[-0.04em] text-cs-white transition-transform duration-[1.4s] ease-[cubic-bezier(0.16,1,0.3,1)]",
+              "text-[clamp(2.8rem,7.5vw,6.5rem)] font-black uppercase leading-[0.9] tracking-[-0.04em] text-cs-white transition-transform duration-[1.4s] ease-[cubic-bezier(0.16,1,0.3,1)]",
               loaded ? "translate-y-0" : "translate-y-[120%]"
             )}
           >
-            Training ist die Haelfte.
+            80% passiert
           </h1>
         </div>
         <div className="overflow-hidden">
           <h1
             className={cn(
-              "text-[clamp(2.4rem,6vw,5.5rem)] font-black uppercase leading-[0.9] tracking-[-0.04em] transition-transform delay-200 duration-[1.4s] ease-[cubic-bezier(0.16,1,0.3,1)]",
+              "text-[clamp(2.8rem,7.5vw,6.5rem)] font-black uppercase leading-[0.9] tracking-[-0.04em] transition-transform delay-200 duration-[1.4s] ease-[cubic-bezier(0.16,1,0.3,1)]",
               loaded ? "translate-y-0" : "translate-y-[120%]"
             )}
           >
-            <span className="text-cs-accent">Ernaehrung</span>{" "}
-            <span className="text-cs-white">die andere.</span>
+            <span className="text-cs-white">in der</span>{" "}
+            <span className="text-cs-accent">Kueche.</span>
           </h1>
         </div>
 
         <p
           className={cn(
-            "mt-8 max-w-md text-[15px] leading-relaxed text-white/40 transition-all delay-600 duration-1000",
+            "mt-8 max-w-sm text-[15px] leading-relaxed text-white/40 transition-all delay-600 duration-1000",
             loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
           )}
         >
-          Kein Diaetplan. Kein Verzicht. Sondern ein Ernaehrungskonzept, das zu
-          deinem Leben passt und dein Training auf das naechste Level bringt.
+          Du kannst jeden Tag trainieren.
+          <br />
+          Ohne die richtige Ernaehrung bleiben die Ergebnisse aus.
         </p>
 
         <div
