@@ -1,7 +1,54 @@
 "use client";
 
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
+import { cn } from "@/lib/utils";
 import { useReveal } from "@/lib/use-reveal";
+
+const marqueeItems = [
+  "Proteine",
+  "Mahlzeitenplanung",
+  "Hydration",
+  "Naehrstoff-Timing",
+  "Supplements",
+  "Koerperanalyse",
+];
+
+function NutritionMarquee() {
+  const [active, setActive] = useState(0);
+  const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
+
+  useEffect(() => {
+    intervalRef.current = setInterval(() => {
+      setActive((prev) => (prev + 1) % marqueeItems.length);
+    }, 2500);
+    return () => {
+      if (intervalRef.current) clearInterval(intervalRef.current);
+    };
+  }, []);
+
+  return (
+    <div className="overflow-hidden bg-cs-black py-8">
+      <div className="mx-auto flex max-w-5xl items-center justify-center gap-8 px-8 md:gap-12">
+        {marqueeItems.map((item, i) => (
+          <span
+            key={item}
+            className={cn(
+              "hidden text-[13px] font-medium uppercase tracking-[0.15em] transition-colors duration-700 md:inline",
+              i === active ? "text-cs-white" : "text-cs-gray-600"
+            )}
+          >
+            {item}
+          </span>
+        ))}
+        {/* Mobile: nur aktives Wort */}
+        <span className="text-[13px] font-medium uppercase tracking-[0.15em] text-cs-white md:hidden">
+          {marqueeItems[active]}
+        </span>
+      </div>
+    </div>
+  );
+}
 
 const problems = [
   {
@@ -26,32 +73,7 @@ export function ErnaehrungApproach() {
 
   return (
     <>
-      {/* Marquee statement */}
-      <div className="overflow-hidden border-y border-white/[0.04] bg-cs-black py-5">
-        <div className="flex animate-[marquee_30s_linear_infinite] whitespace-nowrap">
-          {[
-            "Proteine",
-            "Mahlzeitenplanung",
-            "Hydration",
-            "Naehrstoff-Timing",
-            "Supplements",
-            "Koerperanalyse",
-            "Proteine",
-            "Mahlzeitenplanung",
-            "Hydration",
-            "Naehrstoff-Timing",
-            "Supplements",
-            "Koerperanalyse",
-          ].map((item, i) => (
-            <span key={i} className="mx-8 flex items-center gap-8">
-              <span className="text-[13px] font-medium uppercase tracking-[0.15em] text-cs-gray-600">
-                {item}
-              </span>
-              <span className="h-1 w-1 rounded-full bg-cs-accent/30" />
-            </span>
-          ))}
-        </div>
-      </div>
+      <NutritionMarquee />
 
       {/* Problem cards - like homepage Features */}
       <section className="bg-cs-black py-40 md:py-48">
