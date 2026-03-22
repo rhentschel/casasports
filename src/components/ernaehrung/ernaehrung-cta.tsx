@@ -39,7 +39,7 @@ export function ErnaehrungCTA() {
                   <p className="mt-1 text-[14px] font-semibold text-white">
                     12-Wochen-Programm
                   </p>
-                  <p className="mt-1 text-[12px] text-white/35">
+                  <p className="mt-1 text-[12px] text-white/60">
                     Training + Ernaehrung + Betreuung. Alles in einem.
                   </p>
                 </div>
@@ -67,7 +67,7 @@ export function ErnaehrungCTA() {
                       <h3 className="text-[15px] font-bold text-cs-white">
                         {step.label}
                       </h3>
-                      <p className="mt-1 text-[13px] leading-relaxed text-white/40">
+                      <p className="mt-1 text-[13px] leading-relaxed text-white/60">
                         {step.text}
                       </p>
                     </div>
@@ -109,7 +109,7 @@ export function ErnaehrungCTA() {
             <br />
             den richtigen <span className="text-cs-accent">Treibstoff.</span>
           </h2>
-          <p className="mx-auto mt-8 max-w-sm text-[15px] leading-relaxed text-white/35">
+          <p className="mx-auto mt-8 max-w-sm text-[15px] leading-relaxed text-white/60">
             Komm vorbei, trainiere kostenlos und sprich mit unserem Team ueber
             deine Ernaehrung. Unverbindlich.
           </p>

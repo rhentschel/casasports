@@ -50,7 +50,7 @@ export function WellnessAreas() {
           Drei Welten.{" "}
           <span className="text-cs-gold">Ein Erlebnis.</span>
         </h2>
-        <p className="mt-6 max-w-md text-[15px] leading-relaxed text-white/35">
+        <p className="mt-6 max-w-md text-[15px] leading-relaxed text-white/60">
           Jeder Bereich ist so gestaltet, dass du nach dem Training genau das
           bekommst, was dein Koerper braucht: Erholung auf hoechstem Niveau.
         </p>
@@ -65,7 +65,7 @@ export function WellnessAreas() {
                 "flex items-center gap-2 px-6 py-4 text-[12px] font-medium uppercase tracking-[0.15em] transition-all duration-300",
                 active === index
                   ? "border-b-2 border-cs-gold text-cs-gold"
-                  : "text-white/30 hover:text-white/60"
+                  : "text-white/50 hover:text-white/60"
               )}
             >
               {area.icon}
@@ -94,7 +94,7 @@ export function WellnessAreas() {
             <h3 className="mt-3 text-2xl font-black uppercase leading-[0.9] tracking-[-0.03em] text-cs-white md:text-3xl">
               {areas[active].title}
             </h3>
-            <p className="mt-5 text-[15px] leading-relaxed text-white/40">
+            <p className="mt-5 text-[15px] leading-relaxed text-white/60">
               {areas[active].description}
             </p>
 

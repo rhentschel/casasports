@@ -40,7 +40,7 @@ export function ErnaehrungPillars() {
               <br />
               <span className="text-cs-accent">Sondern Verstehen.</span>
             </h2>
-            <p className="mt-6 max-w-sm text-[15px] leading-relaxed text-white/35">
+            <p className="mt-6 max-w-sm text-[15px] leading-relaxed text-white/60">
               Wir glauben nicht an Crash-Diaeten. Wir zeigen dir, wie Ernaehrung
               funktioniert, damit du es selbst umsetzen kannst. Nicht nur bis
               zum Sommer, sondern dauerhaft.

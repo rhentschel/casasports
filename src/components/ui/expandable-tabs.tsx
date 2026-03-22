@@ -114,7 +114,7 @@ export function ExpandableTabs({
               "relative flex items-center rounded-full px-2.5 py-2 text-[11px] font-medium transition-colors duration-300",
               active === index
                 ? cn("bg-white/[0.1]", activeColor)
-                : "text-white/40 hover:text-white/70"
+                : "text-white/60 hover:text-white/70"
             )}
           >
             <Icon size={18} />

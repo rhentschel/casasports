@@ -64,7 +64,7 @@ export function WellnessHero() {
 
         <p
           className={cn(
-            "mt-8 max-w-md text-[15px] leading-relaxed text-white/40 transition-all delay-600 duration-1000",
+            "mt-8 max-w-md text-[15px] leading-relaxed text-white/60 transition-all delay-600 duration-1000",
             loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
           )}
         >
@@ -87,7 +87,7 @@ export function WellnessHero() {
           </Link>
           <a
             href={`tel:${siteConfig.phone.replace(/\s/g, "")}`}
-            className="hidden text-[13px] tracking-[0.15em] text-white/25 transition-colors duration-500 hover:text-white sm:block"
+            className="hidden text-[13px] tracking-[0.15em] text-white/50 transition-colors duration-500 hover:text-white sm:block"
           >
             {siteConfig.phone}
           </a>

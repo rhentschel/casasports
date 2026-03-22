@@ -39,7 +39,7 @@ export function TrainingAreas() {
         <h2 className="mt-4 max-w-lg text-3xl font-black uppercase leading-[0.9] tracking-[-0.03em] text-cs-white md:text-5xl">
           Drei Bereiche. Ein Ziel.
         </h2>
-        <p className="mt-6 max-w-md text-[15px] leading-relaxed text-white/35">
+        <p className="mt-6 max-w-md text-[15px] leading-relaxed text-white/60">
           Jeder Bereich ist durchdacht eingerichtet. Damit du dich auf das
           konzentrieren kannst, was zaehlt: dein Training.
         </p>

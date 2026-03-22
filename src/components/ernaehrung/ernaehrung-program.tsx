@@ -65,7 +65,7 @@ export function ErnaehrungProgram() {
             <br />
             <span className="text-cs-accent">wirklich zaehlen.</span>
           </h2>
-          <p className="mt-6 text-[15px] leading-relaxed text-white/35">
+          <p className="mt-6 text-[15px] leading-relaxed text-white/60">
             Vergiss Superfoods und Wunder-Shakes. Diese sechs Prinzipien
             machen 95% des Unterschieds.
           </p>

@@ -47,7 +47,7 @@ export function NewsletterModal({ isOpen, onClose }: NewsletterModalProps) {
           >
             <button
               onClick={onClose}
-              className="absolute right-4 top-4 text-white/30 transition-colors hover:text-white"
+              className="absolute right-4 top-4 text-white/50 transition-colors hover:text-white"
               aria-label="Schließen"
             >
               <X className="h-5 w-5" />

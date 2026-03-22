@@ -51,7 +51,7 @@ export function FitnessPhilosophy() {
             <br />
             mit <span className="text-cs-accent">System.</span>
           </h2>
-          <p className="mt-6 text-[15px] leading-relaxed text-white/35">
+          <p className="mt-6 text-[15px] leading-relaxed text-white/60">
             Gutes Training ist kein Zufall. Es ist das Ergebnis von Planung,
             Betreuung und der richtigen Umgebung.
           </p>

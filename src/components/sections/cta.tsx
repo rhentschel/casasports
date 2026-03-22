@@ -22,7 +22,7 @@ export function CTA() {
           <br />
           geht <span className="text-cs-accent">auf uns.</span>
         </h2>
-        <p className="mx-auto mt-8 max-w-sm text-[15px] leading-relaxed text-white/35">
+        <p className="mx-auto mt-8 max-w-sm text-[15px] leading-relaxed text-white/60">
           Komm vorbei, lern das Team kennen und trainiere einen Tag kostenlos.
           Ohne Verpflichtung.
         </p>

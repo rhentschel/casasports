@@ -111,7 +111,7 @@ function TeamSlide({
           <h2 className="mt-3 text-4xl font-black uppercase leading-[0.9] tracking-[-0.03em] text-cs-white md:text-5xl">
             {member.name}
           </h2>
-          <p className="mt-4 max-w-md text-[15px] leading-[1.7] text-white/35">
+          <p className="mt-4 max-w-md text-[15px] leading-[1.7] text-white/60">
             &ldquo;{member.quote}&rdquo;
           </p>
         </div>
@@ -173,14 +173,14 @@ export function AboutPreview() {
           <div className="flex items-center gap-2">
             <button
               onClick={scrollPrev}
-              className="flex h-10 w-10 items-center justify-center border border-white/10 text-white/30 transition-all duration-300 hover:border-white/30 hover:text-white"
+              className="flex h-10 w-10 items-center justify-center border border-white/10 text-white/50 transition-all duration-300 hover:border-white/30 hover:text-white"
               aria-label="Vorheriges Teammitglied"
             >
               <ArrowLeft className="h-4 w-4" />
             </button>
             <button
               onClick={scrollNext}
-              className="flex h-10 w-10 items-center justify-center border border-white/10 text-white/30 transition-all duration-300 hover:border-white/30 hover:text-white"
+              className="flex h-10 w-10 items-center justify-center border border-white/10 text-white/50 transition-all duration-300 hover:border-white/30 hover:text-white"
               aria-label="Nächstes Teammitglied"
             >
               <ArrowRight className="h-4 w-4" />

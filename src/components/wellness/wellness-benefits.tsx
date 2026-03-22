@@ -79,7 +79,7 @@ export function WellnessBenefits() {
             <br />
             <span className="text-cs-gold">die halbe Wahrheit.</span>
           </h2>
-          <p className="mt-6 text-[15px] leading-relaxed text-white/35">
+          <p className="mt-6 text-[15px] leading-relaxed text-white/60">
             Wer trainiert, baut Reize. Wer regeneriert, baut Ergebnisse. Sauna
             und Infrarot sind keine Extras, sie gehoeren zu jedem ernsthaften
             Trainingsplan.

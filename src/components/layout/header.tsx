@@ -63,7 +63,7 @@ export function Header() {
               <Link
                 key={item.href}
                 href={item.href}
-                className="px-4 py-2 text-[11px] font-medium uppercase tracking-[0.12em] text-white/40 transition-colors duration-300 hover:text-white"
+                className="px-4 py-2 text-[11px] font-medium uppercase tracking-[0.12em] text-white/60 transition-colors duration-300 hover:text-white"
               >
                 {item.label}
               </Link>
@@ -103,7 +103,7 @@ export function Header() {
                   key={item.href}
                   href={item.href}
                   onClick={() => setIsOpen(false)}
-                  className="text-3xl font-black uppercase tracking-tight text-white/20 transition-colors duration-300 hover:text-white md:text-4xl"
+                  className="text-3xl font-black uppercase tracking-tight text-white/50 transition-colors duration-300 hover:text-white md:text-4xl"
                 >
                   {item.label}
                 </Link>
@@ -117,7 +117,7 @@ export function Header() {
               >
                 Gratis Probetraining
               </Link>
-              <p className="mt-6 text-[13px] tracking-[0.1em] text-white/20">
+              <p className="mt-6 text-[13px] tracking-[0.1em] text-white/50">
                 {siteConfig.phone}
               </p>
             </div>

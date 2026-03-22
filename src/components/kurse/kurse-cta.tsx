@@ -22,7 +22,7 @@ export function KurseCTA() {
           <br />
           ist <span className="text-cs-accent">gratis.</span>
         </h2>
-        <p className="mx-auto mt-8 max-w-sm text-[15px] leading-relaxed text-white/35">
+        <p className="mx-auto mt-8 max-w-sm text-[15px] leading-relaxed text-white/60">
           Schnupper rein, trainiere mit und entscheide dann.
           Ohne Vertrag, ohne Risiko.
         </p>

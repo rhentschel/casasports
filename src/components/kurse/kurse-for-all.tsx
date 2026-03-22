@@ -40,7 +40,7 @@ export function KurseForAll() {
               <br />
               um <span className="text-cs-accent">anzufangen.</span>
             </h2>
-            <p className="mt-6 max-w-sm text-[15px] leading-relaxed text-white/35">
+            <p className="mt-6 max-w-sm text-[15px] leading-relaxed text-white/60">
               Egal ob du zum ersten Mal trainierst oder seit Jahren dabei bist.
               Unsere Kurse sind so aufgebaut, dass jeder mitkommt und
               gefordert wird.

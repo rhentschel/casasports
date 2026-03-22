@@ -43,14 +43,14 @@ export function CoursesOverview() {
           <div className="hidden items-center gap-2 sm:flex">
             <button
               onClick={scrollPrev}
-              className="flex h-11 w-11 items-center justify-center border border-white/10 text-white/30 transition-all duration-[400ms] ease-[var(--ease-hover)] hover:border-white/30 hover:text-white"
+              className="flex h-11 w-11 items-center justify-center border border-white/10 text-white/50 transition-all duration-[400ms] ease-[var(--ease-hover)] hover:border-white/30 hover:text-white"
               aria-label="Vorheriger Kurs"
             >
               <ArrowLeft className="h-4 w-4" />
             </button>
             <button
               onClick={scrollNext}
-              className="flex h-11 w-11 items-center justify-center border border-white/10 text-white/30 transition-all duration-[400ms] ease-[var(--ease-hover)] hover:border-white/30 hover:text-white"
+              className="flex h-11 w-11 items-center justify-center border border-white/10 text-white/50 transition-all duration-[400ms] ease-[var(--ease-hover)] hover:border-white/30 hover:text-white"
               aria-label="Nächster Kurs"
             >
               <ArrowRight className="h-4 w-4" />

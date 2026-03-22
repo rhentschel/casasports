@@ -159,7 +159,7 @@ function DetailOverlay({
             <span className="text-3xl font-black tabular-nums tracking-[-0.04em] text-white sm:text-4xl">
               {entry.time}
             </span>
-            <span className="text-[13px] text-white/30">
+            <span className="text-[13px] text-white/50">
               {entry.duration} Min
             </span>
           </div>
@@ -170,7 +170,7 @@ function DetailOverlay({
           {/* Meta grid */}
           <div className="mt-5 grid grid-cols-3 gap-4">
             <div>
-              <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-white/25">
+              <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-white/50">
                 Trainer
               </p>
               <p className="mt-1 text-[15px] font-semibold text-white">
@@ -178,7 +178,7 @@ function DetailOverlay({
               </p>
             </div>
             <div>
-              <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-white/25">
+              <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-white/50">
                 Raum
               </p>
               <p className="mt-1 text-[15px] font-semibold text-white">
@@ -186,7 +186,7 @@ function DetailOverlay({
               </p>
             </div>
             <div>
-              <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-white/25">
+              <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-white/50">
                 Intensitaet
               </p>
               <div className="mt-2">
@@ -204,7 +204,7 @@ function DetailOverlay({
               href={googleCalendarUrl(entry)}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex h-12 flex-1 items-center justify-center gap-2 border border-white/[0.08] text-[11px] font-medium uppercase tracking-[0.15em] text-white/40 transition-all duration-300 hover:border-white/20 hover:text-white"
+              className="flex h-12 flex-1 items-center justify-center gap-2 border border-white/[0.08] text-[11px] font-medium uppercase tracking-[0.15em] text-white/60 transition-all duration-300 hover:border-white/20 hover:text-white"
             >
               <Calendar className="h-4 w-4" />
               Google
@@ -342,7 +342,7 @@ export function Kursplan() {
               "group flex items-center gap-2 border px-5 py-2.5 text-[11px] font-medium uppercase tracking-[0.15em] transition-all duration-300",
               showFavsOnly
                 ? "border-cs-accent bg-cs-accent/10 text-cs-accent"
-                : "border-white/10 text-white/40 hover:border-white/20 hover:text-white/60"
+                : "border-white/10 text-white/60 hover:border-white/20 hover:text-white/60"
             )}
           >
             <Heart className={cn("h-3.5 w-3.5", showFavsOnly && "fill-current")} />
@@ -352,7 +352,7 @@ export function Kursplan() {
 
         {/* Filter Chips */}
         <div className="mt-8 flex flex-wrap items-center gap-2">
-          <Filter className="mr-1 h-3.5 w-3.5 text-white/20" />
+          <Filter className="mr-1 h-3.5 w-3.5 text-white/50" />
           {(Object.keys(kursTypeConfig) as KursTypeName[]).map((name) => {
             const cfg = kursTypeConfig[name];
             const active = activeFilters.has(name);
@@ -364,7 +364,7 @@ export function Kursplan() {
                   "flex items-center gap-2 border px-3 py-1.5 text-[11px] font-medium uppercase tracking-[0.1em] transition-all duration-300",
                   active
                     ? `${cfg.bg} border-transparent ${cfg.text}`
-                    : "border-white/[0.06] text-white/30 hover:border-white/15 hover:text-white/50"
+                    : "border-white/[0.06] text-white/50 hover:border-white/15 hover:text-white/50"
                 )}
               >
                 <span className={cn("h-2 w-2 rounded-full", active ? cfg.dot : "bg-white/20")} />
@@ -375,7 +375,7 @@ export function Kursplan() {
           {activeFilters.size > 0 && (
             <button
               onClick={() => setActiveFilters(new Set())}
-              className="ml-1 text-[11px] text-white/30 underline underline-offset-2 transition-colors hover:text-white/60"
+              className="ml-1 text-[11px] text-white/50 underline underline-offset-2 transition-colors hover:text-white/60"
             >
               Alle
             </button>
@@ -492,7 +492,7 @@ export function Kursplan() {
                     ? "border-b-2 border-cs-accent text-cs-accent"
                     : i === today
                       ? "text-white/50"
-                      : "text-white/20 hover:text-white/40"
+                      : "text-white/50 hover:text-white/60"
                 )}
               >
                 {d}
@@ -548,7 +548,7 @@ export function Kursplan() {
                         </div>
                         <p className="mt-3 text-[14px] font-bold tabular-nums text-cs-white">
                           {entry.time} Uhr
-                          <span className="ml-2 text-[12px] font-normal text-white/30">
+                          <span className="ml-2 text-[12px] font-normal text-white/50">
                             {entry.duration} Min
                           </span>
                         </p>
@@ -559,7 +559,7 @@ export function Kursplan() {
                           "flex h-9 w-9 items-center justify-center border transition-all duration-300",
                           isFav
                             ? "border-cs-accent/30 text-cs-accent"
-                            : "border-white/[0.06] text-white/20"
+                            : "border-white/[0.06] text-white/50"
                         )}
                         aria-label="Favorit"
                       >
@@ -567,7 +567,7 @@ export function Kursplan() {
                       </button>
                     </div>
 
-                    <div className="mt-3 flex items-center gap-4 text-[12px] text-white/35">
+                    <div className="mt-3 flex items-center gap-4 text-[12px] text-white/60">
                       <span className="flex items-center gap-1.5">
                         <User className="h-3 w-3 text-cs-accent/60" />
                         {entry.trainer}
@@ -585,14 +585,14 @@ export function Kursplan() {
                           href={googleCalendarUrl(entry)}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="flex h-8 items-center gap-1.5 border border-white/[0.06] px-3 text-[10px] uppercase tracking-[0.1em] text-white/30 transition-colors hover:text-white/60"
+                          className="flex h-8 items-center gap-1.5 border border-white/[0.06] px-3 text-[10px] uppercase tracking-[0.1em] text-white/50 transition-colors hover:text-white/60"
                         >
                           <Calendar className="h-3 w-3" />
                           Kalender
                         </a>
                         <button
                           onClick={() => downloadIcs(entry)}
-                          className="flex h-8 items-center gap-1.5 border border-white/[0.06] px-3 text-[10px] uppercase tracking-[0.1em] text-white/30 transition-colors hover:text-white/60"
+                          className="flex h-8 items-center gap-1.5 border border-white/[0.06] px-3 text-[10px] uppercase tracking-[0.1em] text-white/50 transition-colors hover:text-white/60"
                         >
                           <Download className="h-3 w-3" />
                           .ics
@@ -604,7 +604,7 @@ export function Kursplan() {
               })}
             {schedule.filter((e) => e.day === mobileDay && isVisible(e))
               .length === 0 && (
-              <p className="py-8 text-center text-[13px] text-white/20">
+              <p className="py-8 text-center text-[13px] text-white/50">
                 {showFavsOnly
                   ? "Keine Favoriten an diesem Tag."
                   : "Keine Kurse fuer diesen Filter."}

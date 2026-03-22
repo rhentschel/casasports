@@ -80,7 +80,7 @@ export function KurseGrid() {
         <h2 className="mt-4 text-3xl font-black uppercase leading-[0.9] tracking-[-0.03em] text-cs-white md:text-5xl">
           Kurse, die bewegen.
         </h2>
-        <p className="mt-6 max-w-md text-[15px] leading-relaxed text-white/35">
+        <p className="mt-6 max-w-md text-[15px] leading-relaxed text-white/60">
           Jeder Kurs wird von erfahrenen Trainern geleitet. Kleine Gruppen,
           persoenliche Korrekturen, echte Ergebnisse.
         </p>

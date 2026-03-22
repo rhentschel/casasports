@@ -74,7 +74,7 @@ export function EquipmentShowcase() {
               <span className="text-cs-accent">keine Wuensche</span> offen
               laesst.
             </h2>
-            <p className="mt-6 max-w-sm text-[15px] leading-relaxed text-white/35">
+            <p className="mt-6 max-w-sm text-[15px] leading-relaxed text-white/60">
               Wir investieren in Qualitaet. Nicht in Masse. Jedes Geraet ist
               ausgewaehlt, damit du effizient und sicher trainieren kannst.
             </p>

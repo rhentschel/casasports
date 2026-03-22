@@ -22,7 +22,7 @@ export function FitnessCTA() {
           <br />
           Trainiere <span className="text-cs-accent">kostenlos.</span>
         </h2>
-        <p className="mx-auto mt-8 max-w-sm text-[15px] leading-relaxed text-white/35">
+        <p className="mx-auto mt-8 max-w-sm text-[15px] leading-relaxed text-white/60">
           Dein erstes Training geht auf uns. Lern das Team kennen, teste die
           Geraete und entscheide dann.
         </p>

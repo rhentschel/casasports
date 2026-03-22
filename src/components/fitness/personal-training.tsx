@@ -116,7 +116,7 @@ function TerminModal({ onClose }: { onClose: () => void }) {
                 <p className="text-[15px] font-semibold text-white">
                   {siteConfig.phone}
                 </p>
-                <p className="text-[12px] text-white/30">Direkt anrufen</p>
+                <p className="text-[12px] text-white/50">Direkt anrufen</p>
               </div>
               <ArrowRight className="ml-auto h-4 w-4 text-white/15 transition-all duration-300 group-hover:translate-x-1 group-hover:text-cs-gold" />
             </a>
@@ -132,7 +132,7 @@ function TerminModal({ onClose }: { onClose: () => void }) {
                 <p className="text-[15px] font-semibold text-white">
                   {siteConfig.email}
                 </p>
-                <p className="text-[12px] text-white/30">E-Mail schreiben</p>
+                <p className="text-[12px] text-white/50">E-Mail schreiben</p>
               </div>
               <ArrowRight className="ml-auto h-4 w-4 text-white/15 transition-all duration-300 group-hover:translate-x-1 group-hover:text-cs-gold" />
             </a>
@@ -150,7 +150,7 @@ function TerminModal({ onClose }: { onClose: () => void }) {
                 <p className="text-[15px] font-semibold text-white">
                   @casa__sports
                 </p>
-                <p className="text-[12px] text-white/30">
+                <p className="text-[12px] text-white/50">
                   DM auf Instagram
                 </p>
               </div>
@@ -163,11 +163,11 @@ function TerminModal({ onClose }: { onClose: () => void }) {
 
           {/* Info row */}
           <div className="mt-5 flex gap-6">
-            <div className="flex items-center gap-2 text-[12px] text-white/25">
+            <div className="flex items-center gap-2 text-[12px] text-white/50">
               <Clock className="h-3.5 w-3.5 text-cs-gold/50" />
               7 Tage geoeffnet
             </div>
-            <div className="flex items-center gap-2 text-[12px] text-white/25">
+            <div className="flex items-center gap-2 text-[12px] text-white/50">
               <MapPin className="h-3.5 w-3.5 text-cs-gold/50" />
               {siteConfig.address.street}
             </div>
@@ -196,7 +196,7 @@ export function PersonalTraining() {
               <br />
               <span className="text-cs-gold">Dein Tempo.</span>
             </h2>
-            <p className="mt-6 max-w-sm text-[15px] leading-relaxed text-white/35">
+            <p className="mt-6 max-w-sm text-[15px] leading-relaxed text-white/60">
               Du willst mehr als nur ein Geraet bedienen? Im Personal Training
               arbeiten wir gemeinsam an deinen Zielen. Strukturiert,
               motivierend, auf den Punkt.
