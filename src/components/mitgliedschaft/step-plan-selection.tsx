@@ -30,7 +30,10 @@ function formatPrice(price: number): string {
   return price.toFixed(2).replace(".", ",");
 }
 
-const bundleFeatures: Record<string, { icon: React.ReactNode; text: string }[]> = {
+const bundleFeatures: Record<
+  string,
+  { icon: React.ReactNode; text: string }[]
+> = {
   "all in": [
     { icon: <Dumbbell className="h-3 w-3" />, text: "Fitnessbereich" },
     { icon: <Users className="h-3 w-3" />, text: "Alle Kurse" },
@@ -56,12 +59,14 @@ function Accordion({
   title,
   icon,
   children,
+  defaultOpen = false,
 }: {
   title: string;
   icon?: React.ReactNode;
   children: React.ReactNode;
+  defaultOpen?: boolean;
 }) {
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(defaultOpen);
   return (
     <div className="border-b border-white/[0.06]">
       <button
@@ -101,36 +106,26 @@ export function StepPlanSelection({
 }: StepPlanSelectionProps) {
   if (bundles.length === 0) return null;
 
+  // Sort: All In first
   const sorted = [...bundles].sort((a, b) => {
     const aIsAllIn = a.name.toLowerCase().includes("all in") ? 0 : 1;
     const bIsAllIn = b.name.toLowerCase().includes("all in") ? 0 : 1;
     return aIsAllIn - bIsAllIn;
   });
 
-  // Which bundle is selected?
-  const [selectedBundleId, setSelectedBundleId] = useState<number | null>(null);
-
-  // Auto-select bundle when a term is selected
-  let activeBundleId = selectedBundleId;
+  // Find currently selected term + bundle
+  let selectedTerm: RateBundleTerm | null = null;
+  let selectedBundle: RateBundle | null = null;
   for (const b of sorted) {
-    if (b.terms.some((t) => t.id === selectedTermId)) {
-      activeBundleId = b.id;
+    const found = b.terms.find((t) => t.id === selectedTermId);
+    if (found) {
+      selectedTerm = found;
+      selectedBundle = b;
       break;
     }
   }
 
-  const activeBundle = sorted.find((b) => b.id === activeBundleId) ?? null;
-  const selectedTerm = activeBundle?.terms.find((t) => t.id === selectedTermId) ?? null;
   const starterFee = selectedTerm?.flatFees.find((f) => f.isStarterPackage);
-
-  function handleSelectBundle(bundle: RateBundle) {
-    setSelectedBundleId(bundle.id);
-    // Auto-select longest term (best price)
-    const longest = [...bundle.terms].sort((a, b) => b.termValue - a.termValue)[0];
-    if (longest) {
-      onSelectTerm(longest);
-    }
-  }
 
   return (
     <div>
@@ -141,221 +136,225 @@ export function StepPlanSelection({
         Finde deinen Plan.
       </h2>
 
-      {/* Step 1: Tarif waehlen (All In vs. Standard) */}
-      <div className="mt-8 grid gap-3 sm:grid-cols-2">
+      {/* Tarif-Karten — alle Terms aller Bundles als einzelne Karten */}
+      <div className="mt-8 space-y-3">
         {sorted.map((bundle) => {
           const isAllIn = bundle.name.toLowerCase().includes("all in");
-          const isActive = activeBundleId === bundle.id;
-          const features = getFeaturesForBundle(bundle.name);
-          const cheapest = [...bundle.terms].sort((a, b) => a.price - b.price)[0];
-
-          return (
-            <div
-              key={bundle.id}
-              className={cn(
-                "relative cursor-pointer border p-5 transition-all duration-300",
-                isActive
-                  ? "border-cs-accent bg-cs-accent/[0.04]"
-                  : "border-white/[0.06] hover:border-white/[0.12]"
-              )}
-              onClick={() => handleSelectBundle(bundle)}
-            >
-              {isAllIn && (
-                <div className="absolute -top-2.5 left-5 flex items-center gap-1 bg-cs-accent px-2.5 py-0.5">
-                  <Star className="h-2.5 w-2.5 fill-white text-white" />
-                  <span className="text-[8px] font-bold uppercase tracking-[0.2em] text-white">
-                    Beliebteste Wahl
-                  </span>
-                </div>
-              )}
-
-              <div className="flex items-start justify-between">
-                <div>
-                  <h3 className="text-sm font-black uppercase text-cs-white">
-                    {isAllIn ? "All In" : "Standard"}
-                  </h3>
-                  <p className="mt-1 text-xl font-black tracking-[-0.03em] text-cs-white">
-                    ab {formatPrice(cheapest.price)} €{" "}
-                    <span className="text-[11px] font-medium text-white/40">mtl.</span>
-                  </p>
-                </div>
-                <div
-                  className={cn(
-                    "mt-1 flex h-5 w-5 shrink-0 items-center justify-center rounded-full border-2 transition-all",
-                    isActive ? "border-cs-accent bg-cs-accent" : "border-white/20"
-                  )}
-                >
-                  {isActive && <Check className="h-3 w-3 text-white" />}
-                </div>
-              </div>
-
-              <div className="mt-3 flex flex-wrap gap-x-3 gap-y-1">
-                {features.map((f) => (
-                  <span key={f.text} className="flex items-center gap-1 text-[10px] text-white/35">
-                    {f.icon}
-                    {f.text}
-                  </span>
-                ))}
-              </div>
-            </div>
+          const sortedTerms = [...bundle.terms].sort(
+            (a, b) => b.termValue - a.termValue
           );
+
+          return sortedTerms.map((term, i) => {
+            const isSelected = selectedTermId === term.id;
+            const isLonger = i === 0;
+
+            return (
+              <div
+                key={term.id}
+                className={cn(
+                  "relative cursor-pointer border p-5 transition-all duration-300",
+                  isSelected
+                    ? "border-cs-accent bg-cs-accent/[0.04]"
+                    : "border-white/[0.06] hover:border-white/[0.12]"
+                )}
+                onClick={() => onSelectTerm(term)}
+              >
+                {/* Badge */}
+                {isAllIn && isLonger && (
+                  <div className="absolute -top-2.5 left-5 flex items-center gap-1 bg-cs-accent px-2.5 py-0.5">
+                    <Star className="h-2.5 w-2.5 fill-white text-white" />
+                    <span className="text-[8px] font-bold uppercase tracking-[0.2em] text-white">
+                      Beliebteste Wahl
+                    </span>
+                  </div>
+                )}
+
+                <div className="flex items-center justify-between">
+                  <div>
+                    <h3 className="text-base font-black uppercase tracking-[-0.01em] text-cs-white">
+                      {term.termValue} Monate{" "}
+                      {isAllIn ? "All In" : "Standard"}
+                    </h3>
+                    <p className="mt-0.5 text-2xl font-black tracking-[-0.03em] text-cs-white">
+                      {formatPrice(term.price)} €{" "}
+                      <span className="text-sm font-medium text-white/40">
+                        mtl.
+                      </span>
+                    </p>
+                    <p className="mt-1 text-[11px] text-white/30">
+                      {term.termValue} Monate Mindestvertragslaufzeit
+                    </p>
+                  </div>
+
+                  {/* Radio */}
+                  <div
+                    className={cn(
+                      "flex h-6 w-6 shrink-0 items-center justify-center rounded-full border-2 transition-all",
+                      isSelected
+                        ? "border-cs-accent bg-cs-accent"
+                        : "border-white/20"
+                    )}
+                  >
+                    {isSelected && (
+                      <Check className="h-3.5 w-3.5 text-white" />
+                    )}
+                  </div>
+                </div>
+
+                {/* Features inline */}
+                <div className="mt-3 flex flex-wrap gap-x-3 gap-y-1">
+                  {getFeaturesForBundle(bundle.name).map((f) => (
+                    <span
+                      key={f.text}
+                      className="flex items-center gap-1 text-[10px] text-white/35"
+                    >
+                      {f.icon}
+                      {f.text}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            );
+          });
         })}
       </div>
 
-      {/* Step 2: Laufzeit waehlen (nur wenn Bundle gewaehlt) */}
-      {activeBundle && (
+      {/* Accordions — nur wenn ein Tarif gewaehlt ist */}
+      {selectedTerm && selectedBundle && (
         <div className="mt-6">
-          <p className="mb-3 text-[11px] font-medium uppercase tracking-[0.15em] text-white/40">
-            Laufzeit waehlen
-          </p>
-          <div className="space-y-2">
-            {[...activeBundle.terms]
-              .sort((a, b) => b.termValue - a.termValue)
-              .map((term, i) => {
-                const isSelected = selectedTermId === term.id;
-                const isLonger = i === 0;
-
-                return (
-                  <div
-                    key={term.id}
-                    className={cn(
-                      "flex cursor-pointer items-center justify-between border px-4 py-3 transition-all duration-300",
-                      isSelected
-                        ? "border-cs-accent bg-cs-accent/[0.04]"
-                        : "border-white/[0.06] hover:border-white/[0.1]"
-                    )}
-                    onClick={() => onSelectTerm(term)}
-                  >
-                    <div className="flex items-center gap-3">
-                      <div
-                        className={cn(
-                          "flex h-5 w-5 items-center justify-center rounded-full border-2 transition-all",
-                          isSelected ? "border-cs-accent bg-cs-accent" : "border-white/20"
-                        )}
-                      >
-                        {isSelected && <div className="h-1.5 w-1.5 rounded-full bg-white" />}
-                      </div>
-                      <div>
-                        <span className="text-[13px] font-medium text-white/70">
-                          {term.termValue} Monate
-                        </span>
-                        {isLonger && (
-                          <span className="ml-2 text-[9px] font-bold uppercase tracking-wider text-cs-accent">
-                            Bester Preis
-                          </span>
-                        )}
-                      </div>
-                    </div>
-                    <div className="text-right">
-                      <span className="text-[15px] font-black text-cs-white">
-                        {formatPrice(term.price)} €
-                      </span>
-                      <span className="text-[10px] text-white/30"> /mtl.</span>
-                    </div>
-                  </div>
-                );
-              })}
-          </div>
-        </div>
-      )}
-
-      {/* Accordions */}
-      {selectedTerm && activeBundle && (
-        <div className="mt-6">
+          {/* Vertragsdetails */}
           <Accordion title="Vertragsdetails">
             <div className="space-y-2 text-[13px]">
               <div className="flex justify-between">
                 <span className="text-white/50">Vertrag</span>
-                <span className="text-white/70">{activeBundle.name}</span>
+                <span className="text-white/70">{selectedBundle.name}</span>
               </div>
               <div className="flex justify-between">
                 <span className="text-white/50">Mindestvertragslaufzeit</span>
-                <span className="text-white/70">{selectedTerm.termValue} Monate</span>
+                <span className="text-white/70">
+                  {selectedTerm.termValue} Monate
+                </span>
               </div>
               <div className="flex justify-between">
                 <span className="text-white/50">Verlaengerung</span>
                 <span className="text-white/70">
                   {selectedTerm.extensionFixedTerm}{" "}
-                  {selectedTerm.extensionFixedTermUnit === "MONTH" ? "Monat" : "Monate"}
+                  {selectedTerm.extensionFixedTermUnit === "MONTH"
+                    ? "Monat"
+                    : "Monate"}
                 </span>
               </div>
               <div className="flex justify-between">
                 <span className="text-white/50">Kuendigungsfrist</span>
                 <span className="text-white/70">
                   {selectedTerm.cancellationPeriod}{" "}
-                  {selectedTerm.cancellationPeriodUnit === "MONTH" ? "Monat" : "Monate"} zum Ende der Laufzeit
+                  {selectedTerm.cancellationPeriodUnit === "MONTH"
+                    ? "Monat"
+                    : "Monate"}{" "}
+                  zum Ende der Laufzeit
                 </span>
               </div>
               <div className="flex justify-between">
                 <span className="text-white/50">Zahlungsweise</span>
-                <span className="text-white/70">Monatlich per SEPA-Lastschrift</span>
+                <span className="text-white/70">
+                  Monatlich per SEPA-Lastschrift
+                </span>
               </div>
             </div>
           </Accordion>
 
-          <Accordion title="Kostenuebersicht" icon={<Info className="h-3 w-3" />}>
+          {/* Kostenuebersicht */}
+          <Accordion
+            title="Kostenuebersicht"
+            icon={<Info className="h-3 w-3" />}
+          >
             <div className="space-y-2 text-[13px]">
               <div className="flex justify-between">
                 <span className="text-white/50">Mitgliedsbeitrag</span>
-                <span className="text-white/70">{formatPrice(selectedTerm.price)} € mtl.</span>
+                <span className="text-white/70">
+                  {formatPrice(selectedTerm.price)} € mtl.
+                </span>
               </div>
               {starterFee && (
                 <div className="flex justify-between">
                   <span className="text-white/50">{starterFee.name}</span>
-                  <span className="text-white/70">einmalig {formatPrice(starterFee.price)} €</span>
+                  <span className="text-white/70">
+                    einmalig {formatPrice(starterFee.price)} €
+                  </span>
                 </div>
               )}
-              {selectedTerm.optionalModules.map((mod) => (
-                <label key={mod.id} className="flex cursor-pointer items-center justify-between">
-                  <span className="flex items-center gap-2 text-white/50">
-                    <input
-                      type="checkbox"
-                      checked={selectedModuleIds.includes(mod.id)}
-                      onChange={() => onToggleModule(mod.id)}
-                      className="h-3.5 w-3.5 accent-cs-accent"
-                    />
-                    {mod.name}
-                  </span>
-                  <span className="text-white/70">{formatPrice(mod.price)} € / Jahr</span>
-                </label>
-              ))}
+              {selectedTerm.optionalModules.length > 0 &&
+                selectedTerm.optionalModules.map((mod) => (
+                  <label
+                    key={mod.id}
+                    className="flex cursor-pointer items-center justify-between"
+                  >
+                    <span className="flex items-center gap-2 text-white/50">
+                      <input
+                        type="checkbox"
+                        checked={selectedModuleIds.includes(mod.id)}
+                        onChange={() => onToggleModule(mod.id)}
+                        className="h-3.5 w-3.5 accent-cs-accent"
+                      />
+                      {mod.name}
+                    </span>
+                    <span className="text-white/70">
+                      {formatPrice(mod.price)} € / Jahr
+                    </span>
+                  </label>
+                ))}
               <div className="border-t border-white/[0.06] pt-2">
                 <div className="flex justify-between">
-                  <span className="text-white/50">Gesamtpreis Mindestlaufzeit</span>
+                  <span className="text-white/50">
+                    Gesamtpreis Mindestvertragslaufzeit
+                  </span>
                   <span className="font-bold text-cs-white">
-                    {formatPrice(selectedTerm.contractVolumeInformation.totalContractVolume)} €
+                    {formatPrice(
+                      selectedTerm.contractVolumeInformation
+                        .totalContractVolume
+                    )}{" "}
+                    €
                   </span>
                 </div>
               </div>
-              <p className="text-[10px] text-white/25">Alle Preise inkl. 19% MwSt.</p>
+              <p className="text-[10px] text-white/25">
+                Alle Preise inkl. 19% MwSt.
+              </p>
             </div>
           </Accordion>
 
-          <Accordion title="Nach Verlaengerung">
+          {/* Ueberblick nach Verlaengerung */}
+          <Accordion title="Ueberblick nach Verlaengerung">
             <div className="space-y-2 text-[13px]">
               <div className="flex justify-between">
                 <span className="text-white/50">Monatsbeitrag</span>
-                <span className="text-white/70">{formatPrice(selectedTerm.price)} € mtl.</span>
+                <span className="text-white/70">
+                  {formatPrice(selectedTerm.price)} € mtl.
+                </span>
               </div>
               <div className="flex justify-between">
                 <span className="text-white/50">Verlaengerung</span>
                 <span className="text-white/70">
                   Automatisch um {selectedTerm.extensionFixedTerm}{" "}
-                  {selectedTerm.extensionFixedTermUnit === "MONTH" ? "Monat" : "Monate"}
+                  {selectedTerm.extensionFixedTermUnit === "MONTH"
+                    ? "Monat"
+                    : "Monate"}
                 </span>
               </div>
               <div className="flex justify-between">
                 <span className="text-white/50">Kuendigungsfrist</span>
                 <span className="text-white/70">
                   {selectedTerm.cancellationPeriod}{" "}
-                  {selectedTerm.cancellationPeriodUnit === "MONTH" ? "Monat" : "Monate"}
+                  {selectedTerm.cancellationPeriodUnit === "MONTH"
+                    ? "Monat"
+                    : "Monate"}
                 </span>
               </div>
             </div>
           </Accordion>
 
-          {/* Monatsbeitrag gross */}
-          <div className="mt-6 border-t border-white/[0.08] pt-5">
+          {/* Dein Monatsbeitrag — gross */}
+          <div className="mt-6 border-t border-white/[0.08] pt-6">
             <p className="text-[11px] font-medium uppercase tracking-[0.15em] text-white/40">
               Dein Monatsbeitrag
             </p>
@@ -369,7 +368,7 @@ export function StepPlanSelection({
         </div>
       )}
 
-      {/* Next */}
+      {/* Next button */}
       <div className="mt-8 flex justify-end">
         <button
           onClick={onNext}
