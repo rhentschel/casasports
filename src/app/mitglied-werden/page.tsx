@@ -20,9 +20,9 @@ export default function MitgliedWerdenPage() {
               src="/images/casasports-fitnessstudio-oer-erkenschwick.webp"
               alt="Casa Sports Fitnessstudio Oer-Erkenschwick"
               fill
-              className="img-cinema object-cover"
+              className="img-cinema object-cover object-[30%_center]"
               priority
-              sizes="50vw"
+              sizes="30vw"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-cs-black/70 via-transparent to-cs-black/30" />
 
