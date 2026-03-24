@@ -53,6 +53,11 @@ export function StepReview({
   const [error, setError] = useState("");
 
   const starterFee = term.flatFees.find((f) => f.isStarterPackage);
+  const servicePauschalen = term.optionalModules;
+  const spYearlyCost = servicePauschalen.reduce((sum, m) => sum + m.price, 0);
+  const spYears = Math.ceil(term.termValue / 12);
+  const totalWithSp =
+    term.contractVolumeInformation.totalContractVolume + spYearlyCost * spYears;
   const canSubmit =
     sepaAccepted && agbAccepted && widerrufAccepted && !isSubmitting;
 
@@ -183,6 +188,16 @@ export function StepReview({
                 </span>
               </div>
             )}
+            {servicePauschalen.map((mod) => (
+              <div key={mod.id} className="flex justify-between text-[13px]">
+                <span className="text-white/60">
+                  {mod.name} (jaehrlich)
+                </span>
+                <span className="font-medium text-cs-white">
+                  {formatPrice(mod.price)} € / Jahr
+                </span>
+              </div>
+            ))}
             <div className="flex justify-between text-[13px]">
               <span className="text-white/60">Kuendigungsfrist</span>
               <span className="font-medium text-cs-white">
@@ -212,10 +227,7 @@ export function StepReview({
                   Gesamtpreis Mindestvertragslaufzeit
                 </span>
                 <span className="text-base font-black text-cs-white">
-                  {formatPrice(
-                    term.contractVolumeInformation.totalContractVolume
-                  )}{" "}
-                  €
+                  {formatPrice(totalWithSp)} €
                 </span>
               </div>
               <p className="mt-1.5 text-[11px] text-white/30">
