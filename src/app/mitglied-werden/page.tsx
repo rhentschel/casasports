@@ -17,10 +17,10 @@ export default function MitgliedWerdenPage() {
           {/* Left: Image */}
           <div className="relative hidden overflow-hidden md:block">
             <Image
-              src="/images/casasports-fitnessstudio-oer-erkenschwick.webp"
-              alt="Casa Sports Fitnessstudio Oer-Erkenschwick"
+              src="/images/mann-9-16.webp"
+              alt="Training bei Casa Sports"
               fill
-              className="img-cinema object-cover object-[70%_center]"
+              className="img-cinema object-cover object-center"
               priority
               sizes="30vw"
             />
