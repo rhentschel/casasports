@@ -69,7 +69,7 @@ export function StepPlanSelection({
 
   return (
     <div>
-      <p className="text-xs font-medium uppercase tracking-[0.2em] text-cs-gold">
+      <p className="text-xs font-medium uppercase tracking-[0.2em] text-cs-accent">
         Tarif waehlen
       </p>
       <h2 className="mt-3 text-2xl font-black uppercase leading-[0.9] tracking-[-0.03em] text-cs-white">
@@ -146,17 +146,17 @@ function BundleCard({
       className={cn(
         "relative flex flex-col border p-5 transition-all duration-500",
         isAllIn
-          ? "border-cs-gold/30 bg-cs-gold/[0.02]"
+          ? "border-cs-accent/30 bg-cs-accent/[0.02]"
           : "border-white/[0.08]",
-        hasSelected && isAllIn && "border-cs-gold/50",
+        hasSelected && isAllIn && "border-cs-accent/50",
         hasSelected && !isAllIn && "border-white/[0.15]"
       )}
     >
       {/* Badge */}
       {isAllIn && (
-        <div className="absolute -top-2.5 left-5 flex items-center gap-1 bg-cs-gold px-2.5 py-0.5">
-          <Star className="h-2.5 w-2.5 fill-cs-black text-cs-black" />
-          <span className="text-[8px] font-bold uppercase tracking-[0.2em] text-cs-black">
+        <div className="absolute -top-2.5 left-5 flex items-center gap-1 bg-cs-accent px-2.5 py-0.5">
+          <Star className="h-2.5 w-2.5 fill-white text-white" />
+          <span className="text-[8px] font-bold uppercase tracking-[0.2em] text-white">
             Beliebteste Wahl
           </span>
         </div>
@@ -167,7 +167,7 @@ function BundleCard({
         {bundle.name}
       </h3>
       <div className="mt-2 flex items-baseline gap-1">
-        <span className={cn("text-3xl font-black tracking-[-0.04em]", isAllIn ? "text-cs-gold" : "text-cs-white")}>
+        <span className={cn("text-3xl font-black tracking-[-0.04em]", isAllIn ? "text-cs-accent" : "text-cs-white")}>
           ab {formatPrice(cheapest.price)}€
         </span>
         <span className="text-[11px] text-white/30">/ Monat</span>
@@ -177,7 +177,7 @@ function BundleCard({
       <ul className="mt-4 grid min-h-[72px] grid-cols-2 content-start gap-x-2 gap-y-1.5">
         {features.map((f) => (
           <li key={f.text} className="flex items-center gap-1.5">
-            <span className={cn("shrink-0", isAllIn ? "text-cs-gold/40" : "text-white/25")}>
+            <span className={cn("shrink-0", isAllIn ? "text-cs-accent/40" : "text-white/25")}>
               {f.icon}
             </span>
             <span className="text-[11px] text-white/50">{f.text}</span>
@@ -186,7 +186,7 @@ function BundleCard({
       </ul>
 
       {/* Divider */}
-      <div className={cn("my-4 h-px", isAllIn ? "bg-cs-gold/15" : "bg-white/[0.06]")} />
+      <div className={cn("my-4 h-px", isAllIn ? "bg-cs-accent/15" : "bg-white/[0.06]")} />
 
       {/* Term selection */}
       <div className="space-y-2">
@@ -225,7 +225,7 @@ function BundleCard({
                     {term.termValue} Monate
                   </span>
                   {isLonger && (
-                    <span className="ml-1.5 text-[9px] font-bold uppercase tracking-wider text-cs-gold">
+                    <span className="ml-1.5 text-[9px] font-bold uppercase tracking-wider text-cs-accent">
                       Bester Preis
                     </span>
                   )}
