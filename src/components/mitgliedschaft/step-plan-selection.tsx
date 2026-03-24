@@ -297,23 +297,12 @@ export function StepPlanSelection({
               )}
               {selectedTerm.optionalModules.length > 0 &&
                 selectedTerm.optionalModules.map((mod) => (
-                  <label
-                    key={mod.id}
-                    className="flex cursor-pointer items-center justify-between"
-                  >
-                    <span className="flex items-center gap-2 text-white/50">
-                      <input
-                        type="checkbox"
-                        checked={selectedModuleIds.includes(mod.id)}
-                        onChange={() => onToggleModule(mod.id)}
-                        className="h-3.5 w-3.5 accent-cs-accent"
-                      />
-                      {mod.name}
-                    </span>
+                  <div key={mod.id} className="flex justify-between">
+                    <span className="text-white/50">{mod.name}</span>
                     <span className="text-white/70">
                       {formatPrice(mod.price)} € / Jahr
                     </span>
-                  </label>
+                  </div>
                 ))}
               <div className="border-t border-white/[0.06] pt-2">
                 <div className="flex justify-between">

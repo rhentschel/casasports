@@ -90,7 +90,8 @@ export function MembershipWizard() {
 
   function handleSelectTerm(term: RateBundleTerm) {
     setSelectedTerm(term);
-    setSelectedModuleIds([]);
+    // Auto-select all optional modules (Servicepauschale ist Pflicht)
+    setSelectedModuleIds(term.optionalModules.map((m) => m.id));
   }
 
   function handleToggleModule(moduleId: number) {
