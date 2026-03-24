@@ -125,7 +125,7 @@ export function StepReview({
             <div className="mt-3 border-t border-white/[0.06] pt-3">
               <div className="flex justify-between">
                 <span className="text-sm font-medium text-white/60">
-                  Gesamtvolumen
+                  Gesamtpreis Mindestvertragslaufzeit
                 </span>
                 <span className="text-sm font-bold text-cs-gold">
                   {formatPrice(
