@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { fetchRateBundles } from "@/lib/magicline-api";
 
-export const revalidate = 3600;
+export const revalidate = 0;
 
 export async function GET() {
   try {
