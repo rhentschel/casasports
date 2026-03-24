@@ -72,7 +72,7 @@ export function StepReview({
 
   return (
     <div>
-      <div className="mx-auto max-w-2xl text-center">
+      <div className="text-center">
         <p className="text-xs font-medium uppercase tracking-[0.2em] text-cs-accent">
           Schritt 4
         </p>
@@ -84,7 +84,7 @@ export function StepReview({
         </p>
       </div>
 
-      <div className="mx-auto mt-12 max-w-2xl space-y-6">
+      <div className="mt-6 space-y-4">
         {/* Plan summary */}
         <div className="border border-white/[0.08] p-6">
           <div className="flex items-center justify-between">
@@ -242,7 +242,7 @@ export function StepReview({
       </div>
 
       {/* Navigation */}
-      <div className="mx-auto mt-12 flex max-w-2xl items-center justify-between">
+      <div className="mt-8 flex items-center justify-between">
         <button
           onClick={onBack}
           disabled={isSubmitting}
