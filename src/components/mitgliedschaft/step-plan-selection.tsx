@@ -136,15 +136,24 @@ export function StepPlanSelection({
         Finde deinen Plan.
       </h2>
 
-      {/* Tarif-Karten — alle Terms aller Bundles als einzelne Karten */}
+      {/* Tarif-Karten — gruppiert nach Bundle */}
       <div className="mt-8 space-y-3">
-        {sorted.map((bundle) => {
+        {sorted.map((bundle, bundleIdx) => {
           const isAllIn = bundle.name.toLowerCase().includes("all in");
           const sortedTerms = [...bundle.terms].sort(
             (a, b) => b.termValue - a.termValue
           );
 
-          return sortedTerms.map((term, i) => {
+          return (
+            <div key={bundle.id}>
+              {/* Bundle-Header als visueller Trenner */}
+              {bundleIdx > 0 && <div className="my-5 h-px bg-white/[0.06]" />}
+              <p className="mb-2 text-[11px] font-bold uppercase tracking-[0.2em] text-white/30">
+                {isAllIn ? "All In" : "Standard"}
+              </p>
+
+              <div className="space-y-3">
+              {sortedTerms.map((term, i) => {
             const isSelected = selectedTermId === term.id;
             const isLonger = i === 0;
 
@@ -215,7 +224,10 @@ export function StepPlanSelection({
                 </div>
               </div>
             );
-          });
+          })}
+              </div>
+            </div>
+          );
         })}
       </div>
 
