@@ -5,12 +5,14 @@ import {
   Star,
   ArrowRight,
   Check,
+  ChevronDown,
   Dumbbell,
   Flame,
   Users,
   Clock,
   Sun,
   Waves,
+  Info,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import type { RateBundle, RateBundleTerm } from "@/data/magicline";
@@ -28,7 +30,10 @@ function formatPrice(price: number): string {
   return price.toFixed(2).replace(".", ",");
 }
 
-const bundleFeatures: Record<string, { icon: React.ReactNode; text: string }[]> = {
+const bundleFeatures: Record<
+  string,
+  { icon: React.ReactNode; text: string }[]
+> = {
   "all in": [
     { icon: <Dumbbell className="h-3 w-3" />, text: "Fitnessbereich" },
     { icon: <Users className="h-3 w-3" />, text: "Alle Kurse" },
@@ -50,6 +55,47 @@ function getFeaturesForBundle(name: string) {
   return bundleFeatures["basis"];
 }
 
+function Accordion({
+  title,
+  icon,
+  children,
+  defaultOpen = false,
+}: {
+  title: string;
+  icon?: React.ReactNode;
+  children: React.ReactNode;
+  defaultOpen?: boolean;
+}) {
+  const [open, setOpen] = useState(defaultOpen);
+  return (
+    <div className="border-b border-white/[0.06]">
+      <button
+        onClick={() => setOpen((prev) => !prev)}
+        className="flex w-full items-center justify-between py-3 text-left"
+      >
+        <span className="flex items-center gap-2 text-[13px] font-medium text-white/60">
+          {icon}
+          {title}
+        </span>
+        <ChevronDown
+          className={cn(
+            "h-4 w-4 text-white/30 transition-transform duration-300",
+            open && "rotate-180"
+          )}
+        />
+      </button>
+      <div
+        className={cn(
+          "overflow-hidden transition-all duration-300",
+          open ? "max-h-[500px] pb-4" : "max-h-0"
+        )}
+      >
+        {children}
+      </div>
+    </div>
+  );
+}
+
 export function StepPlanSelection({
   bundles,
   selectedTermId,
@@ -67,6 +113,20 @@ export function StepPlanSelection({
     return aIsAllIn - bIsAllIn;
   });
 
+  // Find currently selected term + bundle
+  let selectedTerm: RateBundleTerm | null = null;
+  let selectedBundle: RateBundle | null = null;
+  for (const b of sorted) {
+    const found = b.terms.find((t) => t.id === selectedTermId);
+    if (found) {
+      selectedTerm = found;
+      selectedBundle = b;
+      break;
+    }
+  }
+
+  const starterFee = selectedTerm?.flatFees.find((f) => f.isStarterPackage);
+
   return (
     <div>
       <p className="text-xs font-medium uppercase tracking-[0.2em] text-cs-accent">
@@ -76,28 +136,237 @@ export function StepPlanSelection({
         Finde deinen Plan.
       </h2>
 
-      {/* Side-by-side bundles */}
-      <div className="mt-8 grid gap-4 sm:grid-cols-2">
+      {/* Tarif-Karten — alle Terms aller Bundles als einzelne Karten */}
+      <div className="mt-8 space-y-3">
         {sorted.map((bundle) => {
           const isAllIn = bundle.name.toLowerCase().includes("all in");
-          const features = getFeaturesForBundle(bundle.name);
-          const hasSelected = bundle.terms.some((t) => t.id === selectedTermId);
-
-          return (
-            <BundleCard
-              key={bundle.id}
-              bundle={bundle}
-              isAllIn={isAllIn}
-              features={features}
-              hasSelected={hasSelected}
-              selectedTermId={selectedTermId}
-              selectedModuleIds={selectedModuleIds}
-              onSelectTerm={onSelectTerm}
-              onToggleModule={onToggleModule}
-            />
+          const sortedTerms = [...bundle.terms].sort(
+            (a, b) => b.termValue - a.termValue
           );
+
+          return sortedTerms.map((term, i) => {
+            const isSelected = selectedTermId === term.id;
+            const isLonger = i === 0;
+
+            return (
+              <div
+                key={term.id}
+                className={cn(
+                  "relative cursor-pointer border p-5 transition-all duration-300",
+                  isSelected
+                    ? "border-cs-accent bg-cs-accent/[0.04]"
+                    : "border-white/[0.06] hover:border-white/[0.12]"
+                )}
+                onClick={() => onSelectTerm(term)}
+              >
+                {/* Badge */}
+                {isAllIn && isLonger && (
+                  <div className="absolute -top-2.5 left-5 flex items-center gap-1 bg-cs-accent px-2.5 py-0.5">
+                    <Star className="h-2.5 w-2.5 fill-white text-white" />
+                    <span className="text-[8px] font-bold uppercase tracking-[0.2em] text-white">
+                      Beliebteste Wahl
+                    </span>
+                  </div>
+                )}
+
+                <div className="flex items-center justify-between">
+                  <div>
+                    <h3 className="text-base font-black uppercase tracking-[-0.01em] text-cs-white">
+                      {term.termValue} Monate{" "}
+                      {isAllIn ? "All In" : "Standard"}
+                    </h3>
+                    <p className="mt-0.5 text-2xl font-black tracking-[-0.03em] text-cs-white">
+                      {formatPrice(term.price)} €{" "}
+                      <span className="text-sm font-medium text-white/40">
+                        mtl.
+                      </span>
+                    </p>
+                    <p className="mt-1 text-[11px] text-white/30">
+                      {term.termValue} Monate Mindestvertragslaufzeit
+                    </p>
+                  </div>
+
+                  {/* Radio */}
+                  <div
+                    className={cn(
+                      "flex h-6 w-6 shrink-0 items-center justify-center rounded-full border-2 transition-all",
+                      isSelected
+                        ? "border-cs-accent bg-cs-accent"
+                        : "border-white/20"
+                    )}
+                  >
+                    {isSelected && (
+                      <Check className="h-3.5 w-3.5 text-white" />
+                    )}
+                  </div>
+                </div>
+
+                {/* Features inline */}
+                <div className="mt-3 flex flex-wrap gap-x-3 gap-y-1">
+                  {getFeaturesForBundle(bundle.name).map((f) => (
+                    <span
+                      key={f.text}
+                      className="flex items-center gap-1 text-[10px] text-white/35"
+                    >
+                      {f.icon}
+                      {f.text}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            );
+          });
         })}
       </div>
+
+      {/* Accordions — nur wenn ein Tarif gewaehlt ist */}
+      {selectedTerm && selectedBundle && (
+        <div className="mt-6">
+          {/* Vertragsdetails */}
+          <Accordion title="Vertragsdetails">
+            <div className="space-y-2 text-[13px]">
+              <div className="flex justify-between">
+                <span className="text-white/50">Vertrag</span>
+                <span className="text-white/70">{selectedBundle.name}</span>
+              </div>
+              <div className="flex justify-between">
+                <span className="text-white/50">Mindestvertragslaufzeit</span>
+                <span className="text-white/70">
+                  {selectedTerm.termValue} Monate
+                </span>
+              </div>
+              <div className="flex justify-between">
+                <span className="text-white/50">Verlaengerung</span>
+                <span className="text-white/70">
+                  {selectedTerm.extensionFixedTerm}{" "}
+                  {selectedTerm.extensionFixedTermUnit === "MONTH"
+                    ? "Monat"
+                    : "Monate"}
+                </span>
+              </div>
+              <div className="flex justify-between">
+                <span className="text-white/50">Kuendigungsfrist</span>
+                <span className="text-white/70">
+                  {selectedTerm.cancellationPeriod}{" "}
+                  {selectedTerm.cancellationPeriodUnit === "MONTH"
+                    ? "Monat"
+                    : "Monate"}{" "}
+                  zum Ende der Laufzeit
+                </span>
+              </div>
+              <div className="flex justify-between">
+                <span className="text-white/50">Zahlungsweise</span>
+                <span className="text-white/70">
+                  Monatlich per SEPA-Lastschrift
+                </span>
+              </div>
+            </div>
+          </Accordion>
+
+          {/* Kostenuebersicht */}
+          <Accordion
+            title="Kostenuebersicht"
+            icon={<Info className="h-3 w-3" />}
+          >
+            <div className="space-y-2 text-[13px]">
+              <div className="flex justify-between">
+                <span className="text-white/50">Mitgliedsbeitrag</span>
+                <span className="text-white/70">
+                  {formatPrice(selectedTerm.price)} € mtl.
+                </span>
+              </div>
+              {starterFee && (
+                <div className="flex justify-between">
+                  <span className="text-white/50">{starterFee.name}</span>
+                  <span className="text-white/70">
+                    einmalig {formatPrice(starterFee.price)} €
+                  </span>
+                </div>
+              )}
+              {selectedTerm.optionalModules.length > 0 &&
+                selectedTerm.optionalModules.map((mod) => (
+                  <label
+                    key={mod.id}
+                    className="flex cursor-pointer items-center justify-between"
+                  >
+                    <span className="flex items-center gap-2 text-white/50">
+                      <input
+                        type="checkbox"
+                        checked={selectedModuleIds.includes(mod.id)}
+                        onChange={() => onToggleModule(mod.id)}
+                        className="h-3.5 w-3.5 accent-cs-accent"
+                      />
+                      {mod.name}
+                    </span>
+                    <span className="text-white/70">
+                      {formatPrice(mod.price)} € / Jahr
+                    </span>
+                  </label>
+                ))}
+              <div className="border-t border-white/[0.06] pt-2">
+                <div className="flex justify-between">
+                  <span className="text-white/50">
+                    Gesamtpreis Mindestvertragslaufzeit
+                  </span>
+                  <span className="font-bold text-cs-white">
+                    {formatPrice(
+                      selectedTerm.contractVolumeInformation
+                        .totalContractVolume
+                    )}{" "}
+                    €
+                  </span>
+                </div>
+              </div>
+              <p className="text-[10px] text-white/25">
+                Alle Preise inkl. 19% MwSt.
+              </p>
+            </div>
+          </Accordion>
+
+          {/* Ueberblick nach Verlaengerung */}
+          <Accordion title="Ueberblick nach Verlaengerung">
+            <div className="space-y-2 text-[13px]">
+              <div className="flex justify-between">
+                <span className="text-white/50">Monatsbeitrag</span>
+                <span className="text-white/70">
+                  {formatPrice(selectedTerm.price)} € mtl.
+                </span>
+              </div>
+              <div className="flex justify-between">
+                <span className="text-white/50">Verlaengerung</span>
+                <span className="text-white/70">
+                  Automatisch um {selectedTerm.extensionFixedTerm}{" "}
+                  {selectedTerm.extensionFixedTermUnit === "MONTH"
+                    ? "Monat"
+                    : "Monate"}
+                </span>
+              </div>
+              <div className="flex justify-between">
+                <span className="text-white/50">Kuendigungsfrist</span>
+                <span className="text-white/70">
+                  {selectedTerm.cancellationPeriod}{" "}
+                  {selectedTerm.cancellationPeriodUnit === "MONTH"
+                    ? "Monat"
+                    : "Monate"}
+                </span>
+              </div>
+            </div>
+          </Accordion>
+
+          {/* Dein Monatsbeitrag — gross */}
+          <div className="mt-6 border-t border-white/[0.08] pt-6">
+            <p className="text-[11px] font-medium uppercase tracking-[0.15em] text-white/40">
+              Dein Monatsbeitrag
+            </p>
+            <p className="mt-1 text-3xl font-black tracking-[-0.03em] text-cs-white">
+              {formatPrice(selectedTerm.price)} €
+            </p>
+            <p className="mt-1 text-[11px] text-white/30">
+              Monatlich per SEPA-Lastschrift. Inkl. 19% MwSt.
+            </p>
+          </div>
+        </div>
+      )}
 
       {/* Next button */}
       <div className="mt-8 flex justify-end">
@@ -113,161 +382,6 @@ export function StepPlanSelection({
           <ArrowRight className="h-4 w-4 transition-transform duration-[400ms] group-hover:translate-x-1" />
         </button>
       </div>
-    </div>
-  );
-}
-
-function BundleCard({
-  bundle,
-  isAllIn,
-  features,
-  hasSelected,
-  selectedTermId,
-  selectedModuleIds,
-  onSelectTerm,
-  onToggleModule,
-}: {
-  bundle: RateBundle;
-  isAllIn: boolean;
-  features: { icon: React.ReactNode; text: string }[];
-  hasSelected: boolean;
-  selectedTermId: number | null;
-  selectedModuleIds: number[];
-  onSelectTerm: (term: RateBundleTerm) => void;
-  onToggleModule: (moduleId: number) => void;
-}) {
-  const sortedTerms = [...bundle.terms].sort(
-    (a, b) => b.termValue - a.termValue
-  );
-  const cheapest = sortedTerms[0];
-
-  return (
-    <div
-      className={cn(
-        "relative flex flex-col border p-5 transition-all duration-500",
-        isAllIn
-          ? "border-cs-accent/30 bg-cs-accent/[0.02]"
-          : "border-white/[0.08]",
-        hasSelected && isAllIn && "border-cs-accent/50",
-        hasSelected && !isAllIn && "border-white/[0.15]"
-      )}
-    >
-      {/* Badge */}
-      {isAllIn && (
-        <div className="absolute -top-2.5 left-5 flex items-center gap-1 bg-cs-accent px-2.5 py-0.5">
-          <Star className="h-2.5 w-2.5 fill-white text-white" />
-          <span className="text-[8px] font-bold uppercase tracking-[0.2em] text-white">
-            Beliebteste Wahl
-          </span>
-        </div>
-      )}
-
-      {/* Name + starting price */}
-      <h3 className="text-sm font-black uppercase tracking-[-0.01em] text-cs-white">
-        {bundle.name}
-      </h3>
-      <div className="mt-2 flex items-baseline gap-1">
-        <span className={cn("text-3xl font-black tracking-[-0.04em]", isAllIn ? "text-cs-accent" : "text-cs-white")}>
-          ab {formatPrice(cheapest.price)}€
-        </span>
-        <span className="text-[11px] text-white/30">/ Monat</span>
-      </div>
-
-      {/* Features — fixed height so term buttons align across cards */}
-      <ul className="mt-4 grid min-h-[72px] grid-cols-2 content-start gap-x-2 gap-y-1.5">
-        {features.map((f) => (
-          <li key={f.text} className="flex items-center gap-1.5">
-            <span className={cn("shrink-0", isAllIn ? "text-cs-accent/40" : "text-white/25")}>
-              {f.icon}
-            </span>
-            <span className="text-[11px] text-white/50">{f.text}</span>
-          </li>
-        ))}
-      </ul>
-
-      {/* Divider */}
-      <div className={cn("my-4 h-px", isAllIn ? "bg-cs-accent/15" : "bg-white/[0.06]")} />
-
-      {/* Term selection */}
-      <div className="space-y-2">
-        {sortedTerms.map((term, i) => {
-          const isSelected = selectedTermId === term.id;
-          const isLonger = i === 0;
-          const starterFee = term.flatFees.find((f) => f.isStarterPackage);
-
-          return (
-            <div
-              key={term.id}
-              className={cn(
-                "flex cursor-pointer items-center justify-between border px-3 py-2.5 transition-all duration-300",
-                isSelected
-                  ? "border-cs-accent bg-cs-accent/[0.06]"
-                  : "border-white/[0.05] hover:border-white/[0.1]"
-              )}
-              onClick={() => onSelectTerm(term)}
-            >
-              <div className="flex items-center gap-2.5">
-                {/* Radio circle */}
-                <div
-                  className={cn(
-                    "flex h-4 w-4 shrink-0 items-center justify-center rounded-full border transition-all",
-                    isSelected
-                      ? "border-cs-accent bg-cs-accent"
-                      : "border-white/20"
-                  )}
-                >
-                  {isSelected && (
-                    <div className="h-1.5 w-1.5 rounded-full bg-white" />
-                  )}
-                </div>
-                <div>
-                  <span className="text-[12px] font-medium text-white/70">
-                    {term.termValue} Monate
-                  </span>
-                  {isLonger && (
-                    <span className="ml-1.5 text-[9px] font-bold uppercase tracking-wider text-cs-accent">
-                      Bester Preis
-                    </span>
-                  )}
-                </div>
-              </div>
-              <div className="text-right">
-                <span className={cn("text-[15px] font-black", isSelected ? "text-cs-white" : "text-white/60")}>
-                  {formatPrice(term.price)}€
-                </span>
-                <span className="text-[10px] text-white/30"> /Mon.</span>
-                {starterFee && (
-                  <p className="text-[9px] text-white/25">
-                    + {formatPrice(starterFee.price)}€ einmalig
-                  </p>
-                )}
-              </div>
-            </div>
-          );
-        })}
-      </div>
-
-      {/* Optional modules */}
-      {sortedTerms[0]?.optionalModules.length > 0 && (
-        <div className="mt-3">
-          {sortedTerms[0].optionalModules.map((mod) => (
-            <label
-              key={mod.id}
-              className="flex cursor-pointer items-center gap-2"
-            >
-              <input
-                type="checkbox"
-                checked={selectedModuleIds.includes(mod.id)}
-                onChange={() => onToggleModule(mod.id)}
-                className="h-3.5 w-3.5 accent-cs-accent"
-              />
-              <span className="text-[11px] text-white/40">
-                {mod.name} {formatPrice(mod.price)}€/Jahr
-              </span>
-            </label>
-          ))}
-        </div>
-      )}
     </div>
   );
 }
