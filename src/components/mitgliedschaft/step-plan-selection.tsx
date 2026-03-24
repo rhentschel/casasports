@@ -148,7 +148,7 @@ export function StepPlanSelection({
             <div key={bundle.id}>
               {/* Bundle-Header als visueller Trenner */}
               {bundleIdx > 0 && <div className="my-5 h-px bg-white/[0.06]" />}
-              <p className="mb-2 text-[11px] font-bold uppercase tracking-[0.2em] text-white/30">
+              <p className={cn("mb-2 text-[11px] font-bold uppercase tracking-[0.2em] text-white/30", isAllIn && "mb-5")}>
                 {isAllIn ? "All In" : "Standard"}
               </p>
 
