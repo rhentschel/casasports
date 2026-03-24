@@ -25,143 +25,145 @@ export function StepPlanSelection({
   onToggleModule,
   onNext,
 }: StepPlanSelectionProps) {
-  const bundle = bundles[0];
-  if (!bundle) return null;
-
-  const sortedTerms = [...bundle.terms].sort(
-    (a, b) => b.termValue - a.termValue
-  );
+  if (bundles.length === 0) return null;
 
   return (
     <div>
-      <div className="mx-auto max-w-2xl text-center">
+      <div className="text-center">
         <p className="text-xs font-medium uppercase tracking-[0.2em] text-cs-accent">
           Schritt 1
         </p>
-        <h2 className="mt-4 text-3xl font-black uppercase leading-[0.9] tracking-[-0.03em] text-cs-white md:text-4xl">
+        <h2 className="mt-4 text-2xl font-black uppercase leading-[0.9] tracking-[-0.03em] text-cs-white md:text-3xl">
           Waehle deinen Tarif
         </h2>
-        <p className="mt-6 text-[15px] leading-relaxed text-white/60">
-          {bundle.name} - mit allem, was du fuer dein Training brauchst.
-        </p>
       </div>
 
-      <div className="mx-auto mt-16 grid max-w-4xl gap-8 md:grid-cols-2">
-        {sortedTerms.map((term, i) => {
-          const isRecommended = i === 0;
-          const isSelected = selectedTermId === term.id;
-          const starterFee = term.flatFees.find((f) => f.isStarterPackage);
+      <div className="mt-10 space-y-10">
+        {bundles.map((bundle) => {
+          const sortedTerms = [...bundle.terms].sort(
+            (a, b) => b.termValue - a.termValue
+          );
 
           return (
-            <div
-              key={term.id}
-              className={cn(
-                "relative flex cursor-pointer flex-col border p-8 transition-all duration-500 md:p-10",
-                isRecommended
-                  ? "border-cs-gold/40 bg-cs-gold/[0.03] shadow-[0_0_60px_rgba(200,169,110,0.08)]"
-                  : "border-white/[0.08] hover:border-white/[0.15]",
-                isSelected && !isRecommended && "border-cs-accent/40 bg-cs-accent/[0.03]",
-                isSelected && isRecommended && "border-cs-gold/60"
-              )}
-              onClick={() => onSelectTerm(term)}
-            >
-              {/* Badge */}
-              {isRecommended && (
-                <div className="absolute -top-3 left-8 flex items-center gap-1.5 bg-cs-gold px-4 py-1.5">
-                  <Star className="h-3 w-3 fill-cs-black text-cs-black" />
-                  <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-cs-black">
-                    Empfohlen
-                  </span>
-                </div>
-              )}
-
-              {/* Selected check */}
-              {isSelected && (
-                <div className="absolute right-6 top-6 flex h-6 w-6 items-center justify-center bg-cs-accent">
-                  <Check className="h-3.5 w-3.5 text-white" />
-                </div>
-              )}
-
-              {/* Duration */}
-              <h3 className="text-lg font-black uppercase tracking-[-0.01em] text-cs-white">
-                {term.termValue} Monate
+            <div key={bundle.id}>
+              {/* Bundle name */}
+              <h3 className="mb-4 text-[11px] font-medium uppercase tracking-[0.2em] text-cs-gold">
+                {bundle.name}
               </h3>
 
-              {/* Price */}
-              <div className="mt-4 flex items-baseline gap-1">
-                <span
-                  className={cn(
-                    "text-5xl font-black tracking-[-0.04em]",
-                    isRecommended ? "text-cs-gold" : "text-cs-white"
-                  )}
-                >
-                  {formatPrice(term.price)}€
-                </span>
-                <span className="text-[14px] text-white/50">/ Monat</span>
-              </div>
+              <div className="grid gap-4 lg:grid-cols-2">
+                {sortedTerms.map((term, i) => {
+                  const isLonger = i === 0;
+                  const isSelected = selectedTermId === term.id;
+                  const starterFee = term.flatFees.find(
+                    (f) => f.isStarterPackage
+                  );
 
-              {/* Starter fee */}
-              {starterFee && (
-                <p className="mt-2 text-[13px] text-white/40">
-                  + {formatPrice(starterFee.price)}€ {starterFee.name} (einmalig)
-                </p>
-              )}
-
-              {/* Divider */}
-              <div
-                className={cn(
-                  "mt-6 h-px",
-                  isRecommended ? "bg-cs-gold/20" : "bg-white/[0.06]"
-                )}
-              />
-
-              {/* Contract details */}
-              <ul className="mt-6 space-y-2.5 pb-4">
-                <li className="flex items-center gap-3 text-[14px] text-white/50">
-                  <Check className="h-3.5 w-3.5 shrink-0 text-white/30" />
-                  Kuendigungsfrist: {term.cancellationPeriod}{" "}
-                  {term.cancellationPeriodUnit === "MONTH" ? "Monat" : "Monate"}
-                </li>
-                <li className="flex items-center gap-3 text-[14px] text-white/50">
-                  <Check className="h-3.5 w-3.5 shrink-0 text-white/30" />
-                  Gesamtvolumen: {formatPrice(term.contractVolumeInformation.totalContractVolume)}€
-                </li>
-                <li className="flex items-center gap-3 text-[14px] text-white/50">
-                  <Check className="h-3.5 w-3.5 shrink-0 text-white/30" />
-                  SEPA-Lastschrift
-                </li>
-              </ul>
-
-              {/* Optional modules */}
-              {term.optionalModules.length > 0 && (
-                <div className="border-t border-white/[0.06] pt-4">
-                  {term.optionalModules.map((mod) => (
-                    <label
-                      key={mod.id}
-                      className="flex cursor-pointer items-center gap-3"
-                      onClick={(e) => e.stopPropagation()}
+                  return (
+                    <div
+                      key={term.id}
+                      className={cn(
+                        "relative flex cursor-pointer flex-col border p-6 transition-all duration-500",
+                        isSelected
+                          ? "border-cs-accent/50 bg-cs-accent/[0.04]"
+                          : "border-white/[0.08] hover:border-white/[0.15]"
+                      )}
+                      onClick={() => onSelectTerm(term)}
                     >
-                      <input
-                        type="checkbox"
-                        checked={selectedModuleIds.includes(mod.id)}
-                        onChange={() => onToggleModule(mod.id)}
-                        className="h-4 w-4 accent-cs-accent"
-                      />
-                      <span className="text-[13px] text-white/50">
-                        {mod.name}: {formatPrice(mod.price)}€ /{" "}
-                        {mod.paymentFrequencyValue === 12 ? "Jahr" : `${mod.paymentFrequencyValue} Mon.`}
-                      </span>
-                    </label>
-                  ))}
-                </div>
-              )}
+                      {/* Best value badge for longer term */}
+                      {isLonger && (
+                        <div className="absolute -top-2.5 left-6 flex items-center gap-1 bg-cs-gold px-3 py-1">
+                          <Star className="h-2.5 w-2.5 fill-cs-black text-cs-black" />
+                          <span className="text-[9px] font-bold uppercase tracking-[0.15em] text-cs-black">
+                            Bester Preis
+                          </span>
+                        </div>
+                      )}
+
+                      {/* Selected check */}
+                      {isSelected && (
+                        <div className="absolute right-4 top-4 flex h-5 w-5 items-center justify-center bg-cs-accent">
+                          <Check className="h-3 w-3 text-white" />
+                        </div>
+                      )}
+
+                      {/* Duration + Price */}
+                      <div className="flex items-baseline justify-between">
+                        <h4 className="text-sm font-bold uppercase text-cs-white">
+                          {term.termValue} Monate
+                        </h4>
+                        <div className="flex items-baseline gap-1">
+                          <span
+                            className={cn(
+                              "text-3xl font-black tracking-[-0.04em]",
+                              isSelected ? "text-cs-accent" : isLonger ? "text-cs-gold" : "text-cs-white"
+                            )}
+                          >
+                            {formatPrice(term.price)}€
+                          </span>
+                          <span className="text-[12px] text-white/40">
+                            / Monat
+                          </span>
+                        </div>
+                      </div>
+
+                      {/* Details */}
+                      <div className="mt-3 flex flex-wrap gap-x-4 gap-y-1 text-[12px] text-white/40">
+                        {starterFee && (
+                          <span>
+                            + {formatPrice(starterFee.price)}€{" "}
+                            {starterFee.name}
+                          </span>
+                        )}
+                        <span>
+                          Gesamt:{" "}
+                          {formatPrice(
+                            term.contractVolumeInformation
+                              .totalContractVolume
+                          )}
+                          €
+                        </span>
+                        <span>
+                          Kuendigung: {term.cancellationPeriod} Mon.
+                        </span>
+                      </div>
+
+                      {/* Optional modules */}
+                      {term.optionalModules.length > 0 && (
+                        <div className="mt-3 border-t border-white/[0.06] pt-3">
+                          {term.optionalModules.map((mod) => (
+                            <label
+                              key={mod.id}
+                              className="flex cursor-pointer items-center gap-2"
+                              onClick={(e) => e.stopPropagation()}
+                            >
+                              <input
+                                type="checkbox"
+                                checked={selectedModuleIds.includes(mod.id)}
+                                onChange={() => onToggleModule(mod.id)}
+                                className="h-3.5 w-3.5 accent-cs-accent"
+                              />
+                              <span className="text-[12px] text-white/50">
+                                {mod.name}: {formatPrice(mod.price)}€ /{" "}
+                                {mod.paymentFrequencyValue === 12
+                                  ? "Jahr"
+                                  : `${mod.paymentFrequencyValue} Mon.`}
+                              </span>
+                            </label>
+                          ))}
+                        </div>
+                      )}
+                    </div>
+                  );
+                })}
+              </div>
             </div>
           );
         })}
       </div>
 
       {/* Next button */}
-      <div className="mx-auto mt-12 flex max-w-4xl justify-end">
+      <div className="mt-10 flex justify-end">
         <button
           onClick={onNext}
           disabled={!selectedTermId}

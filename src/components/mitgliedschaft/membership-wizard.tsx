@@ -98,6 +98,15 @@ export function MembershipWizard() {
     );
   }
 
+  function findBundleNameForTerm(termId: number): string {
+    for (const bundle of bundles) {
+      if (bundle.terms.some((t) => t.id === termId)) {
+        return bundle.name;
+      }
+    }
+    return "";
+  }
+
   // Pre-fill account holder when entering payment step
   function goToPayment() {
     if (!paymentData.accountHolder) {
@@ -159,19 +168,17 @@ export function MembershipWizard() {
   // Loading state
   if (loading) {
     return (
-      <section className="bg-cs-black py-32 md:py-40">
-        <div className="flex justify-center">
-          <Loader2 className="h-8 w-8 animate-spin text-white/30" />
-        </div>
-      </section>
+      <div className="flex min-h-[60vh] items-center justify-center px-6 py-12">
+        <Loader2 className="h-8 w-8 animate-spin text-white/30" />
+      </div>
     );
   }
 
   // Error state
   if (error) {
     return (
-      <section className="bg-cs-black py-32 md:py-40">
-        <div className="mx-auto max-w-md text-center">
+      <div className="flex min-h-[60vh] items-center justify-center px-6 py-12">
+        <div className="text-center">
           <p className="text-sm text-cs-accent">{error}</p>
           <button
             onClick={() => window.location.reload()}
@@ -180,13 +187,13 @@ export function MembershipWizard() {
             Erneut versuchen
           </button>
         </div>
-      </section>
+      </div>
     );
   }
 
   return (
-    <section className="bg-cs-black py-20 md:py-32">
-      <div className="mx-auto max-w-7xl px-8 md:px-16">
+    <section className="bg-cs-black px-6 py-12 md:px-10 md:py-16 lg:px-16">
+      <div>
         {step !== "success" && <WizardProgress currentStep={step} />}
 
         <AnimatePresence mode="wait">
@@ -230,7 +237,7 @@ export function MembershipWizard() {
             <motion.div key="review" {...stepTransition}>
               <StepReview
                 term={selectedTerm}
-                bundleName={bundles[0]?.name ?? ""}
+                bundleName={findBundleNameForTerm(selectedTerm.id)}
                 personalData={personalData}
                 paymentData={paymentData}
                 sepaText={sepaText}
