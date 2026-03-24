@@ -62,13 +62,13 @@ export function WellnessPricing() {
     <section id="tarife" className="bg-cs-black py-32 md:py-40">
       <div ref={ref} className="reveal mx-auto max-w-7xl px-8 md:px-16">
         <div className="mx-auto max-w-2xl text-center">
-          <p className="text-xs font-medium uppercase tracking-[0.2em] text-cs-gold">
+          <p className="text-xs font-medium uppercase tracking-[0.2em] text-cs-accent">
             Tarife
           </p>
           <h2 className="mt-4 text-3xl font-black uppercase leading-[0.9] tracking-[-0.03em] text-cs-white md:text-4xl">
             Trainieren und erholen.
             <br />
-            <span className="text-cs-gold">Passt perfekt zusammen.</span>
+            <span className="text-cs-accent">Passt perfekt zusammen.</span>
           </h2>
           <p className="mt-6 text-[15px] leading-relaxed text-white/60">
             Fuer nur 15 € mehr pro Monat bekommst du zum Wellness-Bereich das
@@ -84,15 +84,15 @@ export function WellnessPricing() {
               className={cn(
                 "relative flex flex-col border p-8 transition-all duration-500 md:p-10",
                 plan.highlighted
-                  ? "border-cs-gold/40 bg-cs-gold/[0.03] shadow-[0_0_60px_rgba(200,169,110,0.08)]"
+                  ? "border-cs-accent/40 bg-cs-accent/[0.03] shadow-[0_0_60px_rgba(230,57,70,0.08)]"
                   : "border-white/[0.08] hover:border-white/[0.15]"
               )}
             >
               {/* Badge */}
               {plan.badge && (
-                <div className="absolute -top-3 left-8 flex items-center gap-1.5 bg-cs-gold px-4 py-1.5">
-                  <Star className="h-3 w-3 fill-cs-black text-cs-black" />
-                  <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-cs-black">
+                <div className="absolute -top-3 left-8 flex items-center gap-1.5 bg-cs-accent px-4 py-1.5">
+                  <Star className="h-3 w-3 fill-white text-white" />
+                  <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-white">
                     {plan.badge}
                   </span>
                 </div>
@@ -108,7 +108,7 @@ export function WellnessPricing() {
                 <span
                   className={cn(
                     "text-5xl font-black tracking-[-0.04em]",
-                    plan.highlighted ? "text-cs-gold" : "text-cs-white"
+                    plan.highlighted ? "text-cs-accent" : "text-cs-white"
                   )}
                 >
                   {plan.price}€
@@ -124,7 +124,7 @@ export function WellnessPricing() {
               <div
                 className={cn(
                   "mt-6 h-px",
-                  plan.highlighted ? "bg-cs-gold/20" : "bg-white/[0.06]"
+                  plan.highlighted ? "bg-cs-accent/20" : "bg-white/[0.06]"
                 )}
               />
 
@@ -136,7 +136,7 @@ export function WellnessPricing() {
                       className={cn(
                         "shrink-0",
                         plan.highlighted
-                          ? "text-cs-gold/60"
+                          ? "text-cs-accent/60"
                           : "text-white/50"
                       )}
                     >
@@ -155,7 +155,7 @@ export function WellnessPricing() {
                 className={cn(
                   "group mt-auto flex items-center justify-center gap-3 px-8 py-4 text-[13px] font-medium uppercase tracking-[0.15em] transition-all duration-500",
                   plan.highlighted
-                    ? "border border-cs-gold bg-cs-gold text-cs-black hover:bg-transparent hover:text-cs-gold"
+                    ? "border border-cs-accent bg-cs-accent text-white hover:bg-transparent hover:text-white"
                     : "border border-white/20 text-white/60 hover:border-white/40 hover:text-white"
                 )}
               >
@@ -166,7 +166,7 @@ export function WellnessPricing() {
               {/* Social proof note — fixed height so cards stay aligned */}
               <div className="flex h-8 items-center justify-center">
                 {plan.note && (
-                  <p className="text-center text-[11px] text-cs-gold/40">
+                  <p className="text-center text-[11px] text-cs-accent/40">
                     {plan.note}
                   </p>
                 )}

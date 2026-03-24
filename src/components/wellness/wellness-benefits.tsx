@@ -71,13 +71,13 @@ export function WellnessBenefits() {
     <section className="bg-cs-black py-32 md:py-40">
       <div ref={ref} className="reveal mx-auto max-w-7xl px-8 md:px-16">
         <div className="mx-auto max-w-2xl text-center">
-          <p className="text-xs font-medium uppercase tracking-[0.2em] text-cs-gold">
+          <p className="text-xs font-medium uppercase tracking-[0.2em] text-cs-accent">
             Warum Wellness zum Training gehoert
           </p>
           <h2 className="mt-4 text-3xl font-black uppercase leading-[0.9] tracking-[-0.03em] text-cs-white md:text-4xl">
             Training allein ist nur
             <br />
-            <span className="text-cs-gold">die halbe Wahrheit.</span>
+            <span className="text-cs-accent">die halbe Wahrheit.</span>
           </h2>
           <p className="mt-6 text-[15px] leading-relaxed text-white/60">
             Wer trainiert, baut Reize. Wer regeneriert, baut Ergebnisse. Sauna
@@ -97,14 +97,14 @@ export function WellnessBenefits() {
                 index < 4 && "lg:border-b"
               )}
             >
-              <div className="pointer-events-none absolute inset-0 h-full w-full bg-gradient-to-t from-cs-gold/[0.04] to-transparent opacity-0 transition duration-300 group-hover/feature:opacity-100" />
+              <div className="pointer-events-none absolute inset-0 h-full w-full bg-gradient-to-t from-cs-accent/[0.04] to-transparent opacity-0 transition duration-300 group-hover/feature:opacity-100" />
 
-              <div className="relative z-10 mb-4 px-8 text-cs-gray-500 transition-colors duration-300 group-hover/feature:text-cs-gold">
+              <div className="relative z-10 mb-4 px-8 text-cs-gray-500 transition-colors duration-300 group-hover/feature:text-cs-accent">
                 {benefit.icon}
               </div>
 
               <div className="relative z-10 mb-2 px-8 text-[15px] font-bold">
-                <div className="absolute inset-y-0 left-0 h-6 w-[2px] origin-center rounded-r-full bg-cs-gray-700 transition-all duration-300 group-hover/feature:h-8 group-hover/feature:bg-cs-gold" />
+                <div className="absolute inset-y-0 left-0 h-6 w-[2px] origin-center rounded-r-full bg-cs-gray-700 transition-all duration-300 group-hover/feature:h-8 group-hover/feature:bg-cs-accent" />
                 <span className="inline-block text-cs-white transition-transform duration-300 group-hover/feature:translate-x-2">
                   {benefit.title}
                 </span>

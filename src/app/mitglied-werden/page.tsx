@@ -17,7 +17,7 @@ export default function MitgliedWerdenPage() {
           {/* Left: Image */}
           <div className="relative hidden overflow-hidden md:block">
             <Image
-              src="/images/frau-9-16.webp"
+              src="/images/personaltraining-motivation.webp"
               alt="Training bei Casa Sports"
               fill
               className="img-cinema object-cover object-center"

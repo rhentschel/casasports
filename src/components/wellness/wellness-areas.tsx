@@ -43,12 +43,12 @@ export function WellnessAreas() {
   return (
     <section className="bg-cs-black py-32 md:py-40">
       <div ref={ref} className="reveal mx-auto max-w-7xl px-8 md:px-16">
-        <p className="text-xs font-medium uppercase tracking-[0.2em] text-cs-gold">
+        <p className="text-xs font-medium uppercase tracking-[0.2em] text-cs-accent">
           Unsere Bereiche
         </p>
         <h2 className="mt-4 max-w-lg text-3xl font-black uppercase leading-[0.9] tracking-[-0.03em] text-cs-white md:text-5xl">
           Drei Welten.{" "}
-          <span className="text-cs-gold">Ein Erlebnis.</span>
+          <span className="text-cs-accent">Ein Erlebnis.</span>
         </h2>
         <p className="mt-6 max-w-md text-[15px] leading-relaxed text-white/60">
           Jeder Bereich ist so gestaltet, dass du nach dem Training genau das
@@ -64,7 +64,7 @@ export function WellnessAreas() {
               className={cn(
                 "flex items-center gap-2 px-6 py-4 text-[12px] font-medium uppercase tracking-[0.15em] transition-all duration-300",
                 active === index
-                  ? "border-b-2 border-cs-gold text-cs-gold"
+                  ? "border-b-2 border-cs-accent text-cs-accent"
                   : "text-white/50 hover:text-white/60"
               )}
             >
@@ -84,11 +84,11 @@ export function WellnessAreas() {
               className="img-cinema object-cover transition-all duration-700"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-cs-black/60 via-transparent to-transparent" />
-            <div className="absolute bottom-0 left-0 right-0 h-[2px] bg-cs-gold" />
+            <div className="absolute bottom-0 left-0 right-0 h-[2px] bg-cs-accent" />
           </div>
 
           <div>
-            <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-cs-gold/60">
+            <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-cs-accent/60">
               {areas[active].subtitle}
             </p>
             <h3 className="mt-3 text-2xl font-black uppercase leading-[0.9] tracking-[-0.03em] text-cs-white md:text-3xl">
@@ -104,7 +104,7 @@ export function WellnessAreas() {
                   key={highlight}
                   className="flex items-center gap-3 text-[14px] text-white/50"
                 >
-                  <div className="h-1.5 w-1.5 shrink-0 bg-cs-gold" />
+                  <div className="h-1.5 w-1.5 shrink-0 bg-cs-accent" />
                   {highlight}
                 </li>
               ))}
@@ -121,7 +121,7 @@ export function WellnessAreas() {
               className={cn(
                 "group relative aspect-[16/9] cursor-pointer overflow-hidden transition-all duration-500",
                 active === index
-                  ? "ring-2 ring-cs-gold ring-offset-2 ring-offset-cs-black"
+                  ? "ring-2 ring-cs-accent ring-offset-2 ring-offset-cs-black"
                   : "opacity-50 hover:opacity-80"
               )}
             >

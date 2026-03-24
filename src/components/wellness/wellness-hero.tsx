@@ -33,7 +33,7 @@ export function WellnessHero() {
       <div className="relative z-10 mx-auto w-full max-w-7xl px-8 md:px-16">
         <p
           className={cn(
-            "mb-6 text-xs font-medium uppercase tracking-[0.2em] text-cs-gold transition-all duration-1000",
+            "mb-6 text-xs font-medium uppercase tracking-[0.2em] text-cs-accent transition-all duration-1000",
             loaded ? "opacity-100" : "opacity-0"
           )}
         >
@@ -57,7 +57,7 @@ export function WellnessHero() {
               loaded ? "translate-y-0" : "translate-y-[120%]"
             )}
           >
-            <span className="text-cs-gold">Regeneriere</span>{" "}
+            <span className="text-cs-accent">Regeneriere</span>{" "}
             <span className="text-cs-white">besser.</span>
           </h1>
         </div>
@@ -81,7 +81,7 @@ export function WellnessHero() {
         >
           <Link
             href="#tarife"
-            className="group relative overflow-hidden border border-cs-gold bg-cs-gold px-8 py-4 text-[13px] font-medium uppercase tracking-[0.15em] text-cs-black transition-all duration-500 hover:bg-transparent hover:text-cs-gold"
+            className="group relative overflow-hidden border border-cs-accent bg-cs-accent px-8 py-4 text-[13px] font-medium uppercase tracking-[0.15em] text-white transition-all duration-500 hover:bg-transparent hover:text-cs-accent"
           >
             Tarife ansehen
           </Link>

@@ -14,13 +14,13 @@ export function WellnessCTA() {
       <div className="absolute inset-0 bg-gradient-to-t from-cs-black/40 to-transparent" />
 
       <div className="relative z-10 text-center">
-        <p className="text-xs font-medium uppercase tracking-[0.2em] text-cs-gold">
+        <p className="text-xs font-medium uppercase tracking-[0.2em] text-cs-accent">
           Bereit fuer mehr?
         </p>
         <h2 className="mt-6 text-4xl font-black uppercase leading-[0.9] tracking-[-0.04em] text-white md:text-6xl lg:text-7xl">
           Dein Koerper verdient
           <br />
-          mehr als nur <span className="text-cs-gold">Training.</span>
+          mehr als nur <span className="text-cs-accent">Training.</span>
         </h2>
         <p className="mx-auto mt-8 max-w-sm text-[15px] leading-relaxed text-white/60">
           Teste alles: Fitness, Kurse, Sauna und Wellness. Dein erstes Training
@@ -28,7 +28,7 @@ export function WellnessCTA() {
         </p>
         <Link
           href="/probetraining"
-          className="group mt-10 inline-flex items-center gap-3 border border-cs-gold bg-cs-gold px-8 py-4 text-[13px] font-medium uppercase tracking-[0.15em] text-cs-black transition-all duration-500 hover:bg-transparent hover:text-cs-gold"
+          className="group mt-10 inline-flex items-center gap-3 border border-cs-accent bg-cs-accent px-8 py-4 text-[13px] font-medium uppercase tracking-[0.15em] text-white transition-all duration-500 hover:bg-transparent hover:text-cs-accent"
         >
           Gratis Probetraining
         </Link>
