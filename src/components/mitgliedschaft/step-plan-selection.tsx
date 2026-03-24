@@ -173,8 +173,8 @@ function BundleCard({
         <span className="text-[11px] text-white/30">/ Monat</span>
       </div>
 
-      {/* Features */}
-      <ul className="mt-4 grid grid-cols-2 gap-x-2 gap-y-1.5">
+      {/* Features — fixed height so term buttons align across cards */}
+      <ul className="mt-4 grid min-h-[72px] grid-cols-2 content-start gap-x-2 gap-y-1.5">
         {features.map((f) => (
           <li key={f.text} className="flex items-center gap-1.5">
             <span className={cn("shrink-0", isAllIn ? "text-cs-gold/40" : "text-white/25")}>
