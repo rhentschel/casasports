@@ -10,11 +10,12 @@ export const metadata: Metadata = {
 
 export default function MitgliedWerdenPage() {
   return (
-    <div className="bg-cs-black pt-20 md:pt-28">
-      <div className="mx-auto grid max-w-[1440px] md:grid-cols-2">
-        {/* Left: Sticky Image */}
-        <div className="relative hidden md:block">
-          <div className="sticky top-0 h-screen">
+    <div className="bg-cs-black pt-24 md:pt-32">
+      {/* Outer frame with padding */}
+      <div className="mx-auto max-w-[1440px] px-4 pb-4 md:px-6 md:pb-6">
+        <div className="grid min-h-[calc(100svh-8rem)] md:grid-cols-2">
+          {/* Left: Image */}
+          <div className="relative hidden overflow-hidden md:block">
             <Image
               src="/images/casasports-fitnessstudio-oer-erkenschwick.webp"
               alt="Casa Sports Fitnessstudio Oer-Erkenschwick"
@@ -23,51 +24,49 @@ export default function MitgliedWerdenPage() {
               priority
               sizes="50vw"
             />
-            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-cs-black/80" />
-            <div className="absolute inset-0 bg-gradient-to-t from-cs-black/60 via-transparent to-cs-black/40" />
+            <div className="absolute inset-0 bg-gradient-to-t from-cs-black/70 via-transparent to-cs-black/30" />
 
-            {/* Text overlay on image */}
-            <div className="absolute bottom-16 left-10 right-10 lg:left-16 lg:right-16">
+            {/* Text overlay */}
+            <div className="absolute bottom-12 left-10 right-10 lg:left-14 lg:right-14">
               <p className="text-xs font-medium uppercase tracking-[0.2em] text-cs-accent">
                 Mitglied werden
               </p>
-              <h1 className="mt-4 text-4xl font-black uppercase leading-[0.9] tracking-[-0.04em] text-cs-white lg:text-5xl xl:text-6xl">
+              <h1 className="mt-4 text-4xl font-black uppercase leading-[0.9] tracking-[-0.04em] text-cs-white lg:text-5xl">
                 Dein Weg
                 <br />
                 <span className="text-cs-gold">zu uns.</span>
               </h1>
-              <p className="mt-6 max-w-sm text-[15px] leading-relaxed text-white/60">
+              <p className="mt-5 max-w-sm text-[14px] leading-relaxed text-white/50">
                 Waehle deinen Tarif und werde Teil der Casa Sports Familie.
-                In wenigen Minuten erledigt.
               </p>
             </div>
           </div>
-        </div>
 
-        {/* Mobile: Hero (visible only on small screens) */}
-        <div className="relative aspect-[16/9] md:hidden">
-          <Image
-            src="/images/casasports-fitnessstudio-oer-erkenschwick.webp"
-            alt="Casa Sports Fitnessstudio Oer-Erkenschwick"
-            fill
-            className="img-cinema object-cover"
-            priority
-            sizes="100vw"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-cs-black via-cs-black/40 to-transparent" />
-          <div className="absolute bottom-6 left-6 right-6">
-            <p className="text-xs font-medium uppercase tracking-[0.2em] text-cs-accent">
-              Mitglied werden
-            </p>
-            <h1 className="mt-3 text-3xl font-black uppercase leading-[0.9] tracking-[-0.04em] text-cs-white">
-              Dein Weg <span className="text-cs-gold">zu uns.</span>
-            </h1>
+          {/* Mobile hero */}
+          <div className="relative aspect-[16/9] overflow-hidden md:hidden">
+            <Image
+              src="/images/casasports-fitnessstudio-oer-erkenschwick.webp"
+              alt="Casa Sports Fitnessstudio Oer-Erkenschwick"
+              fill
+              className="img-cinema object-cover"
+              priority
+              sizes="100vw"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#141414] via-cs-black/40 to-transparent" />
+            <div className="absolute bottom-5 left-5 right-5">
+              <p className="text-[10px] font-medium uppercase tracking-[0.2em] text-cs-accent">
+                Mitglied werden
+              </p>
+              <h1 className="mt-2 text-2xl font-black uppercase leading-[0.9] tracking-[-0.04em] text-cs-white">
+                Dein Weg <span className="text-cs-gold">zu uns.</span>
+              </h1>
+            </div>
           </div>
-        </div>
 
-        {/* Right: Wizard */}
-        <div className="min-h-screen">
-          <MembershipWizard />
+          {/* Right: Wizard panel */}
+          <div className="bg-[#141414] md:overflow-y-auto">
+            <MembershipWizard />
+          </div>
         </div>
       </div>
     </div>
