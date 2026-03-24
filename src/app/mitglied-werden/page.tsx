@@ -13,7 +13,7 @@ export default function MitgliedWerdenPage() {
     <div className="bg-cs-black pt-24 md:pt-32">
       {/* Outer frame with padding */}
       <div className="mx-auto max-w-[1440px] px-4 pb-4 md:px-6 md:pb-6">
-        <div className="grid h-[calc(100svh-8rem)] md:grid-cols-2">
+        <div className="grid h-[calc(100svh-8rem)] md:grid-cols-[30fr_70fr]">
           {/* Left: Image */}
           <div className="relative hidden overflow-hidden md:block">
             <Image
