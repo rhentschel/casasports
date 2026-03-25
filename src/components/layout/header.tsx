@@ -21,6 +21,18 @@ export function Header() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Lock body scroll when mobile menu is open
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [isOpen]);
+
   const quickTabs = [
     {
       title: "Probetraining",
@@ -90,11 +102,12 @@ export function Header() {
         {/* Fullscreen mobile menu */}
         <div
           className={cn(
-            "fixed inset-0 z-40 bg-cs-black transition-opacity duration-500 lg:hidden",
+            "fixed inset-0 z-40 bg-cs-black/[0.98] transition-opacity duration-500 lg:hidden",
             isOpen
               ? "pointer-events-auto opacity-100"
               : "pointer-events-none opacity-0"
           )}
+          style={{ position: "fixed", top: 0, left: 0, right: 0, bottom: 0 }}
         >
           <div className="flex h-full flex-col justify-center px-12">
             <nav className="flex flex-col gap-3">
