@@ -47,11 +47,18 @@ const bundleFeatures: Record<
     { icon: <Users className="h-3 w-3" />, text: "Alle Kurse" },
     { icon: <Clock className="h-3 w-3" />, text: "7 Tage Zugang" },
   ],
+  sauna: [
+    { icon: <Flame className="h-3 w-3" />, text: "KLAFS Sauna" },
+    { icon: <Sun className="h-3 w-3" />, text: "Infrarotkabine" },
+    { icon: <Waves className="h-3 w-3" />, text: "Wellness" },
+    { icon: <Clock className="h-3 w-3" />, text: "7 Tage Zugang" },
+  ],
 };
 
 function getFeaturesForBundle(name: string) {
   const lower = name.toLowerCase();
   if (lower.includes("all in")) return bundleFeatures["all in"];
+  if (lower.includes("sauna")) return bundleFeatures["sauna"];
   return bundleFeatures["basis"];
 }
 
@@ -149,7 +156,11 @@ export function StepPlanSelection({
               {/* Bundle-Header als visueller Trenner */}
               {bundleIdx > 0 && <div className="my-5 h-px bg-white/[0.06]" />}
               <p className={cn("mb-2 text-[11px] font-bold uppercase tracking-[0.2em] text-white/30", isAllIn && "mb-5")}>
-                {isAllIn ? "All In" : "Standard"}
+                {bundle.name.toLowerCase().includes("all in")
+                  ? "All In"
+                  : bundle.name.toLowerCase().includes("sauna")
+                    ? "Sauna Tarif"
+                    : "Standard"}
               </p>
 
               <div className="space-y-3">
