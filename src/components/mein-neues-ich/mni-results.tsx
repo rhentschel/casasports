@@ -48,19 +48,30 @@ export function MniResults() {
           </h2>
         </div>
 
-        <div className="mx-auto mt-16 grid max-w-5xl gap-6 md:grid-cols-2 lg:grid-cols-4">
-          {results.map((item) => (
+        {/* Benefits Grid — exact pattern from benefits-grid.tsx */}
+        <div className="mx-auto mt-16 grid max-w-5xl grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
+          {results.map((item, index) => (
             <div
               key={item.title}
-              className="group border border-white/[0.08] p-8 transition-all duration-500 hover:border-white/[0.15]"
+              className={cn(
+                "group/feature relative px-8 py-10",
+                index < 3 && "lg:border-r lg:border-white/[0.06]",
+                "md:border-b md:border-white/[0.06] lg:border-b-0"
+              )}
             >
-              <div className="text-white/50 transition-colors duration-300 group-hover:text-cs-accent">
+              {/* Hover gradient */}
+              <div className="pointer-events-none absolute inset-0 h-full w-full bg-gradient-to-t from-cs-accent/[0.06] to-transparent opacity-0 transition duration-300 group-hover/feature:opacity-100" />
+
+              {/* Icon with accent bar */}
+              <div className="relative z-10 mb-4 px-8 text-cs-gray-500 transition-colors duration-300 group-hover/feature:text-cs-accent">
                 {item.icon}
+                <div className="absolute inset-y-0 left-0 h-6 w-[2px] origin-center rounded-r-full bg-cs-gray-700 transition-all duration-300 group-hover/feature:h-8 group-hover/feature:bg-cs-accent" />
               </div>
-              <h3 className="mt-5 text-base font-black uppercase tracking-[-0.01em] text-cs-white">
+
+              <h3 className="relative z-10 px-8 text-base font-black uppercase tracking-[-0.01em] text-cs-white transition-transform duration-300 group-hover/feature:translate-x-2">
                 {item.title}
               </h3>
-              <p className="mt-3 text-[14px] leading-relaxed text-white/50">
+              <p className="relative z-10 mt-3 px-8 text-[14px] leading-relaxed text-white/50">
                 {item.description}
               </p>
             </div>

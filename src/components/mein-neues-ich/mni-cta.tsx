@@ -8,7 +8,10 @@ export function MniCta() {
   const ref = useReveal();
 
   return (
-    <section id="anmeldung" className="relative py-32 md:py-40">
+    <section
+      id="anmeldung"
+      className="relative flex min-h-[70vh] items-center justify-center overflow-hidden"
+    >
       <div className="absolute inset-0">
         <Image
           src="/images/casasports-bodytransformation.webp"
@@ -17,8 +20,8 @@ export function MniCta() {
           className="img-cinema object-cover"
         />
       </div>
-      <div className="absolute inset-0 bg-black/[0.65]" />
-      <div className="absolute inset-0 bg-gradient-to-t from-cs-black via-transparent to-cs-black/30" />
+      <div className="absolute inset-0 bg-black/65" />
+      <div className="absolute inset-0 bg-gradient-to-t from-cs-black/40 to-transparent" />
 
       <div
         ref={ref}
@@ -27,7 +30,7 @@ export function MniCta() {
         <p className="text-xs font-medium uppercase tracking-[0.2em] text-cs-accent">
           Bereit für dein neues Ich?
         </p>
-        <h2 className="mt-4 text-3xl font-black uppercase leading-[1.05] tracking-[-0.03em] text-cs-white md:text-5xl">
+        <h2 className="mt-4 text-4xl font-black uppercase leading-[1.05] tracking-[-0.04em] text-cs-white md:text-6xl lg:text-7xl">
           299 € für 12 Wochen.
           <br />
           <span className="text-cs-accent">Keine Ausreden.</span>

@@ -2,8 +2,8 @@
 
 import { useEffect, useState } from "react";
 import Image from "next/image";
-import { ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { siteConfig } from "@/data/site";
 
 export function MniHero() {
   const [loaded, setLoaded] = useState(false);
@@ -14,7 +14,7 @@ export function MniHero() {
   }, []);
 
   return (
-    <section className="relative flex h-[100svh] min-h-[700px] items-end overflow-hidden bg-cs-black pb-24 md:pb-32">
+    <section className="relative flex h-[85svh] min-h-[600px] items-end overflow-hidden bg-cs-black pb-24 md:pb-32">
       <div className="absolute inset-0 animate-[kenburns_30s_ease-in-out_infinite_alternate]">
         <Image
           src="/images/mein-neues-ich-hero.webp"
@@ -42,7 +42,7 @@ export function MniHero() {
         <div className="overflow-hidden">
           <h1
             className={cn(
-              "text-[clamp(2.8rem,7.5vw,6.5rem)] font-black uppercase leading-[1.05] tracking-[-0.04em] text-cs-white transition-transform duration-[1.4s] ease-[cubic-bezier(0.16,1,0.3,1)]",
+              "text-[clamp(2.4rem,6vw,5.5rem)] font-black uppercase leading-[1.05] tracking-[-0.04em] text-cs-white transition-transform duration-[1.4s] ease-[cubic-bezier(0.16,1,0.3,1)]",
               loaded ? "translate-y-0" : "translate-y-[120%]"
             )}
           >
@@ -52,7 +52,7 @@ export function MniHero() {
         <div className="overflow-hidden">
           <h1
             className={cn(
-              "text-[clamp(2.8rem,7.5vw,6.5rem)] font-black uppercase leading-[1.05] tracking-[-0.04em] transition-transform delay-200 duration-[1.4s] ease-[cubic-bezier(0.16,1,0.3,1)]",
+              "text-[clamp(2.4rem,6vw,5.5rem)] font-black uppercase leading-[1.05] tracking-[-0.04em] transition-transform delay-200 duration-[1.4s] ease-[cubic-bezier(0.16,1,0.3,1)]",
               loaded ? "translate-y-0" : "translate-y-[120%]"
             )}
           >
@@ -62,7 +62,7 @@ export function MniHero() {
 
         <p
           className={cn(
-            "mt-8 max-w-lg text-[15px] leading-relaxed text-white/60 transition-all delay-600 duration-1000",
+            "mt-8 max-w-lg text-[15px] leading-relaxed text-white/60 transition-all delay-[600ms] duration-1000",
             loaded ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0"
           )}
         >
@@ -72,7 +72,7 @@ export function MniHero() {
 
         <div
           className={cn(
-            "mt-10 flex items-center gap-6 transition-all delay-800 duration-1000",
+            "mt-10 flex items-center gap-6 transition-all delay-[800ms] duration-1000",
             loaded ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0"
           )}
         >
@@ -82,12 +82,12 @@ export function MniHero() {
           >
             Jetzt anmelden
           </a>
-          <span className="hidden text-[15px] font-black text-cs-white sm:block">
-            299 €{" "}
-            <span className="text-[13px] font-medium text-white/40">
-              / 12 Wochen
-            </span>
-          </span>
+          <a
+            href={`tel:${siteConfig.phone.replace(/\s/g, "")}`}
+            className="hidden text-[13px] tracking-[0.15em] text-white/50 transition-colors duration-500 hover:text-white sm:block"
+          >
+            {siteConfig.phone}
+          </a>
         </div>
       </div>
     </section>
