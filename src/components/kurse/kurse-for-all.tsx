@@ -35,7 +35,7 @@ export function KurseForAll() {
             <p className="text-xs font-medium uppercase tracking-[0.2em] text-cs-accent">
               Fuer jedes Level
             </p>
-            <h2 className="mt-4 text-3xl font-black uppercase leading-[0.9] tracking-[-0.03em] text-cs-white md:text-4xl">
+            <h2 className="mt-4 text-3xl font-black uppercase leading-[1.05] tracking-[-0.03em] text-cs-white md:text-4xl">
               Du musst nicht fit sein,
               <br />
               um <span className="text-cs-accent">anzufangen.</span>

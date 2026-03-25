@@ -108,7 +108,7 @@ function TeamSlide({
           <p className="text-xs font-medium uppercase tracking-[0.2em] text-cs-accent">
             {member.role}
           </p>
-          <h2 className="mt-3 text-4xl font-black uppercase leading-[0.9] tracking-[-0.03em] text-cs-white md:text-5xl">
+          <h2 className="mt-3 text-4xl font-black uppercase leading-[1.05] tracking-[-0.03em] text-cs-white md:text-5xl">
             {member.name}
           </h2>
           <p className="mt-4 max-w-md text-[15px] leading-[1.7] text-white/60">

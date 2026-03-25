@@ -17,7 +17,7 @@ export function CTA() {
         <p className="text-xs font-medium uppercase tracking-[0.2em] text-cs-accent">
           Starte jetzt
         </p>
-        <h2 className="mt-6 text-4xl font-black uppercase leading-[0.9] tracking-[-0.04em] text-white md:text-6xl lg:text-7xl">
+        <h2 className="mt-6 text-4xl font-black uppercase leading-[1.05] tracking-[-0.04em] text-white md:text-6xl lg:text-7xl">
           Dein erstes Training
           <br />
           geht <span className="text-cs-accent">auf uns.</span>

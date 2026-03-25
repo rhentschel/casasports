@@ -139,7 +139,7 @@ export function StepPlanSelection({
       <p className="text-xs font-medium uppercase tracking-[0.2em] text-cs-accent">
         Tarif wählen
       </p>
-      <h2 className="mt-3 text-2xl font-black uppercase leading-[0.9] tracking-[-0.03em] text-cs-white">
+      <h2 className="mt-3 text-2xl font-black uppercase leading-[1.05] tracking-[-0.03em] text-cs-white">
         Finde deinen Plan.
       </h2>
 

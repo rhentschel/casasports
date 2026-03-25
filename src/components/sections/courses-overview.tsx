@@ -36,7 +36,7 @@ export function CoursesOverview() {
             <p className="text-xs font-medium uppercase tracking-[0.2em] text-cs-accent">
               Kursangebot
             </p>
-            <h2 className="mt-4 text-3xl font-black uppercase leading-[0.9] tracking-[-0.03em] text-cs-white md:text-5xl">
+            <h2 className="mt-4 text-3xl font-black uppercase leading-[1.05] tracking-[-0.03em] text-cs-white md:text-5xl">
               Unsere Kurse.
             </h2>
           </div>

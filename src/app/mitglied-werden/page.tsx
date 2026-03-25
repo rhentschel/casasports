@@ -31,7 +31,7 @@ export default function MitgliedWerdenPage() {
               <p className="text-xs font-medium uppercase tracking-[0.2em] text-cs-accent">
                 Mitglied werden
               </p>
-              <h1 className="mt-4 text-4xl font-black uppercase leading-[0.9] tracking-[-0.04em] text-cs-white lg:text-5xl">
+              <h1 className="mt-4 text-4xl font-black uppercase leading-[1.05] tracking-[-0.04em] text-cs-white lg:text-5xl">
                 Dein Weg
                 <br />
                 <span className="text-cs-gold">zu uns.</span>
@@ -57,7 +57,7 @@ export default function MitgliedWerdenPage() {
               <p className="text-[10px] font-medium uppercase tracking-[0.2em] text-cs-accent">
                 Mitglied werden
               </p>
-              <h1 className="mt-2 text-2xl font-black uppercase leading-[0.9] tracking-[-0.04em] text-cs-white">
+              <h1 className="mt-2 text-2xl font-black uppercase leading-[1.05] tracking-[-0.04em] text-cs-white">
                 Dein Weg <span className="text-cs-gold">zu uns.</span>
               </h1>
             </div>

@@ -49,7 +49,7 @@ export function Hero() {
         <div className="overflow-hidden">
           <h1
             className={cn(
-              "text-[clamp(2.8rem,7.5vw,6.5rem)] font-black uppercase leading-[0.9] tracking-[-0.04em] text-cs-white transition-transform duration-[1.4s] ease-[cubic-bezier(0.16,1,0.3,1)]",
+              "text-[clamp(2.8rem,7.5vw,6.5rem)] font-black uppercase leading-[1.05] tracking-[-0.04em] text-cs-white transition-transform duration-[1.4s] ease-[cubic-bezier(0.16,1,0.3,1)]",
               loaded ? "translate-y-0" : "translate-y-[120%]"
             )}
           >
@@ -59,7 +59,7 @@ export function Hero() {
         <div className="overflow-hidden">
           <h1
             className={cn(
-              "text-[clamp(2.8rem,7.5vw,6.5rem)] font-black uppercase leading-[0.9] tracking-[-0.04em] transition-transform delay-200 duration-[1.4s] ease-[cubic-bezier(0.16,1,0.3,1)]",
+              "text-[clamp(2.8rem,7.5vw,6.5rem)] font-black uppercase leading-[1.05] tracking-[-0.04em] transition-transform delay-200 duration-[1.4s] ease-[cubic-bezier(0.16,1,0.3,1)]",
               loaded ? "translate-y-0" : "translate-y-[120%]"
             )}
           >

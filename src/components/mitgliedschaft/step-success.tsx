@@ -22,7 +22,7 @@ export function StepSuccess() {
         </motion.div>
       </div>
 
-      <h2 className="mt-8 text-3xl font-black uppercase leading-[0.9] tracking-[-0.03em] text-cs-white md:text-4xl">
+      <h2 className="mt-8 text-3xl font-black uppercase leading-[1.05] tracking-[-0.03em] text-cs-white md:text-4xl">
         Willkommen bei
         <br />
         <span className="text-cs-gold">Casa Sports!</span>

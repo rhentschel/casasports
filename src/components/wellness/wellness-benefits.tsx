@@ -74,7 +74,7 @@ export function WellnessBenefits() {
           <p className="text-xs font-medium uppercase tracking-[0.2em] text-cs-accent">
             Warum Wellness zum Training gehoert
           </p>
-          <h2 className="mt-4 text-3xl font-black uppercase leading-[0.9] tracking-[-0.03em] text-cs-white md:text-4xl">
+          <h2 className="mt-4 text-3xl font-black uppercase leading-[1.05] tracking-[-0.03em] text-cs-white md:text-4xl">
             Training allein ist nur
             <br />
             <span className="text-cs-accent">die halbe Wahrheit.</span>

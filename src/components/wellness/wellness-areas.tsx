@@ -52,7 +52,7 @@ export function WellnessAreas() {
             <p className="text-xs font-medium uppercase tracking-[0.2em] text-cs-accent">
               Unsere Bereiche
             </p>
-            <h2 className="mt-4 max-w-lg text-3xl font-black uppercase leading-[0.9] tracking-[-0.03em] text-cs-white md:text-5xl">
+            <h2 className="mt-4 max-w-lg text-3xl font-black uppercase leading-[1.05] tracking-[-0.03em] text-cs-white md:text-5xl">
               Drei Welten.{" "}
               <span className="text-cs-accent">Ein Erlebnis.</span>
             </h2>
@@ -102,7 +102,7 @@ export function WellnessAreas() {
                         {area.subtitle}
                       </span>
                     </div>
-                    <h3 className="mt-2 text-2xl font-black uppercase leading-[0.9] tracking-[-0.02em] text-cs-white md:text-3xl">
+                    <h3 className="mt-2 text-2xl font-black uppercase leading-[1.05] tracking-[-0.02em] text-cs-white md:text-3xl">
                       {area.title}
                     </h3>
                   </div>

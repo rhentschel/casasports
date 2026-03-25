@@ -17,7 +17,7 @@ export function FitnessCTA() {
         <p className="text-xs font-medium uppercase tracking-[0.2em] text-cs-accent">
           Bereit?
         </p>
-        <h2 className="mt-6 text-4xl font-black uppercase leading-[0.9] tracking-[-0.04em] text-white md:text-6xl lg:text-7xl">
+        <h2 className="mt-6 text-4xl font-black uppercase leading-[1.05] tracking-[-0.04em] text-white md:text-6xl lg:text-7xl">
           Komm vorbei.
           <br />
           Trainiere <span className="text-cs-accent">kostenlos.</span>
