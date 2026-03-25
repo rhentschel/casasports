@@ -53,10 +53,7 @@ export function MembershipWizard() {
         if (!bundlesRes.ok) throw new Error("Tarife konnten nicht geladen werden");
 
         const bundlesData = await bundlesRes.json();
-        const filtered = bundlesData.filter(
-          (b: RateBundle) => !b.name.includes("2024")
-        );
-        setBundles(filtered);
+        setBundles(bundlesData);
 
         if (sepaRes.ok) {
           const sepaData = await sepaRes.json();
