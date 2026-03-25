@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { createPortal } from "react-dom";
 import Link from "next/link";
 import Image from "next/image";
 import { Menu, X, Sun, Moon, Dumbbell, Mail } from "lucide-react";
@@ -14,6 +15,11 @@ export function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [isDark, setIsDark] = useState(true);
   const [newsletterOpen, setNewsletterOpen] = useState(false);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
@@ -52,6 +58,56 @@ export function Header() {
     },
   ];
 
+  const mobileMenu = isOpen && mounted
+    ? createPortal(
+        <div
+          className={cn(
+            "fixed inset-0 z-[9999] bg-cs-black transition-opacity duration-500 lg:hidden",
+            isOpen
+              ? "pointer-events-auto opacity-100"
+              : "pointer-events-none opacity-0"
+          )}
+        >
+          {/* Close button */}
+          <button
+            onClick={() => setIsOpen(false)}
+            className="absolute right-6 top-7 z-[10000] text-white"
+            aria-label="Menü schließen"
+          >
+            <X className="h-6 w-6" />
+          </button>
+
+          <div className="flex h-full flex-col justify-center px-12">
+            <nav className="flex flex-col gap-3">
+              {navigation.map((item) => (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  onClick={() => setIsOpen(false)}
+                  className="text-3xl font-black uppercase tracking-tight text-white/50 transition-colors duration-300 hover:text-white md:text-4xl"
+                >
+                  {item.label}
+                </Link>
+              ))}
+            </nav>
+            <div className="mt-12 border-t border-white/[0.06] pt-8">
+              <Link
+                href="/probetraining"
+                onClick={() => setIsOpen(false)}
+                className="inline-block border border-cs-accent bg-cs-accent px-8 py-4 text-[13px] font-medium uppercase tracking-[0.15em] text-white"
+              >
+                Gratis Probetraining
+              </Link>
+              <p className="mt-6 text-[13px] tracking-[0.1em] text-white/50">
+                {siteConfig.phone}
+              </p>
+            </div>
+          </div>
+        </div>,
+        document.body
+      )
+    : null;
+
   return (
     <>
       <header
@@ -89,54 +145,14 @@ export function Header() {
           <button
             onClick={() => setIsOpen(!isOpen)}
             className="relative z-50 text-white lg:hidden"
-            aria-label={isOpen ? "Menü schließen" : "Menü öffnen"}
+            aria-label="Menü öffnen"
           >
-            {isOpen ? (
-              <X className="h-6 w-6" />
-            ) : (
-              <Menu className="h-6 w-6" />
-            )}
+            <Menu className="h-6 w-6" />
           </button>
         </div>
-
-        {/* Fullscreen mobile menu */}
-        <div
-          className={cn(
-            "fixed inset-0 z-40 bg-cs-black/[0.98] transition-opacity duration-500 lg:hidden",
-            isOpen
-              ? "pointer-events-auto opacity-100"
-              : "pointer-events-none opacity-0"
-          )}
-          style={{ position: "fixed", top: 0, left: 0, right: 0, bottom: 0 }}
-        >
-          <div className="flex h-full flex-col justify-center px-12">
-            <nav className="flex flex-col gap-3">
-              {navigation.map((item) => (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  onClick={() => setIsOpen(false)}
-                  className="text-3xl font-black uppercase tracking-tight text-white/50 transition-colors duration-300 hover:text-white md:text-4xl"
-                >
-                  {item.label}
-                </Link>
-              ))}
-            </nav>
-            <div className="mt-12 border-t border-white/[0.06] pt-8">
-              <Link
-                href="/probetraining"
-                onClick={() => setIsOpen(false)}
-                className="inline-block border border-cs-accent bg-cs-accent px-8 py-4 text-[13px] font-medium uppercase tracking-[0.15em] text-white"
-              >
-                Gratis Probetraining
-              </Link>
-              <p className="mt-6 text-[13px] tracking-[0.1em] text-white/50">
-                {siteConfig.phone}
-              </p>
-            </div>
-          </div>
-        </div>
       </header>
+
+      {mobileMenu}
 
       <NewsletterModal
         isOpen={newsletterOpen}
