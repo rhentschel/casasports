@@ -29,8 +29,8 @@ export function StepSuccess() {
       </h2>
 
       <p className="mx-auto mt-6 max-w-md text-[15px] leading-relaxed text-white/60">
-        Dein Vertrag wurde erfolgreich abgeschlossen. Du erhaeltst in Kuerze
-        eine Bestaetigung per E-Mail.
+        Dein Vertrag wurde erfolgreich abgeschlossen. Du erhältst in Kürze
+        eine Bestätigung per E-Mail.
       </p>
 
       <p className="mt-4 text-[14px] text-white/40">

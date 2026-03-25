@@ -137,7 +137,7 @@ export function StepPlanSelection({
   return (
     <div>
       <p className="text-xs font-medium uppercase tracking-[0.2em] text-cs-accent">
-        Tarif waehlen
+        Tarif wählen
       </p>
       <h2 className="mt-3 text-2xl font-black uppercase leading-[0.9] tracking-[-0.03em] text-cs-white">
         Finde deinen Plan.
@@ -242,7 +242,7 @@ export function StepPlanSelection({
         })}
       </div>
 
-      {/* Accordions — nur wenn ein Tarif gewaehlt ist */}
+      {/* Accordions — nur wenn ein Tarif gewählt ist */}
       {selectedTerm && selectedBundle && (
         <div className="mt-6">
           {/* Vertragsdetails */}
@@ -259,7 +259,7 @@ export function StepPlanSelection({
                 </span>
               </div>
               <div className="flex justify-between">
-                <span className="text-white/50">Verlaengerung</span>
+                <span className="text-white/50">Verlängerung</span>
                 <span className="text-white/70">
                   {selectedTerm.extensionFixedTerm}{" "}
                   {selectedTerm.extensionFixedTermUnit === "MONTH"
@@ -268,7 +268,7 @@ export function StepPlanSelection({
                 </span>
               </div>
               <div className="flex justify-between">
-                <span className="text-white/50">Kuendigungsfrist</span>
+                <span className="text-white/50">Kündigungsfrist</span>
                 <span className="text-white/70">
                   {selectedTerm.cancellationPeriod}{" "}
                   {selectedTerm.cancellationPeriodUnit === "MONTH"
@@ -286,9 +286,9 @@ export function StepPlanSelection({
             </div>
           </Accordion>
 
-          {/* Kostenuebersicht */}
+          {/* Kostenübersicht */}
           <Accordion
-            title="Kostenuebersicht"
+            title="Kostenübersicht"
             icon={<Info className="h-3 w-3" />}
           >
             <div className="space-y-2 text-[13px]">
@@ -335,8 +335,8 @@ export function StepPlanSelection({
             </div>
           </Accordion>
 
-          {/* Ueberblick nach Verlaengerung */}
-          <Accordion title="Ueberblick nach Verlaengerung">
+          {/* Überblick nach Verlängerung */}
+          <Accordion title="Überblick nach Verlängerung">
             <div className="space-y-2 text-[13px]">
               <div className="flex justify-between">
                 <span className="text-white/50">Monatsbeitrag</span>
@@ -345,7 +345,7 @@ export function StepPlanSelection({
                 </span>
               </div>
               <div className="flex justify-between">
-                <span className="text-white/50">Verlaengerung</span>
+                <span className="text-white/50">Verlängerung</span>
                 <span className="text-white/70">
                   Automatisch um {selectedTerm.extensionFixedTerm}{" "}
                   {selectedTerm.extensionFixedTermUnit === "MONTH"
@@ -354,7 +354,7 @@ export function StepPlanSelection({
                 </span>
               </div>
               <div className="flex justify-between">
-                <span className="text-white/50">Kuendigungsfrist</span>
+                <span className="text-white/50">Kündigungsfrist</span>
                 <span className="text-white/70">
                   {selectedTerm.cancellationPeriod}{" "}
                   {selectedTerm.cancellationPeriodUnit === "MONTH"

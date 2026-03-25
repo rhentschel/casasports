@@ -93,14 +93,14 @@ export function StepReview({
         <div className="border border-white/[0.08] p-5">
           <div className="flex items-center justify-between">
             <h3 className="text-[11px] font-medium uppercase tracking-[0.15em] text-white/40">
-              Persoenliche Daten
+              Persönliche Daten
             </h3>
             <button
               onClick={() => onGoToStep("personal")}
               className="flex items-center gap-1.5 text-[11px] text-cs-accent transition-colors hover:text-cs-accent-hover"
             >
               <Pencil className="h-3 w-3" />
-              Aendern
+              Ändern
             </button>
           </div>
           <div className="mt-3 space-y-1 text-[13px] text-white/60">
@@ -132,7 +132,7 @@ export function StepReview({
               className="flex items-center gap-1.5 text-[11px] text-cs-accent transition-colors hover:text-cs-accent-hover"
             >
               <Pencil className="h-3 w-3" />
-              Aendern
+              Ändern
             </button>
           </div>
           <div className="mt-3 space-y-1 text-[13px] text-white/60">
@@ -146,18 +146,18 @@ export function StepReview({
           </div>
         </div>
 
-        {/* ===== Kostenaufstellung gemaess § 312j BGB ===== */}
+        {/* ===== Kostenaufstellung gemäß § 312j BGB ===== */}
         <div className="border-2 border-white/[0.12] bg-white/[0.02] p-5">
           <div className="flex items-center justify-between">
             <h3 className="text-[11px] font-medium uppercase tracking-[0.15em] text-white/50">
-              Kostenuebersicht
+              Kostenübersicht
             </h3>
             <button
               onClick={() => onGoToStep("plan")}
               className="flex items-center gap-1.5 text-[11px] text-cs-accent transition-colors hover:text-cs-accent-hover"
             >
               <Pencil className="h-3 w-3" />
-              Aendern
+              Ändern
             </button>
           </div>
 
@@ -191,7 +191,7 @@ export function StepReview({
             {servicePauschalen.map((mod) => (
               <div key={mod.id} className="flex justify-between text-[13px]">
                 <span className="text-white/60">
-                  {mod.name} (jaehrlich)
+                  {mod.name} (jährlich)
                 </span>
                 <span className="font-medium text-cs-white">
                   {formatPrice(mod.price)} € / Jahr
@@ -199,7 +199,7 @@ export function StepReview({
               </div>
             ))}
             <div className="flex justify-between text-[13px]">
-              <span className="text-white/60">Kuendigungsfrist</span>
+              <span className="text-white/60">Kündigungsfrist</span>
               <span className="font-medium text-cs-white">
                 {term.cancellationPeriod}{" "}
                 {term.cancellationPeriodUnit === "MONTH" ? "Monat" : "Monate"}{" "}
@@ -207,7 +207,7 @@ export function StepReview({
               </span>
             </div>
             <div className="flex justify-between text-[13px]">
-              <span className="text-white/60">Verlaengerung</span>
+              <span className="text-white/60">Verlängerung</span>
               <span className="font-medium text-cs-white">
                 {term.extensionFixedTerm}{" "}
                 {term.extensionFixedTermUnit === "MONTH" ? "Monat" : "Monate"}
@@ -259,8 +259,8 @@ export function StepReview({
               className="mt-0.5 h-4 w-4 shrink-0 accent-cs-accent"
             />
             <span className="text-[12px] leading-relaxed text-white/50">
-              Ich erteile das SEPA-Lastschriftmandat und ermaechtige Casa
-              Sports, die faelligen Betraege von meinem Konto per Lastschrift
+              Ich erteile das SEPA-Lastschriftmandat und ermächtige Casa
+              Sports, die fälligen Beträge von meinem Konto per Lastschrift
               einzuziehen. *
             </span>
           </label>
@@ -273,7 +273,7 @@ export function StepReview({
               className="mt-0.5 h-4 w-4 shrink-0 accent-cs-accent"
             />
             <span className="text-[12px] leading-relaxed text-white/50">
-              Ich habe die Allgemeinen Geschaeftsbedingungen gelesen und
+              Ich habe die Allgemeinen Geschäftsbedingungen gelesen und
               akzeptiere diese. *
             </span>
           </label>
@@ -288,7 +288,7 @@ export function StepReview({
             <span className="text-[12px] leading-relaxed text-white/50">
               Ich habe die Widerrufsbelehrung zur Kenntnis genommen. Mir ist
               bekannt, dass ich den Vertrag innerhalb von 14 Tagen ohne Angabe
-              von Gruenden widerrufen kann. *
+              von Gründen widerrufen kann. *
             </span>
           </label>
         </div>
@@ -301,7 +301,7 @@ export function StepReview({
         )}
       </div>
 
-      {/* Navigation — Button-Loesung gemaess § 312j BGB */}
+      {/* Navigation — Button-Lösung gemäß § 312j BGB */}
       <div className="mt-8 flex items-center justify-between">
         <button
           onClick={onBack}
@@ -309,7 +309,7 @@ export function StepReview({
           className="group flex items-center gap-3 border border-white/[0.08] px-6 py-4 text-[13px] font-medium uppercase tracking-[0.15em] text-white/60 transition-all duration-500 hover:border-white/20 hover:text-white"
         >
           <ArrowLeft className="h-4 w-4 transition-transform duration-[400ms] group-hover:-translate-x-1" />
-          Zurueck
+          Zurück
         </button>
         <button
           onClick={handleSubmit}

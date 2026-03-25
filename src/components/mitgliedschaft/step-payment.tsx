@@ -71,8 +71,8 @@ export function StepPayment({
           setIbanError(
             result.errorMessage ||
               (result.validIban
-                ? "Diese IBAN unterstuetzt kein SEPA-Lastschriftverfahren"
-                : "Ungueltige IBAN")
+                ? "Diese IBAN unterstützt kein SEPA-Lastschriftverfahren"
+                : "Ungültige IBAN")
           );
           onChange("bic", "");
           onChange("bankName", "");
@@ -81,7 +81,7 @@ export function StepPayment({
       .catch((err) => {
         if (err instanceof Error && err.name === "AbortError") return;
         setIbanStatus("invalid");
-        setIbanError("IBAN konnte nicht geprueft werden");
+        setIbanError("IBAN konnte nicht geprüft werden");
       });
 
     return () => controller.abort();
@@ -197,7 +197,7 @@ export function StepPayment({
           className="group flex items-center gap-3 border border-white/[0.08] px-8 py-4 text-[13px] font-medium uppercase tracking-[0.15em] text-white/60 transition-all duration-500 hover:border-white/20 hover:text-white"
         >
           <ArrowLeft className="h-4 w-4 transition-transform duration-[400ms] group-hover:-translate-x-1" />
-          Zurueck
+          Zurück
         </button>
         <button
           onClick={onNext}

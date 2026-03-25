@@ -5,7 +5,7 @@ import { MembershipWizard } from "@/components/mitgliedschaft/membership-wizard"
 export const metadata: Metadata = {
   title: "Mitglied werden",
   description:
-    "Werde Mitglied bei Casa Sports in Oer-Erkenschwick. Waehle deinen Tarif und starte dein Training.",
+    "Werde Mitglied bei Casa Sports in Oer-Erkenschwick. Wähle deinen Tarif und starte dein Training.",
 };
 
 export default function MitgliedWerdenPage() {
@@ -37,7 +37,7 @@ export default function MitgliedWerdenPage() {
                 <span className="text-cs-gold">zu uns.</span>
               </h1>
               <p className="mt-5 max-w-sm text-[14px] leading-relaxed text-white/50">
-                Waehle deinen Tarif und werde Teil der Casa Sports Familie.
+                Wähle deinen Tarif und werde Teil der Casa Sports Familie.
               </p>
             </div>
           </div>

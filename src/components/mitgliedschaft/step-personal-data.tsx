@@ -28,7 +28,7 @@ const genderOptions: { value: Gender; label: string }[] = [
 function validatePersonalData(data: PersonalData): Record<string, string> {
   const errors: Record<string, string> = {};
 
-  if (!data.gender) errors.gender = "Bitte waehle eine Anrede";
+  if (!data.gender) errors.gender = "Bitte wähle eine Anrede";
   if (!data.firstName.trim()) errors.firstName = "Vorname ist erforderlich";
   if (!data.lastName.trim()) errors.lastName = "Nachname ist erforderlich";
 
@@ -38,13 +38,13 @@ function validatePersonalData(data: PersonalData): Record<string, string> {
     const dob = new Date(data.dateOfBirth);
     const today = new Date();
     const age = today.getFullYear() - dob.getFullYear();
-    if (age < 14 || age > 120) errors.dateOfBirth = "Ungueltiges Alter";
+    if (age < 14 || age > 120) errors.dateOfBirth = "Ungültiges Alter";
   }
 
   if (!data.email.trim()) {
     errors.email = "E-Mail ist erforderlich";
   } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)) {
-    errors.email = "Ungueltige E-Mail-Adresse";
+    errors.email = "Ungültige E-Mail-Adresse";
   }
 
   if (!data.phone.trim()) {
@@ -262,7 +262,7 @@ export function StepPersonalData({
           className="group flex items-center gap-3 border border-white/[0.08] px-8 py-4 text-[13px] font-medium uppercase tracking-[0.15em] text-white/60 transition-all duration-500 hover:border-white/20 hover:text-white"
         >
           <ArrowLeft className="h-4 w-4 transition-transform duration-[400ms] group-hover:-translate-x-1" />
-          Zurueck
+          Zurück
         </button>
         <button
           onClick={handleNext}
