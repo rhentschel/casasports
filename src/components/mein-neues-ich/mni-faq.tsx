@@ -9,42 +9,42 @@ const faqs = [
   {
     question: 'Was ist die "Mein neues Ich"-Challenge?',
     answer:
-      "Ein 12-Wochen-Programm, mit dem du Fett verlierst, Muskeln aufbaust und deinen Stoffwechsel aktivierst. Es geht nicht nur ums Training, sondern um das ganze Paket aus Bewegung, Ernährung und Motivation. Du bist Teil einer motivierten Gruppe, die dich mitzieht, anfeuert und unterstützt.",
+      "Ein 12-Wochen-Programm, mit dem du Fett verlierst, Muskeln aufbaust und deinen Stoffwechsel aktivierst. Es geht nicht nur ums Training, sondern um das ganze Paket aus Bewegung, Ernaehrung und Motivation. Du bist Teil einer motivierten Gruppe, die dich mitzieht, anfeuert und unterstuetzt.",
   },
   {
-    question: "Wann startet das Programm?",
+    question: "Wann startet das naechste Programm?",
     answer:
-      "Der nächste Start ist im Januar 2026. Ab dann begleiten wir dich 12 Wochen lang mit klarer Struktur, Motivation und gezieltem Training. Du trainierst zwei bis drei Mal pro Woche, vormittags oder nachmittags, so wie es in dein Leben passt.",
+      "Neue Gruppen starten regelmaessig. Meld dich bei uns und wir sagen dir den naechsten Termin. Schreib uns per E-Mail, ruf an oder komm einfach im Studio vorbei.",
   },
   {
     question: "Wo wird trainiert?",
     answer:
-      "Direkt bei uns im Casa Sports Studio in Oer-Erkenschwick. Hier erwartet dich eine familiäre Atmosphäre, ein motiviertes Team und Menschen mit denselben Zielen wie du. Persönliche Betreuung und echtes Coaching, nicht anonyme Workouts.",
+      "Direkt bei uns im Casa Sports Studio in Oer-Erkenschwick. Hier erwartet dich eine familiaere Atmosphaere, ein motiviertes Team und Menschen mit denselben Zielen wie du. Persoenliche Betreuung und echtes Coaching, nicht anonyme Workouts.",
   },
   {
     question: "Welches Training erwartet mich?",
     answer:
-      "Eine Kombination aus Intervall- und Krafttraining. Du brauchst keine Vorkenntnisse, denn wir erklären jede Übung und passen sie an dein Level an. Das Training ist effektiv, abwechslungsreich und macht Spaß.",
+      "Eine Kombination aus Intervall- und Krafttraining. Du brauchst keine Vorkenntnisse, denn wir erklaeren jede Uebung und passen sie an dein Level an. Das Training ist effektiv, abwechslungsreich und macht Spass.",
   },
   {
-    question: "Wie funktioniert die Ernährung?",
+    question: "Wie funktioniert die Ernaehrung?",
     answer:
-      "Du bekommst ein Rezept-E-Book mit leckeren, ausgewogenen Mahlzeiten. Kein Kalorienzählen, kein Abwiegen, kein Verzicht. Wenn es leicht umsetzbar ist, bleibst du automatisch dran.",
+      "Du bekommst ein Rezept-E-Book mit leckeren, ausgewogenen Mahlzeiten. Kein Kalorienzaehlen, kein Abwiegen, kein Verzicht. Wenn es leicht umsetzbar ist, bleibst du automatisch dran.",
   },
   {
     question: "Wie oft wird trainiert?",
     answer:
-      "Zwei bis drei Mal pro Woche, jeweils etwa eine Stunde. Die Einheiten sind abwechslungsreich und für jedes Fitnesslevel geeignet. Schon nach kurzer Zeit spürst du, wie du dich fitter und stärker fühlst.",
+      "Zwei bis drei Mal pro Woche, jeweils etwa eine Stunde. Die Einheiten sind abwechslungsreich und fuer jedes Fitnesslevel geeignet. Schon nach kurzer Zeit spuerst du, wie du dich fitter und staerker fuehlst.",
   },
   {
-    question: "Muss ich Kalorien zählen?",
+    question: "Muss ich Kalorien zaehlen?",
     answer:
-      "Nein. Bei uns zählt dein Gefühl, nicht die Zahl auf der Waage. Das ist kein Diätprogramm, sondern ein einfaches System, das funktioniert.",
+      "Nein. Bei uns zaehlt dein Gefuehl, nicht die Zahl auf der Waage. Das ist kein Diaetprogramm, sondern ein einfaches System, das funktioniert.",
   },
   {
     question: "Was kostet das Programm?",
     answer:
-      "299 Euro für 12 Wochen. Alles ist inklusive: Training, Ernährungscoaching, Motivation in der Gruppe und persönliche Betreuung. Keine versteckten Kosten und kein Abo.",
+      "299 Euro fuer 12 Wochen. Alles ist inklusive: Training, Ernaehrungscoaching, Motivation in der Gruppe und persoenliche Betreuung. Keine versteckten Kosten und kein Abo.",
   },
 ];
 
@@ -64,7 +64,7 @@ export function MniFaq() {
               FAQ
             </h2>
             <p className="mt-6 text-[15px] leading-relaxed text-white/60">
-              Alles was du über das &quot;Mein neues Ich&quot;-Programm wissen musst.
+              Alles was du ueber das &quot;Mein neues Ich&quot;-Programm wissen musst.
             </p>
           </div>
 
