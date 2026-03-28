@@ -30,7 +30,7 @@ export function MniQuote() {
 
       <div className="relative z-10">
         {/* Quote */}
-        <div ref={ref} className="reveal mx-auto max-w-7xl px-8 pb-20 pt-32 md:px-16 md:pb-24 md:pt-40">
+        <div ref={ref} className="reveal mx-auto max-w-7xl px-8 pb-20 pt-40 md:px-16 md:pb-24 md:pt-52">
           <div className="mx-auto max-w-4xl text-center">
             <div className="mb-8 flex justify-center">
               <div className="relative h-16 w-16 overflow-hidden rounded-full border-2 border-cs-accent/30">
