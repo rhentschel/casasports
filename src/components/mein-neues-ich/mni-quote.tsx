@@ -1,74 +1,83 @@
 "use client";
 
 import Image from "next/image";
-import { CheckCircle2 } from "lucide-react";
 import { useReveal } from "@/lib/use-reveal";
 
-const highlights = [
-  "Personal Training & Gruppentraining",
-  "Individuelles Ernährungskonzept",
-  "Motivation & mentales Coaching",
-  "Familiäre Atmosphäre im Studio",
-  "Kein Abo, keine versteckten Kosten",
+const stats = [
+  { value: "12", label: "Wochen" },
+  { value: "299€", label: "All-inclusive" },
+  { value: "2-3x", label: "Pro Woche" },
+  { value: "0", label: "Versteckte Kosten" },
 ];
 
 export function MniQuote() {
   const ref = useReveal();
+  const refStats = useReveal();
 
   return (
     <section className="relative overflow-hidden bg-cs-black">
-      <div
-        ref={ref}
-        className="reveal mx-auto grid max-w-7xl lg:grid-cols-2"
-      >
-        {/* Left: Content */}
-        <div className="flex flex-col justify-center px-8 py-24 md:px-16 md:py-32 lg:pr-20">
-          <p className="text-xs font-medium uppercase tracking-[0.2em] text-cs-accent">
-            Motivation, die dich stark macht
-          </p>
-          <blockquote className="mt-6 text-2xl font-black uppercase leading-[1.05] tracking-[-0.02em] text-cs-white md:text-3xl">
-            &bdquo;Dein neues Ich ist nicht das, was du erreichen wirst.
-            Es ist das, was du heute schaffst.&ldquo;
-          </blockquote>
+      {/* Background image - subtle, cinematic */}
+      <div className="absolute inset-0">
+        <Image
+          src="/images/casasports-personal-training.webp"
+          alt=""
+          fill
+          className="img-cinema object-cover opacity-15"
+          aria-hidden="true"
+        />
+      </div>
+      <div className="absolute inset-0 bg-gradient-to-b from-cs-black via-transparent to-cs-black" />
 
-          <div className="mt-6 flex items-center gap-4">
-            <div className="relative h-12 w-12 overflow-hidden rounded-full">
-              <Image
-                src="/images/naim-casasports.webp"
-                alt="Naim Obeid"
-                fill
-                className="object-cover"
-              />
+      <div className="relative z-10">
+        {/* Quote */}
+        <div ref={ref} className="reveal mx-auto max-w-7xl px-8 pb-20 pt-32 md:px-16 md:pb-24 md:pt-40">
+          <div className="mx-auto max-w-4xl text-center">
+            <div className="mb-8 flex justify-center">
+              <div className="relative h-16 w-16 overflow-hidden rounded-full border-2 border-cs-accent/30">
+                <Image
+                  src="/images/naim-casasports.webp"
+                  alt="Naim Obeid"
+                  fill
+                  className="object-cover"
+                />
+              </div>
             </div>
-            <div>
-              <p className="text-sm font-bold text-cs-white">Naim Obeid</p>
-              <p className="text-[13px] text-white/50">Personal Trainer</p>
-            </div>
-          </div>
 
-          <div className="mt-10 border-t border-white/[0.06] pt-8">
-            <ul className="space-y-3">
-              {highlights.map((h) => (
-                <li key={h} className="flex items-center gap-3">
-                  <CheckCircle2 className="h-4 w-4 shrink-0 text-cs-accent/60" />
-                  <span className="text-[14px] leading-relaxed text-white/50">
-                    {h}
-                  </span>
-                </li>
-              ))}
-            </ul>
+            <blockquote className="text-2xl font-black uppercase leading-[1.1] tracking-[-0.02em] text-cs-white md:text-4xl lg:text-5xl">
+              &bdquo;Dein neues Ich ist nicht das, was du erreichen wirst.
+              <br className="hidden md:block" />
+              <span className="text-cs-accent"> Es ist das, was du heute schaffst.&ldquo;</span>
+            </blockquote>
+
+            <div className="mt-6 flex items-center justify-center gap-3">
+              <div className="h-[1px] w-8 bg-cs-accent/40" />
+              <p className="text-[13px] font-medium tracking-[0.1em] text-cs-gray-400">
+                Naim Obeid, Gruender Casa Sports
+              </p>
+              <div className="h-[1px] w-8 bg-cs-accent/40" />
+            </div>
           </div>
         </div>
 
-        {/* Right: Image */}
-        <div className="relative min-h-[400px] lg:min-h-0">
-          <Image
-            src="/images/casasports-personal-training.webp"
-            alt="Personal Training bei Casa Sports"
-            fill
-            className="img-cinema object-cover"
-          />
-          <div className="absolute inset-0 bg-gradient-to-r from-cs-black via-cs-black/30 to-transparent lg:from-cs-black lg:via-transparent lg:to-transparent" />
+        {/* Stats bar */}
+        <div ref={refStats} className="reveal border-t border-b border-white/[0.04]">
+          <div className="mx-auto grid max-w-5xl grid-cols-2 lg:grid-cols-4">
+            {stats.map((stat, i) => (
+              <div
+                key={stat.label}
+                className={`py-10 text-center ${
+                  i < 3 ? "border-r border-white/[0.04]" : ""
+                } ${i < 2 ? "border-b border-white/[0.04] lg:border-b-0" : ""}`}
+              >
+                <p className="text-3xl font-black tracking-[-0.03em] text-cs-accent md:text-4xl">
+                  {stat.value}
+                </p>
+                <p className="mt-1 text-[12px] font-medium uppercase tracking-[0.2em] text-cs-gray-500">
+                  {stat.label}
+                </p>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>
