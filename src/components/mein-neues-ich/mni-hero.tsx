@@ -14,7 +14,7 @@ export function MniHero() {
   }, []);
 
   return (
-    <section className="relative flex h-[85svh] min-h-[600px] items-end overflow-hidden bg-cs-black pb-24 md:pb-32">
+    <section className="relative flex h-[85svh] min-h-[600px] items-end overflow-hidden bg-cs-black pb-24 mb-16 md:pb-32 md:mb-24">
       <div className="absolute inset-0 animate-[kenburns_30s_ease-in-out_infinite_alternate]">
         <Image
           src="/images/mein-neues-ich-hero.webp"

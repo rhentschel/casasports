@@ -15,7 +15,7 @@ export function MniQuote() {
   const refStats = useReveal();
 
   return (
-    <section className="relative mt-20 overflow-hidden bg-cs-black md:mt-32">
+    <section className="relative overflow-hidden bg-cs-black">
       {/* Background image - subtle, cinematic */}
       <div className="absolute inset-0">
         <Image
