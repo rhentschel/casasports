@@ -22,7 +22,7 @@ export default function BlogPage() {
     <>
       <BlogHero />
       <BlogCategories />
-      <BlogGrid posts={posts} showFeatured />
+      <BlogGrid posts={posts} />
       <BlogCta />
     </>
   )
