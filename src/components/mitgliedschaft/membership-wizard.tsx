@@ -124,29 +124,30 @@ export function MembershipWizard() {
 
     const payload = {
       studioId: MAGICLINE_CONFIG.studioId,
-      rateBundleTermId: selectedTerm.id,
-      paymentChoice: "DIRECT_DEBIT",
+      contract: {
+        rateBundleTermId: selectedTerm.id,
+        startDate: selectedTerm.defaultContractStartDate,
+        selectedOptionalModuleIds: selectedModuleIds,
+      },
       customer: {
         gender: personalData.gender,
-        firstName: personalData.firstName,
-        lastName: personalData.lastName,
+        firstname: personalData.firstName,
+        lastname: personalData.lastName,
         dateOfBirth: personalData.dateOfBirth,
         email: personalData.email,
         phone: personalData.phone,
-        address: {
-          street: personalData.street,
-          houseNumber: personalData.houseNumber,
-          zipCode: personalData.zipCode,
-          city: personalData.city,
-          countryCode: "Germany",
+        street: personalData.street,
+        houseNumber: personalData.houseNumber,
+        zipCode: personalData.zipCode,
+        city: personalData.city,
+        countryCode: "DE",
+        paymentChoice: "DIRECT_DEBIT",
+        bankAccount: {
+          accountHolder: paymentData.accountHolder,
+          iban: paymentData.iban.replace(/\s/g, ""),
+          bic: paymentData.bic,
         },
       },
-      bankAccount: {
-        accountHolder: paymentData.accountHolder,
-        iban: paymentData.iban.replace(/\s/g, ""),
-        bic: paymentData.bic,
-      },
-      selectedOptionalModuleIds: selectedModuleIds,
       communicationPreferences: [],
     };
 
