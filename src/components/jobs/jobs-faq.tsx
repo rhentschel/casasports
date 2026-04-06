@@ -9,37 +9,32 @@ const faqs = [
   {
     question: "Brauche ich eine bestimmte Ausbildung?",
     answer:
-      "Fuer Trainerstellen benoetigen wir mindestens eine B-Lizenz. Fuer den Empfang und die Ausbildung reicht Motivation und Lernbereitschaft. Bei Kursleiter-Stellen solltest du eine gueltige Lizenz im jeweiligen Bereich haben. Generell gilt: Persoenlichkeit schlaegt Papier.",
+      "Das haengt von der Stelle ab. Fuer Trainerstellen setzen wir eine entsprechende Lizenz voraus. Fuer den Empfang oder die Ausbildung zaehlen Motivation und Persoenlichkeit. Sprich uns einfach an, dann klaeren wir gemeinsam, was passt.",
   },
   {
     question: "Kann ich auch als Quereinsteiger anfangen?",
     answer:
-      "Ja, absolut. Wir haben mehrfach Quereinsteiger erfolgreich ins Team integriert. Wenn du die Leidenschaft mitbringst, helfen wir dir bei den fachlichen Qualifikationen. Wir unterstuetzen dich finanziell bei Lizenzen und Fortbildungen.",
+      "Grundsaetzlich ja. Wenn du die Leidenschaft fuer Fitness mitbringst, finden wir gemeinsam den richtigen Einstieg. Schreib uns, was dich motiviert, und wir schauen, was moeglich ist.",
   },
   {
-    question: "Wie sehen die Arbeitszeiten aus?",
+    question: "Wie laeuft der Bewerbungsprozess ab?",
     answer:
-      "Unser Studio ist Mo-Fr von 8-22 Uhr und Sa-So von 10-18 Uhr geoeffnet. Die Schichten planen wir gemeinsam im Team, in der Regel 2-3 Wochen im Voraus. Wir achten auf faire Verteilung von Frueh- und Spaetschichten und beruecksichtigen persoenliche Wuensche.",
+      "Unkompliziert: Du schickst uns deine Bewerbung ueber das Formular oder per E-Mail. Wenn es passt, laden wir dich zu einem persoenlichen Gespraech ins Studio ein. Danach folgt in der Regel ein Probearbeiten, damit beide Seiten sehen, ob die Chemie stimmt.",
   },
   {
     question: "Gibt es Aufstiegsmoeglichkeiten?",
     answer:
-      "Definitiv. Unser Studioleiter Hidayet hat als Trainer angefangen, unser Azubi Eren uebernimmt bereits eigene Projekte. Wir foerdern Eigeninitiative und schaffen Entwicklungsmoeglichkeiten, wenn du dich einbringst.",
-  },
-  {
-    question: "Was verdient man bei Casa Sports?",
-    answer:
-      "Wir zahlen branchenueblich und fair. Dazu kommen Benefits wie kostenloses Training, Wellness-Nutzung, bezahlte Fortbildungen und ein echtes Teamklima. Genaue Konditionen besprechen wir gerne im persoenlichen Gespraech.",
+      "Wir sind ein wachsendes Team und foerdern Eigeninitiative. Wenn du dich einbringst und entwickeln willst, schaffen wir die Moeglichkeiten dafuer. Details besprechen wir gerne im persoenlichen Gespraech.",
   },
   {
     question: "Kann ich vorher mal reinschnuppern?",
     answer:
-      "Natuerlich! Komm einfach auf ein kostenloses Probetraining vorbei und sprich uns vor Ort an. So bekommst du den besten Eindruck von unserem Studio, dem Team und der Atmosphaere.",
+      "Natuerlich. Komm einfach auf ein kostenloses Probetraining vorbei und sprich uns vor Ort an. So bekommst du den besten Eindruck von unserem Studio und dem Team.",
   },
   {
     question: "Ich finde keine passende Stelle. Kann ich mich trotzdem bewerben?",
     answer:
-      "Unbedingt. Wir freuen uns immer ueber Initiativbewerbungen. Auch wenn gerade keine passende Stelle ausgeschrieben ist, aendert sich das oft schnell. Wir speichern deine Bewerbung und melden uns, sobald etwas frei wird.",
+      "Unbedingt. Wir freuen uns ueber Initiativbewerbungen. Auch wenn gerade keine passende Stelle ausgeschrieben ist, melde dich trotzdem. Wir kommen auf dich zu, sobald sich etwas ergibt.",
   },
 ];
 
@@ -100,9 +95,8 @@ export function JobsFaq() {
               Noch <span className="text-cs-accent">Fragen?</span>
             </h2>
             <p className="mt-6 text-[15px] leading-relaxed text-white/60">
-              Hier findest du Antworten auf die haeufigsten Fragen von
-              Bewerberinnen und Bewerbern. Falls deine Frage nicht dabei ist,
-              ruf uns einfach an.
+              Hier findest du Antworten auf die haeufigsten Fragen. Falls deine
+              nicht dabei ist, ruf uns einfach an oder schreib uns.
             </p>
             <a
               href="tel:0236857060"

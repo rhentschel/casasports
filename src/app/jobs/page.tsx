@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
 import { JobsHero } from "@/components/jobs/jobs-hero";
-import { JobsStats } from "@/components/jobs/jobs-stats";
 import { JobsWhy } from "@/components/jobs/jobs-why";
-import { JobsTeamVoices } from "@/components/jobs/jobs-team-voices";
 import { JobsPositions } from "@/components/jobs/jobs-positions";
 import { JobsProcess } from "@/components/jobs/jobs-process";
 import { JobsForm } from "@/components/jobs/jobs-form";
@@ -23,9 +21,7 @@ export default function JobsPage() {
   return (
     <>
       <JobsHero />
-      <JobsStats />
       <JobsWhy />
-      <JobsTeamVoices />
       <JobsPositions />
       <JobsProcess />
       <JobsForm />
