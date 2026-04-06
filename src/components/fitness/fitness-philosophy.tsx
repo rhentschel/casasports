@@ -64,8 +64,7 @@ export function FitnessPhilosophy() {
               className={cn(
                 "group/feature relative flex flex-col border-white/[0.06] py-10",
                 "lg:border-r",
-                (index === 0 || index === 4) && "lg:border-l",
-                index < 4 && "lg:border-b"
+                index === 0 && "lg:border-l"
               )}
             >
               <div className="pointer-events-none absolute inset-0 h-full w-full bg-gradient-to-t from-cs-accent/[0.06] to-transparent opacity-0 transition duration-300 group-hover/feature:opacity-100" />
