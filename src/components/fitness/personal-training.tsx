@@ -183,26 +183,64 @@ export function PersonalTraining() {
   const [showModal, setShowModal] = useState(false);
 
   return (
-    <section className="relative overflow-hidden bg-cs-black">
-      <div ref={ref} className="reveal relative">
-        <div className="mx-auto grid max-w-7xl lg:grid-cols-2">
-          {/* Content */}
-          <div className="flex flex-col justify-center px-8 py-32 md:px-16 md:py-40">
-            <p className="text-xs font-medium uppercase tracking-[0.2em] text-cs-gold">
-              Personal Training
-            </p>
-            <h2 className="mt-4 text-3xl font-black uppercase leading-[1.05] tracking-[-0.03em] text-cs-white md:text-4xl">
-              Dein Trainer.
-              <br />
-              <span className="text-cs-gold">Dein Tempo.</span>
-            </h2>
-            <p className="mt-6 max-w-sm text-[15px] leading-relaxed text-white/60">
+    <section className="bg-cs-black py-20 md:py-28">
+      <div ref={ref} className="reveal mx-auto max-w-[1440px] px-4 md:px-6">
+        <div className="grid md:grid-cols-[30fr_70fr]">
+          {/* Left: Image */}
+          <div className="relative hidden overflow-hidden md:block">
+            <Image
+              src="/images/casasports-personal-training.webp"
+              alt="Personal Training bei Casa Sports"
+              fill
+              className="img-cinema object-cover object-center"
+              sizes="30vw"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-cs-black/70 via-transparent to-cs-black/30" />
+
+            <div className="absolute bottom-12 left-10 right-10 lg:left-14 lg:right-14">
+              <p className="text-xs font-medium uppercase tracking-[0.2em] text-cs-gold">
+                Personal Training
+              </p>
+              <h2 className="mt-4 text-4xl font-black uppercase leading-[1.05] tracking-[-0.04em] text-cs-white lg:text-5xl">
+                Dein Trainer.
+                <br />
+                <span className="text-cs-gold">Dein Tempo.</span>
+              </h2>
+            </div>
+          </div>
+
+          {/* Mobile hero */}
+          <div className="relative aspect-[16/9] overflow-hidden md:hidden">
+            <Image
+              src="/images/casasports-personal-training.webp"
+              alt="Personal Training bei Casa Sports"
+              fill
+              className="img-cinema object-cover"
+              priority
+              sizes="100vw"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#141414] via-cs-black/40 to-transparent" />
+            <div className="absolute bottom-5 left-5 right-5">
+              <p className="text-[10px] font-medium uppercase tracking-[0.2em] text-cs-gold">
+                Personal Training
+              </p>
+              <h2 className="mt-2 text-2xl font-black uppercase leading-[1.05] tracking-[-0.04em] text-cs-white">
+                Dein Trainer. <span className="text-cs-gold">Dein Tempo.</span>
+              </h2>
+            </div>
+          </div>
+
+          {/* Right: Content panel */}
+          <div className="bg-[#141414] px-8 py-12 md:px-12 md:py-16 lg:px-16">
+            <p className="text-[15px] leading-relaxed text-white/60">
               Du willst mehr als nur ein Geraet bedienen? Im Personal Training
               arbeiten wir gemeinsam an deinen Zielen. Strukturiert,
               motivierend, auf den Punkt.
             </p>
 
-            <ul className="mt-10 space-y-4">
+            <div className="mt-8 h-px bg-white/[0.06]" />
+
+            <ul className="mt-8 space-y-4">
               {benefits.map((benefit) => (
                 <li key={benefit} className="flex items-start gap-3">
                   <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-cs-gold/60" />
@@ -213,7 +251,9 @@ export function PersonalTraining() {
               ))}
             </ul>
 
-            <div className="mt-10">
+            <div className="mt-8 h-px bg-white/[0.06]" />
+
+            <div className="mt-8">
               <button
                 onClick={() => setShowModal(true)}
                 className="group inline-flex items-center gap-3 border border-cs-gold/30 px-8 py-4 text-[13px] font-medium uppercase tracking-[0.15em] text-cs-gold transition-all duration-500 hover:border-cs-gold hover:bg-cs-gold/10"
@@ -222,17 +262,6 @@ export function PersonalTraining() {
                 <ArrowRight className="h-4 w-4 transition-transform duration-[400ms] group-hover:translate-x-1" />
               </button>
             </div>
-          </div>
-
-          {/* Image */}
-          <div className="relative min-h-[500px] lg:min-h-0">
-            <Image
-              src="/images/casasports-personal-training.webp"
-              alt="Personal Training bei Casa Sports"
-              fill
-              className="img-cinema object-cover"
-            />
-            <div className="absolute inset-0 bg-gradient-to-r from-cs-black via-cs-black/40 to-transparent lg:from-cs-black lg:via-transparent lg:to-transparent" />
           </div>
         </div>
       </div>
