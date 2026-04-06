@@ -840,9 +840,9 @@ export function JobsWizard() {
     <section
       id="bewerbung"
       ref={ref}
-      className="reveal scroll-mt-20 bg-cs-black py-20 md:py-28"
+      className="reveal px-3 py-6 md:px-8 md:py-10 lg:px-12"
     >
-      <div className="mx-auto max-w-3xl px-6 md:px-8">
+      <div>
         {step !== "success" && <WizardProgress currentStep={step} />}
 
         <AnimatePresence mode="wait">
