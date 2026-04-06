@@ -61,11 +61,14 @@ export function JobsProcess() {
           {/* Connection line (desktop) */}
           <div className="absolute left-0 right-0 top-10 hidden h-px bg-gradient-to-r from-transparent via-cs-accent/20 to-transparent lg:block" />
 
-          <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="flex flex-col gap-8 sm:flex-row sm:flex-wrap lg:flex-nowrap">
             {steps.map((step, i) => (
-              <div key={step.number} className="group relative text-center">
+              <div
+                key={step.number}
+                className="group relative flex flex-1 flex-col items-center text-center"
+              >
                 {/* Step number circle */}
-                <div className="relative mx-auto mb-8 flex h-20 w-20 items-center justify-center border border-white/[0.06] bg-cs-black transition-all duration-500 group-hover:border-cs-accent/30">
+                <div className="relative mb-8 flex h-20 w-20 shrink-0 items-center justify-center border border-white/[0.06] bg-cs-black transition-all duration-500 group-hover:border-cs-accent/30">
                   <step.icon className="h-6 w-6 text-cs-accent" />
                   <span className="absolute -right-2 -top-2 flex h-6 w-6 items-center justify-center bg-cs-accent text-[10px] font-bold text-white">
                     {step.number}
@@ -75,7 +78,7 @@ export function JobsProcess() {
                 <h3 className="text-sm font-bold uppercase tracking-[0.1em] text-cs-white">
                   {step.title}
                 </h3>
-                <p className="mt-3 text-sm leading-relaxed text-cs-gray-400">
+                <p className="mt-3 flex-1 text-sm leading-relaxed text-cs-gray-400">
                   {step.description}
                 </p>
                 <p className="mt-4 text-[11px] font-medium uppercase tracking-[0.15em] text-cs-accent/70">
