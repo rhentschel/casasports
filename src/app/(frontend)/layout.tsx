@@ -1,16 +1,15 @@
-import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-import { Header } from "@/components/layout/header";
-import { Footer } from "@/components/layout/footer";
-import { siteConfig } from "@/data/site";
-import "./globals.css";
+import type { Metadata } from "next"
+import { Inter } from "next/font/google"
+import { Header } from "@/components/layout/header"
+import { Footer } from "@/components/layout/footer"
+import { siteConfig } from "@/data/site"
+import "./styles.css"
 
 const inter = Inter({
   variable: "--font-inter",
   subsets: ["latin"],
   display: "swap",
-});
-
+})
 
 export const metadata: Metadata = {
   title: {
@@ -41,12 +40,12 @@ export const metadata: Metadata = {
       },
     ],
   },
-};
+}
 
-export default function RootLayout({
+export default function FrontendLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode;
+  children: React.ReactNode
 }>) {
   return (
     <html lang="de">
@@ -56,5 +55,5 @@ export default function RootLayout({
         <Footer />
       </body>
     </html>
-  );
+  )
 }
