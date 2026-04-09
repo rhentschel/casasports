@@ -1,1 +1,31 @@
-/* Payload Admin CSS */
+/* Casa Sports Admin Branding */
+
+:root {
+  --theme-success-500: #e63946;
+}
+
+/* Login page branding */
+.template-minimal {
+  background: #0a0a0a;
+}
+
+.template-minimal .template-minimal__wrap {
+  max-width: 420px;
+}
+
+/* Accent color override */
+.btn--style-primary {
+  background-color: #e63946;
+  border-color: #e63946;
+}
+
+.btn--style-primary:hover {
+  background-color: #d62836;
+  border-color: #d62836;
+}
+
+/* Nav accent */
+.nav__link--active::after,
+.nav__link:hover::after {
+  background-color: #e63946;
+}

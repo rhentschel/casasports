@@ -29,6 +29,13 @@ export default buildConfig({
     meta: {
       titleSuffix: " | Casa Sports Admin",
     },
+    theme: "dark",
+    components: {
+      graphics: {
+        Logo: "/components/admin/Logo#Logo",
+        Icon: "/components/admin/Icon#Icon",
+      },
+    },
   },
   collections: [
     Users,
