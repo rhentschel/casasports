@@ -35,6 +35,11 @@ export default buildConfig({
         Logo: "/components/admin/Logo#Logo",
         Icon: "/components/admin/Icon#Icon",
       },
+      views: {
+        login: {
+          Component: "/components/admin/LoginView#LoginView",
+        },
+      },
     },
   },
   collections: [
