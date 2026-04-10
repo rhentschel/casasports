@@ -35,13 +35,11 @@ export const Posts: CollectionConfig = {
       name: "coverImage",
       type: "upload",
       relationTo: "media",
-      required: true,
     },
     {
       name: "category",
       type: "relationship",
       relationTo: "categories",
-      required: true,
     },
     {
       name: "tags",
