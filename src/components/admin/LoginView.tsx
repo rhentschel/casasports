@@ -52,8 +52,8 @@ export function LoginView() {
       {/* Left: Image */}
       <div style={{ position: "relative", overflow: "hidden" }}>
         <Image
-          src="/images/mann-9-16.webp"
-          alt="Casa Sports Fitness"
+          src="/images/naim-casasports.webp"
+          alt="Naim Obeid - Casa Sports"
           fill
           style={{
             objectFit: "cover",
