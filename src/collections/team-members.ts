@@ -21,7 +21,6 @@ export const TeamMembers: CollectionConfig = {
       name: "image",
       type: "upload",
       relationTo: "media",
-      required: true,
     },
     {
       name: "video",
