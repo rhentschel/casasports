@@ -32,32 +32,6 @@ export const dayNamesFull = [
   "Samstag",
 ] as const;
 
-export const schedule: KursEntry[] = [
-  { id: "mo-09", time: "09:00", duration: 50, name: "Zirkeltraining", trainer: "Renate", room: "Kursraum 1", intensity: 2, day: 0 },
-  { id: "mo-10", time: "10:00", duration: 45, name: "Cycling", trainer: "Jennifer", room: "Cycling-Raum", intensity: 2, day: 0 },
-  { id: "mo-17", time: "17:00", duration: 45, name: "Power Training", trainer: "Hidayet", room: "Kursraum 1", intensity: 3, day: 0 },
-  { id: "mo-18", time: "18:00", duration: 50, name: "Functional", trainer: "Naim", room: "Functional Area", intensity: 2, day: 0 },
-  { id: "mo-19", time: "19:00", duration: 45, name: "Cardio", trainer: "Jennifer", room: "Kursraum 1", intensity: 2, day: 0 },
-  { id: "di-10", time: "10:00", duration: 50, name: "Functional", trainer: "Hidayet", room: "Functional Area", intensity: 2, day: 1 },
-  { id: "di-17", time: "17:00", duration: 45, name: "Cardio", trainer: "Jennifer", room: "Kursraum 1", intensity: 2, day: 1 },
-  { id: "di-18", time: "18:00", duration: 45, name: "Cycling", trainer: "Eren", room: "Cycling-Raum", intensity: 2, day: 1 },
-  { id: "di-19", time: "19:00", duration: 60, name: "Gruppentraining", trainer: "Naim", room: "Kursraum 1", intensity: 2, day: 1 },
-  { id: "mi-09", time: "09:00", duration: 50, name: "Zirkeltraining", trainer: "Renate", room: "Kursraum 1", intensity: 2, day: 2 },
-  { id: "mi-10", time: "10:00", duration: 45, name: "Cycling", trainer: "Jennifer", room: "Cycling-Raum", intensity: 3, day: 2 },
-  { id: "mi-17", time: "17:00", duration: 50, name: "Functional", trainer: "Hidayet", room: "Functional Area", intensity: 2, day: 2 },
-  { id: "mi-18", time: "18:00", duration: 45, name: "Power Training", trainer: "Naim", room: "Kursraum 1", intensity: 3, day: 2 },
-  { id: "mi-19", time: "19:00", duration: 45, name: "Cycling", trainer: "Eren", room: "Cycling-Raum", intensity: 2, day: 2 },
-  { id: "do-10", time: "10:00", duration: 50, name: "Functional", trainer: "Hidayet", room: "Functional Area", intensity: 2, day: 3 },
-  { id: "do-17", time: "17:00", duration: 45, name: "Power Training", trainer: "Naim", room: "Kursraum 1", intensity: 3, day: 3 },
-  { id: "do-18", time: "18:00", duration: 45, name: "Cycling", trainer: "Jennifer", room: "Cycling-Raum", intensity: 2, day: 3 },
-  { id: "do-19", time: "19:00", duration: 50, name: "Zirkeltraining", trainer: "Renate", room: "Kursraum 1", intensity: 2, day: 3 },
-  { id: "fr-09", time: "09:00", duration: 50, name: "Zirkeltraining", trainer: "Renate", room: "Kursraum 1", intensity: 2, day: 4 },
-  { id: "fr-17", time: "17:00", duration: 45, name: "Cardio", trainer: "Jennifer", room: "Kursraum 1", intensity: 2, day: 4 },
-  { id: "fr-18", time: "18:00", duration: 60, name: "Gruppentraining", trainer: "Naim", room: "Kursraum 1", intensity: 2, day: 4 },
-  { id: "sa-09", time: "09:00", duration: 60, name: "Gruppentraining", trainer: "Hidayet", room: "Kursraum 1", intensity: 2, day: 5 },
-  { id: "sa-10", time: "10:00", duration: 45, name: "Cycling", trainer: "Jennifer", room: "Cycling-Raum", intensity: 2, day: 5 },
-];
-
 export function getLocationString(): string {
   return `${siteConfig.address.street}, ${siteConfig.address.zip} ${siteConfig.address.city}`;
 }
