@@ -3,20 +3,18 @@
 import Link from "next/link"
 import { BookOpen, ArrowRight } from "lucide-react"
 import { useReveal } from "@/lib/use-reveal"
-import type { TopicCluster } from "@/data/blog/types"
-import { getPostBySlug } from "@/data/blog/posts"
 
 interface ArticleClusterNavProps {
-  cluster: TopicCluster
+  cluster: {
+    name: string
+    pillarSlug: string
+    articleSlugs: string[]
+  }
   currentSlug: string
 }
 
 export function ArticleClusterNav({ cluster, currentSlug }: ArticleClusterNavProps) {
   const ref = useReveal()
-  const pillar = getPostBySlug(cluster.pillarSlug)
-  const articles = cluster.articleSlugs
-    .map((s) => getPostBySlug(s))
-    .filter((p) => p !== undefined)
 
   return (
     <aside ref={ref} className="reveal mt-12 border border-white/[0.06] p-6 md:p-8">
@@ -27,43 +25,45 @@ export function ArticleClusterNav({ cluster, currentSlug }: ArticleClusterNavPro
         </p>
       </div>
 
-      {pillar && (
+      {cluster.pillarSlug && (
         <div className="mt-5">
           <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-cs-gold">
             Pillar Guide
           </p>
           <Link
-            href={`/blog/${pillar.slug}`}
+            href={`/blog/${cluster.pillarSlug}`}
             className={`mt-1.5 block text-[15px] font-bold leading-snug transition-colors duration-300 ${
-              pillar.slug === currentSlug
+              cluster.pillarSlug === currentSlug
                 ? "text-cs-accent"
                 : "text-cs-white hover:text-cs-accent"
             }`}
           >
-            {pillar.title}
+            {cluster.pillarSlug}
           </Link>
         </div>
       )}
 
-      <div className="mt-6 space-y-3 border-t border-white/[0.06] pt-5">
-        <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-cs-gray-500">
-          Verwandte Artikel
-        </p>
-        {articles.map((article) => (
-          <Link
-            key={article.slug}
-            href={`/blog/${article.slug}`}
-            className={`group flex items-center gap-2 text-[14px] leading-snug transition-colors duration-300 ${
-              article.slug === currentSlug
-                ? "text-cs-accent"
-                : "text-white/60 hover:text-cs-white"
-            }`}
-          >
-            <ArrowRight className="h-3 w-3 shrink-0 text-cs-accent/50 transition-transform duration-300 group-hover:translate-x-0.5" />
-            {article.title}
-          </Link>
-        ))}
-      </div>
+      {cluster.articleSlugs.length > 0 && (
+        <div className="mt-6 space-y-3 border-t border-white/[0.06] pt-5">
+          <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-cs-gray-500">
+            Verwandte Artikel
+          </p>
+          {cluster.articleSlugs.map((slug) => (
+            <Link
+              key={slug}
+              href={`/blog/${slug}`}
+              className={`group flex items-center gap-2 text-[14px] leading-snug transition-colors duration-300 ${
+                slug === currentSlug
+                  ? "text-cs-accent"
+                  : "text-white/60 hover:text-cs-white"
+              }`}
+            >
+              <ArrowRight className="h-3 w-3 shrink-0 text-cs-accent/50 transition-transform duration-300 group-hover:translate-x-0.5" />
+              {slug}
+            </Link>
+          ))}
+        </div>
+      )}
     </aside>
   )
 }

@@ -5,19 +5,25 @@ import Image from "next/image"
 import Link from "next/link"
 import { Clock, Calendar, RefreshCw } from "lucide-react"
 import { cn } from "@/lib/utils"
-import type { BlogPost } from "@/data/blog/types"
-import { getAuthor } from "@/data/blog/authors"
-import { getCategory } from "@/data/blog/categories"
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+
+
 import { calculateReadingTime, formatDate } from "@/lib/blog-utils"
 
 interface ArticleHeaderProps {
-  post: BlogPost
+  post: any
+}
+
+function resolveObj(field: unknown): any {
+  if (!field) return null
+  if (typeof field === "object") return field
+  return null
 }
 
 export function ArticleHeader({ post }: ArticleHeaderProps) {
   const [loaded, setLoaded] = useState(false)
-  const author = getAuthor(post.author)
-  const category = getCategory(post.category)
+  const author = resolveObj(post.authorData) || resolveObj(post.author)
+  const category = resolveObj(post.categoryData) || resolveObj(post.category)
   const readingTime = calculateReadingTime(post.content)
 
   useEffect(() => {

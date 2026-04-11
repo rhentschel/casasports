@@ -1,84 +1,59 @@
-import type { BlogPost } from "@/data/blog/types"
-import { getAuthor } from "@/data/blog/authors"
 import { calculateReadingTime } from "@/lib/blog-utils"
-import { siteConfig } from "@/data/site"
+
+const siteUrl = "https://sport.casasports.de"
+const siteName = "Casa Sports"
 
 interface ArticleSchemaProps {
-  post: BlogPost
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  post: any
 }
 
 export function ArticleSchema({ post }: ArticleSchemaProps) {
-  const author = getAuthor(post.author)
+  const authorData = post.authorData || (typeof post.author === "object" ? post.author : null)
   const readingTime = calculateReadingTime(post.content)
+  const contentText = typeof post.content === "string" ? post.content.replace(/<[^>]*>/g, "") : ""
+  const tags = Array.isArray(post.tags) ? post.tags.map((t: any) => typeof t === "string" ? t : t.tag || "").filter(Boolean) : []
 
   const schema = {
     "@context": "https://schema.org",
     "@type": "Article",
     headline: post.title,
-    description: post.seo.description ?? post.excerpt,
-    image: `${siteConfig.url}${post.coverImage}`,
+    description: post.seo?.description ?? post.excerpt,
+    image: post.coverImage?.startsWith?.("http") ? post.coverImage : `${siteUrl}${post.coverImage}`,
     datePublished: post.publishedAt,
     dateModified: post.updatedAt ?? post.publishedAt,
-    wordCount: post.content.replace(/<[^>]*>/g, "").split(/\s+/).length,
+    wordCount: contentText.split(/\s+/).length,
     timeRequired: `PT${readingTime}M`,
-    author: author
+    author: authorData
       ? {
           "@type": "Person",
-          name: author.name,
-          jobTitle: author.role,
-          image: `${siteConfig.url}${author.image}`,
+          name: authorData.name,
+          jobTitle: authorData.role,
         }
       : undefined,
     publisher: {
       "@type": "Organization",
-      name: siteConfig.name,
-      logo: {
-        "@type": "ImageObject",
-        url: `${siteConfig.url}/icon-192.png`,
-      },
+      name: siteName,
+      logo: { "@type": "ImageObject", url: `${siteUrl}/icon-192.png` },
     },
-    mainEntityOfPage: {
-      "@type": "WebPage",
-      "@id": `${siteConfig.url}/blog/${post.slug}`,
-    },
-    keywords: post.tags.join(", "),
+    mainEntityOfPage: { "@type": "WebPage", "@id": `${siteUrl}/blog/${post.slug}` },
+    keywords: tags.join(", "),
   }
 
   const breadcrumbSchema = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     itemListElement: [
-      {
-        "@type": "ListItem",
-        position: 1,
-        name: "Home",
-        item: siteConfig.url,
-      },
-      {
-        "@type": "ListItem",
-        position: 2,
-        name: "Blog",
-        item: `${siteConfig.url}/blog`,
-      },
-      {
-        "@type": "ListItem",
-        position: 3,
-        name: post.title,
-        item: `${siteConfig.url}/blog/${post.slug}`,
-      },
+      { "@type": "ListItem", position: 1, name: "Home", item: siteUrl },
+      { "@type": "ListItem", position: 2, name: "Blog", item: `${siteUrl}/blog` },
+      { "@type": "ListItem", position: 3, name: post.title, item: `${siteUrl}/blog/${post.slug}` },
     ],
   }
 
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
-      />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
     </>
   )
 }

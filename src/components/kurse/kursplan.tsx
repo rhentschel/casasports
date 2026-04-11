@@ -16,7 +16,6 @@ import {
 import { cn } from "@/lib/utils";
 import { useReveal } from "@/lib/use-reveal";
 import {
-  schedule,
   kursTypeConfig,
   dayNames,
   dayNamesFull,
@@ -223,7 +222,12 @@ function DetailOverlay({
   );
 }
 
-export function Kursplan() {
+interface KursplanProps {
+  schedule?: KursEntry[];
+}
+
+export function Kursplan({ schedule: scheduleProp }: KursplanProps) {
+  const schedule = scheduleProp ?? [];
   const ref = useReveal();
   const [activeFilters, setActiveFilters] = useState<Set<KursTypeName>>(new Set());
   const [favorites, setFavorites] = useState<Set<string>>(new Set());

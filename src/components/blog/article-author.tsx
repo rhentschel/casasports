@@ -3,10 +3,10 @@
 import Image from "next/image"
 import { Instagram } from "lucide-react"
 import { useReveal } from "@/lib/use-reveal"
-import type { Author } from "@/data/blog/types"
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 
 interface ArticleAuthorProps {
-  author: Author
+  author: any
 }
 
 export function ArticleAuthor({ author }: ArticleAuthorProps) {
@@ -36,7 +36,7 @@ export function ArticleAuthor({ author }: ArticleAuthorProps) {
           </p>
 
           <div className="mt-3 flex flex-wrap gap-2">
-            {author.expertise.map((e) => (
+            {author.expertise.map((e: any) => (
               <span
                 key={e}
                 className="border border-white/[0.06] px-2.5 py-1 text-[11px] text-cs-gray-400"

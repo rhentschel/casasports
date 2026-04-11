@@ -2,10 +2,10 @@
 
 import { useReveal } from "@/lib/use-reveal"
 import { BlogCard } from "./blog-card"
-import type { BlogPost } from "@/data/blog/types"
 
 interface BlogGridProps {
-  posts: BlogPost[]
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  posts: any[]
   title?: string
 }
 

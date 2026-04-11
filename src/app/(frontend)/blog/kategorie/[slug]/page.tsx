@@ -1,40 +1,46 @@
+export const dynamic = "force-dynamic"
 import type { Metadata } from "next"
 import { notFound } from "next/navigation"
 import { BlogCategories } from "@/components/blog/blog-categories"
 import { BlogGrid } from "@/components/blog/blog-grid"
 import { BlogCta } from "@/components/blog/blog-cta"
-import { categories, getCategory } from "@/data/blog/categories"
-import { getPostsByCategory } from "@/data/blog/posts"
-import { siteConfig } from "@/data/site"
+import {
+  getPostsByCategory,
+  getAllCategorySlugs,
+  getCategoryBySlug,
+  getAllPosts,
+  getAllCategories,
+} from "@/lib/payload-data"
 
 interface PageProps {
   params: Promise<{ slug: string }>
 }
 
-export async function generateStaticParams() {
-  return categories.map((cat) => ({ slug: cat.slug }))
-}
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { slug } = await params
-  const category = getCategory(slug)
+  const category = await getCategoryBySlug(slug)
   if (!category) return {}
 
   return {
     title: `${category.name} - Blog`,
-    description: category.description,
+    description: category.description || "",
     alternates: {
-      canonical: `${siteConfig.url}/blog/kategorie/${category.slug}`,
+      canonical: `https://sport.casasports.de/blog/kategorie/${category.slug}`,
     },
   }
 }
 
 export default async function CategoryPage({ params }: PageProps) {
   const { slug } = await params
-  const category = getCategory(slug)
+  const category = await getCategoryBySlug(slug)
   if (!category) notFound()
 
-  const posts = getPostsByCategory(slug)
+  const [posts, allPosts, categories] = await Promise.all([
+    getPostsByCategory(slug),
+    getAllPosts(),
+    getAllCategories(),
+  ])
 
   return (
     <>
@@ -46,15 +52,17 @@ export default async function CategoryPage({ params }: PageProps) {
           <h1 className="mt-3 text-3xl font-black uppercase leading-[1.05] tracking-[-0.03em] text-cs-white md:text-5xl">
             {category.name}
           </h1>
-          <p className="mt-4 max-w-lg text-[15px] leading-relaxed text-white/60">
-            {category.description}
-          </p>
+          {category.description && (
+            <p className="mt-4 max-w-lg text-[15px] leading-relaxed text-white/60">
+              {category.description}
+            </p>
+          )}
         </div>
       </section>
 
-      <BlogCategories />
+      <BlogCategories categories={categories} totalPosts={allPosts.length} />
       <BlogGrid
-        posts={posts}
+        posts={posts as any}
         title={posts.length === 0 ? "Noch keine Artikel in dieser Kategorie." : undefined}
       />
       <BlogCta />

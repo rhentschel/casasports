@@ -2,10 +2,10 @@
 
 import { useReveal } from "@/lib/use-reveal"
 import { BlogCard } from "./blog-card"
-import type { BlogPost } from "@/data/blog/types"
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 
 interface ArticleRelatedProps {
-  posts: BlogPost[]
+  posts: any[]
 }
 
 export function ArticleRelated({ posts }: ArticleRelatedProps) {

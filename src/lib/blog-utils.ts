@@ -1,12 +1,40 @@
-export function calculateReadingTime(html: string): number {
+import {
+  convertLexicalToHTML,
+  defaultHTMLConverters,
+} from "@payloadcms/richtext-lexical/html"
+import type { SerializedEditorState } from "lexical"
+
+/**
+ * Convert Payload Lexical JSON to HTML string.
+ * Falls back gracefully if the data is already a plain HTML string.
+ */
+export function lexicalToHtml(content: unknown): string {
+  if (!content) return ""
+  if (typeof content === "string") return content
+  if (typeof content === "object" && content !== null && "root" in content) {
+    try {
+      return convertLexicalToHTML({
+        converters: defaultHTMLConverters,
+        data: content as SerializedEditorState,
+      })
+    } catch {
+      return ""
+    }
+  }
+  return ""
+}
+
+export function calculateReadingTime(content: unknown): number {
+  const html = typeof content === "string" ? content : lexicalToHtml(content)
   const text = html.replace(/<[^>]*>/g, "")
   const words = text.split(/\s+/).filter(Boolean).length
   return Math.max(1, Math.round(words / 220))
 }
 
 export function extractHeadings(
-  html: string
+  content: unknown
 ): { id: string; text: string; level: number }[] {
+  const html = typeof content === "string" ? content : lexicalToHtml(content)
   const regex = /<h([23])\s+id="([^"]+)"[^>]*>([^<]+)<\/h[23]>/g
   const headings: { id: string; text: string; level: number }[] = []
   let match
