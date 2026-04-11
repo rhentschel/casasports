@@ -38,9 +38,17 @@ export const Posts: CollectionConfig = {
     },
     {
       name: "coverImage",
-      label: "Titelbild",
+      label: "Titelbild (Upload)",
       type: "upload",
       relationTo: "media",
+    },
+    {
+      name: "coverImagePath",
+      label: "Titelbild (Pfad)",
+      type: "text",
+      admin: {
+        description: "Statischer Bildpfad als Fallback (z.B. /images/blog-cover.webp)",
+      },
     },
     {
       name: "category",

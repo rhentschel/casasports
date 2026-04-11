@@ -20,11 +20,12 @@ interface PageProps {
 }
 
 // Helper to extract a usable image URL from Payload media field
-function getImageUrl(media: unknown): string {
-  if (typeof media === "string") return media
+function getImageUrl(media: unknown, fallbackPath?: string | null): string {
   if (media && typeof media === "object" && "url" in media) {
     return (media as { url: string }).url
   }
+  if (typeof media === "string" && media.length > 0) return media
+  if (fallbackPath) return fallbackPath
   return "/images/placeholder.webp"
 }
 
@@ -55,7 +56,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
   const readingTime = calculateReadingTime(post.content)
   const seo = (post as any).seo || {}
-  const coverUrl = getImageUrl(post.coverImage)
+  const coverUrl = getImageUrl(post.coverImage, (post as any).coverImagePath)
   const tags = extractTags(post.tags)
 
   return {
@@ -91,7 +92,7 @@ export default async function BlogPostPage({ params }: PageProps) {
   const categorySlug = getRelSlug(post.category)
   const tags = extractTags(post.tags)
   const contentHtml = lexicalToHtml(post.content)
-  const coverImage = getImageUrl(post.coverImage)
+  const coverImage = getImageUrl(post.coverImage, (post as any).coverImagePath)
 
   const categoryObj = post.category && typeof post.category === "object" ? post.category as any : null
 
@@ -117,7 +118,7 @@ export default async function BlogPostPage({ params }: PageProps) {
     .map((p) => ({
       ...p,
       content: lexicalToHtml(p.content),
-      coverImage: getImageUrl(p.coverImage),
+      coverImage: getImageUrl(p.coverImage, (p as any).coverImagePath),
       category: getRelSlug(p.category),
       author: getRelSlug(p.author),
       tags: extractTags(p.tags),

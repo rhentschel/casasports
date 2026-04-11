@@ -22,9 +22,17 @@ export const TeamMembers: CollectionConfig = {
     },
     {
       name: "image",
-      label: "Bild",
+      label: "Bild (Upload)",
       type: "upload",
       relationTo: "media",
+    },
+    {
+      name: "imagePath",
+      label: "Bild (Pfad)",
+      type: "text",
+      admin: {
+        description: "Statischer Bildpfad als Fallback (z.B. /images/naim.webp)",
+      },
     },
     {
       name: "video",

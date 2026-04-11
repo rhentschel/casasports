@@ -5,9 +5,10 @@ import Link from "next/link"
 import { Clock, ArrowRight } from "lucide-react"
 import { calculateReadingTime, formatDate } from "@/lib/blog-utils"
 
-function getImageUrl(media: unknown): string {
-  if (typeof media === "string") return media
+function getImageUrl(media: unknown, fallbackPath?: string | null): string {
   if (media && typeof media === "object" && "url" in media) return (media as { url: string }).url
+  if (typeof media === "string" && media.length > 0) return media
+  if (fallbackPath) return fallbackPath
   return "/images/casasports-hero-1.webp"
 }
 
@@ -31,7 +32,7 @@ export function BlogCard({ post, variant = "default" }: { post: any; variant?: "
   const authorData = getAuthorData(post.author)
   const categoryName = getCategoryName(post.category)
   const readingTime = calculateReadingTime(post.content)
-  const coverImage = getImageUrl(post.coverImage)
+  const coverImage = getImageUrl(post.coverImage, post.coverImagePath)
 
   if (variant === "featured") {
     return (

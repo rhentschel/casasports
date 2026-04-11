@@ -17,9 +17,9 @@ export default async function HomePage() {
   const team = members.map((m: any) => ({
     name: m.name,
     role: m.role,
-    image: typeof m.image === "object" && m.image?.url
+    image: (typeof m.image === "object" && m.image?.url)
       ? m.image.url
-      : m.image || "/images/placeholder.webp",
+      : m.imagePath || "/images/placeholder.webp",
     video: m.video || null,
     quote: m.quote || "",
   }));
