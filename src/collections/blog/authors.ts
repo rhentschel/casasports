@@ -2,6 +2,7 @@ import type { CollectionConfig } from "payload"
 
 export const Authors: CollectionConfig = {
   slug: "authors",
+  labels: { singular: "Autor", plural: "Autoren" },
   admin: {
     useAsTitle: "name",
   },

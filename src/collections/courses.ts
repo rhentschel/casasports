@@ -2,6 +2,7 @@ import type { CollectionConfig } from "payload"
 
 export const Courses: CollectionConfig = {
   slug: "courses",
+  labels: { singular: "Kurs", plural: "Kurse" },
   admin: {
     useAsTitle: "name",
     defaultColumns: ["name", "day", "time", "trainer", "active"],

@@ -2,6 +2,7 @@ import type { CollectionConfig } from "payload"
 
 export const TeamMembers: CollectionConfig = {
   slug: "team-members",
+  labels: { singular: "Teammitglied", plural: "Team" },
   admin: {
     useAsTitle: "name",
     defaultColumns: ["name", "role", "sortOrder"],

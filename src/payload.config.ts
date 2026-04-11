@@ -1,6 +1,7 @@
 import { buildConfig } from "payload"
 import { postgresAdapter } from "@payloadcms/db-postgres"
 import { lexicalEditor } from "@payloadcms/richtext-lexical"
+import { de } from "@payloadcms/translations/languages/de"
 import sharp from "sharp"
 import path from "path"
 import { fileURLToPath } from "url"
@@ -24,6 +25,10 @@ const dirname = path.dirname(filename)
 
 export default buildConfig({
   serverURL: process.env.NEXT_PUBLIC_SERVER_URL || "",
+  i18n: {
+    supportedLanguages: { de },
+    fallbackLanguage: "de",
+  },
   admin: {
     user: Users.slug,
     meta: {

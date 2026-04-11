@@ -2,6 +2,7 @@ import type { CollectionConfig } from "payload"
 
 export const JobApplications: CollectionConfig = {
   slug: "job-applications",
+  labels: { singular: "Bewerbung", plural: "Bewerbungen" },
   admin: {
     useAsTitle: "name",
     defaultColumns: ["name", "position", "status", "createdAt"],

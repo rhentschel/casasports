@@ -2,6 +2,7 @@ import type { CollectionConfig } from "payload"
 
 export const JobPositions: CollectionConfig = {
   slug: "job-positions",
+  labels: { singular: "Stelle", plural: "Stellen" },
   admin: {
     useAsTitle: "title",
     defaultColumns: ["title", "type", "active", "sortOrder"],

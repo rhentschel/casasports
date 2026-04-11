@@ -2,6 +2,7 @@ import type { CollectionConfig } from "payload"
 
 export const MembershipSignups: CollectionConfig = {
   slug: "membership-signups",
+  labels: { singular: "Mitgliedschaft", plural: "Mitgliedschaften" },
   admin: {
     useAsTitle: "customerName",
     defaultColumns: ["customerName", "plan", "monthlyPrice", "status", "createdAt"],

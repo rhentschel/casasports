@@ -2,6 +2,7 @@ import type { CollectionConfig } from "payload"
 
 export const TopicClusters: CollectionConfig = {
   slug: "topic-clusters",
+  labels: { singular: "Themencluster", plural: "Themencluster" },
   admin: {
     useAsTitle: "name",
   },
