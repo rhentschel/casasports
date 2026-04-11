@@ -7,52 +7,22 @@ import { useCallback, useState, useEffect, useRef } from "react";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { useReveal } from "@/lib/use-reveal";
 
-const team = [
-  {
-    name: "Naim Obeid",
-    role: "Inhaber & Gründer",
-    image: "/images/naim-casasports.webp",
-    video: "/videos/naim.mp4",
-    quote:
-      "Wahre Stärke zeigt sich nicht darin, was du kannst, sondern darin, was du überwindest.",
-  },
-  {
-    name: "Hidayet",
-    role: "Studioleiter",
-    image: "/images/team-hidayet.avif",
-    video: "/videos/hidayet.mp4",
-    quote: "Ein gutes Studio lebt von seinem Team. Hier stimmt alles.",
-  },
-  {
-    name: "Jennifer",
-    role: "Trainerin",
-    image: "/images/team-jennifer.avif",
-    video: "/videos/jennifer.mp4",
-    quote:
-      "Jeder Mensch hat das Potenzial, seine Ziele zu erreichen. Ich helfe dir dabei.",
-  },
-  {
-    name: "Eren",
-    role: "Auszubildender",
-    image: "/images/team-eren.avif",
-    video: "/videos/eren.mp4",
-    quote:
-      "Jeden Tag lerne ich etwas Neues. Die Leidenschaft für Fitness steckt an.",
-  },
-  {
-    name: "Renate",
-    role: "Trainerin",
-    image: "/images/team-renate.avif",
-    video: null,
-    quote:
-      "Fitness ist kein Ziel, sondern eine Lebenseinstellung. Gemeinsam machen wir den ersten Schritt.",
-  },
-];
+interface TeamMember {
+  name: string;
+  role: string;
+  image: string;
+  video: string | null;
+  quote: string;
+}
+
+interface AboutPreviewProps {
+  team: TeamMember[];
+}
 
 function TeamSlide({
   member,
 }: {
-  member: (typeof team)[number];
+  member: TeamMember;
 }) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [isHovered, setIsHovered] = useState(false);
@@ -120,7 +90,7 @@ function TeamSlide({
   );
 }
 
-export function AboutPreview() {
+export function AboutPreview({ team }: AboutPreviewProps) {
   const ref = useReveal();
   const [selectedIndex, setSelectedIndex] = useState(0);
 

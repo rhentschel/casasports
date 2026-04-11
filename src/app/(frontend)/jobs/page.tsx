@@ -4,6 +4,9 @@ import { JobsWhy } from "@/components/jobs/jobs-why";
 import { JobsWizard } from "@/components/jobs/jobs-wizard";
 import { JobsProcess } from "@/components/jobs/jobs-process";
 import { JobsFaq } from "@/components/jobs/jobs-faq";
+import { getJobPositions } from "@/lib/payload-data";
+
+export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
   title: "Jobs & Karriere",
@@ -16,7 +19,20 @@ export const metadata: Metadata = {
   },
 };
 
-export default function JobsPage() {
+export default async function JobsPage() {
+  const rawPositions = await getJobPositions();
+
+  const positions = rawPositions.map((p: any) => ({
+    id: String(p.id),
+    title: p.title,
+    type: p.type,
+    hours: p.hours,
+    icon: p.icon || "Dumbbell",
+    description: p.description,
+    tasks: (p.tasks || []).map((t: any) => t.task),
+    requirements: (p.requirements || []).map((r: any) => r.requirement),
+  }));
+
   return (
     <>
       {/* Split-Screen: Bild links + Wizard rechts */}
@@ -74,7 +90,7 @@ export default function JobsPage() {
 
             {/* Right: Wizard panel */}
             <div className="overflow-y-auto bg-[#141414]">
-              <JobsWizard />
+              <JobsWizard positions={positions} />
             </div>
           </div>
         </div>

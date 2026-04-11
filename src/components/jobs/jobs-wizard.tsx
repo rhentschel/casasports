@@ -31,7 +31,7 @@ interface Position {
   title: string;
   type: string;
   hours: string;
-  icon: typeof Dumbbell;
+  icon: string;
   description: string;
   tasks: string[];
   requirements: string[];
@@ -51,94 +51,14 @@ interface DetailsData {
   privacy: boolean;
 }
 
-// ─── Data ─────────────────────────────────────────
+// ─── Icon Mapping ────────────────────────────────────
 
-const positions: Position[] = [
-  {
-    id: "fitnesstrainer",
-    title: "Fitnesstrainer/in",
-    type: "Festanstellung",
-    hours: "Voll- oder Teilzeit",
-    icon: Dumbbell,
-    description:
-      "Du betreust unsere Mitglieder auf der Trainingsflaeche, erstellst individuelle Trainingsplaene und fuehrst Einweisungen durch.",
-    tasks: [
-      "Individuelle Trainingsbetreuung und Plangestaltung",
-      "Geraeteeinweisungen fuer neue Mitglieder",
-      "Durchfuehrung von Fitnesstests und Koerperanalysen",
-      "Motivation und Begleitung unserer Mitglieder",
-    ],
-    requirements: [
-      "Fitnesstrainer-Lizenz (B-Lizenz oder hoeher)",
-      "Leidenschaft fuer Fitness und Gesundheit",
-      "Freundliches, offenes Auftreten",
-      "Teamfaehigkeit und Zuverlaessigkeit",
-    ],
-  },
-  {
-    id: "kursleiter",
-    title: "Kursleiter/in",
-    type: "Fest / Freiberuflich",
-    hours: "Teilzeit / Honorar",
-    icon: Users,
-    description:
-      "Du leitest Gruppenkurse wie Cycling, Functional Training oder Zirkeltraining und bringst unsere Teilnehmer ins Schwitzen.",
-    tasks: [
-      "Planung und Durchfuehrung von Gruppenkursen",
-      "Anpassung an unterschiedliche Leistungsniveaus",
-      "Aufbau einer festen Kursteilnehmer-Community",
-      "Mitgestaltung des Kursplans",
-    ],
-    requirements: [
-      "Gueltige Kursleiterlizenz (z.B. Cycling, Group Fitness)",
-      "Erfahrung in der Anleitung von Gruppen",
-      "Motivierende, energiegeladene Persoenlichkeit",
-      "Zuverlaessigkeit und Puenktlichkeit",
-    ],
-  },
-  {
-    id: "azubi",
-    title: "Auszubildende/r",
-    type: "Ausbildung",
-    hours: "Vollzeit (3 Jahre)",
-    icon: GraduationCap,
-    description:
-      "Starte deine Karriere bei uns als Sport- und Fitnesskaufmann/-frau. Lerne alle Bereiche eines modernen Fitnessstudios kennen.",
-    tasks: [
-      "Mitgliederbetreuung an Empfang und Trainingsflaeche",
-      "Unterstuetzung bei Kursplanung und Organisation",
-      "Kaufmaennische Aufgaben: Vertraege, Marketing",
-      "Eigene Projekte planen und umsetzen",
-    ],
-    requirements: [
-      "Mindestens Mittlere Reife",
-      "Begeisterung fuer Sport und Fitness",
-      "Kommunikationsstaerke und Serviceorientierung",
-      "Eigeninitiative und Lernbereitschaft",
-    ],
-  },
-  {
-    id: "empfang",
-    title: "Empfang & Service",
-    type: "Festanstellung",
-    hours: "Teilzeit / Minijob",
-    icon: Headphones,
-    description:
-      "Du bist das Gesicht von Casa Sports. Am Empfang begruess du unsere Mitglieder, beraetest Interessenten und kuemmerst dich um alle Anliegen.",
-    tasks: [
-      "Empfang und Betreuung unserer Mitglieder",
-      "Beratung und Fuehrung durch das Studio",
-      "Telefonische und persoenliche Terminvereinbarung",
-      "Unterstuetzung bei Verwaltungsaufgaben",
-    ],
-    requirements: [
-      "Freundliches, serviceorientiertes Auftreten",
-      "Gute Kommunikationsfaehigkeiten",
-      "Grundkenntnisse am PC",
-      "Flexibilitaet bei den Arbeitszeiten",
-    ],
-  },
-];
+const iconMap: Record<string, typeof Dumbbell> = {
+  Dumbbell,
+  Users,
+  GraduationCap,
+  Headphones,
+};
 
 const WIZARD_STEPS: { key: WizardStep; label: string }[] = [
   { key: "position", label: "Stelle" },
@@ -205,10 +125,12 @@ function WizardProgress({ currentStep }: { currentStep: WizardStep }) {
 // ─── Step 1: Position Selection ─────────────────────
 
 function StepPosition({
+  positions,
   selectedId,
   onSelect,
   onNext,
 }: {
+  positions: Position[];
   selectedId: string | null;
   onSelect: (id: string) => void;
   onNext: () => void;
@@ -227,7 +149,7 @@ function StepPosition({
       <div className="mt-8 space-y-3">
         {positions.map((pos) => {
           const isSelected = selectedId === pos.id;
-          const Icon = pos.icon;
+          const Icon = iconMap[pos.icon] || Dumbbell;
 
           return (
             <div
@@ -607,6 +529,7 @@ function StepDetails({
 // ─── Step 4: Review & Submit ────────────────────────
 
 function StepReview({
+  positions,
   positionId,
   personal,
   details,
@@ -616,6 +539,7 @@ function StepReview({
   status,
   errorMessage,
 }: {
+  positions: Position[];
   positionId: string;
   personal: PersonalData;
   details: DetailsData;
@@ -783,7 +707,11 @@ function StepSuccess() {
 
 // ─── Main Wizard ────────────────────────────────────
 
-export function JobsWizard() {
+interface JobsWizardProps {
+  positions?: Position[];
+}
+
+export function JobsWizard({ positions = [] }: JobsWizardProps) {
   const ref = useReveal();
 
   const [step, setStep] = useState<WizardStep>("position");
@@ -849,6 +777,7 @@ export function JobsWizard() {
           {step === "position" && (
             <motion.div key="position" {...stepTransition}>
               <StepPosition
+                positions={positions}
                 selectedId={positionId}
                 onSelect={setPositionId}
                 onNext={() => setStep("personal")}
@@ -881,6 +810,7 @@ export function JobsWizard() {
           {step === "review" && positionId && (
             <motion.div key="review" {...stepTransition}>
               <StepReview
+                positions={positions}
                 positionId={positionId}
                 personal={personal}
                 details={details}

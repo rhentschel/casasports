@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { createJobApplication } from "@/lib/payload-data";
 
 interface ApplicationPayload {
   name: string;
@@ -77,46 +78,23 @@ export async function POST(request: Request) {
     console.log(`Datum: ${new Date().toISOString()}`);
     console.log("======================");
 
-    // Store to Supabase if configured
-    const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
-    const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
-
-    if (supabaseUrl && supabaseKey) {
-      try {
-        await fetch(`${supabaseUrl}/rest/v1/job_applications`, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            apikey: supabaseKey,
-            Authorization: `Bearer ${supabaseKey}`,
-            Prefer: "return=minimal",
-          },
-          body: JSON.stringify({
-            name: body.name.trim(),
-            email: body.email.trim(),
-            phone: body.phone.trim(),
-            position: body.position,
-            position_label: positionLabel,
-            experience: body.experience || null,
-            experience_label: body.experience ? experienceLabel : null,
-            availability: body.availability || null,
-            availability_label: body.availability ? availabilityLabel : null,
-            start_date: body.startDate || null,
-            message: body.message.trim(),
-            created_at: new Date().toISOString(),
-          }),
-        });
-      } catch (dbError) {
-        console.error("Supabase storage failed (non-blocking):", dbError);
-      }
-    }
+    await createJobApplication({
+      name: body.name.trim(),
+      email: body.email.trim(),
+      phone: body.phone.trim(),
+      position: positionLabel,
+      experience: body.experience ? experienceLabel : null,
+      availability: body.availability ? availabilityLabel : null,
+      startDate: body.startDate || null,
+      message: body.message.trim(),
+    });
 
     return NextResponse.json({
       success: true,
       message: "Bewerbung erfolgreich gesendet.",
     });
-  } catch {
-    console.error("Application submission failed");
+  } catch (error) {
+    console.error("Application submission failed:", error);
     return NextResponse.json(
       { error: "Interner Serverfehler." },
       { status: 500 }
