@@ -5,16 +5,18 @@ export const JobPositions: CollectionConfig = {
   labels: { singular: "Stelle", plural: "Stellen" },
   admin: {
     useAsTitle: "title",
-    defaultColumns: ["title", "type", "active", "sortOrder"],
+    defaultColumns: ["title", "type", "hours", "sortOrder"],
   },
   fields: [
     {
       name: "title",
+      label: "Stellenbezeichnung",
       type: "text",
       required: true,
     },
     {
       name: "type",
+      label: "Anstellungsart",
       type: "text",
       required: true,
       admin: {
@@ -23,6 +25,7 @@ export const JobPositions: CollectionConfig = {
     },
     {
       name: "hours",
+      label: "Arbeitszeit",
       type: "text",
       required: true,
       admin: {
@@ -31,6 +34,7 @@ export const JobPositions: CollectionConfig = {
     },
     {
       name: "icon",
+      label: "Symbol",
       type: "select",
       defaultValue: "Dumbbell",
       options: [
@@ -42,16 +46,19 @@ export const JobPositions: CollectionConfig = {
     },
     {
       name: "description",
+      label: "Beschreibung",
       type: "textarea",
       required: true,
     },
     {
       name: "tasks",
+      label: "Aufgaben",
       type: "array",
       required: true,
       fields: [
         {
           name: "task",
+          label: "Aufgabe",
           type: "text",
           required: true,
         },
@@ -59,11 +66,13 @@ export const JobPositions: CollectionConfig = {
     },
     {
       name: "requirements",
+      label: "Anforderungen",
       type: "array",
       required: true,
       fields: [
         {
           name: "requirement",
+          label: "Anforderung",
           type: "text",
           required: true,
         },
@@ -71,6 +80,7 @@ export const JobPositions: CollectionConfig = {
     },
     {
       name: "active",
+      label: "Aktiv",
       type: "checkbox",
       defaultValue: true,
       admin: {
@@ -79,6 +89,7 @@ export const JobPositions: CollectionConfig = {
     },
     {
       name: "sortOrder",
+      label: "Reihenfolge",
       type: "number",
       defaultValue: 0,
       admin: {

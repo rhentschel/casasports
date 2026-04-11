@@ -10,11 +10,13 @@ export const Users: CollectionConfig = {
   fields: [
     {
       name: "name",
+      label: "Name",
       type: "text",
       required: true,
     },
     {
       name: "role",
+      label: "Rolle",
       type: "select",
       defaultValue: "editor",
       options: [

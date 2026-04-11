@@ -10,11 +10,13 @@ export const Posts: CollectionConfig = {
   fields: [
     {
       name: "title",
+      label: "Titel",
       type: "text",
       required: true,
     },
     {
       name: "slug",
+      label: "URL-Slug",
       type: "text",
       required: true,
       unique: true,
@@ -24,30 +26,36 @@ export const Posts: CollectionConfig = {
     },
     {
       name: "excerpt",
+      label: "Kurzfassung",
       type: "textarea",
       required: true,
     },
     {
       name: "content",
+      label: "Inhalt",
       type: "richText",
       required: true,
     },
     {
       name: "coverImage",
+      label: "Titelbild",
       type: "upload",
       relationTo: "media",
     },
     {
       name: "category",
+      label: "Kategorie",
       type: "relationship",
       relationTo: "categories",
     },
     {
       name: "tags",
+      label: "Tags",
       type: "array",
       fields: [
         {
           name: "tag",
+          label: "Tag",
           type: "text",
           required: true,
         },
@@ -55,12 +63,14 @@ export const Posts: CollectionConfig = {
     },
     {
       name: "author",
+      label: "Autor",
       type: "relationship",
       relationTo: "authors",
       required: true,
     },
     {
       name: "publishedAt",
+      label: "Veroeffentlicht am",
       type: "date",
       required: true,
       admin: {
@@ -72,6 +82,7 @@ export const Posts: CollectionConfig = {
     },
     {
       name: "updatedAt",
+      label: "Aktualisiert am",
       type: "date",
       admin: {
         position: "sidebar",
@@ -82,6 +93,7 @@ export const Posts: CollectionConfig = {
     },
     {
       name: "featured",
+      label: "Hervorgehoben",
       type: "checkbox",
       defaultValue: false,
       admin: {
@@ -90,6 +102,7 @@ export const Posts: CollectionConfig = {
     },
     {
       name: "isPillar",
+      label: "Pillar-Artikel",
       type: "checkbox",
       defaultValue: false,
       admin: {
@@ -99,6 +112,7 @@ export const Posts: CollectionConfig = {
     },
     {
       name: "topicCluster",
+      label: "Themencluster",
       type: "relationship",
       relationTo: "topic-clusters",
       admin: {
@@ -107,20 +121,24 @@ export const Posts: CollectionConfig = {
     },
     {
       name: "relatedPosts",
+      label: "Verwandte Beitraege",
       type: "relationship",
       relationTo: "posts",
       hasMany: true,
     },
     {
       name: "seo",
+      label: "SEO",
       type: "group",
       fields: [
         {
           name: "title",
+          label: "SEO-Titel",
           type: "text",
         },
         {
           name: "description",
+          label: "SEO-Beschreibung",
           type: "textarea",
         },
       ],

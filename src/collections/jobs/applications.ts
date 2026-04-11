@@ -5,48 +5,57 @@ export const JobApplications: CollectionConfig = {
   labels: { singular: "Bewerbung", plural: "Bewerbungen" },
   admin: {
     useAsTitle: "name",
-    defaultColumns: ["name", "position", "status", "createdAt"],
+    defaultColumns: ["name", "position", "email", "status", "createdAt"],
   },
   fields: [
     {
       name: "name",
+      label: "Name",
       type: "text",
       required: true,
     },
     {
       name: "email",
+      label: "E-Mail",
       type: "email",
       required: true,
     },
     {
       name: "phone",
+      label: "Telefon",
       type: "text",
       required: true,
     },
     {
       name: "position",
+      label: "Stelle",
       type: "text",
       required: true,
     },
     {
       name: "experience",
+      label: "Erfahrung",
       type: "text",
     },
     {
       name: "availability",
+      label: "Verfuegbarkeit",
       type: "text",
     },
     {
       name: "startDate",
+      label: "Fruehester Start",
       type: "date",
     },
     {
       name: "message",
+      label: "Nachricht",
       type: "textarea",
       required: true,
     },
     {
       name: "status",
+      label: "Status",
       type: "select",
       defaultValue: "neu",
       options: [
@@ -62,6 +71,7 @@ export const JobApplications: CollectionConfig = {
     },
     {
       name: "notes",
+      label: "Interne Notizen",
       type: "richText",
       admin: {
         description: "Interne Notizen zur Bewerbung",

@@ -10,6 +10,7 @@ export const MembershipSignups: CollectionConfig = {
   fields: [
     {
       name: "contractId",
+      label: "Vertragsnr.",
       type: "text",
       admin: {
         description: "Magicline Contract ID",
@@ -17,6 +18,7 @@ export const MembershipSignups: CollectionConfig = {
     },
     {
       name: "customerId",
+      label: "Kundennr.",
       type: "text",
       admin: {
         description: "Magicline Customer ID",
@@ -24,32 +26,39 @@ export const MembershipSignups: CollectionConfig = {
     },
     {
       name: "customerName",
+      label: "Kundenname",
       type: "text",
       required: true,
     },
     {
       name: "email",
+      label: "E-Mail",
       type: "email",
     },
     {
       name: "phone",
+      label: "Telefon",
       type: "text",
     },
     {
       name: "plan",
+      label: "Tarif",
       type: "text",
       required: true,
     },
     {
       name: "termMonths",
+      label: "Laufzeit (Monate)",
       type: "number",
     },
     {
       name: "monthlyPrice",
+      label: "Monatspreis",
       type: "number",
     },
     {
       name: "status",
+      label: "Status",
       type: "select",
       defaultValue: "aktiv",
       options: [
@@ -63,6 +72,7 @@ export const MembershipSignups: CollectionConfig = {
     },
     {
       name: "magiclineResponse",
+      label: "API-Antwort",
       type: "json",
       admin: {
         description: "Rohe API-Antwort von Magicline",

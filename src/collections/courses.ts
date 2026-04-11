@@ -5,11 +5,12 @@ export const Courses: CollectionConfig = {
   labels: { singular: "Kurs", plural: "Kurse" },
   admin: {
     useAsTitle: "name",
-    defaultColumns: ["name", "day", "time", "trainer", "active"],
+    defaultColumns: ["name", "day", "time", "trainer", "room"],
   },
   fields: [
     {
       name: "name",
+      label: "Kursart",
       type: "select",
       required: true,
       options: [
@@ -23,6 +24,7 @@ export const Courses: CollectionConfig = {
     },
     {
       name: "day",
+      label: "Tag",
       type: "select",
       required: true,
       options: [
@@ -36,6 +38,7 @@ export const Courses: CollectionConfig = {
     },
     {
       name: "time",
+      label: "Uhrzeit",
       type: "text",
       required: true,
       admin: {
@@ -44,6 +47,7 @@ export const Courses: CollectionConfig = {
     },
     {
       name: "duration",
+      label: "Dauer (Min)",
       type: "number",
       required: true,
       defaultValue: 45,
@@ -53,16 +57,19 @@ export const Courses: CollectionConfig = {
     },
     {
       name: "trainer",
+      label: "Trainer",
       type: "text",
       required: true,
     },
     {
       name: "room",
+      label: "Raum",
       type: "text",
       required: true,
     },
     {
       name: "intensity",
+      label: "Intensitaet",
       type: "select",
       required: true,
       defaultValue: "2",
@@ -74,6 +81,7 @@ export const Courses: CollectionConfig = {
     },
     {
       name: "active",
+      label: "Aktiv",
       type: "checkbox",
       defaultValue: true,
       admin: {
