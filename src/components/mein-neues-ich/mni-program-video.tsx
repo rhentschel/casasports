@@ -9,7 +9,6 @@ import { useReveal } from "@/lib/use-reveal";
 type Clip = { id: string; title: string };
 
 const clips: Clip[] = [
-  { id: "eKDN2yc5shk", title: "Dein Programm im Ueberblick" },
   { id: "5AnOMIU7w-s", title: "So laeuft das Training ab" },
   { id: "bHMwkfxOVdQ", title: "Ernaehrung ohne Verbote" },
   { id: "o6_nN9A_QwA", title: "Das Team stellt sich vor" },
