@@ -6,6 +6,7 @@ import { AboutPreview } from "@/components/sections/about-preview";
 import { CoursesOverview } from "@/components/sections/courses-overview";
 import { WellnessPreview } from "@/components/sections/wellness-preview";
 import { ProgramCards } from "@/components/sections/program-cards";
+import { Utilization } from "@/components/sections/utilization";
 import { CTA } from "@/components/sections/cta";
 import { getTeamMembers } from "@/lib/payload-data";
 
@@ -33,6 +34,7 @@ export default async function HomePage() {
       <AboutPreview team={team} />
       <CoursesOverview />
       <WellnessPreview />
+      <Utilization />
       <ProgramCards />
       <CTA />
     </>
