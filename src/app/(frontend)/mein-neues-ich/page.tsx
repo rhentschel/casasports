@@ -1,9 +1,12 @@
 import type { Metadata } from "next";
 import { MniHero } from "@/components/mein-neues-ich/mni-hero";
 import { MniQuote } from "@/components/mein-neues-ich/mni-quote";
+import { MniTestimonialVideo } from "@/components/mein-neues-ich/mni-testimonial-video";
 import { MniResults } from "@/components/mein-neues-ich/mni-results";
+import { MniTrainers } from "@/components/mein-neues-ich/mni-trainers";
 import { MniAblauf } from "@/components/mein-neues-ich/mni-ablauf";
 import { MniIncluded } from "@/components/mein-neues-ich/mni-included";
+import { MniProgramVideo } from "@/components/mein-neues-ich/mni-program-video";
 import { MniFaq } from "@/components/mein-neues-ich/mni-faq";
 import { MniCta } from "@/components/mein-neues-ich/mni-cta";
 
@@ -18,9 +21,12 @@ export default function MeinNeuesIchPage() {
     <>
       <MniHero />
       <MniQuote />
+      <MniTestimonialVideo />
       <MniResults />
+      <MniTrainers />
       <MniAblauf />
       <MniIncluded />
+      <MniProgramVideo />
       <MniFaq />
       <MniCta />
     </>

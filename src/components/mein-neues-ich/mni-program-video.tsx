@@ -1,0 +1,100 @@
+"use client";
+
+import Image from "next/image";
+import { useState } from "react";
+import { Play } from "lucide-react";
+import { useReveal } from "@/lib/use-reveal";
+
+const YOUTUBE_ID = "eKDN2yc5shk";
+
+const highlights = [
+  { num: "01", title: "Klare Struktur", text: "12 Wochen, klarer Plan, messbare Ergebnisse." },
+  { num: "02", title: "Persoenliches Coaching", text: "Individuelle Betreuung statt Massenabfertigung." },
+  { num: "03", title: "Ernaehrung inklusive", text: "Konzept und Rezepte, kein Kalorienzaehlen." },
+  { num: "04", title: "Gemeinschaft", text: "Eine Gruppe, die dich mitzieht." },
+];
+
+export function MniProgramVideo() {
+  const ref = useReveal();
+  const refGrid = useReveal();
+  const [playing, setPlaying] = useState(false);
+
+  return (
+    <section className="relative overflow-hidden bg-cs-black py-32 md:py-40">
+      <div className="mx-auto max-w-7xl px-8 md:px-16">
+        <div ref={ref} className="reveal mx-auto max-w-3xl text-center">
+          <p className="text-xs font-medium uppercase tracking-[0.2em] text-cs-accent">
+            Zum Programm
+          </p>
+          <h2 className="mt-4 text-3xl font-black uppercase leading-[1.05] tracking-[-0.03em] text-cs-white md:text-5xl">
+            Was dich erwartet.
+            <br />
+            <span className="text-cs-accent">Im Detail.</span>
+          </h2>
+          <p className="mt-6 text-[15px] leading-relaxed text-white/60">
+            Naim erklaert das Konzept, die Trainingsphilosophie und warum das Programm funktioniert.
+          </p>
+        </div>
+
+        <div className="relative mt-14 aspect-video overflow-hidden border border-white/[0.06] md:mt-20">
+          {playing ? (
+            <iframe
+              src={`https://www.youtube-nocookie.com/embed/${YOUTUBE_ID}?autoplay=1&rel=0`}
+              title="Mein Neues Ich - Programm"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowFullScreen
+              className="absolute inset-0 h-full w-full"
+            />
+          ) : (
+            <button
+              type="button"
+              onClick={() => setPlaying(true)}
+              aria-label="Programm Video abspielen"
+              className="group absolute inset-0 block h-full w-full"
+            >
+              <Image
+                src={`https://i.ytimg.com/vi/${YOUTUBE_ID}/maxresdefault.jpg`}
+                alt="Mein Neues Ich Programm"
+                fill
+                sizes="(max-width: 1024px) 100vw, 1280px"
+                className="img-cinema object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-105"
+                unoptimized
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-cs-black/60 via-cs-black/20 to-transparent" />
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div className="flex h-20 w-20 items-center justify-center rounded-full bg-cs-accent/90 backdrop-blur transition-all duration-500 group-hover:scale-110 group-hover:bg-cs-accent md:h-24 md:w-24">
+                  <Play className="ml-1 h-8 w-8 fill-cs-white text-cs-white md:h-10 md:w-10" />
+                </div>
+              </div>
+              <div className="absolute bottom-0 left-0 right-0 flex items-center justify-between px-6 py-5 md:px-10 md:py-7">
+                <span className="text-[12px] font-medium uppercase tracking-[0.2em] text-cs-white/80">
+                  Video ansehen
+                </span>
+                <span className="text-[11px] font-medium tracking-[0.15em] text-cs-white/50">
+                  YouTube
+                </span>
+              </div>
+            </button>
+          )}
+        </div>
+
+        <div
+          ref={refGrid}
+          className="reveal mt-16 grid grid-cols-2 gap-x-8 gap-y-10 md:mt-20 md:grid-cols-4"
+        >
+          {highlights.map((h) => (
+            <div key={h.num} className="relative border-t border-white/[0.08] pt-6">
+              <p className="text-[11px] font-medium tracking-[0.2em] text-cs-accent">
+                {h.num}
+              </p>
+              <p className="mt-3 text-[15px] font-bold uppercase tracking-[-0.01em] text-cs-white">
+                {h.title}
+              </p>
+              <p className="mt-2 text-[13px] leading-relaxed text-cs-gray-400">{h.text}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
