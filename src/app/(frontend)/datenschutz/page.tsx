@@ -45,7 +45,7 @@ export default function DatenschutzPage() {
               E-Mail:{" "}
               <a
                 href={`mailto:${siteConfig.email}`}
-                className="text-cs-accent transition-colors hover:text-cs-white"
+                className="text-cs-accent underline underline-offset-4 transition-colors hover:text-cs-white"
               >
                 {siteConfig.email}
               </a>
@@ -194,7 +194,7 @@ export default function DatenschutzPage() {
               den Abmeldelink im Newsletter oder per E-Mail an{" "}
               <a
                 href={`mailto:${siteConfig.email}`}
-                className="text-cs-accent transition-colors hover:text-cs-white"
+                className="text-cs-accent underline underline-offset-4 transition-colors hover:text-cs-white"
               >
                 {siteConfig.email}
               </a>

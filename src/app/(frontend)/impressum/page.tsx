@@ -42,7 +42,7 @@ export default function ImpressumPage() {
               E-Mail:{" "}
               <a
                 href={`mailto:${siteConfig.email}`}
-                className="text-cs-accent transition-colors hover:text-cs-white"
+                className="text-cs-accent underline underline-offset-4 transition-colors hover:text-cs-white"
               >
                 {siteConfig.email}
               </a>
@@ -85,7 +85,7 @@ export default function ImpressumPage() {
                 href="https://ec.europa.eu/consumers/odr/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-cs-accent transition-colors hover:text-cs-white"
+                className="text-cs-accent underline underline-offset-4 transition-colors hover:text-cs-white"
               >
                 https://ec.europa.eu/consumers/odr/
               </a>

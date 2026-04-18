@@ -44,3 +44,4 @@ next-env.d.ts
 projektstatus.html
 projektstatus.pdf
 a11y-report/
+scripts/a11y/node_modules/
