@@ -16,7 +16,7 @@ const inputClass =
   "w-full border border-white/[0.08] bg-cs-black px-4 py-3 text-sm text-cs-white placeholder:text-cs-gray-500 focus:border-cs-accent focus:outline-none transition-colors duration-300";
 
 const labelClass =
-  "mb-1.5 block text-[11px] font-medium uppercase tracking-[0.15em] text-white/40";
+  "mb-1.5 block text-[11px] font-medium uppercase tracking-[0.15em] text-white/60";
 
 const errorClass = "mt-1.5 text-[11px] text-cs-accent";
 

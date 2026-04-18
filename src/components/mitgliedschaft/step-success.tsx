@@ -33,7 +33,7 @@ export function StepSuccess() {
         eine Bestätigung per E-Mail.
       </p>
 
-      <p className="mt-4 text-[14px] text-white/40">
+      <p className="mt-4 text-[14px] text-white/60">
         Wir freuen uns auf dich im Studio!
       </p>
 

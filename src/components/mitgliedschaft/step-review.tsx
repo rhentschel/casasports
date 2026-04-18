@@ -108,7 +108,7 @@ export function StepReview({
         {/* Personal data summary */}
         <div className="border border-white/[0.08] p-5">
           <div className="flex items-center justify-between">
-            <h3 className="text-[11px] font-medium uppercase tracking-[0.15em] text-white/40">
+            <h3 className="text-[11px] font-medium uppercase tracking-[0.15em] text-white/60">
               Persönliche Daten
             </h3>
             <button
@@ -140,7 +140,7 @@ export function StepReview({
         {/* Payment summary */}
         <div className="border border-white/[0.08] p-5">
           <div className="flex items-center justify-between">
-            <h3 className="text-[11px] font-medium uppercase tracking-[0.15em] text-white/40">
+            <h3 className="text-[11px] font-medium uppercase tracking-[0.15em] text-white/60">
               Zahlungsdaten (SEPA-Lastschrift)
             </h3>
             <button
@@ -246,7 +246,7 @@ export function StepReview({
                   {formatPrice(totalWithSp)} €
                 </span>
               </div>
-              <p className="mt-1.5 text-[11px] text-white/30">
+              <p className="mt-1.5 text-[11px] text-white/55">
                 Alle Preise inkl. 19% MwSt. Keine weiteren Kosten.
               </p>
             </div>
@@ -261,7 +261,7 @@ export function StepReview({
         {/* SEPA mandate */}
         {sepaText && (
           <div className="border border-white/[0.06] bg-cs-gray-900/50 p-5">
-            <p className="mb-2 text-[11px] font-medium uppercase tracking-[0.15em] text-white/40">
+            <p className="mb-2 text-[11px] font-medium uppercase tracking-[0.15em] text-white/60">
               SEPA-Lastschriftmandat
             </p>
             <p className="max-h-24 overflow-y-auto text-[12px] leading-relaxed text-white/50">

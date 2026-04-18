@@ -81,7 +81,7 @@ export function VoucherInput({ value, onChange }: Props) {
 
   return (
     <div>
-      <label className="mb-2 flex items-center gap-2 text-[11px] font-medium uppercase tracking-[0.15em] text-white/40">
+      <label className="mb-2 flex items-center gap-2 text-[11px] font-medium uppercase tracking-[0.15em] text-white/60">
         <Tag className="h-3 w-3" />
         Gutschein-Code
       </label>

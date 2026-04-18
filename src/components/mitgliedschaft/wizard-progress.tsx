@@ -24,7 +24,7 @@ export function WizardProgress({ currentStep }: WizardProgressProps) {
                 "flex h-7 items-center gap-2 px-3 text-[10px] font-medium uppercase tracking-[0.15em] transition-all duration-500",
                 isActive && "bg-cs-accent text-white",
                 isPast && "bg-white/[0.06] text-white/50",
-                !isActive && !isPast && "text-white/20"
+                !isActive && !isPast && "text-white/50"
               )}
             >
               <span>{i + 1}</span>

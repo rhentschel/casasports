@@ -155,7 +155,7 @@ export function StepPlanSelection({
             <div key={bundle.id}>
               {/* Bundle-Header als visueller Trenner */}
               {bundleIdx > 0 && <div className="my-5 h-px bg-white/[0.06]" />}
-              <p className={cn("mb-2 text-[11px] font-bold uppercase tracking-[0.2em] text-white/30", isAllIn && "mb-5")}>
+              <p className={cn("mb-2 text-[11px] font-bold uppercase tracking-[0.2em] text-white/55", isAllIn && "mb-5")}>
                 {bundle.name.toLowerCase().includes("all in")
                   ? "All In"
                   : bundle.name.toLowerCase().includes("sauna")
@@ -197,11 +197,11 @@ export function StepPlanSelection({
                     </h3>
                     <p className="mt-0.5 text-2xl font-black tracking-[-0.03em] text-cs-white">
                       {formatPrice(term.price)} €{" "}
-                      <span className="text-sm font-medium text-white/40">
+                      <span className="text-sm font-medium text-white/60">
                         mtl.
                       </span>
                     </p>
-                    <p className="mt-1 text-[11px] text-white/30">
+                    <p className="mt-1 text-[11px] text-white/55">
                       {term.termValue} Monate Mindestvertragslaufzeit
                     </p>
                   </div>
@@ -226,7 +226,7 @@ export function StepPlanSelection({
                   {getFeaturesForBundle(bundle.name).map((f) => (
                     <span
                       key={f.text}
-                      className="flex items-center gap-1 text-[10px] text-white/35"
+                      className="flex items-center gap-1 text-[10px] text-white/60"
                     >
                       {f.icon}
                       {f.text}
@@ -329,7 +329,7 @@ export function StepPlanSelection({
                   </span>
                 </div>
               </div>
-              <p className="text-[10px] text-white/25">
+              <p className="text-[10px] text-white/55">
                 Alle Preise inkl. 19% MwSt.
               </p>
             </div>
@@ -367,13 +367,13 @@ export function StepPlanSelection({
 
           {/* Dein Monatsbeitrag — gross */}
           <div className="mt-6 border-t border-white/[0.08] pt-6">
-            <p className="text-[11px] font-medium uppercase tracking-[0.15em] text-white/40">
+            <p className="text-[11px] font-medium uppercase tracking-[0.15em] text-white/60">
               Dein Monatsbeitrag
             </p>
             <p className="mt-1 text-3xl font-black tracking-[-0.03em] text-cs-white">
               {formatPrice(selectedTerm.price)} €
             </p>
-            <p className="mt-1 text-[11px] text-white/30">
+            <p className="mt-1 text-[11px] text-white/55">
               Monatlich per SEPA-Lastschrift. Inkl. 19% MwSt.
             </p>
           </div>

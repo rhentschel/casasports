@@ -183,7 +183,7 @@ export function MembershipWizard() {
   if (loading) {
     return (
       <div className="flex min-h-[60vh] items-center justify-center px-6 py-12">
-        <Loader2 className="h-8 w-8 animate-spin text-white/30" />
+        <Loader2 className="h-8 w-8 animate-spin text-white/55" />
       </div>
     );
   }
@@ -278,7 +278,7 @@ export function MembershipWizard() {
         </AnimatePresence>
 
         {step !== "success" && (
-          <p className="mt-10 border-t border-white/[0.04] pt-6 text-center text-[11px] text-white/40">
+          <p className="mt-10 border-t border-white/[0.04] pt-6 text-center text-[11px] text-white/60">
             Fragen oder Hilfe? Ruf uns an{" "}
             <a
               href="tel:0236857060"

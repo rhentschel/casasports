@@ -112,7 +112,7 @@ function NutritionMarquee() {
             <span
               data-word
               className="text-[13px] font-medium uppercase tracking-[0.15em]"
-              style={{ color: "rgba(245,245,240,0.25)", transition: "color 0.4s" }}
+              style={{ color: "rgba(245,245,240,0.5)", transition: "color 0.4s" }}
             >
               {word}
             </span>

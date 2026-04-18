@@ -18,7 +18,7 @@ const inputClass =
   "w-full border border-white/[0.08] bg-cs-black px-4 py-3 text-sm text-cs-white placeholder:text-cs-gray-500 focus:border-cs-accent focus:outline-none transition-colors duration-300";
 
 const labelClass =
-  "mb-1.5 block text-[11px] font-medium uppercase tracking-[0.15em] text-white/40";
+  "mb-1.5 block text-[11px] font-medium uppercase tracking-[0.15em] text-white/60";
 
 function formatIbanDisplay(iban: string): string {
   const cleaned = iban.replace(/\s/g, "").toUpperCase();
@@ -158,7 +158,7 @@ export function StepPayment({
               aria-hidden="true"
             >
               {ibanStatus === "loading" && (
-                <Loader2 className="h-5 w-5 animate-spin text-white/30" />
+                <Loader2 className="h-5 w-5 animate-spin text-white/55" />
               )}
               {ibanStatus === "valid" && (
                 <CheckCircle className="h-5 w-5 text-green-500" />
@@ -220,7 +220,7 @@ export function StepPayment({
         {/* SEPA text */}
         {sepaText && (
           <div className="border border-white/[0.06] bg-cs-gray-900/50 p-6">
-            <p className="mb-3 text-[11px] font-medium uppercase tracking-[0.15em] text-white/40">
+            <p className="mb-3 text-[11px] font-medium uppercase tracking-[0.15em] text-white/60">
               SEPA-Lastschriftmandat
             </p>
             <p className="text-[13px] leading-relaxed text-white/50">
