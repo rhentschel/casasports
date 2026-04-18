@@ -4,11 +4,19 @@ import config from "@payload-config";
 
 export const dynamic = "force-dynamic";
 
-export async function POST(request: NextRequest) {
-  const authHeader = request.headers.get("x-reset-token");
-  const expected = process.env.PAYLOAD_SECRET;
+function isAuthorized(request: NextRequest): boolean {
+  const token = request.headers.get("x-reset-token");
+  if (!token) return false;
+  const resetToken = process.env.ADMIN_RESET_TOKEN;
+  const payloadSecret = process.env.PAYLOAD_SECRET;
+  return (
+    (!!resetToken && token === resetToken) ||
+    (!!payloadSecret && token === payloadSecret)
+  );
+}
 
-  if (!expected || !authHeader || authHeader !== expected) {
+export async function POST(request: NextRequest) {
+  if (!isAuthorized(request)) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
@@ -77,10 +85,7 @@ export async function POST(request: NextRequest) {
 }
 
 export async function GET(request: NextRequest) {
-  const authHeader = request.headers.get("x-reset-token");
-  const expected = process.env.PAYLOAD_SECRET;
-
-  if (!expected || !authHeader || authHeader !== expected) {
+  if (!isAuthorized(request)) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
