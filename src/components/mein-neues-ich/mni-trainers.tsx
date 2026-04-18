@@ -83,7 +83,7 @@ function TrainerSlide({ trainer }: { trainer: Trainer }) {
       <div className="relative flex min-h-[80vh] items-end overflow-hidden pb-20 md:pb-28">
         <Image
           src={trainer.image}
-          alt={trainer.name}
+          alt={`${trainer.name} - ${trainer.role}`}
           fill
           className="img-cinema object-cover object-top"
         />
@@ -170,18 +170,23 @@ export function MniTrainers() {
 
       <div className="absolute bottom-6 left-0 right-0 z-20 md:bottom-10">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-8 md:px-16">
-          <div className="flex items-center gap-2">
-            {trainers.map((_, i) => (
+          <div className="flex items-center gap-1">
+            {trainers.map((t, i) => (
               <button
-                key={i}
+                key={t.name}
                 onClick={() => emblaApi?.scrollTo(i)}
-                className={`h-[3px] transition-all duration-500 ${
-                  i === selectedIndex
-                    ? "w-8 bg-cs-accent"
-                    : "w-4 bg-white/20 hover:bg-white/40"
-                }`}
-                aria-label={`Slide ${i + 1}`}
-              />
+                className="group flex h-6 min-w-[24px] items-center justify-center px-1"
+                aria-label={`Trainer ${t.name}`}
+                aria-current={i === selectedIndex ? "true" : undefined}
+              >
+                <span
+                  className={`block h-[3px] transition-all duration-500 ${
+                    i === selectedIndex
+                      ? "w-8 bg-cs-accent"
+                      : "w-4 bg-white/20 group-hover:bg-white/40"
+                  }`}
+                />
+              </button>
             ))}
           </div>
 

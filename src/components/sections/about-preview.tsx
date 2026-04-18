@@ -49,7 +49,7 @@ function TeamSlide({
         {/* Image (always visible) */}
         <Image
           src={member.image}
-          alt={member.name}
+          alt={`${member.name} - ${member.role}`}
           fill
           className="img-cinema object-cover object-top"
         />

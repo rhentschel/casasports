@@ -40,27 +40,29 @@ export function ErnaehrungHero() {
           Ernaehrung bei Casa Sports
         </p>
 
-        <div className="overflow-hidden">
-          <h1
-            className={cn(
-              "text-[clamp(2.8rem,7.5vw,6.5rem)] font-black uppercase leading-[1.05] tracking-[-0.04em] text-cs-white transition-transform duration-[1.4s] ease-[cubic-bezier(0.16,1,0.3,1)]",
-              loaded ? "translate-y-0" : "translate-y-[120%]"
-            )}
-          >
-            80% passiert
-          </h1>
-        </div>
-        <div className="overflow-hidden">
-          <h1
-            className={cn(
-              "text-[clamp(2.8rem,7.5vw,6.5rem)] font-black uppercase leading-[1.05] tracking-[-0.04em] transition-transform delay-200 duration-[1.4s] ease-[cubic-bezier(0.16,1,0.3,1)]",
-              loaded ? "translate-y-0" : "translate-y-[120%]"
-            )}
-          >
-            <span className="text-cs-white">in der</span>{" "}
-            <span className="text-cs-accent">Kueche.</span>
-          </h1>
-        </div>
+        <h1 className="text-[clamp(2.8rem,7.5vw,6.5rem)] font-black uppercase leading-[1.05] tracking-[-0.04em] text-cs-white">
+          <span className="block overflow-hidden">
+            <span
+              className={cn(
+                "block transition-transform duration-[1.4s] ease-[cubic-bezier(0.16,1,0.3,1)]",
+                loaded ? "translate-y-0" : "translate-y-[120%]"
+              )}
+            >
+              80% passiert
+            </span>
+          </span>
+          <span className="block overflow-hidden">
+            <span
+              className={cn(
+                "block transition-transform delay-200 duration-[1.4s] ease-[cubic-bezier(0.16,1,0.3,1)]",
+                loaded ? "translate-y-0" : "translate-y-[120%]"
+              )}
+            >
+              <span className="text-cs-white">in der</span>{" "}
+              <span className="text-cs-accent">Kueche.</span>
+            </span>
+          </span>
+        </h1>
 
         <p
           className={cn(

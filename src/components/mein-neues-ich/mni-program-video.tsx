@@ -20,9 +20,11 @@ const clips: Clip[] = [
 
 function VideoLightbox({
   videoId,
+  title,
   onClose,
 }: {
   videoId: string;
+  title: string;
   onClose: () => void;
 }) {
   useEffect(() => {
@@ -42,6 +44,9 @@ function VideoLightbox({
     <div
       className="fixed inset-0 z-[100] flex items-center justify-center bg-cs-black/90 backdrop-blur-md"
       onClick={onClose}
+      role="dialog"
+      aria-modal="true"
+      aria-label={`Video: ${title}`}
     >
       <button
         onClick={onClose}
@@ -56,7 +61,7 @@ function VideoLightbox({
       >
         <iframe
           src={`https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1&rel=0`}
-          title="Casa Sports Video"
+          title={title}
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
           allowFullScreen
           className="absolute inset-0 h-full w-full"
@@ -201,7 +206,13 @@ export function MniProgramVideo() {
         ))}
       </div>
 
-      {openId && <VideoLightbox videoId={openId} onClose={() => setOpenId(null)} />}
+      {openId && (
+        <VideoLightbox
+          videoId={openId}
+          title={clips.find((c) => c.id === openId)?.title ?? "Casa Sports Video"}
+          onClose={() => setOpenId(null)}
+        />
+      )}
     </section>
   );
 }
