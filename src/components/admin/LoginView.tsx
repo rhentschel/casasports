@@ -254,6 +254,25 @@ export function LoginView() {
             >
               {loading ? "Wird angemeldet..." : "Anmelden"}
             </button>
+
+            <div style={{ marginTop: 20, textAlign: "center" }}>
+              <a
+                href="/admin/forgot"
+                style={{
+                  fontSize: 12,
+                  color: "rgba(255,255,255,0.5)",
+                  textDecoration: "none",
+                  letterSpacing: "0.05em",
+                  transition: "color 0.3s",
+                }}
+                onMouseOver={(e) => (e.currentTarget.style.color = "#e63946")}
+                onMouseOut={(e) =>
+                  (e.currentTarget.style.color = "rgba(255,255,255,0.5)")
+                }
+              >
+                Passwort vergessen?
+              </a>
+            </div>
           </form>
 
           <p
