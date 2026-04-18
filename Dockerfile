@@ -5,7 +5,7 @@ FROM base AS deps
 RUN apk add --no-cache libc6-compat
 WORKDIR /app
 COPY package.json package-lock.json ./
-RUN npm ci --omit=dev
+RUN npm ci --omit=dev --legacy-peer-deps
 
 # Build
 FROM base AS builder
@@ -26,7 +26,7 @@ ENV DATABASE_URL=$DATABASE_URL
 ENV PAYLOAD_SECRET=$PAYLOAD_SECRET
 
 # Install all deps for build (including devDeps)
-RUN npm install
+RUN npm install --legacy-peer-deps
 
 RUN npm run build
 
