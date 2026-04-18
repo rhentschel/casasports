@@ -102,7 +102,7 @@ export function ArticleHeader({ post }: ArticleHeaderProps) {
               </div>
             )}
 
-            <span className="text-white/20">|</span>
+            <span className="text-white/55">|</span>
 
             <span className="flex items-center gap-1.5">
               <Calendar className="h-3.5 w-3.5" />
@@ -116,7 +116,7 @@ export function ArticleHeader({ post }: ArticleHeaderProps) {
               </span>
             )}
 
-            <span className="text-white/20">|</span>
+            <span className="text-white/55">|</span>
 
             <span className="flex items-center gap-1.5">
               <Clock className="h-3.5 w-3.5" />

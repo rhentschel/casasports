@@ -119,7 +119,7 @@ export function WellnessAreas() {
                     {area.highlights.map((h) => (
                       <li
                         key={h}
-                        className="flex items-center gap-2 text-[12px] text-white/35"
+                        className="flex items-center gap-2 text-[12px] text-white/60"
                       >
                         <div className="h-1 w-1 shrink-0 bg-cs-accent" />
                         {h}

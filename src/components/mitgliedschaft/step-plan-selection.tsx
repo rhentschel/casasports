@@ -86,7 +86,7 @@ function Accordion({
         </span>
         <ChevronDown
           className={cn(
-            "h-4 w-4 text-white/30 transition-transform duration-300",
+            "h-4 w-4 text-white/55 transition-transform duration-300",
             open && "rotate-180"
           )}
         />

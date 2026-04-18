@@ -71,7 +71,7 @@ export function VoucherInput({ value, onChange }: Props) {
           type="button"
           onClick={handleRemove}
           aria-label="Gutschein entfernen"
-          className="flex h-8 w-8 items-center justify-center text-white/40 transition-colors hover:text-cs-accent"
+          className="flex h-8 w-8 items-center justify-center text-white/60 transition-colors hover:text-cs-accent"
         >
           <X className="h-4 w-4" />
         </button>

@@ -81,7 +81,7 @@ export function Utilization() {
             <div className="flex items-center gap-3 border border-white/[0.08] px-5 py-3">
               <div className={cn("h-2 w-2 animate-pulse rounded-full", levelColors[current.level])} />
               <div>
-                <p className="text-[10px] font-medium uppercase tracking-[0.2em] text-white/40">
+                <p className="text-[10px] font-medium uppercase tracking-[0.2em] text-white/60">
                   Gerade jetzt
                 </p>
                 <p className="mt-0.5 text-[13px] font-bold uppercase tracking-[-0.01em] text-cs-white">
@@ -111,7 +111,7 @@ export function Utilization() {
                   </div>
                   <span
                     className={cn(
-                      "text-[10px] font-medium tracking-wider text-white/40 md:text-[11px]",
+                      "text-[10px] font-medium tracking-wider text-white/60 md:text-[11px]",
                       item.isCurrent && "font-bold text-cs-accent"
                     )}
                   >

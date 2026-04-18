@@ -75,7 +75,7 @@ export function ProbetrainingForm({ source = "Probetraining Page" }: Props) {
           <div>
             <label
               htmlFor="pt-firstname"
-              className="mb-1.5 block text-[11px] font-medium uppercase tracking-[0.15em] text-white/40"
+              className="mb-1.5 block text-[11px] font-medium uppercase tracking-[0.15em] text-white/60"
             >
               Vorname *
             </label>
@@ -94,7 +94,7 @@ export function ProbetrainingForm({ source = "Probetraining Page" }: Props) {
           <div>
             <label
               htmlFor="pt-lastname"
-              className="mb-1.5 block text-[11px] font-medium uppercase tracking-[0.15em] text-white/40"
+              className="mb-1.5 block text-[11px] font-medium uppercase tracking-[0.15em] text-white/60"
             >
               Nachname *
             </label>
@@ -114,7 +114,7 @@ export function ProbetrainingForm({ source = "Probetraining Page" }: Props) {
         <div>
           <label
             htmlFor="pt-email"
-            className="mb-1.5 block text-[11px] font-medium uppercase tracking-[0.15em] text-white/40"
+            className="mb-1.5 block text-[11px] font-medium uppercase tracking-[0.15em] text-white/60"
           >
             E-Mail *
           </label>
@@ -135,7 +135,7 @@ export function ProbetrainingForm({ source = "Probetraining Page" }: Props) {
         <div>
           <label
             htmlFor="pt-phone"
-            className="mb-1.5 block text-[11px] font-medium uppercase tracking-[0.15em] text-white/40"
+            className="mb-1.5 block text-[11px] font-medium uppercase tracking-[0.15em] text-white/60"
           >
             Telefon
           </label>
@@ -153,7 +153,7 @@ export function ProbetrainingForm({ source = "Probetraining Page" }: Props) {
         <div>
           <label
             htmlFor="pt-message"
-            className="mb-1.5 block text-[11px] font-medium uppercase tracking-[0.15em] text-white/40"
+            className="mb-1.5 block text-[11px] font-medium uppercase tracking-[0.15em] text-white/60"
           >
             Nachricht
           </label>
@@ -194,7 +194,7 @@ export function ProbetrainingForm({ source = "Probetraining Page" }: Props) {
             "Probetraining anfragen"
           )}
         </button>
-        <p className="text-[10px] leading-relaxed text-white/30">
+        <p className="text-[10px] leading-relaxed text-white/55">
           Mit dem Absenden erklaerst du dich einverstanden, dass wir dich zu
           deiner Anfrage kontaktieren. Details in der{" "}
           <a href="/datenschutz" className="text-white/60 underline">

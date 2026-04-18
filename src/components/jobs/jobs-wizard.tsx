@@ -78,7 +78,7 @@ const inputClass =
   "w-full border border-white/[0.08] bg-cs-black px-4 py-3 text-sm text-cs-white placeholder:text-cs-gray-500 focus:border-cs-accent focus:outline-none transition-colors duration-300";
 
 const labelClass =
-  "mb-1.5 block text-[11px] font-medium uppercase tracking-[0.15em] text-white/40";
+  "mb-1.5 block text-[11px] font-medium uppercase tracking-[0.15em] text-white/60";
 
 const errorTextClass = "mt-1.5 text-[11px] text-cs-accent";
 
@@ -101,7 +101,7 @@ function WizardProgress({ currentStep }: { currentStep: WizardStep }) {
                 "flex h-7 items-center gap-2 px-3 text-[10px] font-medium uppercase tracking-[0.15em] transition-all duration-500",
                 isActive && "bg-cs-accent text-white",
                 isPast && "bg-white/[0.06] text-white/50",
-                !isActive && !isPast && "text-white/20"
+                !isActive && !isPast && "text-white/55"
               )}
             >
               <span>{i + 1}</span>
@@ -175,7 +175,7 @@ function StepPosition({
                     <Icon
                       className={cn(
                         "h-4 w-4 transition-colors",
-                        isSelected ? "text-cs-accent" : "text-white/30"
+                        isSelected ? "text-cs-accent" : "text-white/55"
                       )}
                     />
                   </div>
@@ -184,15 +184,15 @@ function StepPosition({
                       {pos.title}
                     </h3>
                     <div className="mt-1.5 flex flex-wrap gap-3">
-                      <span className="flex items-center gap-1 text-[10px] text-white/35">
+                      <span className="flex items-center gap-1 text-[10px] text-white/60">
                         <Briefcase className="h-3 w-3" />
                         {pos.type}
                       </span>
-                      <span className="flex items-center gap-1 text-[10px] text-white/35">
+                      <span className="flex items-center gap-1 text-[10px] text-white/60">
                         <Clock className="h-3 w-3" />
                         {pos.hours}
                       </span>
-                      <span className="flex items-center gap-1 text-[10px] text-white/35">
+                      <span className="flex items-center gap-1 text-[10px] text-white/60">
                         <MapPin className="h-3 w-3" />
                         Oer-Erkenschwick
                       </span>
@@ -230,7 +230,7 @@ function StepPosition({
               <h3 className="text-base font-black uppercase tracking-[-0.01em] text-cs-white">
                 Initiativbewerbung
               </h3>
-              <p className="mt-1 text-[11px] text-white/30">
+              <p className="mt-1 text-[11px] text-white/55">
                 Keine passende Stelle? Bewirb dich trotzdem.
               </p>
             </div>
@@ -488,7 +488,7 @@ function StepDetails({
             ) : (
               <span />
             )}
-            <span className="text-[11px] text-white/20">
+            <span className="text-[11px] text-white/55">
               {data.message.length} Zeichen
             </span>
           </div>
@@ -501,7 +501,7 @@ function StepDetails({
             onChange={(e) => onChange("privacy", e.target.checked)}
             className="mt-1 h-4 w-4 shrink-0 appearance-none border border-white/[0.15] bg-cs-black checked:border-cs-accent checked:bg-cs-accent transition-colors cursor-pointer"
           />
-          <span className="text-xs leading-relaxed text-white/40">
+          <span className="text-xs leading-relaxed text-white/60">
             Ich stimme zu, dass meine Angaben zur Bearbeitung meiner
             Bewerbung gespeichert werden.{" "}
             <a href="/datenschutz" className="text-cs-accent underline underline-offset-2 hover:text-cs-accent-hover">
@@ -574,7 +574,7 @@ function StepReview({
         {/* Position */}
         <div className="flex items-center justify-between border border-white/[0.06] p-5">
           <div>
-            <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-white/30">Stelle</p>
+            <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-white/55">Stelle</p>
             <p className="mt-1 text-sm font-bold text-cs-white">{posLabel}</p>
           </div>
           <button onClick={() => onGoToStep("position")} className="text-[11px] text-cs-accent hover:text-cs-accent-hover transition-colors">
@@ -585,7 +585,7 @@ function StepReview({
         {/* Personal */}
         <div className="flex items-start justify-between border border-white/[0.06] p-5">
           <div className="space-y-2 text-[13px]">
-            <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-white/30">Kontaktdaten</p>
+            <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-white/55">Kontaktdaten</p>
             <div className="flex justify-between gap-12">
               <span className="text-white/50">Name</span>
               <span className="text-white/70">{personal.name}</span>
@@ -607,7 +607,7 @@ function StepReview({
         {/* Details */}
         <div className="flex items-start justify-between border border-white/[0.06] p-5">
           <div className="space-y-2 text-[13px]">
-            <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-white/30">Details</p>
+            <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-white/55">Details</p>
             {details.experience && (
               <div className="flex justify-between gap-12">
                 <span className="text-white/50">Erfahrung</span>

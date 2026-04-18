@@ -100,7 +100,7 @@ export function MniFaq() {
                   </span>
                   <ChevronDown
                     className={cn(
-                      "h-5 w-5 shrink-0 text-white/30 transition-transform duration-300",
+                      "h-5 w-5 shrink-0 text-white/55 transition-transform duration-300",
                       openIndex === i && "rotate-180"
                     )}
                   />

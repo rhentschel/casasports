@@ -13,13 +13,13 @@ export function Breadcrumbs({ category, title }: BreadcrumbsProps) {
         <li>
           <Link href="/" className="transition-colors duration-300 hover:text-cs-white">Home</Link>
         </li>
-        <li><ChevronRight className="h-3 w-3 text-white/20" /></li>
+        <li><ChevronRight className="h-3 w-3 text-white/55" /></li>
         <li>
           <Link href="/blog" className="transition-colors duration-300 hover:text-cs-white">Blog</Link>
         </li>
         {category && (
           <>
-            <li><ChevronRight className="h-3 w-3 text-white/20" /></li>
+            <li><ChevronRight className="h-3 w-3 text-white/55" /></li>
             <li>
               <Link href={`/blog/kategorie/${category}`} className="transition-colors duration-300 hover:text-cs-white">
                 {category}
@@ -27,7 +27,7 @@ export function Breadcrumbs({ category, title }: BreadcrumbsProps) {
             </li>
           </>
         )}
-        <li><ChevronRight className="h-3 w-3 text-white/20" /></li>
+        <li><ChevronRight className="h-3 w-3 text-white/55" /></li>
         <li className="truncate text-cs-gray-400" aria-current="page">{title}</li>
       </ol>
     </nav>
