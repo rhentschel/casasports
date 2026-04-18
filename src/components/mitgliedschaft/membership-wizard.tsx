@@ -124,6 +124,8 @@ export function MembershipWizard() {
   async function handleSubmit() {
     if (!selectedTerm) return;
 
+    const bundleName = findBundleNameForTerm(selectedTerm.id);
+
     const payload = {
       studioId: MAGICLINE_CONFIG.studioId,
       contract: {
@@ -152,6 +154,13 @@ export function MembershipWizard() {
         },
       },
       communicationPreferences: [],
+      // Fuer Payload Collection (wird nicht an Magicline gesendet)
+      _meta: {
+        rateBundleName: bundleName,
+        termValue: selectedTerm.termValue,
+        termUnit: selectedTerm.termUnit,
+        price: selectedTerm.price,
+      },
     };
 
     const res = await fetch("/api/magicline/contract-submit", {

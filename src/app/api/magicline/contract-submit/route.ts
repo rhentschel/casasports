@@ -5,11 +5,14 @@ import { createMembershipSignup } from "@/lib/payload-data"
 export async function POST(request: NextRequest) {
   try {
     const payload = await request.json()
-    const result = await submitContract(payload)
 
-    const customer = payload.customer || {}
-    const rateBundle = payload.rateBundle || {}
-    const term = payload.term || {}
+    // _meta separat behandeln (nicht an Magicline senden)
+    const { _meta, ...magiclinePayload } = payload
+
+    const result = await submitContract(magiclinePayload)
+
+    const customer = magiclinePayload.customer || {}
+    const meta = _meta || {}
 
     const signupData = {
       contractId: (result as any)?.contractId?.toString() || null,
@@ -18,10 +21,14 @@ export async function POST(request: NextRequest) {
         `${customer.firstName || customer.firstname || ""} ${customer.lastName || customer.lastname || ""}`.trim() ||
         "Unbekannt",
       email: customer.email || null,
-      phone: customer.mobileNumber || customer.phoneNumber || customer.phone || null,
-      plan: rateBundle.name || "Unbekannt",
-      termMonths: term.termValue || null,
-      monthlyPrice: term.price || null,
+      phone:
+        customer.mobileNumber ||
+        customer.phoneNumber ||
+        customer.phone ||
+        null,
+      plan: meta.rateBundleName || "Unbekannt",
+      termMonths: typeof meta.termValue === "number" ? meta.termValue : null,
+      monthlyPrice: typeof meta.price === "number" ? meta.price : null,
     }
 
     // Payload speichern → afterChange Hook triggered E-Mail automatisch
