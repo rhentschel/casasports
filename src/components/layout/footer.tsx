@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { Instagram, Facebook, Mail, Phone, MapPin } from "lucide-react";
 import { siteConfig } from "@/data/site";
+import { CookieSettingsTrigger } from "@/components/ui/cookie-settings-trigger";
 
 export function Footer() {
   return (
@@ -131,6 +132,9 @@ export function Footer() {
                   </Link>
                 </li>
               ))}
+              <li>
+                <CookieSettingsTrigger />
+              </li>
             </ul>
           </div>
         </div>

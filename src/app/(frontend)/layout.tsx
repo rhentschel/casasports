@@ -3,6 +3,7 @@ import { Inter } from "next/font/google"
 import { Header } from "@/components/layout/header"
 import { Footer } from "@/components/layout/footer"
 import { SkipLink } from "@/components/layout/skip-link"
+import { CookieBanner } from "@/components/ui/cookie-banner"
 import { JsonLd } from "@/components/schema/json-ld"
 import { healthClubSchema, websiteSchema } from "@/lib/schema"
 import { siteConfig } from "@/data/site"
@@ -58,6 +59,7 @@ export default function FrontendLayout({
         <Header />
         <main id="main" tabIndex={-1}>{children}</main>
         <Footer />
+        <CookieBanner />
       </body>
     </html>
   )
