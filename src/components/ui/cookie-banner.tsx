@@ -88,7 +88,7 @@ export function CookieBanner() {
               type="button"
               onClick={() => setVisible(false)}
               className="flex h-10 w-10 shrink-0 items-center justify-center border border-white/10 text-cs-gray-400 transition-colors hover:border-cs-accent hover:text-cs-white"
-              aria-label="Schliessen"
+              aria-label="Schließen"
             >
               <X className="h-4 w-4" />
             </button>
@@ -98,7 +98,7 @@ export function CookieBanner() {
             <ConsentRow
               icon={Shield}
               title="Notwendig"
-              description="Technisch erforderlich fuer den Betrieb der Seite. Diese koennen nicht deaktiviert werden."
+              description="Technisch erforderlich für den Betrieb der Seite. Diese können nicht deaktiviert werden."
               enabled
               locked
               onToggle={() => toggle("necessary")}
@@ -106,14 +106,14 @@ export function CookieBanner() {
             <ConsentRow
               icon={BarChart3}
               title="Statistik"
-              description="Helfen uns zu verstehen, wie die Seite genutzt wird, damit wir sie verbessern koennen."
+              description="Helfen uns zu verstehen, wie die Seite genutzt wird, damit wir sie verbessern können."
               enabled={choices.analytics}
               onToggle={() => toggle("analytics")}
             />
             <ConsentRow
               icon={Megaphone}
               title="Marketing"
-              description="Fuer relevante Werbung auf Social Media und das Messen von Kampagnen-Erfolg."
+              description="Für relevante Werbung auf Social Media und das Messen von Kampagnen-Erfolg."
               enabled={choices.marketing}
               onToggle={() => toggle("marketing")}
             />
@@ -127,7 +127,7 @@ export function CookieBanner() {
                 className="text-cs-accent underline underline-offset-4 transition-colors hover:text-cs-white"
                 onClick={() => setVisible(false)}
               >
-                Datenschutzerklaerung
+                Datenschutzerklärung
               </Link>
               .
             </p>
@@ -169,7 +169,7 @@ export function CookieBanner() {
             id="cookie-banner-title"
             className="mt-3 text-xl font-black uppercase leading-[1.1] tracking-tight text-cs-white"
           >
-            Wir respektieren deine Privatsphaere.
+            Wir respektieren deine Privatsphäre.
           </h2>
           <p className="mt-4 text-[13px] leading-relaxed text-cs-gray-400">
             Wir nutzen Cookies, um diese Seite zu betreiben und besser zu
@@ -178,33 +178,35 @@ export function CookieBanner() {
               href="/datenschutz"
               className="text-cs-white underline underline-offset-4 transition-colors hover:text-cs-accent"
             >
-              Datenschutzerklaerung
+              Datenschutzerklärung
             </Link>
             .
           </p>
         </div>
 
-        <div className="flex flex-col gap-2 border-t border-white/[0.06] px-6 py-5 sm:flex-row md:px-8">
-          <button
-            type="button"
-            onClick={handleRejectAll}
-            className="border border-white/15 px-4 py-3 text-[11px] font-bold uppercase tracking-[0.2em] text-cs-white transition-colors hover:border-cs-accent hover:text-cs-accent"
-          >
-            Nur notwendige
-          </button>
+        <div className="flex flex-col gap-2 border-t border-white/[0.06] px-6 py-5 md:px-8">
+          <div className="grid grid-cols-2 gap-2">
+            <button
+              type="button"
+              onClick={handleRejectAll}
+              className="border border-white/15 px-4 py-3 text-[11px] font-bold uppercase tracking-[0.2em] text-cs-white transition-colors hover:border-cs-accent hover:text-cs-accent"
+            >
+              Ablehnen
+            </button>
+            <button
+              type="button"
+              onClick={handleAcceptAll}
+              className="bg-cs-accent px-4 py-3 text-[11px] font-bold uppercase tracking-[0.2em] text-white transition-colors hover:bg-white hover:text-cs-black"
+            >
+              Akzeptieren
+            </button>
+          </div>
           <button
             type="button"
             onClick={() => setView("settings")}
-            className="border border-white/15 px-4 py-3 text-[11px] font-bold uppercase tracking-[0.2em] text-cs-white transition-colors hover:border-cs-accent hover:text-cs-accent"
+            className="text-[11px] font-semibold uppercase tracking-[0.2em] text-cs-gray-400 underline underline-offset-[6px] transition-colors hover:text-cs-white"
           >
-            Einstellungen
-          </button>
-          <button
-            type="button"
-            onClick={handleAcceptAll}
-            className="bg-cs-accent px-5 py-3 text-[11px] font-bold uppercase tracking-[0.2em] text-white transition-colors hover:bg-white hover:text-cs-black sm:flex-1"
-          >
-            Alle akzeptieren
+            Einstellungen anpassen
           </button>
         </div>
       </div>

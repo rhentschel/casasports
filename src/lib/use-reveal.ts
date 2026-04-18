@@ -1,47 +1,51 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 
 export function useReveal() {
-  const ref = useRef<HTMLDivElement>(null);
+  const [element, setElement] = useState<HTMLElement | null>(null);
+  const observerRef = useRef<IntersectionObserver | null>(null);
 
   useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
+    if (!element) return;
 
     const prefersReducedMotion = window.matchMedia(
-      "(prefers-reduced-motion: reduce)"
+      "(prefers-reduced-motion: reduce)",
     ).matches;
 
     if (prefersReducedMotion || typeof IntersectionObserver === "undefined") {
-      el.classList.add("visible");
+      element.classList.add("visible");
       return;
     }
 
-    const rect = el.getBoundingClientRect();
+    const rect = element.getBoundingClientRect();
     if (rect.top < window.innerHeight && rect.bottom > 0) {
-      el.classList.add("visible");
+      element.classList.add("visible");
       return;
     }
 
-    const observer = new IntersectionObserver(
+    observerRef.current = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          el.classList.add("visible");
-          observer.unobserve(el);
+          element.classList.add("visible");
+          observerRef.current?.disconnect();
         }
       },
-      { threshold: 0.05, rootMargin: "0px 0px -10% 0px" }
+      { threshold: 0.05, rootMargin: "0px 0px -10% 0px" },
     );
 
-    observer.observe(el);
+    observerRef.current.observe(element);
 
-    const fallback = setTimeout(() => el.classList.add("visible"), 3000);
+    const fallback = setTimeout(() => element.classList.add("visible"), 3000);
 
     return () => {
-      observer.disconnect();
+      observerRef.current?.disconnect();
       clearTimeout(fallback);
     };
+  }, [element]);
+
+  const ref = useCallback((node: HTMLElement | null) => {
+    setElement(node);
   }, []);
 
   return ref;
