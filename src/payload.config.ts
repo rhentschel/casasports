@@ -1,6 +1,7 @@
 import { buildConfig } from "payload"
 import { postgresAdapter } from "@payloadcms/db-postgres"
 import { lexicalEditor } from "@payloadcms/richtext-lexical"
+import { nodemailerAdapter } from "@payloadcms/email-nodemailer"
 import { de } from "@payloadcms/translations/languages/de"
 import sharp from "sharp"
 import path from "path"
@@ -62,6 +63,21 @@ export default buildConfig({
   ],
   globals: [SiteSettings, Navigation],
   editor: lexicalEditor(),
+  email: process.env.SMTP_HOST && process.env.SMTP_USER && process.env.SMTP_PASSWORD
+    ? nodemailerAdapter({
+        defaultFromAddress: process.env.EMAIL_FROM_ADDRESS || "info@casasports.de",
+        defaultFromName: process.env.EMAIL_FROM_NAME || "Casa Sports",
+        transportOptions: {
+          host: process.env.SMTP_HOST,
+          port: parseInt(process.env.SMTP_PORT || "465", 10),
+          secure: parseInt(process.env.SMTP_PORT || "465", 10) === 465,
+          auth: {
+            user: process.env.SMTP_USER,
+            pass: process.env.SMTP_PASSWORD,
+          },
+        },
+      })
+    : undefined,
   db: postgresAdapter({
     push: true,
     pool: {

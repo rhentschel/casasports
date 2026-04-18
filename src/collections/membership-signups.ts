@@ -1,4 +1,5 @@
 import type { CollectionConfig } from "payload"
+import { sendMembershipNotification } from "../lib/email"
 
 export const MembershipSignups: CollectionConfig = {
   slug: "membership-signups",
@@ -6,23 +7,51 @@ export const MembershipSignups: CollectionConfig = {
   admin: {
     useAsTitle: "customerName",
     defaultColumns: ["customerName", "plan", "monthlyPrice", "status", "createdAt"],
+    group: "Verwaltung",
+  },
+  access: {
+    read: ({ req: { user } }) => !!user,
+    create: () => true,
+    update: ({ req: { user } }) => !!user,
+    delete: ({ req: { user } }) => user?.role === "admin",
+  },
+  hooks: {
+    afterChange: [
+      async ({ doc, operation, req }) => {
+        if (operation !== "create") return doc
+        try {
+          await sendMembershipNotification(
+            {
+              customerName: doc.customerName,
+              email: doc.email,
+              phone: doc.phone,
+              plan: doc.plan,
+              termMonths: doc.termMonths,
+              monthlyPrice: doc.monthlyPrice,
+              contractId: doc.contractId,
+              customerId: doc.customerId,
+            },
+            req.payload
+          )
+        } catch (err) {
+          req.payload.logger.error({ err }, "Membership notification failed")
+        }
+        return doc
+      },
+    ],
   },
   fields: [
     {
       name: "contractId",
       label: "Vertragsnr.",
       type: "text",
-      admin: {
-        description: "Magicline Contract ID",
-      },
+      admin: { description: "Magicline Contract ID" },
     },
     {
       name: "customerId",
       label: "Kundennr.",
       type: "text",
-      admin: {
-        description: "Magicline Customer ID",
-      },
+      admin: { description: "Magicline Customer ID" },
     },
     {
       name: "customerName",
@@ -66,16 +95,17 @@ export const MembershipSignups: CollectionConfig = {
         { label: "Gekuendigt", value: "gekuendigt" },
         { label: "Pausiert", value: "pausiert" },
       ],
-      admin: {
-        position: "sidebar",
-      },
+      admin: { position: "sidebar" },
     },
     {
       name: "magiclineResponse",
       label: "API-Antwort",
       type: "json",
+      access: {
+        read: ({ req: { user } }) => user?.role === "admin",
+      },
       admin: {
-        description: "Rohe API-Antwort von Magicline",
+        description: "Rohe API-Antwort von Magicline (nur Admins)",
       },
     },
   ],
