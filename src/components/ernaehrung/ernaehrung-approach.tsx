@@ -36,9 +36,9 @@ function NutritionMarquee() {
 
       if (distance < maxDist) {
         const brightness = 1 - distance / maxDist;
-        span.style.color = `rgba(245,245,240,${0.25 + brightness * 0.75})`;
+        span.style.color = `rgba(245,245,240,${0.5 + brightness * 0.5})`;
       } else {
-        span.style.color = "rgba(245,245,240,0.25)";
+        span.style.color = "rgba(245,245,240,0.5)";
       }
     });
   }, []);

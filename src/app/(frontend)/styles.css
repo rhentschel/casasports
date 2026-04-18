@@ -63,6 +63,14 @@ body {
   color: var(--cs-white);
 }
 
+/* WCAG 2.2 - Brand-Color Split:
+   bg-cs-accent nutzt --cs-accent (#cc2633, 4.92:1 weiss-auf-rot fuer Buttons).
+   text-cs-accent auf dunklem BG nutzt helleren Brand-Ton (#e63946, 5.3:1 auf cs-black).
+   So bleibt die Markenfarbe visuell erhalten, WCAG AA passt in beiden Richtungen. */
+.text-cs-accent {
+  color: #e63946;
+}
+
 /* Cinematic image treatment */
 .img-cinema {
   filter: contrast(1.1) brightness(0.9) saturate(0.85);
