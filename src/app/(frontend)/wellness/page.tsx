@@ -4,6 +4,7 @@ import { WellnessAreas } from "@/components/wellness/wellness-areas";
 import { WellnessBenefits } from "@/components/wellness/wellness-benefits";
 import { WellnessPricing } from "@/components/wellness/wellness-pricing";
 import { WellnessCTA } from "@/components/wellness/wellness-cta";
+import { PageBreadcrumbs } from "@/components/schema/page-breadcrumbs";
 
 export const metadata: Metadata = {
   title: "Wellness & Sauna",
@@ -14,6 +15,7 @@ export const metadata: Metadata = {
 export default function WellnessPage() {
   return (
     <>
+      <PageBreadcrumbs path="/wellness" />
       <WellnessHero />
       <WellnessAreas />
       <WellnessBenefits />

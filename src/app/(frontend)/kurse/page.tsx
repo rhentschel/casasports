@@ -4,6 +4,7 @@ import { KurseGrid } from "@/components/kurse/kurse-grid";
 import { KurseForAll } from "@/components/kurse/kurse-for-all";
 import { Kursplan } from "@/components/kurse/kursplan";
 import { KurseCTA } from "@/components/kurse/kurse-cta";
+import { PageBreadcrumbs } from "@/components/schema/page-breadcrumbs";
 import { getCourses } from "@/lib/payload-data";
 import type { KursEntry, KursTypeName } from "@/data/kursplan";
 
@@ -31,6 +32,7 @@ export default async function KursePage() {
 
   return (
     <>
+      <PageBreadcrumbs path="/kurse" />
       <KurseHero />
       <KurseGrid />
       <KurseForAll />

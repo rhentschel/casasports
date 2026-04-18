@@ -30,6 +30,7 @@ export const navigation = [
   { label: "Mein Neues Ich", href: "/mein-neues-ich" },
   { label: "Blog", href: "/blog" },
   { label: "Jobs", href: "/jobs" },
+  { label: "Kontakt", href: "/kontakt" },
   { label: "Mitglied werden", href: "/mitglied-werden" },
 ] as const;
 

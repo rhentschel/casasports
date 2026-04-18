@@ -160,3 +160,77 @@ export function contactPageSchema(): JsonLd {
     mainEntity: { "@id": `${siteConfig.url}#business` },
   };
 }
+
+export function serviceCatalogSchema(): JsonLd {
+  const services = [
+    {
+      name: "Fitness-Training",
+      description: "Kraft-, Ausdauer- und Functional-Training auf modernen Geräten mit persönlicher Betreuung.",
+      url: `${siteConfig.url}/fitness`,
+    },
+    {
+      name: "Gruppenkurse",
+      description: "Power, Cycling, Zirkel, Functional und Cardio - live im Kursplan buchbar.",
+      url: `${siteConfig.url}/kurse`,
+    },
+    {
+      name: "Wellness & Sauna",
+      description: "KLAFS Sauna und Röger Infrarotkabine für Regeneration und Entspannung.",
+      url: `${siteConfig.url}/wellness`,
+    },
+    {
+      name: "Ernährungsberatung",
+      description: "Individuelle Beratung und Coaching rund um Ernährung und Stoffwechsel.",
+      url: `${siteConfig.url}/ernaehrung`,
+    },
+    {
+      name: "Mein Neues Ich - 12-Wochen-Programm",
+      description: "Strukturiertes 12-Wochen-Programm aus Training, Ernährung und Betreuung.",
+      url: `${siteConfig.url}/mein-neues-ich`,
+    },
+  ];
+  return {
+    "@context": "https://schema.org",
+    "@type": "OfferCatalog",
+    name: "Angebote - Casa Sports",
+    url: siteConfig.url,
+    provider: { "@id": `${siteConfig.url}#business` },
+    itemListElement: services.map((s, i) => ({
+      "@type": "Offer",
+      position: i + 1,
+      itemOffered: {
+        "@type": "Service",
+        name: s.name,
+        description: s.description,
+        url: s.url,
+        provider: { "@id": `${siteConfig.url}#business` },
+        areaServed: {
+          "@type": "Place",
+          name: `${siteConfig.address.city} und Umgebung`,
+        },
+      },
+    })),
+  };
+}
+
+const PAGE_LABELS: Record<string, string> = {
+  "/fitness": "Fitness",
+  "/kurse": "Kurse",
+  "/wellness": "Wellness",
+  "/ernaehrung": "Ernährung",
+  "/mein-neues-ich": "Mein Neues Ich",
+  "/blog": "Blog",
+  "/jobs": "Jobs",
+  "/kontakt": "Kontakt",
+  "/mitglied-werden": "Mitglied werden",
+  "/impressum": "Impressum",
+  "/datenschutz": "Datenschutz",
+};
+
+export function breadcrumbsForPath(path: string): JsonLd {
+  const label = PAGE_LABELS[path] ?? path.replace(/^\//, "");
+  return breadcrumbSchema([
+    { name: "Start", url: siteConfig.url },
+    { name: label, url: `${siteConfig.url}${path}` },
+  ]);
+}

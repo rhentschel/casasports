@@ -4,6 +4,7 @@ import { ErnaehrungApproach } from "@/components/ernaehrung/ernaehrung-approach"
 import { ErnaehrungPillars } from "@/components/ernaehrung/ernaehrung-pillars";
 import { ErnaehrungProgram } from "@/components/ernaehrung/ernaehrung-program";
 import { ErnaehrungCTA } from "@/components/ernaehrung/ernaehrung-cta";
+import { PageBreadcrumbs } from "@/components/schema/page-breadcrumbs";
 
 export const metadata: Metadata = {
   title: "Ernährung",
@@ -14,6 +15,7 @@ export const metadata: Metadata = {
 export default function ErnaehrungPage() {
   return (
     <>
+      <PageBreadcrumbs path="/ernaehrung" />
       <ErnaehrungHero />
       <ErnaehrungApproach />
       <ErnaehrungPillars />

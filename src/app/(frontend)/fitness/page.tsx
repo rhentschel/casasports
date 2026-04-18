@@ -5,6 +5,7 @@ import { EquipmentShowcase } from "@/components/fitness/equipment-showcase";
 import { PersonalTraining } from "@/components/fitness/personal-training";
 import { FitnessPhilosophy } from "@/components/fitness/fitness-philosophy";
 import { FitnessCTA } from "@/components/fitness/fitness-cta";
+import { PageBreadcrumbs } from "@/components/schema/page-breadcrumbs";
 
 export const metadata: Metadata = {
   title: "Fitness",
@@ -15,6 +16,7 @@ export const metadata: Metadata = {
 export default function FitnessPage() {
   return (
     <>
+      <PageBreadcrumbs path="/fitness" />
       <FitnessHero />
       <TrainingAreas />
       <EquipmentShowcase />

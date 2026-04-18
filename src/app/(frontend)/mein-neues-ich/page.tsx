@@ -11,6 +11,7 @@ import { MniProgramVideo } from "@/components/mein-neues-ich/mni-program-video";
 import { MniFaq } from "@/components/mein-neues-ich/mni-faq";
 import { MniCta } from "@/components/mein-neues-ich/mni-cta";
 import { JsonLd } from "@/components/schema/json-ld";
+import { PageBreadcrumbs } from "@/components/schema/page-breadcrumbs";
 import { faqSchema } from "@/lib/schema";
 import { mniFaqs } from "@/data/mni-faq";
 
@@ -24,6 +25,7 @@ export default function MeinNeuesIchPage() {
   return (
     <>
       <JsonLd data={faqSchema(mniFaqs)} />
+      <PageBreadcrumbs path="/mein-neues-ich" />
       <MniHero />
       <MniQuote />
       <MniInterview />

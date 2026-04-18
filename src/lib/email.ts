@@ -231,3 +231,50 @@ export async function sendJobApplicationNotification(
     replyTo: data.email,
   })
 }
+
+type ContactData = {
+  name: string
+  email: string
+  phone?: string
+  topic?: string
+  message: string
+}
+
+export async function sendContactNotification(
+  data: ContactData,
+  payload: PayloadLike
+): Promise<void> {
+  const rows = [
+    ["Name", data.name],
+    ["E-Mail", data.email],
+    ["Telefon", data.phone || "—"],
+    ["Thema", data.topic || "Allgemein"],
+  ]
+
+  const tableRows = rows
+    .map(
+      ([label, value]) => `
+    <tr>
+      <td style="padding:10px 0;border-bottom:1px solid rgba(255,255,255,0.06);font-size:12px;color:rgba(255,255,255,0.5);width:140px;">${escapeHtml(label)}</td>
+      <td style="padding:10px 0;border-bottom:1px solid rgba(255,255,255,0.06);font-size:14px;color:#f5f5f0;font-weight:500;">${escapeHtml(value)}</td>
+    </tr>`
+    )
+    .join("")
+
+  const content = `
+    <p style="margin:0 0 24px;font-size:14px;line-height:1.6;color:rgba(255,255,255,0.7);">
+      Eine neue Nachricht über das Kontaktformular ist eingegangen.
+    </p>
+    <table width="100%" cellpadding="0" cellspacing="0" border="0">${tableRows}</table>
+    <div style="margin-top:24px;padding:16px;border:1px solid rgba(255,255,255,0.06);background:rgba(255,255,255,0.015);">
+      <p style="margin:0 0 8px;font-size:11px;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.4);">Nachricht</p>
+      <p style="margin:0;font-size:14px;line-height:1.6;color:#f5f5f0;white-space:pre-wrap;">${escapeHtml(data.message)}</p>
+    </div>`
+
+  await sendViaPayload(payload, {
+    to: adminEmail,
+    subject: `Kontaktformular: ${data.topic || "Anfrage"} - ${data.name}`,
+    html: layout("Neue Kontaktanfrage", content),
+    replyTo: data.email,
+  })
+}

@@ -4,6 +4,7 @@ import { JobsWhy } from "@/components/jobs/jobs-why";
 import { JobsWizard } from "@/components/jobs/jobs-wizard";
 import { JobsProcess } from "@/components/jobs/jobs-process";
 import { JobsFaq } from "@/components/jobs/jobs-faq";
+import { PageBreadcrumbs } from "@/components/schema/page-breadcrumbs";
 import { getJobPositions } from "@/lib/payload-data";
 
 export const dynamic = "force-dynamic";
@@ -35,6 +36,7 @@ export default async function JobsPage() {
 
   return (
     <>
+      <PageBreadcrumbs path="/jobs" />
       {/* Split-Screen: Bild links + Wizard rechts */}
       <div className="bg-cs-black pt-24 md:pt-32">
         <div className="mx-auto max-w-[1440px] px-4 pb-4 md:px-6 md:pb-6">

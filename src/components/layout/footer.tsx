@@ -63,6 +63,7 @@ export function Footer() {
                 { label: "Mein Neues Ich", href: "/mein-neues-ich" },
                 { label: "Blog", href: "/blog" },
                 { label: "Jobs", href: "/jobs" },
+                { label: "Kontakt", href: "/kontakt" },
               ].map((link) => (
                 <li key={link.href}>
                   <Link

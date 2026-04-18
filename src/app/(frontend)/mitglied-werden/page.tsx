@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import { MembershipWizard } from "@/components/mitgliedschaft/membership-wizard";
+import { PageBreadcrumbs } from "@/components/schema/page-breadcrumbs";
 
 export const metadata: Metadata = {
   title: "Mitglied werden",
@@ -11,6 +12,7 @@ export const metadata: Metadata = {
 export default function MitgliedWerdenPage() {
   return (
     <div className="bg-cs-black pt-24 md:pt-32">
+      <PageBreadcrumbs path="/mitglied-werden" />
       {/* Outer frame with padding */}
       <div className="mx-auto max-w-[1440px] px-4 pb-4 md:px-6 md:pb-6">
         <div className="grid h-[calc(100svh-8rem)] md:grid-cols-[30fr_70fr]">
