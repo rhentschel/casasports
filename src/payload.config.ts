@@ -37,6 +37,7 @@ export default buildConfig({
     },
     theme: "dark",
     components: {
+      beforeNavLinks: ["/components/admin/DashboardLink#DashboardLink"],
       graphics: {
         Logo: "/components/admin/Logo#Logo",
         Icon: "/components/admin/Icon#Icon",
