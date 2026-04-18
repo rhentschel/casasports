@@ -39,3 +39,7 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Private Projekt-Status Exports
+projektstatus.html
+projektstatus.pdf
