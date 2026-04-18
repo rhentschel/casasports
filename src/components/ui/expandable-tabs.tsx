@@ -103,6 +103,9 @@ export function ExpandableTabs({
         return (
           <motion.button
             key={tab.title}
+            type="button"
+            aria-label={tab.title}
+            aria-current={active === index ? "page" : undefined}
             variants={buttonVariants}
             initial={false}
             animate="animate"

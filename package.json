@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "a11y": "node scripts/a11y-audit.mjs",
+    "a11y:local": "BASE_URL=http://localhost:3000 node scripts/a11y-audit.mjs"
   },
   "dependencies": {
     "@payloadcms/db-postgres": "^3.83.0",
@@ -34,12 +36,14 @@
     "usehooks-ts": "^3.1.1"
   },
   "devDependencies": {
+    "@axe-core/playwright": "^4.11.2",
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "16.1.7",
+    "playwright": "^1.59.1",
     "tailwindcss": "^4",
     "typescript": "^5"
   }

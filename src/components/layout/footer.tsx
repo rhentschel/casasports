@@ -139,10 +139,10 @@ export function Footer() {
       {/* Bottom bar */}
       <div className="border-t border-cs-gray-800/50">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-6">
-          <p className="text-xs text-cs-gray-600">
+          <p className="text-xs text-cs-gray-400">
             &copy; {new Date().getFullYear()} {siteConfig.name}
           </p>
-          <p className="text-xs text-cs-gray-700">
+          <p className="text-xs text-cs-gray-500">
             Karlstra&szlig;e 4, 45739 Oer-Erkenschwick
           </p>
         </div>
