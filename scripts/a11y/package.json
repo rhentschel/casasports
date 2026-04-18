@@ -1,0 +1,13 @@
+{
+  "name": "casasports-a11y-audit",
+  "version": "1.0.0",
+  "private": true,
+  "description": "WCAG 2.2 AA Audit-Tool - separates Mini-Projekt, nicht Teil des Haupt-Builds",
+  "scripts": {
+    "audit": "node audit.mjs"
+  },
+  "dependencies": {
+    "@axe-core/playwright": "^4.11.2",
+    "playwright": "^1.59.1"
+  }
+}

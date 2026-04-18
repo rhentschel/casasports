@@ -2,9 +2,15 @@
 /**
  * WCAG 2.2 AA Audit via Playwright + @axe-core/playwright
  *
- * Usage:
- *   node scripts/a11y-audit.mjs              (gegen https://sport.casasports.de)
- *   BASE_URL=http://localhost:3000 node scripts/a11y-audit.mjs
+ * Separates Mini-Projekt in scripts/a11y/ - nicht Teil des Haupt-Builds
+ * um Docker-Build nicht zu blockieren.
+ *
+ * Setup:
+ *   cd scripts/a11y && npm install && npx playwright install chromium
+ *
+ * Usage (aus Repo-Root):
+ *   node scripts/a11y/audit.mjs              (gegen https://sport.casasports.de)
+ *   BASE_URL=http://localhost:3000 node scripts/a11y/audit.mjs
  *
  * Output:
  *   a11y-report/report.json   - Volle Violations pro Seite
@@ -18,7 +24,7 @@ import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
-const ROOT = join(__dirname, "..");
+const ROOT = join(__dirname, "..", "..");
 const OUT_DIR = join(ROOT, "a11y-report");
 
 const BASE_URL = process.env.BASE_URL || "https://sport.casasports.de";
