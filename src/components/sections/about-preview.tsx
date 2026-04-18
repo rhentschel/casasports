@@ -125,18 +125,23 @@ export function AboutPreview({ team }: AboutPreviewProps) {
       {/* Controls */}
       <div className="absolute bottom-6 left-0 right-0 z-20 md:bottom-10">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-8 md:px-16">
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-1">
             {team.map((_, i) => (
               <button
                 key={i}
                 onClick={() => emblaApi?.scrollTo(i)}
-                className={`h-[3px] transition-all duration-500 ${
-                  i === selectedIndex
-                    ? "w-8 bg-cs-accent"
-                    : "w-4 bg-white/20 hover:bg-white/40"
-                }`}
+                className="group flex h-6 min-w-[24px] items-center justify-center px-1"
                 aria-label={`Slide ${i + 1}`}
-              />
+                aria-current={i === selectedIndex ? "true" : undefined}
+              >
+                <span
+                  className={`block h-[3px] transition-all duration-500 ${
+                    i === selectedIndex
+                      ? "w-8 bg-cs-accent"
+                      : "w-4 bg-white/20 group-hover:bg-white/40"
+                  }`}
+                />
+              </button>
             ))}
           </div>
 

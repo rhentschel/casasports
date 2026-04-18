@@ -83,6 +83,9 @@ export function TrialModal({ open, onClose, source = "Probetraining Button" }: P
       onClick={onClose}
     >
       <div
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="trial-modal-title"
         className="relative mx-6 w-full max-w-xl border border-white/[0.08] bg-cs-black p-8 md:p-10"
         onClick={(e) => e.stopPropagation()}
       >
@@ -121,34 +124,51 @@ export function TrialModal({ open, onClose, source = "Probetraining Button" }: P
             <p className="text-xs font-medium uppercase tracking-[0.2em] text-cs-accent">
               Kostenlos
             </p>
-            <h3 className="mt-2 text-2xl font-black uppercase leading-tight tracking-[-0.02em] text-cs-white md:text-3xl">
+            <h3
+              id="trial-modal-title"
+              className="mt-2 text-2xl font-black uppercase leading-tight tracking-[-0.02em] text-cs-white md:text-3xl"
+            >
               Probetraining anfragen
             </h3>
             <p className="mt-3 text-[13px] leading-relaxed text-white/60">
               Lass uns deine Daten da und wir melden uns fuer einen Termin.
             </p>
 
-            <form onSubmit={handleSubmit} className="mt-6 space-y-4">
+            <form onSubmit={handleSubmit} className="mt-6 space-y-4" noValidate>
               <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
                 <div>
-                  <label className="mb-1.5 block text-[11px] font-medium uppercase tracking-[0.15em] text-white/40">
+                  <label
+                    htmlFor="trial-firstname"
+                    className="mb-1.5 block text-[11px] font-medium uppercase tracking-[0.15em] text-white/40"
+                  >
                     Vorname *
                   </label>
                   <input
+                    id="trial-firstname"
+                    name="firstname"
                     type="text"
+                    autoComplete="given-name"
                     required
+                    aria-required="true"
                     value={firstname}
                     onChange={(e) => setFirstname(e.target.value)}
                     className="w-full border border-white/[0.08] bg-transparent px-3 py-2.5 text-[14px] text-cs-white outline-none transition-colors focus:border-cs-accent"
                   />
                 </div>
                 <div>
-                  <label className="mb-1.5 block text-[11px] font-medium uppercase tracking-[0.15em] text-white/40">
+                  <label
+                    htmlFor="trial-lastname"
+                    className="mb-1.5 block text-[11px] font-medium uppercase tracking-[0.15em] text-white/40"
+                  >
                     Nachname *
                   </label>
                   <input
+                    id="trial-lastname"
+                    name="lastname"
                     type="text"
+                    autoComplete="family-name"
                     required
+                    aria-required="true"
                     value={lastname}
                     onChange={(e) => setLastname(e.target.value)}
                     className="w-full border border-white/[0.08] bg-transparent px-3 py-2.5 text-[14px] text-cs-white outline-none transition-colors focus:border-cs-accent"
@@ -156,33 +176,54 @@ export function TrialModal({ open, onClose, source = "Probetraining Button" }: P
                 </div>
               </div>
               <div>
-                <label className="mb-1.5 block text-[11px] font-medium uppercase tracking-[0.15em] text-white/40">
+                <label
+                  htmlFor="trial-email"
+                  className="mb-1.5 block text-[11px] font-medium uppercase tracking-[0.15em] text-white/40"
+                >
                   E-Mail *
                 </label>
                 <input
+                  id="trial-email"
+                  name="email"
                   type="email"
+                  autoComplete="email"
+                  inputMode="email"
                   required
+                  aria-required="true"
+                  aria-invalid={error ? "true" : undefined}
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   className="w-full border border-white/[0.08] bg-transparent px-3 py-2.5 text-[14px] text-cs-white outline-none transition-colors focus:border-cs-accent"
                 />
               </div>
               <div>
-                <label className="mb-1.5 block text-[11px] font-medium uppercase tracking-[0.15em] text-white/40">
+                <label
+                  htmlFor="trial-phone"
+                  className="mb-1.5 block text-[11px] font-medium uppercase tracking-[0.15em] text-white/40"
+                >
                   Telefon
                 </label>
                 <input
+                  id="trial-phone"
+                  name="phone"
                   type="tel"
+                  autoComplete="tel"
+                  inputMode="tel"
                   value={phone}
                   onChange={(e) => setPhone(e.target.value)}
                   className="w-full border border-white/[0.08] bg-transparent px-3 py-2.5 text-[14px] text-cs-white outline-none transition-colors focus:border-cs-accent"
                 />
               </div>
               <div>
-                <label className="mb-1.5 block text-[11px] font-medium uppercase tracking-[0.15em] text-white/40">
+                <label
+                  htmlFor="trial-message"
+                  className="mb-1.5 block text-[11px] font-medium uppercase tracking-[0.15em] text-white/40"
+                >
                   Nachricht
                 </label>
                 <textarea
+                  id="trial-message"
+                  name="message"
                   rows={3}
                   value={message}
                   onChange={(e) => setMessage(e.target.value)}
@@ -192,7 +233,11 @@ export function TrialModal({ open, onClose, source = "Probetraining Button" }: P
               </div>
 
               {error && (
-                <div className="border border-cs-accent/30 bg-cs-accent/5 px-4 py-3">
+                <div
+                  role="alert"
+                  aria-live="assertive"
+                  className="border border-cs-accent/30 bg-cs-accent/5 px-4 py-3"
+                >
                   <p className="text-[13px] text-cs-accent">{error}</p>
                 </div>
               )}

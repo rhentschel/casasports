@@ -131,14 +131,16 @@ export function WellnessAreas() {
         </div>
 
         {/* Mobile nav dots */}
-        <div className="mt-8 flex justify-center gap-2 md:hidden">
+        <div className="mt-8 flex justify-center gap-1 md:hidden">
           {areas.map((area, i) => (
             <button
               key={area.title}
               onClick={() => emblaApi?.scrollTo(i)}
-              className="h-1.5 w-6 bg-white/[0.1] transition-all duration-300"
+              className="flex h-6 min-w-[32px] items-center justify-center px-1"
               aria-label={`Zu ${area.title}`}
-            />
+            >
+              <span className="block h-1.5 w-6 bg-white/[0.1] transition-all duration-300" />
+            </button>
           ))}
         </div>
       </div>

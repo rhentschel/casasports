@@ -206,7 +206,13 @@ export function MembershipWizard() {
   }
 
   return (
-    <section className="px-3 py-6 md:px-8 md:py-10 lg:px-12">
+    <section
+      className="px-3 py-6 md:px-8 md:py-10 lg:px-12"
+      aria-labelledby="wizard-title"
+    >
+      <h1 id="wizard-title" className="sr-only">
+        Mitgliedschaft abschliessen
+      </h1>
       <div>
         {step !== "success" && <WizardProgress currentStep={step} />}
 
@@ -270,6 +276,25 @@ export function MembershipWizard() {
             </motion.div>
           )}
         </AnimatePresence>
+
+        {step !== "success" && (
+          <p className="mt-10 border-t border-white/[0.04] pt-6 text-center text-[11px] text-white/40">
+            Fragen oder Hilfe? Ruf uns an{" "}
+            <a
+              href="tel:0236857060"
+              className="text-cs-accent underline underline-offset-2 hover:text-cs-accent-hover"
+            >
+              02368 57060
+            </a>{" "}
+            oder schreib an{" "}
+            <a
+              href="mailto:info@casasports.de"
+              className="text-cs-accent underline underline-offset-2 hover:text-cs-accent-hover"
+            >
+              info@casasports.de
+            </a>
+          </p>
+        )}
       </div>
     </section>
   );

@@ -106,9 +106,16 @@ export function StepPayment({
       <div className="mt-6 space-y-4">
         {/* Account holder */}
         <div>
-          <label className={labelClass}>Kontoinhaber *</label>
+          <label htmlFor="step3-accountHolder" className={labelClass}>
+            Kontoinhaber *
+          </label>
           <input
+            id="step3-accountHolder"
+            name="accountHolder"
             type="text"
+            autoComplete="cc-name"
+            required
+            aria-required="true"
             value={data.accountHolder}
             onChange={(e) => onChange("accountHolder", e.target.value)}
             placeholder="Max Mustermann"
@@ -118,10 +125,20 @@ export function StepPayment({
 
         {/* IBAN */}
         <div>
-          <label className={labelClass}>IBAN *</label>
+          <label htmlFor="step3-iban" className={labelClass}>
+            IBAN *
+          </label>
           <div className="relative">
             <input
+              id="step3-iban"
+              name="iban"
               type="text"
+              inputMode="text"
+              autoComplete="off"
+              required
+              aria-required="true"
+              aria-invalid={ibanStatus === "invalid" ? "true" : undefined}
+              aria-describedby={ibanError ? "step3-iban-error" : undefined}
               value={formatIbanDisplay(data.iban)}
               onChange={(e) => {
                 const raw = e.target.value.replace(/\s/g, "").toUpperCase();
@@ -136,7 +153,10 @@ export function StepPayment({
                 ibanStatus === "invalid" && "border-cs-accent/50"
               )}
             />
-            <div className="absolute right-3 top-1/2 -translate-y-1/2">
+            <div
+              className="absolute right-3 top-1/2 -translate-y-1/2"
+              aria-hidden="true"
+            >
               {ibanStatus === "loading" && (
                 <Loader2 className="h-5 w-5 animate-spin text-white/30" />
               )}
@@ -148,8 +168,18 @@ export function StepPayment({
               )}
             </div>
           </div>
+          <p className="sr-only" aria-live="polite">
+            {ibanStatus === "loading" && "IBAN wird geprueft"}
+            {ibanStatus === "valid" && "IBAN gueltig"}
+          </p>
           {ibanError && (
-            <p className="mt-1.5 text-[11px] text-cs-accent">{ibanError}</p>
+            <p
+              id="step3-iban-error"
+              role="alert"
+              className="mt-1.5 text-[11px] text-cs-accent"
+            >
+              {ibanError}
+            </p>
           )}
         </div>
 
@@ -157,20 +187,30 @@ export function StepPayment({
         {ibanStatus === "valid" && (
           <div className="grid gap-4 md:grid-cols-2">
             <div>
-              <label className={labelClass}>BIC</label>
+              <label htmlFor="step3-bic" className={labelClass}>
+                BIC
+              </label>
               <input
+                id="step3-bic"
+                name="bic"
                 type="text"
                 value={data.bic}
                 readOnly
+                aria-readonly="true"
                 className={cn(inputClass, "bg-white/[0.02] text-white/50")}
               />
             </div>
             <div>
-              <label className={labelClass}>Bank</label>
+              <label htmlFor="step3-bankName" className={labelClass}>
+                Bank
+              </label>
               <input
+                id="step3-bankName"
+                name="bankName"
                 type="text"
                 value={data.bankName}
                 readOnly
+                aria-readonly="true"
                 className={cn(inputClass, "bg-white/[0.02] text-white/50")}
               />
             </div>

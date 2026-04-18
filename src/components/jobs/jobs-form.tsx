@@ -240,6 +240,11 @@ export function JobsForm() {
                   id="name"
                   name="name"
                   type="text"
+                  autoComplete="name"
+                  required
+                  aria-required="true"
+                  aria-invalid={errors.name ? "true" : undefined}
+                  aria-describedby={errors.name ? "name-error" : undefined}
                   value={formData.name}
                   onChange={handleChange}
                   placeholder="Vor- und Nachname"
@@ -249,7 +254,9 @@ export function JobsForm() {
                   )}
                 />
                 {errors.name && (
-                  <p className="mt-1.5 text-xs text-red-400">{errors.name}</p>
+                  <p id="name-error" role="alert" className="mt-1.5 text-xs text-red-400">
+                    {errors.name}
+                  </p>
                 )}
               </div>
 
@@ -263,6 +270,12 @@ export function JobsForm() {
                     id="email"
                     name="email"
                     type="email"
+                    autoComplete="email"
+                    inputMode="email"
+                    required
+                    aria-required="true"
+                    aria-invalid={errors.email ? "true" : undefined}
+                    aria-describedby={errors.email ? "email-error" : undefined}
                     value={formData.email}
                     onChange={handleChange}
                     placeholder="deine@email.de"
@@ -272,7 +285,9 @@ export function JobsForm() {
                     )}
                   />
                   {errors.email && (
-                    <p className="mt-1.5 text-xs text-red-400">{errors.email}</p>
+                    <p id="email-error" role="alert" className="mt-1.5 text-xs text-red-400">
+                      {errors.email}
+                    </p>
                   )}
                 </div>
                 <div>
@@ -283,6 +298,12 @@ export function JobsForm() {
                     id="phone"
                     name="phone"
                     type="tel"
+                    autoComplete="tel"
+                    inputMode="tel"
+                    required
+                    aria-required="true"
+                    aria-invalid={errors.phone ? "true" : undefined}
+                    aria-describedby={errors.phone ? "phone-error" : undefined}
                     value={formData.phone}
                     onChange={handleChange}
                     placeholder="0123 456789"
@@ -292,7 +313,9 @@ export function JobsForm() {
                     )}
                   />
                   {errors.phone && (
-                    <p className="mt-1.5 text-xs text-red-400">{errors.phone}</p>
+                    <p id="phone-error" role="alert" className="mt-1.5 text-xs text-red-400">
+                      {errors.phone}
+                    </p>
                   )}
                 </div>
               </div>
@@ -306,6 +329,10 @@ export function JobsForm() {
                   <select
                     id="position"
                     name="position"
+                    required
+                    aria-required="true"
+                    aria-invalid={errors.position ? "true" : undefined}
+                    aria-describedby={errors.position ? "position-error" : undefined}
                     value={formData.position}
                     onChange={handleChange}
                     className={cn(
@@ -325,7 +352,9 @@ export function JobsForm() {
                     <option value="initiativ">Initiativbewerbung</option>
                   </select>
                   {errors.position && (
-                    <p className="mt-1.5 text-xs text-red-400">{errors.position}</p>
+                    <p id="position-error" role="alert" className="mt-1.5 text-xs text-red-400">
+                      {errors.position}
+                    </p>
                   )}
                 </div>
                 <div>
@@ -399,6 +428,10 @@ export function JobsForm() {
                 <textarea
                   id="message"
                   name="message"
+                  required
+                  aria-required="true"
+                  aria-invalid={errors.message ? "true" : undefined}
+                  aria-describedby="message-hint message-error"
                   value={formData.message}
                   onChange={handleChange}
                   rows={5}
@@ -408,20 +441,27 @@ export function JobsForm() {
                     errors.message ? "border-red-500/50" : "border-white/[0.08]"
                   )}
                 />
-                <p className="mt-1.5 text-right text-[11px] text-cs-gray-600">
+                <p id="message-hint" className="mt-1.5 text-right text-[11px] text-cs-gray-600">
                   {formData.message.length} / 20 Zeichen min.
                 </p>
                 {errors.message && (
-                  <p className="mt-1 text-xs text-red-400">{errors.message}</p>
+                  <p id="message-error" role="alert" className="mt-1 text-xs text-red-400">
+                    {errors.message}
+                  </p>
                 )}
               </div>
 
               {/* Privacy */}
               <div>
-                <label className="flex items-start gap-3 cursor-pointer">
+                <label htmlFor="privacy" className="flex items-start gap-3 cursor-pointer">
                   <input
+                    id="privacy"
                     type="checkbox"
                     name="privacy"
+                    required
+                    aria-required="true"
+                    aria-invalid={errors.privacy ? "true" : undefined}
+                    aria-describedby={errors.privacy ? "privacy-error" : undefined}
                     checked={formData.privacy}
                     onChange={handleChange}
                     className="mt-1 h-4 w-4 shrink-0 appearance-none border border-white/[0.15] bg-cs-black/50 checked:border-cs-accent checked:bg-cs-accent transition-colors cursor-pointer"
@@ -435,14 +475,20 @@ export function JobsForm() {
                   </span>
                 </label>
                 {errors.privacy && (
-                  <p className="mt-1.5 text-xs text-red-400">{errors.privacy}</p>
+                  <p id="privacy-error" role="alert" className="mt-1.5 text-xs text-red-400">
+                    {errors.privacy}
+                  </p>
                 )}
               </div>
 
               {/* Error Message */}
               {status === "error" && (
-                <div className="flex items-start gap-3 border border-red-500/20 bg-red-500/10 p-4">
-                  <AlertCircle className="mt-0.5 h-4 w-4 shrink-0 text-red-400" />
+                <div
+                  role="alert"
+                  aria-live="assertive"
+                  className="flex items-start gap-3 border border-red-500/20 bg-red-500/10 p-4"
+                >
+                  <AlertCircle className="mt-0.5 h-4 w-4 shrink-0 text-red-400" aria-hidden="true" />
                   <p className="text-sm text-red-400">{errorMessage}</p>
                 </div>
               )}

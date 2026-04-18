@@ -181,18 +181,23 @@ export function MniProgramVideo() {
         </div>
       </div>
 
-      <div className="mx-auto mt-10 flex max-w-7xl items-center gap-2 px-8 md:px-16">
+      <div className="mx-auto mt-10 flex max-w-7xl items-center gap-1 px-8 md:px-16">
         {clips.map((_, i) => (
           <button
             key={i}
             onClick={() => emblaApi?.scrollTo(i)}
-            className={`h-[3px] transition-all duration-500 ${
-              i === selectedIndex
-                ? "w-8 bg-cs-accent"
-                : "w-4 bg-white/20 hover:bg-white/40"
-            }`}
+            className="group relative flex h-6 min-w-[24px] items-center justify-center px-1"
             aria-label={`Video ${i + 1}`}
-          />
+            aria-current={i === selectedIndex ? "true" : undefined}
+          >
+            <span
+              className={`block h-[3px] transition-all duration-500 ${
+                i === selectedIndex
+                  ? "w-8 bg-cs-accent"
+                  : "w-4 bg-white/20 group-hover:bg-white/40"
+              }`}
+            />
+          </button>
         ))}
       </div>
 

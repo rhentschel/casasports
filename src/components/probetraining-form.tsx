@@ -62,7 +62,7 @@ export function ProbetrainingForm({ source = "Probetraining Page" }: Props) {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} noValidate>
       <p className="text-xs font-medium uppercase tracking-[0.2em] text-cs-accent">
         Jetzt anfragen
       </p>
@@ -73,24 +73,38 @@ export function ProbetrainingForm({ source = "Probetraining Page" }: Props) {
       <div className="mt-6 space-y-4">
         <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
           <div>
-            <label className="mb-1.5 block text-[11px] font-medium uppercase tracking-[0.15em] text-white/40">
+            <label
+              htmlFor="pt-firstname"
+              className="mb-1.5 block text-[11px] font-medium uppercase tracking-[0.15em] text-white/40"
+            >
               Vorname *
             </label>
             <input
+              id="pt-firstname"
+              name="firstname"
               type="text"
+              autoComplete="given-name"
               required
+              aria-required="true"
               value={firstname}
               onChange={(e) => setFirstname(e.target.value)}
               className="w-full border border-white/[0.08] bg-transparent px-3 py-2.5 text-[14px] text-cs-white outline-none transition-colors focus:border-cs-accent"
             />
           </div>
           <div>
-            <label className="mb-1.5 block text-[11px] font-medium uppercase tracking-[0.15em] text-white/40">
+            <label
+              htmlFor="pt-lastname"
+              className="mb-1.5 block text-[11px] font-medium uppercase tracking-[0.15em] text-white/40"
+            >
               Nachname *
             </label>
             <input
+              id="pt-lastname"
+              name="lastname"
               type="text"
+              autoComplete="family-name"
               required
+              aria-required="true"
               value={lastname}
               onChange={(e) => setLastname(e.target.value)}
               className="w-full border border-white/[0.08] bg-transparent px-3 py-2.5 text-[14px] text-cs-white outline-none transition-colors focus:border-cs-accent"
@@ -98,33 +112,54 @@ export function ProbetrainingForm({ source = "Probetraining Page" }: Props) {
           </div>
         </div>
         <div>
-          <label className="mb-1.5 block text-[11px] font-medium uppercase tracking-[0.15em] text-white/40">
+          <label
+            htmlFor="pt-email"
+            className="mb-1.5 block text-[11px] font-medium uppercase tracking-[0.15em] text-white/40"
+          >
             E-Mail *
           </label>
           <input
+            id="pt-email"
+            name="email"
             type="email"
+            autoComplete="email"
+            inputMode="email"
             required
+            aria-required="true"
+            aria-invalid={error ? "true" : undefined}
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             className="w-full border border-white/[0.08] bg-transparent px-3 py-2.5 text-[14px] text-cs-white outline-none transition-colors focus:border-cs-accent"
           />
         </div>
         <div>
-          <label className="mb-1.5 block text-[11px] font-medium uppercase tracking-[0.15em] text-white/40">
+          <label
+            htmlFor="pt-phone"
+            className="mb-1.5 block text-[11px] font-medium uppercase tracking-[0.15em] text-white/40"
+          >
             Telefon
           </label>
           <input
+            id="pt-phone"
+            name="phone"
             type="tel"
+            autoComplete="tel"
+            inputMode="tel"
             value={phone}
             onChange={(e) => setPhone(e.target.value)}
             className="w-full border border-white/[0.08] bg-transparent px-3 py-2.5 text-[14px] text-cs-white outline-none transition-colors focus:border-cs-accent"
           />
         </div>
         <div>
-          <label className="mb-1.5 block text-[11px] font-medium uppercase tracking-[0.15em] text-white/40">
+          <label
+            htmlFor="pt-message"
+            className="mb-1.5 block text-[11px] font-medium uppercase tracking-[0.15em] text-white/40"
+          >
             Nachricht
           </label>
           <textarea
+            id="pt-message"
+            name="message"
             rows={3}
             value={message}
             onChange={(e) => setMessage(e.target.value)}
@@ -134,7 +169,11 @@ export function ProbetrainingForm({ source = "Probetraining Page" }: Props) {
         </div>
 
         {error && (
-          <div className="border border-cs-accent/30 bg-cs-accent/5 px-4 py-3">
+          <div
+            role="alert"
+            aria-live="assertive"
+            className="border border-cs-accent/30 bg-cs-accent/5 px-4 py-3"
+          >
             <p className="text-[13px] text-cs-accent">{error}</p>
           </div>
         )}

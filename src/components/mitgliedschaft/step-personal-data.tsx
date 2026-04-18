@@ -15,7 +15,8 @@ interface StepPersonalDataProps {
 const inputClass =
   "w-full border border-white/[0.08] bg-cs-black px-4 py-3 text-sm text-cs-white placeholder:text-cs-gray-500 focus:border-cs-accent focus:outline-none transition-colors duration-300";
 
-const labelClass = "mb-1.5 block text-[11px] font-medium uppercase tracking-[0.15em] text-white/40";
+const labelClass =
+  "mb-1.5 block text-[11px] font-medium uppercase tracking-[0.15em] text-white/40";
 
 const errorClass = "mt-1.5 text-[11px] text-cs-accent";
 
@@ -93,6 +94,8 @@ export function StepPersonalData({
     }
   }
 
+  const errorId = (field: string) => (errors[field] ? `step2-${field}-error` : undefined);
+
   return (
     <div>
       <div className="text-center">
@@ -106,13 +109,21 @@ export function StepPersonalData({
 
       <div className="mt-6 space-y-4">
         {/* Gender */}
-        <div>
-          <label className={labelClass}>Anrede *</label>
-          <div className="flex gap-3">
+        <fieldset>
+          <legend className={labelClass}>Anrede *</legend>
+          <div
+            className="flex gap-3"
+            role="radiogroup"
+            aria-required="true"
+            aria-invalid={errors.gender ? "true" : undefined}
+            aria-describedby={errorId("gender")}
+          >
             {genderOptions.map((opt) => (
               <button
                 key={opt.value}
                 type="button"
+                role="radio"
+                aria-checked={data.gender === opt.value}
                 onClick={() => onChange("gender", opt.value)}
                 className={cn(
                   "flex-1 border px-4 py-3 text-sm transition-all duration-300",
@@ -125,112 +136,219 @@ export function StepPersonalData({
               </button>
             ))}
           </div>
-          {errors.gender && <p className={errorClass}>{errors.gender}</p>}
-        </div>
+          {errors.gender && (
+            <p id="step2-gender-error" role="alert" className={errorClass}>
+              {errors.gender}
+            </p>
+          )}
+        </fieldset>
 
         {/* Name row */}
         <div className="grid gap-4 md:grid-cols-2">
           <div>
-            <label className={labelClass}>Vorname *</label>
+            <label htmlFor="step2-firstName" className={labelClass}>
+              Vorname *
+            </label>
             <input
+              id="step2-firstName"
+              name="firstName"
               type="text"
+              autoComplete="given-name"
+              required
+              aria-required="true"
+              aria-invalid={errors.firstName ? "true" : undefined}
+              aria-describedby={errorId("firstName")}
               value={data.firstName}
               onChange={(e) => onChange("firstName", e.target.value)}
               onBlur={() => handleBlur("firstName")}
               placeholder="Max"
               className={cn(inputClass, errors.firstName && "border-cs-accent/50")}
             />
-            {errors.firstName && <p className={errorClass}>{errors.firstName}</p>}
+            {errors.firstName && (
+              <p id="step2-firstName-error" role="alert" className={errorClass}>
+                {errors.firstName}
+              </p>
+            )}
           </div>
           <div>
-            <label className={labelClass}>Nachname *</label>
+            <label htmlFor="step2-lastName" className={labelClass}>
+              Nachname *
+            </label>
             <input
+              id="step2-lastName"
+              name="lastName"
               type="text"
+              autoComplete="family-name"
+              required
+              aria-required="true"
+              aria-invalid={errors.lastName ? "true" : undefined}
+              aria-describedby={errorId("lastName")}
               value={data.lastName}
               onChange={(e) => onChange("lastName", e.target.value)}
               onBlur={() => handleBlur("lastName")}
               placeholder="Mustermann"
               className={cn(inputClass, errors.lastName && "border-cs-accent/50")}
             />
-            {errors.lastName && <p className={errorClass}>{errors.lastName}</p>}
+            {errors.lastName && (
+              <p id="step2-lastName-error" role="alert" className={errorClass}>
+                {errors.lastName}
+              </p>
+            )}
           </div>
         </div>
 
         {/* Date of birth */}
         <div>
-          <label className={labelClass}>Geburtsdatum *</label>
+          <label htmlFor="step2-dob" className={labelClass}>
+            Geburtsdatum *
+          </label>
           <input
+            id="step2-dob"
+            name="dateOfBirth"
             type="date"
+            autoComplete="bday"
+            required
+            aria-required="true"
+            aria-invalid={errors.dateOfBirth ? "true" : undefined}
+            aria-describedby={errorId("dateOfBirth")}
             value={data.dateOfBirth}
             onChange={(e) => onChange("dateOfBirth", e.target.value)}
             onBlur={() => handleBlur("dateOfBirth")}
             className={cn(inputClass, errors.dateOfBirth && "border-cs-accent/50")}
           />
-          {errors.dateOfBirth && <p className={errorClass}>{errors.dateOfBirth}</p>}
+          {errors.dateOfBirth && (
+            <p id="step2-dateOfBirth-error" role="alert" className={errorClass}>
+              {errors.dateOfBirth}
+            </p>
+          )}
         </div>
 
         {/* Email + Phone */}
         <div className="grid gap-4 md:grid-cols-2">
           <div>
-            <label className={labelClass}>E-Mail *</label>
+            <label htmlFor="step2-email" className={labelClass}>
+              E-Mail *
+            </label>
             <input
+              id="step2-email"
+              name="email"
               type="email"
+              autoComplete="email"
+              inputMode="email"
+              required
+              aria-required="true"
+              aria-invalid={errors.email ? "true" : undefined}
+              aria-describedby={errorId("email")}
               value={data.email}
               onChange={(e) => onChange("email", e.target.value)}
               onBlur={() => handleBlur("email")}
               placeholder="max@beispiel.de"
               className={cn(inputClass, errors.email && "border-cs-accent/50")}
             />
-            {errors.email && <p className={errorClass}>{errors.email}</p>}
+            {errors.email && (
+              <p id="step2-email-error" role="alert" className={errorClass}>
+                {errors.email}
+              </p>
+            )}
           </div>
           <div>
-            <label className={labelClass}>Telefon *</label>
+            <label htmlFor="step2-phone" className={labelClass}>
+              Telefon *
+            </label>
             <input
+              id="step2-phone"
+              name="phone"
               type="tel"
+              autoComplete="tel"
+              inputMode="tel"
+              required
+              aria-required="true"
+              aria-invalid={errors.phone ? "true" : undefined}
+              aria-describedby={errorId("phone")}
               value={data.phone}
               onChange={(e) => onChange("phone", e.target.value)}
               onBlur={() => handleBlur("phone")}
               placeholder="0170 1234567"
               className={cn(inputClass, errors.phone && "border-cs-accent/50")}
             />
-            {errors.phone && <p className={errorClass}>{errors.phone}</p>}
+            {errors.phone && (
+              <p id="step2-phone-error" role="alert" className={errorClass}>
+                {errors.phone}
+              </p>
+            )}
           </div>
         </div>
 
         {/* Street + House number */}
         <div className="grid grid-cols-[1fr_120px] gap-4">
           <div>
-            <label className={labelClass}>Strasse *</label>
+            <label htmlFor="step2-street" className={labelClass}>
+              Strasse *
+            </label>
             <input
+              id="step2-street"
+              name="street"
               type="text"
+              autoComplete="address-line1"
+              required
+              aria-required="true"
+              aria-invalid={errors.street ? "true" : undefined}
+              aria-describedby={errorId("street")}
               value={data.street}
               onChange={(e) => onChange("street", e.target.value)}
               onBlur={() => handleBlur("street")}
               placeholder="Musterstr."
               className={cn(inputClass, errors.street && "border-cs-accent/50")}
             />
-            {errors.street && <p className={errorClass}>{errors.street}</p>}
+            {errors.street && (
+              <p id="step2-street-error" role="alert" className={errorClass}>
+                {errors.street}
+              </p>
+            )}
           </div>
           <div>
-            <label className={labelClass}>Nr. *</label>
+            <label htmlFor="step2-houseNumber" className={labelClass}>
+              Nr. *
+            </label>
             <input
+              id="step2-houseNumber"
+              name="houseNumber"
               type="text"
+              autoComplete="address-line2"
+              required
+              aria-required="true"
+              aria-invalid={errors.houseNumber ? "true" : undefined}
+              aria-describedby={errorId("houseNumber")}
               value={data.houseNumber}
               onChange={(e) => onChange("houseNumber", e.target.value)}
               onBlur={() => handleBlur("houseNumber")}
               placeholder="12a"
               className={cn(inputClass, errors.houseNumber && "border-cs-accent/50")}
             />
-            {errors.houseNumber && <p className={errorClass}>{errors.houseNumber}</p>}
+            {errors.houseNumber && (
+              <p id="step2-houseNumber-error" role="alert" className={errorClass}>
+                {errors.houseNumber}
+              </p>
+            )}
           </div>
         </div>
 
         {/* PLZ + City */}
         <div className="grid grid-cols-[120px_1fr] gap-4">
           <div>
-            <label className={labelClass}>PLZ *</label>
+            <label htmlFor="step2-zipCode" className={labelClass}>
+              PLZ *
+            </label>
             <input
+              id="step2-zipCode"
+              name="zipCode"
               type="text"
+              autoComplete="postal-code"
+              inputMode="numeric"
+              required
+              aria-required="true"
+              aria-invalid={errors.zipCode ? "true" : undefined}
+              aria-describedby={errorId("zipCode")}
               value={data.zipCode}
               onChange={(e) => onChange("zipCode", e.target.value)}
               onBlur={() => handleBlur("zipCode")}
@@ -238,19 +356,36 @@ export function StepPersonalData({
               maxLength={5}
               className={cn(inputClass, errors.zipCode && "border-cs-accent/50")}
             />
-            {errors.zipCode && <p className={errorClass}>{errors.zipCode}</p>}
+            {errors.zipCode && (
+              <p id="step2-zipCode-error" role="alert" className={errorClass}>
+                {errors.zipCode}
+              </p>
+            )}
           </div>
           <div>
-            <label className={labelClass}>Ort *</label>
+            <label htmlFor="step2-city" className={labelClass}>
+              Ort *
+            </label>
             <input
+              id="step2-city"
+              name="city"
               type="text"
+              autoComplete="address-level2"
+              required
+              aria-required="true"
+              aria-invalid={errors.city ? "true" : undefined}
+              aria-describedby={errorId("city")}
               value={data.city}
               onChange={(e) => onChange("city", e.target.value)}
               onBlur={() => handleBlur("city")}
               placeholder="Oer-Erkenschwick"
               className={cn(inputClass, errors.city && "border-cs-accent/50")}
             />
-            {errors.city && <p className={errorClass}>{errors.city}</p>}
+            {errors.city && (
+              <p id="step2-city-error" role="alert" className={errorClass}>
+                {errors.city}
+              </p>
+            )}
           </div>
         </div>
       </div>
