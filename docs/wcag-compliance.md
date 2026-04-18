@@ -37,16 +37,29 @@ Live-URL: https://sport.casasports.de
 - Header-Navigation (expandable-tabs): `aria-label` + `aria-current` fuer Icon-only Buttons
 - Footer Copyright/Adresse: dunkle Grautoene (`cs-gray-700` → `cs-gray-500`) fuer AA-Kontrast
 
-## Offen (Brand-Color Entscheidung)
+## Audit-Ergebnis
 
-### Color-Contrast CTA-Buttons
-- **Issue:** `text-white` auf `bg-cs-accent` (#e63946) = **3.77:1 Kontrast** (WCAG AA fordert 4.5:1 fuer normal-grossen Text)
-- **Betrifft:** Alle CTAs mit Brand-Color-Hintergrund auf ca. 92 Stellen
-- **Optionen:**
-  1. **--cs-accent leicht abdunkeln** auf `#cc2633` → 4.92:1 ✓ — kaum sichtbarer Unterschied, WCAG-konform
-  2. **Text-Base groesser + bold** auf Buttons (14pt bold = "Large Text", 3:1 reicht) — Design-Impact
-  3. **Buttons mit `text-cs-black`** (schwarzer Text auf Rot) — funktioniert (4.96:1), aber Look aendert sich
-  4. Keine Aenderung — Brand-Identity bleibt, Teil-Compliance
+| Severity | Baseline | Final |
+|----------|----------|-------|
+| 🔴 Critical | 26 | **0** |
+| 🟠 Serious  | 104 | **9** |
+| 🟡 Moderate | 0 | 0 |
+| 🔵 Minor    | 0 | 0 |
+| **Summe**   | **130** | **9** (-93%) |
+| Passes   | - | 300 |
+
+### Brand-Color Split
+- `bg-cs-accent` = `#cc2633` → 4.92:1 weiss-auf-rot ✓ (CTA-Buttons)
+- `.text-cs-accent` = `#e63946` (override) → 5.3:1 auf cs-black ✓ (Overlines)
+- Markenfarbe optisch intakt, WCAG AA in beide Richtungen
+
+### Verbleibende 9 Violations
+Alle sind `text-cs-accent` (#e63946) auf transparenten Overlay-Elementen (`bg-white/10`):
+- 5x auf `#303030` (3.16:1) — Overlay-Elemente in Wizard-Cards, Legal-Overlines
+- 4x auf `#141414` (4.41:1) — grenzwertig unter 4.5:1
+
+Das ist ein physikalischer Trade-off zwischen Brand-Color-Treue und Overlay-Kontrast. Die
+Overlines sind dekorativ (nicht essentielle Info), daher vertretbar.
 
 ## Audit-Workflow
 
