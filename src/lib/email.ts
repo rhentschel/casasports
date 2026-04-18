@@ -1,10 +1,26 @@
-import { Resend } from "resend";
+import nodemailer, { type Transporter } from "nodemailer";
 
-const apiKey = process.env.RESEND_API_KEY;
-const from = process.env.EMAIL_FROM || "Casa Sports <noreply@casasports.de>";
+const host = process.env.SMTP_HOST;
+const port = process.env.SMTP_PORT ? parseInt(process.env.SMTP_PORT, 10) : 465;
+const user = process.env.SMTP_USER;
+const pass = process.env.SMTP_PASSWORD;
+const from = process.env.EMAIL_FROM || "Casa Sports <info@casasports.de>";
 const adminEmail = process.env.ADMIN_EMAIL || "info@casasports.de";
 
-const resend = apiKey ? new Resend(apiKey) : null;
+const secure = port === 465;
+
+let transporter: Transporter | null = null;
+function getTransporter(): Transporter | null {
+  if (transporter) return transporter;
+  if (!host || !user || !pass) return null;
+  transporter = nodemailer.createTransport({
+    host,
+    port,
+    secure,
+    auth: { user, pass },
+  });
+  return transporter;
+}
 
 type SendArgs = {
   to: string | string[];
@@ -14,23 +30,21 @@ type SendArgs = {
 };
 
 async function send({ to, subject, html, replyTo }: SendArgs): Promise<void> {
-  if (!resend) {
-    console.log("[email:noop]", { to, subject, hasKey: false });
+  const tx = getTransporter();
+  if (!tx) {
+    console.log("[email:noop]", { to, subject, smtpConfigured: false });
     return;
   }
   try {
-    const res = await resend.emails.send({
+    await tx.sendMail({
       from,
       to,
       subject,
       html,
       ...(replyTo && { replyTo }),
     });
-    if (res.error) {
-      console.error("[email:error]", res.error);
-    }
   } catch (err) {
-    console.error("[email:exception]", err);
+    console.error("[email:error]", err);
   }
 }
 
