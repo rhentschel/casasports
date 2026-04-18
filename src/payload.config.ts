@@ -37,6 +37,7 @@ export default buildConfig({
     },
     theme: "dark",
     components: {
+      beforeDashboard: ["/components/admin/BeforeDashboard#BeforeDashboard"],
       graphics: {
         Logo: "/components/admin/Logo#Logo",
         Icon: "/components/admin/Icon#Icon",
