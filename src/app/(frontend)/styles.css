@@ -12,8 +12,8 @@
   --cs-gray-700: #262626;
   --cs-gray-800: #171717;
   --cs-gray-900: #111111;
-  --cs-accent: #e63946;
-  --cs-accent-hover: #d62836;
+  --cs-accent: #cc2633;
+  --cs-accent-hover: #a81b28;
   --cs-gold: #c8a96e;
 
   --background: var(--cs-black);
@@ -152,7 +152,7 @@ body {
   color: var(--cs-accent);
   text-decoration: underline;
   text-underline-offset: 3px;
-  text-decoration-color: rgba(230, 57, 70, 0.3);
+  text-decoration-color: rgba(204, 38, 51, 0.3);
   transition: text-decoration-color 0.3s;
 }
 
@@ -173,7 +173,7 @@ body {
 *:focus-visible {
   outline: 2px solid var(--cs-accent);
   outline-offset: 3px;
-  box-shadow: 0 0 0 5px rgba(230, 57, 70, 0.25);
+  box-shadow: 0 0 0 5px rgba(204, 38, 51, 0.25);
   border-radius: 0;
 }
 

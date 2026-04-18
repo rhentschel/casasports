@@ -84,7 +84,7 @@ export function WellnessPricing() {
               className={cn(
                 "relative flex flex-col border p-8 transition-all duration-500 md:p-10",
                 plan.highlighted
-                  ? "border-cs-accent/40 bg-cs-accent/[0.03] shadow-[0_0_60px_rgba(230,57,70,0.08)]"
+                  ? "border-cs-accent/40 bg-cs-accent/[0.03] shadow-[0_0_60px_rgba(204,38,51,0.08)]"
                   : "border-white/[0.08] hover:border-white/[0.15]"
               )}
             >
