@@ -9,6 +9,7 @@ import type {
   WizardStep,
 } from "@/data/magicline";
 import { useState } from "react";
+import { VoucherInput, type VoucherState } from "./voucher-input";
 
 interface StepReviewProps {
   term: RateBundleTerm;
@@ -16,6 +17,8 @@ interface StepReviewProps {
   personalData: PersonalData;
   paymentData: PaymentData;
   sepaText: string | null;
+  voucher: VoucherState | null;
+  onVoucherChange: (v: VoucherState | null) => void;
   onSubmit: () => Promise<void>;
   onBack: () => void;
   onGoToStep: (step: WizardStep) => void;
@@ -42,6 +45,8 @@ export function StepReview({
   personalData,
   paymentData,
   sepaText,
+  voucher,
+  onVoucherChange,
   onSubmit,
   onBack,
   onGoToStep,
@@ -235,6 +240,11 @@ export function StepReview({
               </p>
             </div>
           </div>
+        </div>
+
+        {/* Voucher */}
+        <div className="border border-white/[0.08] p-5">
+          <VoucherInput value={voucher} onChange={onVoucherChange} />
         </div>
 
         {/* SEPA mandate */}

@@ -9,6 +9,7 @@ import { StepPersonalData } from "./step-personal-data";
 import { StepPayment } from "./step-payment";
 import { StepReview } from "./step-review";
 import { StepSuccess } from "./step-success";
+import type { VoucherState } from "./voucher-input";
 import {
   MAGICLINE_CONFIG,
   INITIAL_PERSONAL_DATA,
@@ -40,6 +41,7 @@ export function MembershipWizard() {
   const [selectedModuleIds, setSelectedModuleIds] = useState<number[]>([]);
   const [personalData, setPersonalData] = useState<PersonalData>(INITIAL_PERSONAL_DATA);
   const [paymentData, setPaymentData] = useState<PaymentData>(INITIAL_PAYMENT_DATA);
+  const [voucher, setVoucher] = useState<VoucherState | null>(null);
 
   // Load rate bundles + SEPA text on mount
   useEffect(() => {
@@ -128,6 +130,7 @@ export function MembershipWizard() {
         rateBundleTermId: selectedTerm.id,
         startDate: selectedTerm.defaultContractStartDate,
         selectedOptionalModuleIds: selectedModuleIds,
+        ...(voucher?.valid && { contractVoucherCode: voucher.code }),
       },
       customer: {
         gender: personalData.gender,
@@ -243,6 +246,8 @@ export function MembershipWizard() {
                 personalData={personalData}
                 paymentData={paymentData}
                 sepaText={sepaText}
+                voucher={voucher}
+                onVoucherChange={setVoucher}
                 onSubmit={handleSubmit}
                 onBack={() => setStep("payment")}
                 onGoToStep={setStep}

@@ -1,5 +1,6 @@
 import { NextResponse, type NextRequest } from "next/server";
 import { MAGICLINE_CONFIG } from "@/data/magicline";
+import { sendLeadNotification } from "@/lib/email";
 
 export const dynamic = "force-dynamic";
 
@@ -73,6 +74,13 @@ export async function POST(request: NextRequest) {
     }
 
     const data = await res.json();
+
+    try {
+      await sendLeadNotification({ firstname, lastname, email, phone, message, source });
+    } catch (mailError) {
+      console.error("Lead email notification failed (non-blocking):", mailError);
+    }
+
     return NextResponse.json({ ok: true, id: data.id, uuid: data.uuid });
   } catch (error) {
     console.error("Lead submit error:", error);
