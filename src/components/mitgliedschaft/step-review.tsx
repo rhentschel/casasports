@@ -58,7 +58,18 @@ export function StepReview({
   const [error, setError] = useState("");
 
   const starterFee = term.flatFees.find((f) => f.isStarterPackage);
-  const servicePauschalen = term.optionalModules;
+  // Servicepauschale: zuerst aus flatFees (MONTH_DAY = jaehrlich), dann optionalModules als Fallback
+  const flatFeePauschalen = term.flatFees.filter(
+    (f) => !f.isStarterPackage && f.paymentFrequencyType !== "NON_RECURRING"
+  );
+  const servicePauschalen =
+    flatFeePauschalen.length > 0
+      ? flatFeePauschalen.map((f) => ({
+          id: f.paymentFrequencyId ?? 0,
+          name: f.name,
+          price: f.price,
+        }))
+      : term.optionalModules;
   const spYearlyCost = servicePauschalen.reduce((sum, m) => sum + m.price, 0);
   const spYears = Math.ceil(term.termValue / 12);
   const totalWithSp =

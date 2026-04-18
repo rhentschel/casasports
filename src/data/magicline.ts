@@ -8,7 +8,8 @@ export const MAGICLINE_CONFIG = {
 export interface RateBundleFlatFee {
   name: string;
   price: number;
-  paymentFrequencyType: "NON_RECURRING" | "RECURRING";
+  paymentFrequencyType: "NON_RECURRING" | "RECURRING" | "MONTH_DAY";
+  paymentFrequencyId?: number | null;
   isStarterPackage: boolean;
 }
 
