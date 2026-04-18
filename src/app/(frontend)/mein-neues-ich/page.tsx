@@ -10,6 +10,9 @@ import { MniIncluded } from "@/components/mein-neues-ich/mni-included";
 import { MniProgramVideo } from "@/components/mein-neues-ich/mni-program-video";
 import { MniFaq } from "@/components/mein-neues-ich/mni-faq";
 import { MniCta } from "@/components/mein-neues-ich/mni-cta";
+import { JsonLd } from "@/components/schema/json-ld";
+import { faqSchema } from "@/lib/schema";
+import { mniFaqs } from "@/data/mni-faq";
 
 export const metadata: Metadata = {
   title: "Mein Neues Ich - 12-Wochen-Programm",
@@ -20,6 +23,7 @@ export const metadata: Metadata = {
 export default function MeinNeuesIchPage() {
   return (
     <>
+      <JsonLd data={faqSchema(mniFaqs)} />
       <MniHero />
       <MniQuote />
       <MniInterview />
