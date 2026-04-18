@@ -5,6 +5,8 @@
 import { Logo as Logo_0 } from "@/components/admin/Logo"
 import { Icon as Icon_0 } from "@/components/admin/Icon"
 import { LoginView as LoginView_0 } from "@/components/admin/LoginView"
+import { BeforeDashboard as BeforeDashboard_0 } from "@/components/admin/BeforeDashboard"
+import { AfterNavLinks as AfterNavLinks_0 } from "@/components/admin/AfterNavLinks"
 
 // Lexical RSC components
 import { RscEntryLexicalCell as RscEntryLexicalCell_0 } from "@payloadcms/richtext-lexical/rsc"
@@ -40,6 +42,8 @@ export const importMap = {
   "/components/admin/Logo#Logo": Logo_0,
   "/components/admin/Icon#Icon": Icon_0,
   "/components/admin/LoginView#LoginView": LoginView_0,
+  "/components/admin/BeforeDashboard#BeforeDashboard": BeforeDashboard_0,
+  "/components/admin/AfterNavLinks#AfterNavLinks": AfterNavLinks_0,
 
   // Lexical RSC
   "@payloadcms/richtext-lexical/rsc#RscEntryLexicalCell": RscEntryLexicalCell_0,
