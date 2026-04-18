@@ -2,6 +2,7 @@ import type { Metadata } from "next"
 import { Inter } from "next/font/google"
 import { Header } from "@/components/layout/header"
 import { Footer } from "@/components/layout/footer"
+import { SkipLink } from "@/components/layout/skip-link"
 import { siteConfig } from "@/data/site"
 import "./styles.css"
 
@@ -50,8 +51,9 @@ export default function FrontendLayout({
   return (
     <html lang="de">
       <body className={`${inter.variable} antialiased`}>
+        <SkipLink />
         <Header />
-        <main>{children}</main>
+        <main id="main" tabIndex={-1}>{children}</main>
         <Footer />
       </body>
     </html>
