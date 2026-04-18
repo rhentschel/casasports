@@ -36,10 +36,10 @@ export function WhatsappButton() {
       aria-hidden={!visible}
     >
       {expanded && (
-        <div className="pointer-events-auto mb-3 w-[280px] border border-white/10 bg-cs-black p-5 shadow-[0_20px_60px_rgba(0,0,0,0.45)] md:w-[320px]">
+        <div className="pointer-events-auto mb-3 w-[280px] border border-white/10 bg-cs-black p-5 md:w-[320px]">
           <div className="flex items-start justify-between gap-3">
             <div>
-              <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-[#25D366]">
+              <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-cs-accent">
                 WhatsApp
               </p>
               <p className="mt-2 text-[15px] font-black uppercase leading-[1.15] tracking-tight text-cs-white">
@@ -71,7 +71,7 @@ export function WhatsappButton() {
                 href={buildUrl(topic)}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="border border-white/10 bg-white/[0.02] px-4 py-2.5 text-[12px] font-semibold uppercase tracking-[0.12em] text-cs-white transition-colors hover:border-[#25D366] hover:bg-[#25D366] hover:text-white"
+                className="border border-white/10 bg-white/[0.02] px-4 py-2.5 text-[12px] font-semibold uppercase tracking-[0.12em] text-cs-white transition-colors hover:border-cs-accent hover:bg-cs-accent hover:text-white"
               >
                 {topic}
               </a>
@@ -83,7 +83,7 @@ export function WhatsappButton() {
       <button
         type="button"
         onClick={() => setExpanded((v) => !v)}
-        className="pointer-events-auto flex h-14 w-14 items-center justify-center bg-[#25D366] text-white shadow-[0_12px_30px_rgba(37,211,102,0.35)] transition-transform hover:scale-[1.05] md:h-16 md:w-16"
+        className="pointer-events-auto flex h-14 w-14 items-center justify-center bg-cs-accent text-white transition-transform hover:scale-[1.05] md:h-16 md:w-16"
         aria-label={expanded ? "WhatsApp-Menü schließen" : "WhatsApp öffnen"}
         aria-expanded={expanded}
       >
