@@ -119,7 +119,7 @@ export function ExpandableTabs({
             onMouseEnter={() => setHovered(index)}
             transition={transition}
             className={cn(
-              "relative flex items-center rounded-full px-2.5 py-2 text-[11px] font-medium transition-colors duration-300",
+              "relative flex cursor-pointer items-center rounded-full px-2.5 py-2 text-[11px] font-medium transition-colors duration-300",
               active === index
                 ? cn("bg-white/[0.1]", activeColor)
                 : "text-white/60 hover:text-white/70"
