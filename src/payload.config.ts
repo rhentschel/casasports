@@ -57,10 +57,31 @@ const INIT_TABLES_SQL = [
   `CREATE INDEX IF NOT EXISTS leads_created_at_idx ON leads (created_at)`,
   `CREATE INDEX IF NOT EXISTS wizard_sessions_session_id_idx ON wizard_sessions (session_id)`,
   `CREATE INDEX IF NOT EXISTS wizard_sessions_created_at_idx ON wizard_sessions (created_at)`,
+  `CREATE TABLE IF NOT EXISTS cv_uploads (
+    id SERIAL PRIMARY KEY,
+    applicant_name VARCHAR,
+    url VARCHAR,
+    thumbnail_u_r_l VARCHAR,
+    filename VARCHAR,
+    mime_type VARCHAR,
+    filesize DOUBLE PRECISION,
+    width DOUBLE PRECISION,
+    height DOUBLE PRECISION,
+    focal_x DOUBLE PRECISION,
+    focal_y DOUBLE PRECISION,
+    updated_at TIMESTAMP(3) WITH TIME ZONE DEFAULT NOW(),
+    created_at TIMESTAMP(3) WITH TIME ZONE DEFAULT NOW()
+  )`,
+  `CREATE INDEX IF NOT EXISTS cv_uploads_filename_idx ON cv_uploads (filename)`,
+  `CREATE INDEX IF NOT EXISTS cv_uploads_created_at_idx ON cv_uploads (created_at)`,
+  `ALTER TABLE job_applications ADD COLUMN IF NOT EXISTS cv_id INTEGER`,
+  `CREATE INDEX IF NOT EXISTS job_applications_cv_idx ON job_applications (cv_id)`,
   `ALTER TABLE payload_locked_documents_rels ADD COLUMN IF NOT EXISTS leads_id INTEGER`,
   `ALTER TABLE payload_locked_documents_rels ADD COLUMN IF NOT EXISTS wizard_sessions_id INTEGER`,
+  `ALTER TABLE payload_locked_documents_rels ADD COLUMN IF NOT EXISTS cv_uploads_id INTEGER`,
   `CREATE INDEX IF NOT EXISTS pld_rels_leads_id_idx ON payload_locked_documents_rels (leads_id)`,
   `CREATE INDEX IF NOT EXISTS pld_rels_wizard_sessions_id_idx ON payload_locked_documents_rels (wizard_sessions_id)`,
+  `CREATE INDEX IF NOT EXISTS pld_rels_cv_uploads_id_idx ON payload_locked_documents_rels (cv_uploads_id)`,
 ]
 
 export default buildConfig({
