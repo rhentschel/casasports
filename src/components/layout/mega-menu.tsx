@@ -98,7 +98,7 @@ export function MegaMenu({ items, isOpen, onClose }: Props) {
               className="group relative flex min-h-[300px] flex-col justify-end overflow-hidden p-8"
             >
               <Image
-                src="/images/casasports-hero-1.webp"
+                src="/images/casasports-personal-training.webp"
                 alt=""
                 fill
                 className="object-cover object-center transition-transform duration-[1.2s] ease-out group-hover:scale-105"
