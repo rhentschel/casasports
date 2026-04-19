@@ -143,45 +143,65 @@ export default buildConfig({
         Object.keys(MIME_MAP).includes(path.extname(f).toLowerCase())
       )
 
+      const mediaDir = path.resolve(
+        __dirname,
+        "..",
+        "..",
+        "public",
+        "media"
+      )
+      // eslint-disable-next-line @typescript-eslint/no-require-imports
+      const { existsSync, mkdirSync } = await import("fs")
+      try {
+        mkdirSync(mediaDir, { recursive: true })
+      } catch {
+        // bereits da
+      }
+
       let imported = 0
       let skipped = 0
+      let repaired = 0
       for (const fn of imageFiles) {
         try {
           const ext = path.extname(fn).toLowerCase()
-          // AVIF zu WebP konvertieren - sharp hat im Container Probleme mit AVIF-Resize
-          const isAvif = ext === ".avif"
-          const targetName = isAvif
-            ? fn.replace(/\.avif$/i, ".webp")
-            : fn
+          // AVIF skippen - sharp im Container kann HEIF/AVIF nicht parsen
+          if (ext === ".avif") continue
 
           const existing = await payload.find({
             collection: "media",
-            where: { filename: { equals: targetName } },
+            where: { filename: { equals: fn } },
             limit: 1,
             overrideAccess: true,
           })
+
           if (existing.docs.length > 0) {
-            skipped++
-            continue
+            // Check ob File auf Disk existiert - wenn nicht: DB-Eintrag löschen und re-import
+            const diskPath = path.join(mediaDir, fn)
+            if (existsSync(diskPath)) {
+              skipped++
+              continue
+            }
+            // Datei fehlt, lösche broken Eintrag
+            await payload.delete({
+              collection: "media",
+              id: existing.docs[0].id,
+              overrideAccess: true,
+            })
+            repaired++
           }
+
           const filepath = path.join(imagesDir, fn)
           // eslint-disable-next-line @typescript-eslint/no-explicit-any
-          let buffer: any = await readFile(filepath)
-          let mimetype = MIME_MAP[ext]
-          let size = (await stat(filepath)).size
-
-          if (isAvif) {
-            buffer = await sharp(buffer).webp({ quality: 85 }).toBuffer()
-            mimetype = "image/webp"
-            size = buffer.length
-          }
+          const buffer: any = await readFile(filepath)
+          const mimetype = MIME_MAP[ext]
+          const size = (await stat(filepath)).size
 
           await payload.create({
             collection: "media",
             data: { alt: filenameToAlt(fn) },
             file: {
               data: buffer,
-              name: targetName,
+              name: fn,
               mimetype,
               size,
             },
@@ -197,8 +217,11 @@ export default buildConfig({
       }
 
       payload.logger.info(
-        `images-sync: imported=${imported} skipped=${skipped} total=${imageFiles.length}`
+        `images-sync: imported=${imported} skipped=${skipped} repaired=${repaired} total=${imageFiles.length}`
       )
+      // eslint-disable-next-line no-unreachable
+      return
+
     } catch (err) {
       payload.logger.error({ err }, "images-sync failed")
     }
