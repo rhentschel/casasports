@@ -18,6 +18,7 @@ import { TeamMembers } from "./collections/team-members"
 import { Courses } from "./collections/courses"
 import { JobPositions } from "./collections/jobs/positions"
 import { JobApplications } from "./collections/jobs/applications"
+import { CvUploads } from "./collections/jobs/cv-uploads"
 import { MembershipSignups } from "./collections/membership-signups"
 import { Leads } from "./collections/leads"
 import { WizardSessions } from "./collections/wizard-sessions"
@@ -112,6 +113,7 @@ export default buildConfig({
     Courses,
     JobPositions,
     JobApplications,
+    CvUploads,
     MembershipSignups,
     Leads,
     WizardSessions,

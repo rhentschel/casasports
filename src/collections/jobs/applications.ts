@@ -50,6 +50,15 @@ export const JobApplications: CollectionConfig = {
     { name: "startDate", label: "Fruehester Start", type: "date" },
     { name: "message", label: "Nachricht", type: "textarea", required: true },
     {
+      name: "cv",
+      label: "Lebenslauf",
+      type: "upload",
+      relationTo: "cv-uploads",
+      admin: {
+        description: "Hochgeladener Lebenslauf (PDF / DOC / DOCX)",
+      },
+    },
+    {
       name: "status",
       label: "Status",
       type: "select",

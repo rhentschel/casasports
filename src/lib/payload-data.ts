@@ -174,7 +174,35 @@ export async function createJobApplication(data: Record<string, unknown>) {
   return payload.create({
     collection: "job-applications",
     data,
+    overrideAccess: true,
   })
+}
+
+export async function uploadCv(
+  buffer: Buffer,
+  filename: string,
+  mimeType: string,
+  applicantName: string,
+  size: number
+): Promise<number | string | null> {
+  const payload = await getPayload()
+  try {
+    const result = await payload.create({
+      collection: "cv-uploads",
+      data: { applicantName },
+      file: {
+        data: buffer,
+        name: filename,
+        mimetype: mimeType,
+        size,
+      },
+      overrideAccess: true,
+    })
+    return result.id as number | string
+  } catch (error) {
+    console.error("CV upload failed:", error)
+    return null
+  }
 }
 
 // ─── Membership ───────────────────────────────────

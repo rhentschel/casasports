@@ -17,6 +17,9 @@ import {
   Users,
   GraduationCap,
   Headphones,
+  Upload,
+  FileText,
+  X,
 } from "lucide-react";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
@@ -49,6 +52,7 @@ interface DetailsData {
   startDate: string;
   message: string;
   privacy: boolean;
+  cv: File | null;
 }
 
 // ─── Icon Mapping ────────────────────────────────────
@@ -396,6 +400,19 @@ function StepPersonal({
 
 // ─── Step 3: Details ────────────────────────────────
 
+const ALLOWED_CV_TYPES = [
+  "application/pdf",
+  "application/msword",
+  "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+];
+const MAX_CV_SIZE = 8 * 1024 * 1024;
+
+function formatBytes(bytes: number): string {
+  if (bytes < 1024) return `${bytes} B`;
+  if (bytes < 1024 * 1024) return `${(bytes / 1024).toFixed(0)} KB`;
+  return `${(bytes / (1024 * 1024)).toFixed(1)} MB`;
+}
+
 function StepDetails({
   data,
   onChange,
@@ -403,11 +420,29 @@ function StepDetails({
   onBack,
 }: {
   data: DetailsData;
-  onChange: (field: keyof DetailsData, value: string | boolean) => void;
+  onChange: (field: keyof DetailsData, value: string | boolean | File | null) => void;
   onNext: () => void;
   onBack: () => void;
 }) {
   const [errors, setErrors] = useState<Record<string, string>>({});
+  const [cvError, setCvError] = useState("");
+
+  function handleCvSelect(file: File | null) {
+    setCvError("");
+    if (!file) {
+      onChange("cv", null);
+      return;
+    }
+    if (!ALLOWED_CV_TYPES.includes(file.type)) {
+      setCvError("Nur PDF, DOC oder DOCX erlaubt");
+      return;
+    }
+    if (file.size > MAX_CV_SIZE) {
+      setCvError("Datei ist groesser als 8 MB");
+      return;
+    }
+    onChange("cv", file);
+  }
 
   function handleNext() {
     const e: Record<string, string> = {};
@@ -492,6 +527,61 @@ function StepDetails({
               {data.message.length} Zeichen
             </span>
           </div>
+        </div>
+
+        <div>
+          <label className={labelClass}>Lebenslauf</label>
+          {data.cv ? (
+            <div className="flex items-center justify-between border border-cs-accent/30 bg-cs-accent/[0.04] px-4 py-3">
+              <div className="flex items-center gap-3 min-w-0">
+                <div className="flex h-9 w-9 shrink-0 items-center justify-center border border-cs-accent/40 bg-cs-accent/10">
+                  <FileText className="h-4 w-4 text-cs-accent" />
+                </div>
+                <div className="min-w-0">
+                  <p className="truncate text-[13px] font-medium text-cs-white">
+                    {data.cv.name}
+                  </p>
+                  <p className="text-[11px] text-white/50">
+                    {formatBytes(data.cv.size)}
+                  </p>
+                </div>
+              </div>
+              <button
+                type="button"
+                onClick={() => handleCvSelect(null)}
+                aria-label="Lebenslauf entfernen"
+                className="shrink-0 text-white/60 transition-colors hover:text-cs-accent"
+              >
+                <X className="h-4 w-4" />
+              </button>
+            </div>
+          ) : (
+            <label
+              className={cn(
+                "flex cursor-pointer items-center gap-3 border border-dashed border-white/[0.12] bg-white/[0.01] px-4 py-5 transition-colors hover:border-cs-accent/40 hover:bg-cs-accent/[0.02]",
+                cvError && "border-cs-accent/50"
+              )}
+            >
+              <Upload className="h-4 w-4 text-white/55" />
+              <div className="flex-1">
+                <p className="text-[13px] text-white/70">
+                  Lebenslauf hochladen
+                </p>
+                <p className="text-[11px] text-white/45">
+                  PDF, DOC oder DOCX, max. 8 MB
+                </p>
+              </div>
+              <input
+                type="file"
+                accept=".pdf,.doc,.docx,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+                onChange={(e) =>
+                  handleCvSelect(e.target.files?.[0] ?? null)
+                }
+                className="hidden"
+              />
+            </label>
+          )}
+          {cvError && <p className={errorTextClass}>{cvError}</p>}
         </div>
 
         <label className="flex items-start gap-3 cursor-pointer">
@@ -630,6 +720,12 @@ function StepReview({
               <span className="text-white/50">Nachricht</span>
               <p className="mt-1 text-white/50 italic">&ldquo;{details.message.slice(0, 120)}{details.message.length > 120 ? "..." : ""}&rdquo;</p>
             </div>
+            {details.cv && (
+              <div className="flex justify-between gap-12">
+                <span className="text-white/50">Lebenslauf</span>
+                <span className="text-white/70 truncate">{details.cv.name}</span>
+              </div>
+            )}
           </div>
           <button onClick={() => onGoToStep("details")} className="shrink-0 text-[11px] text-cs-accent hover:text-cs-accent-hover transition-colors">
             Aendern
@@ -718,7 +814,7 @@ export function JobsWizard({ positions = [] }: JobsWizardProps) {
   const [positionId, setPositionId] = useState<string | null>(null);
   const [personal, setPersonal] = useState<PersonalData>({ name: "", email: "", phone: "" });
   const [details, setDetails] = useState<DetailsData>({
-    experience: "", availability: "", startDate: "", message: "", privacy: false,
+    experience: "", availability: "", startDate: "", message: "", privacy: false, cv: null,
   });
   const [submitStatus, setSubmitStatus] = useState<"idle" | "loading" | "error">("idle");
   const [errorMessage, setErrorMessage] = useState("");
@@ -730,7 +826,7 @@ export function JobsWizard({ positions = [] }: JobsWizardProps) {
   );
 
   const updateDetails = useCallback(
-    (field: keyof DetailsData, value: string | boolean) => {
+    (field: keyof DetailsData, value: string | boolean | File | null) => {
       setDetails((prev) => ({ ...prev, [field]: value }));
     }, []
   );
@@ -740,20 +836,21 @@ export function JobsWizard({ positions = [] }: JobsWizardProps) {
     setErrorMessage("");
 
     try {
+      const form = new FormData();
+      form.set("name", personal.name);
+      form.set("email", personal.email);
+      form.set("phone", personal.phone);
+      form.set("position", positionId ?? "");
+      form.set("experience", details.experience);
+      form.set("availability", details.availability);
+      form.set("startDate", details.startDate);
+      form.set("message", details.message);
+      form.set("privacy", details.privacy ? "true" : "false");
+      if (details.cv) form.set("cv", details.cv);
+
       const res = await fetch("/api/jobs/apply", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          name: personal.name,
-          email: personal.email,
-          phone: personal.phone,
-          position: positionId,
-          experience: details.experience,
-          availability: details.availability,
-          startDate: details.startDate,
-          message: details.message,
-          privacy: details.privacy,
-        }),
+        body: form,
       });
 
       if (!res.ok) throw new Error();
