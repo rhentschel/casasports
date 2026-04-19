@@ -6,7 +6,6 @@ import { SkipLink } from "@/components/layout/skip-link"
 import { CookieBanner } from "@/components/ui/cookie-banner"
 import { WhatsappButton } from "@/components/ui/whatsapp-button"
 import { JsonLd } from "@/components/schema/json-ld"
-import { ThemeProvider } from "@/components/theme-provider"
 import { healthClubSchema, serviceCatalogSchema, websiteSchema } from "@/lib/schema"
 import { siteConfig } from "@/data/site"
 import "./styles.css"
@@ -54,17 +53,15 @@ export default function FrontendLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="de" suppressHydrationWarning>
+    <html lang="de" className="dark" suppressHydrationWarning>
       <body className={`${inter.variable} antialiased`}>
-        <ThemeProvider>
-          <JsonLd data={[healthClubSchema(), websiteSchema(), serviceCatalogSchema()]} />
-          <SkipLink />
-          <Header />
-          <main id="main" tabIndex={-1}>{children}</main>
-          <Footer />
-          <WhatsappButton />
-          <CookieBanner />
-        </ThemeProvider>
+        <JsonLd data={[healthClubSchema(), websiteSchema(), serviceCatalogSchema()]} />
+        <SkipLink />
+        <Header />
+        <main id="main" tabIndex={-1}>{children}</main>
+        <Footer />
+        <WhatsappButton />
+        <CookieBanner />
       </body>
     </html>
   )

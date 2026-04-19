@@ -5,7 +5,6 @@ import { createPortal } from "react-dom";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { useTheme } from "next-themes";
 import {
   Menu,
   X,
@@ -25,10 +24,39 @@ import { cn } from "@/lib/utils";
 export function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const { resolvedTheme, setTheme } = useTheme();
-  const isDark = resolvedTheme !== "light";
+  const [isDark, setIsDark] = useState(true);
   const [newsletterOpen, setNewsletterOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
+
+  // Apply theme class on mount + when isDark changes
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const stored = window.localStorage.getItem("cs-theme");
+    const initial =
+      stored === "light"
+        ? false
+        : stored === "dark"
+        ? true
+        : !window.matchMedia("(prefers-color-scheme: light)").matches;
+    setIsDark(initial);
+  }, []);
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const root = document.documentElement;
+    if (isDark) {
+      root.classList.remove("light");
+      root.classList.add("dark");
+    } else {
+      root.classList.remove("dark");
+      root.classList.add("light");
+    }
+    window.localStorage.setItem("cs-theme", isDark ? "dark" : "light");
+  }, [isDark]);
+
+  function toggleTheme() {
+    setIsDark((v) => !v);
+  }
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   const dropdownTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const pathname = usePathname();
@@ -86,7 +114,7 @@ export function Header() {
     {
       title: isDark ? "Light Mode" : "Dark Mode",
       icon: isDark ? Sun : Moon,
-      onClick: () => setTheme(isDark ? "light" : "dark"),
+      onClick: toggleTheme,
     },
   ];
 
