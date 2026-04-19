@@ -36,13 +36,47 @@ export const navigation = [
 
 // Reduziertes Menu fuer Desktop-Header (Mitglied werden als CTA separat)
 export const primaryNavigation = [
-  { label: "Angebot", href: "/fitness", children: [
-    { label: "Fitness", href: "/fitness" },
-    { label: "Kurse", href: "/kurse" },
-    { label: "Wellness", href: "/wellness" },
-    { label: "Ernährung", href: "/ernaehrung" },
-    { label: "Mein Neues Ich", href: "/mein-neues-ich" },
-  ]},
+  {
+    label: "Angebot",
+    href: "/fitness",
+    children: [
+      {
+        label: "Fitness",
+        href: "/fitness",
+        tagline: "Krafttraining",
+        description: "Moderne Geräte, persönliche Betreuung, deine Zeit.",
+        icon: "Dumbbell",
+      },
+      {
+        label: "Kurse",
+        href: "/kurse",
+        tagline: "Live-Kursplan",
+        description: "Power, Cycling, Zirkel. Zusammen stärker werden.",
+        icon: "Users",
+      },
+      {
+        label: "Wellness",
+        href: "/wellness",
+        tagline: "Regeneration",
+        description: "KLAFS Sauna, Röger Infrarot, kompletter Wellnessbereich.",
+        icon: "Flame",
+      },
+      {
+        label: "Ernährung",
+        href: "/ernaehrung",
+        tagline: "80% Küche",
+        description: "Verstehen statt verbieten. Ernährung die funktioniert.",
+        icon: "Apple",
+      },
+      {
+        label: "Mein Neues Ich",
+        href: "/mein-neues-ich",
+        tagline: "12-Wochen-Programm",
+        description: "Training, Ernährung, Betreuung. Dein Transformations-Flow.",
+        icon: "Sparkles",
+      },
+    ],
+  },
   { label: "Blog", href: "/blog" },
   { label: "Jobs", href: "/jobs" },
   { label: "Kontakt", href: "/kontakt" },

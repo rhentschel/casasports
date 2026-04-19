@@ -18,6 +18,7 @@ import {
 import { navigation, primaryNavigation, siteConfig } from "@/data/site";
 import { ExpandableTabs } from "@/components/ui/expandable-tabs";
 import { NewsletterModal } from "@/components/ui/newsletter-modal";
+import { MegaMenu, type MegaMenuItem } from "./mega-menu";
 import { cn } from "@/lib/utils";
 
 export function Header() {
@@ -158,48 +159,31 @@ export function Header() {
             {primaryNavigation.map((item) => {
               const hasChildren = "children" in item && item.children;
               if (hasChildren) {
-                const isOpen = openDropdown === item.label;
+                const isOpenMega = openDropdown === item.label;
                 return (
                   <div
                     key={item.label}
-                    className="relative"
                     onMouseEnter={() => handleDropdownEnter(item.label)}
                     onMouseLeave={handleDropdownLeave}
                   >
                     <button
                       type="button"
-                      className="flex items-center gap-1 px-3 py-2 text-[11px] font-medium uppercase tracking-[0.12em] text-white/60 transition-colors duration-300 hover:text-white"
-                      aria-expanded={isOpen}
+                      className={cn(
+                        "flex items-center gap-1 px-3 py-2 text-[11px] font-medium uppercase tracking-[0.12em] transition-colors duration-300",
+                        isOpenMega
+                          ? "text-cs-white"
+                          : "text-white/60 hover:text-white"
+                      )}
+                      aria-expanded={isOpenMega}
                     >
                       {item.label}
                       <ChevronDown
                         className={cn(
                           "h-3 w-3 transition-transform duration-300",
-                          isOpen && "rotate-180"
+                          isOpenMega && "rotate-180"
                         )}
                       />
                     </button>
-                    <div
-                      className={cn(
-                        "absolute left-1/2 top-full -translate-x-1/2 pt-3 transition-all duration-200",
-                        isOpen
-                          ? "pointer-events-auto translate-y-0 opacity-100"
-                          : "pointer-events-none translate-y-1 opacity-0"
-                      )}
-                    >
-                      <div className="min-w-[220px] border border-white/[0.08] bg-cs-black/95 py-2 shadow-2xl backdrop-blur-xl">
-                        {item.children!.map((child) => (
-                          <Link
-                            key={child.href}
-                            href={child.href}
-                            onClick={() => setOpenDropdown(null)}
-                            className="block px-5 py-2.5 text-[12px] font-medium uppercase tracking-[0.12em] text-white/70 transition-colors hover:bg-white/[0.04] hover:text-cs-accent"
-                          >
-                            {child.label}
-                          </Link>
-                        ))}
-                      </div>
-                    </div>
                   </div>
                 );
               }
@@ -236,6 +220,27 @@ export function Header() {
             <Menu className="h-6 w-6" />
           </button>
         </div>
+
+        {/* Mega Menu (Desktop) */}
+        {primaryNavigation
+          .filter((item) => "children" in item && item.children)
+          .map((item) => {
+            const children = (item as { children: readonly MegaMenuItem[] })
+              .children;
+            return (
+              <div
+                key={item.label}
+                onMouseEnter={() => handleDropdownEnter(item.label)}
+                onMouseLeave={handleDropdownLeave}
+              >
+                <MegaMenu
+                  items={children}
+                  isOpen={openDropdown === item.label}
+                  onClose={() => setOpenDropdown(null)}
+                />
+              </div>
+            );
+          })}
       </header>
 
       {mobileMenu}
