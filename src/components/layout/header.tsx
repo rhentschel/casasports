@@ -4,7 +4,16 @@ import { useState, useEffect, useRef } from "react";
 import { createPortal } from "react-dom";
 import Link from "next/link";
 import Image from "next/image";
-import { Menu, X, Sun, Moon, Dumbbell, Mail, ChevronDown } from "lucide-react";
+import {
+  Menu,
+  X,
+  Sun,
+  Moon,
+  Dumbbell,
+  Mail,
+  ChevronDown,
+  Flame,
+} from "lucide-react";
 import { navigation, primaryNavigation, siteConfig } from "@/data/site";
 import { ExpandableTabs } from "@/components/ui/expandable-tabs";
 import { NewsletterModal } from "@/components/ui/newsletter-modal";
@@ -52,6 +61,11 @@ export function Header() {
   }, [isOpen]);
 
   const quickTabs = [
+    {
+      title: "Mitglied werden",
+      icon: Flame,
+      href: "/mitglied-werden",
+    },
     {
       title: "Probetraining",
       icon: Dumbbell,
@@ -199,13 +213,7 @@ export function Header() {
             })}
           </nav>
 
-          <div className="hidden items-center gap-3 lg:flex">
-            <Link
-              href="/mitglied-werden"
-              className="border border-cs-accent/60 px-4 py-2 text-[11px] font-bold uppercase tracking-[0.15em] text-cs-accent transition-all duration-300 hover:bg-cs-accent hover:text-cs-white"
-            >
-              Mitglied werden
-            </Link>
+          <div className="hidden items-center lg:flex">
             <ExpandableTabs tabs={quickTabs} defaultActive={0} />
           </div>
 
