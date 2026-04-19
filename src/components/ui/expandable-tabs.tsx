@@ -8,6 +8,7 @@ import { LucideIcon } from "lucide-react";
 interface Tab {
   title: string;
   icon: LucideIcon;
+  iconClassName?: string;
   type?: never;
   onClick?: () => void;
   href?: string;
@@ -60,7 +61,7 @@ const transition = {
 export function ExpandableTabs({
   tabs,
   className,
-  activeColor = "text-cs-accent",
+  activeColor = "text-cs-white hover:text-cs-accent",
   defaultActive = 0,
   activeIndex,
 }: ExpandableTabsProps) {
@@ -122,10 +123,10 @@ export function ExpandableTabs({
               "relative flex cursor-pointer items-center rounded-full px-2.5 py-2 text-[11px] font-medium transition-colors duration-300",
               active === index
                 ? cn("bg-white/[0.1]", activeColor)
-                : "text-white/60 hover:text-white/70"
+                : "text-white/60 hover:text-cs-accent"
             )}
           >
-            <Icon size={18} />
+            <Icon size={18} className={tab.iconClassName} />
             <AnimatePresence initial={false}>
               {isExpanded && (
                 <motion.span

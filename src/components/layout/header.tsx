@@ -67,6 +67,7 @@ export function Header() {
     {
       title: "Mitglied werden",
       icon: Flame,
+      iconClassName: "animate-flame-flicker text-cs-accent",
       href: "/mitglied-werden",
     },
     {
