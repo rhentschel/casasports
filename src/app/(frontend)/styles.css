@@ -107,6 +107,51 @@ html.light .img-cinema {
   filter: contrast(1.05) brightness(1) saturate(0.95);
 }
 
+/* Logo ist weiss auf transparent — im Light invertieren */
+html.light img[alt*="Casa Sports"],
+html.light img[src*="casa-sports-logo"] {
+  filter: invert(1);
+}
+
+/* Scroll-reveal sollte im Light auch aus-invertierten Texten starten */
+html.light .reveal {
+  opacity: 0;
+}
+
+/* Form-Inputs: transparent BG hat im Light kaum Kontrast zum cremigen body.
+   Leichtes schwarzes Tint erzeugen. */
+html.light input[type="text"],
+html.light input[type="email"],
+html.light input[type="tel"],
+html.light input[type="password"],
+html.light input[type="search"],
+html.light input[type="number"],
+html.light textarea,
+html.light select {
+  background-color: rgba(0, 0, 0, 0.03);
+  color: var(--cs-white);
+}
+html.light input::placeholder,
+html.light textarea::placeholder {
+  color: rgba(0, 0, 0, 0.4);
+}
+
+/* Shadow-lg/shadow-xl im Light weniger dramatisch */
+html.light .shadow-lg,
+html.light .shadow-xl,
+html.light .shadow-2xl,
+html.light [class*="shadow-black"] {
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08), 0 2px 6px rgba(0, 0, 0, 0.04) !important;
+}
+
+/* Backdrop-blur mit bg-cs-black/90 etc. — explicit für Header/Modals */
+html.light .backdrop-blur-xl,
+html.light .backdrop-blur-2xl,
+html.light .backdrop-blur-md {
+  background-color: rgba(245, 245, 240, 0.85) !important;
+  backdrop-filter: blur(16px) saturate(1.1);
+}
+
 /* Cinematic image treatment */
 .img-cinema {
   filter: contrast(1.1) brightness(0.9) saturate(0.85);
