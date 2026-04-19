@@ -41,6 +41,7 @@ export async function POST(request: NextRequest) {
       collection: "wizard-sessions",
       where: { sessionId: { equals: sessionId } },
       limit: 1,
+      overrideAccess: true,
     })
 
     const userAgent = request.headers.get("user-agent") || undefined
@@ -56,6 +57,7 @@ export async function POST(request: NextRequest) {
           userAgent,
           referrer,
         },
+        overrideAccess: true,
       })
     } else {
       const doc = existing.docs[0] as { id: string | number; furthestStep: string; completed?: boolean }
@@ -70,6 +72,7 @@ export async function POST(request: NextRequest) {
             furthestStep: newIdx > currentIdx ? step : doc.furthestStep,
             completed: step === "success" ? true : !!doc.completed,
           },
+          overrideAccess: true,
         })
       }
     }

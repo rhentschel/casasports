@@ -102,6 +102,7 @@ export async function POST(request: NextRequest) {
           magiclineLeadId: data?.id ? String(data.id) : undefined,
           status: "probetraining",
         },
+        overrideAccess: true,
       })
     } catch (persistError) {
       console.error("Trial lead persist failed (non-blocking):", persistError)

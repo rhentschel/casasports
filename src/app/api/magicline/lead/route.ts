@@ -92,6 +92,7 @@ export async function POST(request: NextRequest) {
           magiclineLeadId: data?.id ? String(data.id) : undefined,
           status: "neu",
         },
+        overrideAccess: true,
       })
     } catch (persistError) {
       console.error("Lead persist failed (non-blocking):", persistError)
