@@ -53,7 +53,7 @@ export default function FrontendLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="de" className="dark" suppressHydrationWarning>
+    <html lang="de">
       <body className={`${inter.variable} antialiased`}>
         <JsonLd data={[healthClubSchema(), websiteSchema(), serviceCatalogSchema()]} />
         <SkipLink />
