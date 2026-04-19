@@ -52,6 +52,13 @@ export function Header() {
       root.classList.add("light");
     }
     window.localStorage.setItem("cs-theme", isDark ? "dark" : "light");
+    // eslint-disable-next-line no-console
+    console.log(
+      "[cs-theme] html classList now:",
+      root.className,
+      "| body has class:",
+      document.body.className
+    );
   }, [isDark]);
 
   function toggleTheme() {

@@ -92,8 +92,23 @@ body {
 
 /* DEBUG: sichtbare Bestaetigung dass .light class greift */
 html.light body {
-  outline: 6px solid #ff00ff !important;
-  outline-offset: -6px;
+  outline: 10px solid #ff00ff !important;
+  outline-offset: -10px;
+}
+html.light body::before {
+  content: "LIGHT MODE ACTIVE";
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 99999;
+  background: #ff00ff;
+  color: #fff;
+  text-align: center;
+  padding: 8px;
+  font-size: 12px;
+  font-weight: bold;
+  letter-spacing: 0.2em;
 }
 
 /* Light-mode: invertierte weisse Opazitäten → schwarz, für ererbte Klassen */
