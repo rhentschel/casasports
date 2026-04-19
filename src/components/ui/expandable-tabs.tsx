@@ -81,7 +81,7 @@ export function ExpandableTabs({
   return (
     <div
       className={cn(
-        "flex items-center gap-1.5 rounded-full border border-white/25 bg-white/[0.1] p-1.5 shadow-lg shadow-black/30 backdrop-blur-xl",
+        "flex items-center gap-1.5 rounded-full border border-white/[0.15] bg-white/[0.06] p-1.5 shadow-lg shadow-black/20 backdrop-blur-xl",
         className
       )}
       onMouseLeave={() => setHovered(null)}
@@ -91,7 +91,7 @@ export function ExpandableTabs({
           return (
             <div
               key={`separator-${index}`}
-              className="mx-1 h-5 w-px bg-white/25"
+              className="mx-1 h-5 w-px bg-white/[0.15]"
               aria-hidden="true"
             />
           );
@@ -116,8 +116,8 @@ export function ExpandableTabs({
             className={cn(
               "relative flex items-center rounded-full px-2.5 py-2 text-[11px] font-medium transition-colors duration-300",
               active === index
-                ? cn("bg-cs-accent/15 ring-1 ring-cs-accent/40", activeColor)
-                : "text-white/80 hover:text-cs-white"
+                ? cn("bg-white/[0.1]", activeColor)
+                : "text-white/60 hover:text-white/70"
             )}
           >
             <Icon size={18} />
