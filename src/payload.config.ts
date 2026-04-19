@@ -147,9 +147,16 @@ export default buildConfig({
       let skipped = 0
       for (const fn of imageFiles) {
         try {
+          const ext = path.extname(fn).toLowerCase()
+          // AVIF zu WebP konvertieren - sharp hat im Container Probleme mit AVIF-Resize
+          const isAvif = ext === ".avif"
+          const targetName = isAvif
+            ? fn.replace(/\.avif$/i, ".webp")
+            : fn
+
           const existing = await payload.find({
             collection: "media",
-            where: { filename: { equals: fn } },
+            where: { filename: { equals: targetName } },
             limit: 1,
             overrideAccess: true,
           })
@@ -158,17 +165,24 @@ export default buildConfig({
             continue
           }
           const filepath = path.join(imagesDir, fn)
-          const buffer = await readFile(filepath)
-          const st = await stat(filepath)
-          const mimetype = MIME_MAP[path.extname(fn).toLowerCase()]
+          let buffer = await readFile(filepath)
+          let mimetype = MIME_MAP[ext]
+          let size = (await stat(filepath)).size
+
+          if (isAvif) {
+            buffer = await sharp(buffer).webp({ quality: 85 }).toBuffer()
+            mimetype = "image/webp"
+            size = buffer.length
+          }
+
           await payload.create({
             collection: "media",
             data: { alt: filenameToAlt(fn) },
             file: {
               data: buffer,
-              name: fn,
+              name: targetName,
               mimetype,
-              size: st.size,
+              size,
             },
             overrideAccess: true,
           })
