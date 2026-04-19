@@ -107,10 +107,11 @@ html.light .img-cinema {
   filter: contrast(1.05) brightness(1) saturate(0.95);
 }
 
-/* Logo ist weiss auf transparent — im Light invertieren */
+/* Logo: weisser Text im Dark, soll im Light schwarz sein — Symbol bleibt rot.
+   invert+hue-rotate kehrt Helligkeit um, Farbtoene bleiben erhalten. */
 html.light img[alt*="Casa Sports"],
 html.light img[src*="casa-sports-logo"] {
-  filter: invert(1);
+  filter: invert(1) hue-rotate(180deg);
 }
 
 /* Scroll-reveal sollte im Light auch aus-invertierten Texten starten */
