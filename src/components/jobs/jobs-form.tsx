@@ -212,7 +212,7 @@ export function JobsForm() {
                   Vorbeikommen
                 </p>
                 <p className="mt-3 text-sm leading-relaxed text-cs-gray-400">
-                  Karlstrasse 4<br />
+                  Karlstrasse 40<br />
                   45739 Oer-Erkenschwick
                 </p>
               </div>

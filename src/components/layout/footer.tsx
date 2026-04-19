@@ -148,7 +148,7 @@ export function Footer() {
             &copy; {new Date().getFullYear()} {siteConfig.name}
           </p>
           <p className="text-xs text-cs-gray-500">
-            Karlstra&szlig;e 4, 45739 Oer-Erkenschwick
+            Karlstra&szlig;e 40, 45739 Oer-Erkenschwick
           </p>
         </div>
       </div>

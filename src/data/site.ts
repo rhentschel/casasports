@@ -6,7 +6,7 @@ export const siteConfig = {
   url: "https://sport.casasports.de",
   owner: "Naim Obeid",
   address: {
-    street: "Karlstraße 4",
+    street: "Karlstraße 40",
     zip: "45739",
     city: "Oer-Erkenschwick",
     country: "Deutschland",
@@ -32,6 +32,20 @@ export const navigation = [
   { label: "Jobs", href: "/jobs" },
   { label: "Kontakt", href: "/kontakt" },
   { label: "Mitglied werden", href: "/mitglied-werden" },
+] as const;
+
+// Reduziertes Menu fuer Desktop-Header (Mitglied werden als CTA separat)
+export const primaryNavigation = [
+  { label: "Angebot", href: "/fitness", children: [
+    { label: "Fitness", href: "/fitness" },
+    { label: "Kurse", href: "/kurse" },
+    { label: "Wellness", href: "/wellness" },
+    { label: "Ernährung", href: "/ernaehrung" },
+    { label: "Mein Neues Ich", href: "/mein-neues-ich" },
+  ]},
+  { label: "Blog", href: "/blog" },
+  { label: "Jobs", href: "/jobs" },
+  { label: "Kontakt", href: "/kontakt" },
 ] as const;
 
 export const courses = [
