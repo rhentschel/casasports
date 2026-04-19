@@ -7,6 +7,7 @@ import { de } from "@payloadcms/translations/languages/de"
 import sharp from "sharp"
 import path from "path"
 import { fileURLToPath } from "url"
+import { readdir, readFile, stat } from "fs/promises"
 
 import { Users } from "./collections/users"
 import { Media } from "./collections/media"
@@ -102,6 +103,89 @@ export default buildConfig({
       payload.logger.info("init-tables: leads + wizard_sessions ready")
     } catch (err) {
       payload.logger.error({ err }, "init-tables failed")
+    }
+
+    // Auto-Import public/images/ in die Media-Collection (idempotent)
+    try {
+      const MIME_MAP: Record<string, string> = {
+        ".webp": "image/webp",
+        ".avif": "image/avif",
+        ".jpg": "image/jpeg",
+        ".jpeg": "image/jpeg",
+        ".png": "image/png",
+        ".gif": "image/gif",
+      }
+
+      const filenameToAlt = (fn: string): string => {
+        const base = fn.replace(/\.[^.]+$/, "")
+        return base
+          .replace(/casasports?-/gi, "Casa Sports ")
+          .replace(/-fuer-/gi, " für ")
+          .replace(/-ueber-/gi, " über ")
+          .replace(/-/g, " ")
+          .replace(/\s+/g, " ")
+          .trim()
+          .split(" ")
+          .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
+          .join(" ")
+      }
+
+      const imagesDir = path.join(process.cwd(), "public", "images")
+      let files: string[] = []
+      try {
+        files = await readdir(imagesDir)
+      } catch {
+        payload.logger.info("images-sync: public/images not found, skipped")
+        return
+      }
+
+      const imageFiles = files.filter((f) =>
+        Object.keys(MIME_MAP).includes(path.extname(f).toLowerCase())
+      )
+
+      let imported = 0
+      let skipped = 0
+      for (const fn of imageFiles) {
+        try {
+          const existing = await payload.find({
+            collection: "media",
+            where: { filename: { equals: fn } },
+            limit: 1,
+            overrideAccess: true,
+          })
+          if (existing.docs.length > 0) {
+            skipped++
+            continue
+          }
+          const filepath = path.join(imagesDir, fn)
+          const buffer = await readFile(filepath)
+          const st = await stat(filepath)
+          const mimetype = MIME_MAP[path.extname(fn).toLowerCase()]
+          await payload.create({
+            collection: "media",
+            data: { alt: filenameToAlt(fn) },
+            file: {
+              data: buffer,
+              name: fn,
+              mimetype,
+              size: st.size,
+            },
+            overrideAccess: true,
+          })
+          imported++
+        } catch (e) {
+          payload.logger.error(
+            { err: e, file: fn },
+            "images-sync: single file failed"
+          )
+        }
+      }
+
+      payload.logger.info(
+        `images-sync: imported=${imported} skipped=${skipped} total=${imageFiles.length}`
+      )
+    } catch (err) {
+      payload.logger.error({ err }, "images-sync failed")
     }
   },
   admin: {
