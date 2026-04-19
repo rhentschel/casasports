@@ -55,7 +55,14 @@ export function Header() {
   }, [isDark]);
 
   function toggleTheme() {
-    setIsDark((v) => !v);
+    // eslint-disable-next-line no-console
+    console.log("[cs-theme] toggle clicked, current isDark=", isDark);
+    setIsDark((v) => {
+      const next = !v;
+      // eslint-disable-next-line no-console
+      console.log("[cs-theme] -> new isDark=", next);
+      return next;
+    });
   }
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   const dropdownTimer = useRef<ReturnType<typeof setTimeout> | null>(null);

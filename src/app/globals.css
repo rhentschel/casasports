@@ -90,6 +90,12 @@ body {
   transition: background-color 0.4s ease, color 0.4s ease;
 }
 
+/* DEBUG: sichtbare Bestaetigung dass .light class greift */
+html.light body {
+  outline: 6px solid #ff00ff !important;
+  outline-offset: -6px;
+}
+
 /* Light-mode: invertierte weisse Opazitäten → schwarz, für ererbte Klassen */
 html.light .text-cs-white { color: var(--cs-white); }
 html.light [class*="text-white\/"] { color: rgba(0, 0, 0, 0.72); }
