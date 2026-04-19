@@ -5,6 +5,7 @@ import { createPortal } from "react-dom";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
+import { useTheme } from "next-themes";
 import {
   Menu,
   X,
@@ -24,7 +25,8 @@ import { cn } from "@/lib/utils";
 export function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [isDark, setIsDark] = useState(true);
+  const { resolvedTheme, setTheme } = useTheme();
+  const isDark = resolvedTheme !== "light";
   const [newsletterOpen, setNewsletterOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
@@ -84,7 +86,7 @@ export function Header() {
     {
       title: isDark ? "Light Mode" : "Dark Mode",
       icon: isDark ? Sun : Moon,
-      onClick: () => setIsDark(!isDark),
+      onClick: () => setTheme(isDark ? "light" : "dark"),
     },
   ];
 

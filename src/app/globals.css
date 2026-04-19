@@ -1,6 +1,9 @@
 @import "tailwindcss";
 
-:root {
+@custom-variant light (&:where(.light, .light *));
+
+:root,
+html.dark {
   --cs-black: #0a0a0a;
   --cs-white: #f5f5f0;
   --cs-gray-100: #e5e5df;
@@ -19,8 +22,40 @@
   --background: var(--cs-black);
   --foreground: var(--cs-white);
 
+  --surface: rgba(255, 255, 255, 0.02);
+  --border-soft: rgba(255, 255, 255, 0.06);
+  --border-strong: rgba(255, 255, 255, 0.12);
+  --text-muted: rgba(255, 255, 255, 0.6);
+  --text-subtle: rgba(255, 255, 255, 0.4);
+
   --ease-premium: cubic-bezier(0.16, 1, 0.3, 1);
   --ease-hover: cubic-bezier(0.33, 1, 0.68, 1);
+}
+
+html.light {
+  --cs-black: #f5f5f0;      /* inverted: background */
+  --cs-white: #0a0a0a;      /* inverted: text */
+  --cs-gray-100: #262626;
+  --cs-gray-200: #333333;
+  --cs-gray-300: #4a4a4a;
+  --cs-gray-400: #5a5a5a;
+  --cs-gray-500: #6b6b6b;
+  --cs-gray-600: #7a7a7a;
+  --cs-gray-700: #d4d4ce;
+  --cs-gray-800: #e5e5df;
+  --cs-gray-900: #ededed;
+  --cs-accent: #c42a38;     /* leicht dunkler für bessere Kontrast auf hell */
+  --cs-accent-hover: #a61f2b;
+  --cs-gold: #8a6d3b;
+
+  --background: var(--cs-black);
+  --foreground: var(--cs-white);
+
+  --surface: rgba(0, 0, 0, 0.03);
+  --border-soft: rgba(0, 0, 0, 0.08);
+  --border-strong: rgba(0, 0, 0, 0.14);
+  --text-muted: rgba(0, 0, 0, 0.68);
+  --text-subtle: rgba(0, 0, 0, 0.5);
 }
 
 @theme inline {
@@ -52,6 +87,20 @@ body {
   color: var(--foreground);
   font-family: var(--font-sans), system-ui, sans-serif;
   font-size: 16px;
+  transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+/* Light-mode: invertierte weisse Opazitäten → schwarz, für ererbte Klassen */
+html.light .text-cs-white { color: var(--cs-white); }
+html.light [class*="text-white\/"] { color: rgba(0, 0, 0, 0.72); }
+html.light [class*="bg-white\/"] { background-color: rgba(0, 0, 0, 0.04); }
+html.light [class*="border-white\/"] { border-color: rgba(0, 0, 0, 0.1); }
+html.light .bg-black,
+html.light .bg-black\/80,
+html.light .bg-black\/70,
+html.light .bg-black\/60 { background-color: rgba(245, 245, 240, 0.9) !important; }
+html.light .img-cinema {
+  filter: contrast(1.05) brightness(1) saturate(0.95);
 }
 
 @media (min-width: 768px) {
