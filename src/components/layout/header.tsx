@@ -4,6 +4,7 @@ import { useState, useEffect, useRef } from "react";
 import { createPortal } from "react-dom";
 import Link from "next/link";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 import {
   Menu,
   X,
@@ -27,6 +28,7 @@ export function Header() {
   const [mounted, setMounted] = useState(false);
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   const dropdownTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const pathname = usePathname();
 
   function handleDropdownEnter(label: string) {
     if (dropdownTimer.current) clearTimeout(dropdownTimer.current);
@@ -214,7 +216,16 @@ export function Header() {
           </nav>
 
           <div className="hidden items-center lg:flex">
-            <ExpandableTabs tabs={quickTabs} defaultActive={0} />
+            <ExpandableTabs
+              tabs={quickTabs}
+              activeIndex={
+                pathname?.startsWith("/mitglied-werden")
+                  ? 0
+                  : pathname?.startsWith("/probetraining")
+                  ? 1
+                  : 0
+              }
+            />
           </div>
 
           <button

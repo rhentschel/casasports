@@ -28,6 +28,7 @@ interface ExpandableTabsProps {
   className?: string;
   activeColor?: string;
   defaultActive?: number;
+  activeIndex?: number;
 }
 
 const buttonVariants = {
@@ -61,12 +62,16 @@ export function ExpandableTabs({
   className,
   activeColor = "text-cs-accent",
   defaultActive = 0,
+  activeIndex,
 }: ExpandableTabsProps) {
-  const [active, setActive] = React.useState<number>(defaultActive);
+  const [internalActive, setInternalActive] =
+    React.useState<number>(defaultActive);
   const [hovered, setHovered] = React.useState<number | null>(null);
 
+  const active = activeIndex ?? internalActive;
+
   const handleClick = (index: number, tab: Tab) => {
-    setActive(index);
+    if (activeIndex === undefined) setInternalActive(index);
     if (tab.href) {
       window.location.href = tab.href;
     }
