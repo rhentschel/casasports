@@ -52,24 +52,10 @@ export function Header() {
       root.classList.add("light");
     }
     window.localStorage.setItem("cs-theme", isDark ? "dark" : "light");
-    // eslint-disable-next-line no-console
-    console.log(
-      "[cs-theme] html classList now:",
-      root.className,
-      "| body has class:",
-      document.body.className
-    );
   }, [isDark]);
 
   function toggleTheme() {
-    // eslint-disable-next-line no-console
-    console.log("[cs-theme] toggle clicked, current isDark=", isDark);
-    setIsDark((v) => {
-      const next = !v;
-      // eslint-disable-next-line no-console
-      console.log("[cs-theme] -> new isDark=", next);
-      return next;
-    });
+    setIsDark((v) => !v);
   }
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   const dropdownTimer = useRef<ReturnType<typeof setTimeout> | null>(null);

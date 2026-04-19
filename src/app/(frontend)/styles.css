@@ -1,6 +1,7 @@
 @import "tailwindcss";
 
-:root {
+:root,
+html.dark {
   --cs-black: #0a0a0a;
   --cs-white: #f5f5f0;
   --cs-gray-100: #e5e5df;
@@ -21,6 +22,26 @@
 
   --ease-premium: cubic-bezier(0.16, 1, 0.3, 1);
   --ease-hover: cubic-bezier(0.33, 1, 0.68, 1);
+}
+
+html.light {
+  --cs-black: #f5f5f0;
+  --cs-white: #0a0a0a;
+  --cs-gray-100: #262626;
+  --cs-gray-200: #333333;
+  --cs-gray-300: #4a4a4a;
+  --cs-gray-400: #5a5a5a;
+  --cs-gray-500: #6b6b6b;
+  --cs-gray-600: #7a7a7a;
+  --cs-gray-700: #d4d4ce;
+  --cs-gray-800: #e5e5df;
+  --cs-gray-900: #ededed;
+  --cs-accent: #a61f2b;
+  --cs-accent-hover: #8a1824;
+  --cs-gold: #8a6d3b;
+
+  --background: var(--cs-black);
+  --foreground: var(--cs-white);
 }
 
 @theme inline {
@@ -52,6 +73,7 @@ body {
   color: var(--foreground);
   font-family: var(--font-sans), system-ui, sans-serif;
   font-size: 16px;
+  transition: background-color 0.4s ease, color 0.4s ease;
 }
 
 @media (min-width: 768px) {
@@ -64,11 +86,25 @@ body {
 }
 
 /* WCAG 2.2 - Brand-Color Split:
-   bg-cs-accent nutzt --cs-accent (#cc2633, 4.92:1 weiss-auf-rot fuer Buttons).
-   text-cs-accent auf dunklem BG nutzt helleren Brand-Ton (#e63946, 5.3:1 auf cs-black).
-   So bleibt die Markenfarbe visuell erhalten, WCAG AA passt in beiden Richtungen. */
+   bg-cs-accent nutzt --cs-accent fuer Buttons.
+   text-cs-accent auf dunklem BG nutzt helleren Brand-Ton fuer Kontrast. */
 .text-cs-accent {
   color: #e63946;
+}
+html.light .text-cs-accent {
+  color: #a61f2b;
+}
+
+/* Light-mode: weisse Opazitaeten auf schwarze umswappen fuer Legacy-Klassen */
+html.light [class*="text-white\/"] { color: rgba(0, 0, 0, 0.72); }
+html.light [class*="bg-white\/"] { background-color: rgba(0, 0, 0, 0.04); }
+html.light [class*="border-white\/"] { border-color: rgba(0, 0, 0, 0.1); }
+html.light .bg-black,
+html.light [class*="bg-black\/"] {
+  background-color: rgba(245, 245, 240, 0.88) !important;
+}
+html.light .img-cinema {
+  filter: contrast(1.05) brightness(1) saturate(0.95);
 }
 
 /* Cinematic image treatment */
