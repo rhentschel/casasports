@@ -170,7 +170,8 @@ export default buildConfig({
           let size = (await stat(filepath)).size
 
           if (isAvif) {
-            buffer = await sharp(buffer).webp({ quality: 85 }).toBuffer()
+            const converted = await sharp(buffer).webp({ quality: 85 }).toBuffer()
+            buffer = Buffer.from(converted.buffer, converted.byteOffset, converted.byteLength)
             mimetype = "image/webp"
             size = buffer.length
           }
