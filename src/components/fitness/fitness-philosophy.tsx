@@ -20,11 +20,11 @@ const pillars = [
     icon: <TrendingUp className="h-6 w-6" />,
     title: "Progressiv",
     description:
-      "Dein Plan waechst mit dir. Regelmaessige Anpassungen sorgen fuer stetige Fortschritte.",
+      "Dein Plan waechst mit dir. Regelmäßige Anpassungen sorgen für stetige Fortschritte.",
   },
   {
     icon: <Users className="h-6 w-6" />,
-    title: "Persoenlich",
+    title: "Persönlich",
     description:
       "Unser Team kennt dich beim Namen. Hier bist du Mensch, nicht Mitgliedsnummer.",
   },

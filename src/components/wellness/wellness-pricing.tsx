@@ -33,7 +33,7 @@ const plans = [
     highlighted: true,
     accent: "gold",
     cta: "All-in starten",
-    note: "Die meisten Mitglieder waehlen All-in",
+    note: "Die meisten Mitglieder wählen All-in",
   },
   {
     name: "Sauna Solo",
@@ -41,7 +41,7 @@ const plans = [
     price: "29,90",
     period: "/ Monat",
     description:
-      "Sauna und Wellness ohne Fitnesstraining. Fuer alle, die reine Entspannung suchen.",
+      "Sauna und Wellness ohne Fitnesstraining. Für alle, die reine Entspannung suchen.",
     features: [
       { icon: <Flame className="h-3.5 w-3.5" />, text: "KLAFS Sauna" },
       { icon: <Sun className="h-3.5 w-3.5" />, text: "Roeger Infrarotkabine" },
@@ -50,7 +50,7 @@ const plans = [
     ],
     highlighted: false,
     accent: "white",
-    cta: "Sauna Solo waehlen",
+    cta: "Sauna Solo wählen",
     note: null,
   },
 ];
@@ -71,8 +71,8 @@ export function WellnessPricing() {
             <span className="text-cs-accent">Passt perfekt zusammen.</span>
           </h2>
           <p className="mt-6 text-[15px] leading-relaxed text-white/60">
-            Fuer nur 15 € mehr pro Monat bekommst du zum Wellness-Bereich das
-            komplette Fitness-Erlebnis dazu. Die meisten entscheiden sich fuer
+            Für nur 15 € mehr pro Monat bekommst du zum Wellness-Bereich das
+            komplette Fitness-Erlebnis dazu. Die meisten entscheiden sich für
             All-in.
           </p>
         </div>

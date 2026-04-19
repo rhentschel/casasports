@@ -16,7 +16,7 @@ const courses = [
     image: "/images/casasports-krafttraining-1.webp",
     title: "Power Training",
     description:
-      "Intensives Krafttraining fuer maximale Ergebnisse. Langhantel, Kurzhanteln und Bodyweight in einem strukturierten Kursformat.",
+      "Intensives Krafttraining für maximale Ergebnisse. Langhantel, Kurzhanteln und Bodyweight in einem strukturierten Kursformat.",
     level: "Alle Level",
     duration: "45 Min",
     icon: <Dumbbell className="h-5 w-5" />,
@@ -34,7 +34,7 @@ const courses = [
     image: "/images/casasports-functional-training.webp",
     title: "Functional Training",
     description:
-      "Funktionelle Bewegungsmuster fuer mehr Mobilitaet, Stabilitaet und Alltagskraft. Kettlebells, TRX und Eigengewicht.",
+      "Funktionelle Bewegungsmuster für mehr Mobilitaet, Stabilitaet und Alltagskraft. Kettlebells, TRX und Eigengewicht.",
     level: "Alle Level",
     duration: "50 Min",
     icon: <Activity className="h-5 w-5" />,
@@ -43,16 +43,16 @@ const courses = [
     image: "/images/casasports-kardio-power.webp",
     title: "Cardio Kurse",
     description:
-      "Ausdauertraining das Spass macht. Intervalle, Choreografien und Teamwork fuer effektive Fettverbrennung.",
+      "Ausdauertraining das Spaß macht. Intervalle, Choreografien und Teamwork für effektive Fettverbrennung.",
     level: "Einsteiger",
     duration: "45 Min",
     icon: <Heart className="h-5 w-5" />,
   },
   {
-    image: "/images/casasports-kurse-fuer-alle.webp",
+    image: "/images/casasports-kurse-für-alle.webp",
     title: "Zirkeltraining",
     description:
-      "Ganzkörper-Workout im Zirkel. Station fuer Station arbeitest du dich durch Kraft- und Ausdaueruebungen.",
+      "Ganzkörper-Workout im Zirkel. Station für Station arbeitest du dich durch Kraft- und Ausdauerübungen.",
     level: "Alle Level",
     duration: "50 Min",
     icon: <RotateCcw className="h-5 w-5" />,
@@ -82,7 +82,7 @@ export function KurseGrid() {
         </h2>
         <p className="mt-6 max-w-md text-[15px] leading-relaxed text-white/60">
           Jeder Kurs wird von erfahrenen Trainern geleitet. Kleine Gruppen,
-          persoenliche Korrekturen, echte Ergebnisse.
+          persönliche Korrekturen, echte Ergebnisse.
         </p>
 
         <div className="mt-16 grid gap-5 md:grid-cols-2 lg:grid-cols-3">

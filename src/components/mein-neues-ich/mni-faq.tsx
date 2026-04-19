@@ -22,7 +22,7 @@ export function MniFaq() {
               FAQ
             </h2>
             <p className="mt-6 text-[15px] leading-relaxed text-white/60">
-              Alles was du ueber das &quot;Mein neues Ich&quot;-Programm wissen musst.
+              Alles was du über das &quot;Mein neues Ich&quot;-Programm wissen musst.
             </p>
           </div>
 

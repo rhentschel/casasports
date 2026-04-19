@@ -9,32 +9,32 @@ const faqs = [
   {
     question: "Brauche ich eine bestimmte Ausbildung?",
     answer:
-      "Das haengt von der Stelle ab. Fuer Trainerstellen setzen wir eine entsprechende Lizenz voraus. Fuer den Empfang oder die Ausbildung zaehlen Motivation und Persoenlichkeit. Sprich uns einfach an, dann klaeren wir gemeinsam, was passt.",
+      "Das hängt von der Stelle ab. Für Trainerstellen setzen wir eine entsprechende Lizenz voraus. Für den Empfang oder die Ausbildung zählen Motivation und Persönlichkeit. Sprich uns einfach an, dann klaeren wir gemeinsam, was passt.",
   },
   {
     question: "Kann ich auch als Quereinsteiger anfangen?",
     answer:
-      "Grundsaetzlich ja. Wenn du die Leidenschaft fuer Fitness mitbringst, finden wir gemeinsam den richtigen Einstieg. Schreib uns, was dich motiviert, und wir schauen, was moeglich ist.",
+      "Grundsätzlich ja. Wenn du die Leidenschaft für Fitness mitbringst, finden wir gemeinsam den richtigen Einstieg. Schreib uns, was dich motiviert, und wir schauen, was möglich ist.",
   },
   {
     question: "Wie laeuft der Bewerbungsprozess ab?",
     answer:
-      "Unkompliziert: Du schickst uns deine Bewerbung ueber das Formular oder per E-Mail. Wenn es passt, laden wir dich zu einem persoenlichen Gespraech ins Studio ein. Danach folgt in der Regel ein Probearbeiten, damit beide Seiten sehen, ob die Chemie stimmt.",
+      "Unkompliziert: Du schickst uns deine Bewerbung über das Formular oder per E-Mail. Wenn es passt, laden wir dich zu einem persönlichen Gespräch ins Studio ein. Danach folgt in der Regel ein Probearbeiten, damit beide Seiten sehen, ob die Chemie stimmt.",
   },
   {
-    question: "Gibt es Aufstiegsmoeglichkeiten?",
+    question: "Gibt es Aufstiegsmöglichkeiten?",
     answer:
-      "Wir sind ein wachsendes Team und foerdern Eigeninitiative. Wenn du dich einbringst und entwickeln willst, schaffen wir die Moeglichkeiten dafuer. Details besprechen wir gerne im persoenlichen Gespraech.",
+      "Wir sind ein wachsendes Team und fördern Eigeninitiative. Wenn du dich einbringst und entwickeln willst, schaffen wir die Möglichkeiten dafuer. Details besprechen wir gerne im persönlichen Gespräch.",
   },
   {
     question: "Kann ich vorher mal reinschnuppern?",
     answer:
-      "Natuerlich. Komm einfach auf ein kostenloses Probetraining vorbei und sprich uns vor Ort an. So bekommst du den besten Eindruck von unserem Studio und dem Team.",
+      "Natürlich. Komm einfach auf ein kostenloses Probetraining vorbei und sprich uns vor Ort an. So bekommst du den besten Eindruck von unserem Studio und dem Team.",
   },
   {
     question: "Ich finde keine passende Stelle. Kann ich mich trotzdem bewerben?",
     answer:
-      "Unbedingt. Wir freuen uns ueber Initiativbewerbungen. Auch wenn gerade keine passende Stelle ausgeschrieben ist, melde dich trotzdem. Wir kommen auf dich zu, sobald sich etwas ergibt.",
+      "Unbedingt. Wir freuen uns über Initiativbewerbungen. Auch wenn gerade keine passende Stelle ausgeschrieben ist, melde dich trotzdem. Wir kommen auf dich zu, sobald sich etwas ergibt.",
   },
 ];
 
@@ -89,13 +89,13 @@ export function JobsFaq() {
           {/* Left */}
           <div className="lg:col-span-4">
             <p className="text-xs font-medium uppercase tracking-[0.2em] text-cs-accent">
-              Haeufige Fragen
+              Häufige Fragen
             </p>
             <h2 className="mt-4 text-3xl font-black uppercase leading-[1.05] tracking-[-0.03em] text-cs-white md:text-4xl">
               Noch <span className="text-cs-accent">Fragen?</span>
             </h2>
             <p className="mt-6 text-[15px] leading-relaxed text-white/60">
-              Hier findest du Antworten auf die haeufigsten Fragen. Falls deine
+              Hier findest du Antworten auf die häufigsten Fragen. Falls deine
               nicht dabei ist, ruf uns einfach an oder schreib uns.
             </p>
             <a

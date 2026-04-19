@@ -30,7 +30,7 @@ const trainers: Trainer[] = [
     image: "/images/team-hidayet.avif",
     video: "/videos/hidayet.mp4",
     quote:
-      "Training heisst nicht perfekt sein. Training heisst, immer besser werden. Schritt fuer Schritt.",
+      "Training heisst nicht perfekt sein. Training heisst, immer besser werden. Schritt für Schritt.",
   },
   {
     name: "Jennifer",
@@ -38,7 +38,7 @@ const trainers: Trainer[] = [
     image: "/images/team-jennifer.avif",
     video: "/videos/jennifer.mp4",
     quote:
-      "Ich hole dich da ab, wo du stehst. Ohne Druck, aber mit klarem Plan fuer dein Ziel.",
+      "Ich hole dich da ab, wo du stehst. Ohne Druck, aber mit klarem Plan für dein Ziel.",
   },
   {
     name: "Eren",
@@ -54,7 +54,7 @@ const trainers: Trainer[] = [
     image: "/images/team-renate.avif",
     video: null,
     quote:
-      "Fitness kennt kein Alter. Dein Koerper dankt dir jede Bewegung, egal wann du anfaengst.",
+      "Fitness kennt kein Alter. Dein Körper dankt dir jede Bewegung, egal wann du anfaengst.",
   },
 ];
 
@@ -155,7 +155,7 @@ export function MniTrainers() {
             <span className="text-cs-accent">Deine Begleiter.</span>
           </h2>
           <p className="mt-6 text-[15px] leading-relaxed text-white/60">
-            12 Wochen an deiner Seite. Mit Erfahrung, Herz und einem klaren Plan fuer dich.
+            12 Wochen an deiner Seite. Mit Erfahrung, Herz und einem klaren Plan für dich.
           </p>
         </div>
       </div>
@@ -201,7 +201,7 @@ export function MniTrainers() {
             <button
               onClick={scrollNext}
               className="flex h-10 w-10 items-center justify-center border border-white/10 text-white/50 transition-all duration-300 hover:border-white/30 hover:text-white"
-              aria-label="Naechster Trainer"
+              aria-label="Nächster Trainer"
             >
               <ArrowRight className="h-4 w-4" />
             </button>

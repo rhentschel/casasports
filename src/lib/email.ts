@@ -106,7 +106,7 @@ export async function sendMembershipNotification(
 
   const content = `
     <p style="margin:0 0 24px;font-size:14px;line-height:1.6;color:rgba(255,255,255,0.7);">
-      Ein neuer Vertrag wurde ueber sport.casasports.de abgeschlossen.
+      Ein neuer Vertrag wurde über sport.casasports.de abgeschlossen.
     </p>
     <table width="100%" cellpadding="0" cellspacing="0" border="0">${tableRows}</table>
     <p style="margin:24px 0 0;font-size:12px;color:rgba(255,255,255,0.5);">
@@ -197,8 +197,8 @@ export async function sendJobApplicationNotification(
     ["Telefon", data.phone],
     ["Stelle", data.position],
     ["Erfahrung", data.experience || "—"],
-    ["Verfuegbarkeit", data.availability || "—"],
-    ["Fruehester Start", data.startDate || "—"],
+    ["Verfügbarkeit", data.availability || "—"],
+    ["Frühester Start", data.startDate || "—"],
   ]
 
   const tableRows = rows

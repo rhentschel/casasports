@@ -58,7 +58,7 @@ export function ProbetrainingSlotPicker({ slots, selectedId, onSelect }: Props) 
   if (slots.length === 0) {
     return (
       <p className="text-[13px] text-white/50">
-        Aktuell sind keine freien Slots verfuegbar. Bitte nutze das Formular
+        Aktuell sind keine freien Slots verfügbar. Bitte nutze das Formular
         darunter.
       </p>
     );

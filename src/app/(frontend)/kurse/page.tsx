@@ -13,7 +13,7 @@ export const dynamic = "force-dynamic";
 export const metadata: Metadata = {
   title: "Kurse",
   description:
-    "Power Training, Cycling, Functional Training, Zirkeltraining und mehr. Gruppenkurse fuer jedes Level im Casa Sports Oer-Erkenschwick.",
+    "Power Training, Cycling, Functional Training, Zirkeltraining und mehr. Gruppenkurse für jedes Level im Casa Sports Oer-Erkenschwick.",
 };
 
 export default async function KursePage() {

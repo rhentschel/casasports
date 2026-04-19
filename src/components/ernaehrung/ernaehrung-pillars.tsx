@@ -6,10 +6,10 @@ import { useReveal } from "@/lib/use-reveal";
 
 const points = [
   "Individuelle Beratung durch unser Team",
-  "Keine Diaeten. Nachhaltige Gewohnheiten",
+  "Keine Diäten. Nachhaltige Gewohnheiten",
   "Abgestimmt auf dein Ziel: Aufbau, Definition oder Gesundheit",
   "Anpassung an deinen Fortschritt",
-  "Umsetzbar, ohne Kalorienzaehlen",
+  "Umsetzbar, ohne Kalorienzählen",
 ];
 
 export function ErnaehrungPillars() {
@@ -23,7 +23,7 @@ export function ErnaehrungPillars() {
           <div className="relative min-h-[500px] lg:min-h-0">
             <Image
               src="/images/casasports-personal-training.webp"
-              alt="Ernaehrungsberatung bei Casa Sports"
+              alt="Ernährungsberatung bei Casa Sports"
               fill
               className="img-cinema object-cover"
             />
@@ -41,7 +41,7 @@ export function ErnaehrungPillars() {
               <span className="text-cs-accent">Sondern Verstehen.</span>
             </h2>
             <p className="mt-6 max-w-sm text-[15px] leading-relaxed text-white/60">
-              Wir glauben nicht an Crash-Diaeten. Wir zeigen dir, wie Ernaehrung
+              Wir glauben nicht an Crash-Diäten. Wir zeigen dir, wie Ernährung
               funktioniert, damit du es selbst umsetzen kannst. Nicht nur bis
               zum Sommer, sondern dauerhaft.
             </p>

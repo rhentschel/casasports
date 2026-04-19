@@ -24,7 +24,7 @@ export const WizardSessions: CollectionConfig = {
       defaultValue: "plan",
       options: [
         { label: "Plan", value: "plan" },
-        { label: "Persoenlich", value: "personal" },
+        { label: "Persönlich", value: "personal" },
         { label: "Zahlung", value: "payment" },
         { label: "Review", value: "review" },
         { label: "Abgeschlossen", value: "success" },

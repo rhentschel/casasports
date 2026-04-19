@@ -322,7 +322,7 @@ export function Kursplan({ schedule: scheduleProp }: KursplanProps) {
               </p>
             ) : nextKurs ? (
               <p className="text-[13px] text-white/60">
-                <span className="font-bold text-white">Naechster Kurs:</span>{" "}
+                <span className="font-bold text-white">Nächster Kurs:</span>{" "}
                 {nextKurs.name} mit {nextKurs.trainer}{" "}
                 <span className="text-cs-accent">in {countdown}</span>
               </p>
@@ -611,7 +611,7 @@ export function Kursplan({ schedule: scheduleProp }: KursplanProps) {
               <p className="py-8 text-center text-[13px] text-white/50">
                 {showFavsOnly
                   ? "Keine Favoriten an diesem Tag."
-                  : "Keine Kurse fuer diesen Filter."}
+                  : "Keine Kurse für diesen Filter."}
               </p>
             )}
           </div>

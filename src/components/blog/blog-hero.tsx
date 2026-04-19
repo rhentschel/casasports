@@ -51,8 +51,8 @@ export function BlogHero() {
             loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
           )}
         >
-          Trainingstipps, Ernaehrungswissen und Wellness-Strategien von unserem Team.
-          Fundiert, praxisnah, fuer jedes Level.
+          Trainingstipps, Ernährungswissen und Wellness-Strategien von unserem Team.
+          Fundiert, praxisnah, für jedes Level.
         </p>
       </div>
     </section>

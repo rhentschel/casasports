@@ -44,7 +44,7 @@ export async function POST(request: NextRequest) {
   }
   if (!isValidEmail(email)) {
     return NextResponse.json(
-      { error: "Bitte eine gueltige E-Mail-Adresse angeben." },
+      { error: "Bitte eine gültige E-Mail-Adresse angeben." },
       { status: 400 }
     )
   }

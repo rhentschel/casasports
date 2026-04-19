@@ -5,10 +5,10 @@ import { CheckCircle2 } from "lucide-react";
 import { useReveal } from "@/lib/use-reveal";
 
 const points = [
-  "Kleine Gruppen fuer individuelle Betreuung",
-  "Uebungen werden an dein Level angepasst",
+  "Kleine Gruppen für individuelle Betreuung",
+  "Übungen werden an dein Level angepasst",
   "Erfahrene Trainer korrigieren deine Technik",
-  "Motivierende Atmosphaere ohne Leistungsdruck",
+  "Motivierende Atmosphäre ohne Leistungsdruck",
   "Kein Vorwissen noetig, einfach mitmachen",
 ];
 
@@ -22,8 +22,8 @@ export function KurseForAll() {
           {/* Left: Image */}
           <div className="relative hidden overflow-hidden md:block">
             <Image
-              src="/images/casasports-kurse-fuer-alle.webp"
-              alt="Kurse fuer alle Level bei Casa Sports"
+              src="/images/casasports-kurse-für-alle.webp"
+              alt="Kurse für alle Level bei Casa Sports"
               fill
               className="img-cinema object-cover object-center"
               sizes="30vw"
@@ -32,7 +32,7 @@ export function KurseForAll() {
 
             <div className="absolute bottom-12 left-10 right-10 lg:left-14 lg:right-14">
               <p className="text-xs font-medium uppercase tracking-[0.2em] text-cs-accent">
-                Fuer jedes Level
+                Für jedes Level
               </p>
               <h2 className="mt-4 text-4xl font-black uppercase leading-[1.05] tracking-[-0.04em] text-cs-white lg:text-5xl">
                 Einfach
@@ -45,8 +45,8 @@ export function KurseForAll() {
           {/* Mobile hero */}
           <div className="relative aspect-[16/9] overflow-hidden md:hidden">
             <Image
-              src="/images/casasports-kurse-fuer-alle.webp"
-              alt="Kurse fuer alle Level bei Casa Sports"
+              src="/images/casasports-kurse-für-alle.webp"
+              alt="Kurse für alle Level bei Casa Sports"
               fill
               className="img-cinema object-cover"
               sizes="100vw"
@@ -54,7 +54,7 @@ export function KurseForAll() {
             <div className="absolute inset-0 bg-gradient-to-t from-[#141414] via-cs-black/40 to-transparent" />
             <div className="absolute bottom-5 left-5 right-5">
               <p className="text-[10px] font-medium uppercase tracking-[0.2em] text-cs-accent">
-                Fuer jedes Level
+                Für jedes Level
               </p>
               <h2 className="mt-2 text-2xl font-black uppercase leading-[1.05] tracking-[-0.04em] text-cs-white">
                 Einfach <span className="text-cs-accent">anfangen.</span>

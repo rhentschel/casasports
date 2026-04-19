@@ -63,7 +63,7 @@ export function ErnaehrungProgram() {
           <h2 className="mt-4 text-3xl font-black uppercase leading-[1.05] tracking-[-0.03em] text-cs-white md:text-4xl">
             Sechs Dinge, die
             <br />
-            <span className="text-cs-accent">wirklich zaehlen.</span>
+            <span className="text-cs-accent">wirklich zählen.</span>
           </h2>
           <p className="mt-6 text-[15px] leading-relaxed text-white/60">
             Vergiss Superfoods und Wunder-Shakes. Diese sechs Prinzipien

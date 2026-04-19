@@ -25,7 +25,7 @@ export default function DatenschutzPage() {
               1. Verantwortlicher
             </h2>
             <p>
-              Verantwortlicher fuer die Datenverarbeitung auf dieser Website
+              Verantwortlicher für die Datenverarbeitung auf dieser Website
               ist:
             </p>
             <p className="mt-2">
@@ -59,13 +59,13 @@ export default function DatenschutzPage() {
             </h2>
             <p>
               Wir verarbeiten personenbezogene Daten unserer Nutzer
-              grundsaetzlich nur, soweit dies zur Bereitstellung einer
+              grundsätzlich nur, soweit dies zur Bereitstellung einer
               funktionsfaehigen Website sowie unserer Inhalte und Leistungen
               erforderlich ist. Die Verarbeitung personenbezogener Daten unserer
-              Nutzer erfolgt regelmaessig nur nach Einwilligung des Nutzers.
-              Eine Ausnahme gilt in solchen Faellen, in denen eine vorherige
-              Einholung einer Einwilligung aus tatsaechlichen Gruenden nicht
-              moeglich ist und die Verarbeitung der Daten durch gesetzliche
+              Nutzer erfolgt regelmäßig nur nach Einwilligung des Nutzers.
+              Eine Ausnahme gilt in solchen Fällen, in denen eine vorherige
+              Einholung einer Einwilligung aus tatsaechlichen Gründen nicht
+              möglich ist und die Verarbeitung der Daten durch gesetzliche
               Vorschriften gestattet ist.
             </p>
           </div>
@@ -76,7 +76,7 @@ export default function DatenschutzPage() {
               3. Rechtsgrundlage
             </h2>
             <p>
-              Soweit wir fuer Verarbeitungsvorgaenge personenbezogener Daten
+              Soweit wir für Verarbeitungsvorgänge personenbezogener Daten
               eine Einwilligung der betroffenen Person einholen, dient Art. 6
               Abs. 1 lit. a EU-Datenschutzgrundverordnung (DSGVO) als
               Rechtsgrundlage.
@@ -85,7 +85,7 @@ export default function DatenschutzPage() {
               Bei der Verarbeitung von personenbezogenen Daten, die zur
               Erfuellung eines Vertrages, dessen Vertragspartei die betroffene
               Person ist, erforderlich ist, dient Art. 6 Abs. 1 lit. b DSGVO
-              als Rechtsgrundlage. Dies gilt auch fuer Verarbeitungsvorgaenge,
+              als Rechtsgrundlage. Dies gilt auch für Verarbeitungsvorgänge,
               die zur Durchfuehrung vorvertraglicher Massnahmen erforderlich
               sind (z.B. Online-Mitgliedschaftsabschluss).
             </p>
@@ -97,7 +97,7 @@ export default function DatenschutzPage() {
             <p className="mt-2">
               Ist die Verarbeitung zur Wahrung eines berechtigten Interesses
               unseres Unternehmens oder eines Dritten erforderlich und
-              ueberwiegen die Interessen, Grundrechte und Grundfreiheiten des
+              überwiegen die Interessen, Grundrechte und Grundfreiheiten des
               Betroffenen das erstgenannte Interesse nicht, so dient Art. 6
               Abs. 1 lit. f DSGVO als Rechtsgrundlage.
             </p>
@@ -110,7 +110,7 @@ export default function DatenschutzPage() {
             </h2>
             <p>
               Beim Besuch unserer Website werden durch den Browser automatisch
-              Informationen an den Server uebermittelt. Diese Informationen
+              Informationen an den Server übermittelt. Diese Informationen
               werden temporaer in sogenannten Server-Logfiles gespeichert:
             </p>
             <ul className="mt-3 list-inside list-disc space-y-1 pl-2">
@@ -134,7 +134,7 @@ export default function DatenschutzPage() {
               5. Cookies
             </h2>
             <p>
-              Diese Website verwendet technisch notwendige Cookies, die fuer den
+              Diese Website verwendet technisch notwendige Cookies, die für den
               Betrieb der Seite erforderlich sind. Technisch notwendige Cookies
               werden auf Grundlage von Art. 6 Abs. 1 lit. f DSGVO gespeichert.
               Wir haben ein berechtigtes Interesse an der Speicherung von
@@ -142,10 +142,10 @@ export default function DatenschutzPage() {
               optimierten Bereitstellung unserer Dienste.
             </p>
             <p className="mt-2">
-              Sie koennen Ihren Browser so einstellen, dass Sie ueber das Setzen
+              Sie können Ihren Browser so einstellen, dass Sie über das Setzen
               von Cookies informiert werden und Cookies nur im Einzelfall
-              erlauben, die Annahme von Cookies fuer bestimmte Faelle oder
-              generell ausschliessen sowie das automatische Loeschen der Cookies
+              erlauben, die Annahme von Cookies für bestimmte Fälle oder
+              generell ausschliessen sowie das automatische Löschen der Cookies
               beim Schliessen des Browsers aktivieren.
             </p>
           </div>
@@ -156,22 +156,22 @@ export default function DatenschutzPage() {
               6. Online-Mitgliedschaft (Magicline)
             </h2>
             <p>
-              Fuer den Online-Abschluss einer Mitgliedschaft nutzen wir die
+              Für den Online-Abschluss einer Mitgliedschaft nutzen wir die
               Magicline Connect API der Magicline GmbH. Dabei werden folgende
               Daten verarbeitet:
             </p>
             <ul className="mt-3 list-inside list-disc space-y-1 pl-2">
               <li>
-                Persoenliche Daten (Name, Anschrift, Geburtsdatum, Geschlecht)
+                Persönliche Daten (Name, Anschrift, Geburtsdatum, Geschlecht)
               </li>
               <li>Kontaktdaten (E-Mail-Adresse, Telefonnummer)</li>
               <li>Zahlungsdaten (IBAN, BIC, Kontoinhaber)</li>
-              <li>Vertragsdaten (gewaehlter Tarif, Laufzeit)</li>
+              <li>Vertragsdaten (gewählter Tarif, Laufzeit)</li>
             </ul>
             <p className="mt-3">
               Die Verarbeitung erfolgt zum Zweck der Vertragsdurchfuehrung auf
               Grundlage von Art. 6 Abs. 1 lit. b DSGVO. Die Daten werden
-              direkt an die Magicline-Plattform uebermittelt und dort im
+              direkt an die Magicline-Plattform übermittelt und dort im
               Auftrag des Studios verarbeitet. Die IBAN-Validierung erfolgt in
               Echtzeit, um eine korrekte Zahlungsabwicklung sicherzustellen.
             </p>
@@ -184,13 +184,13 @@ export default function DatenschutzPage() {
             </h2>
             <p>
               Wenn Sie den auf der Website angebotenen Newsletter beziehen
-              moechten, benoetigen wir von Ihnen eine E-Mail-Adresse. Die
+              möchten, benoetigen wir von Ihnen eine E-Mail-Adresse. Die
               Anmeldung erfolgt freiwillig auf Grundlage Ihrer Einwilligung
-              gemass Art. 6 Abs. 1 lit. a DSGVO.
+              gemäß Art. 6 Abs. 1 lit. a DSGVO.
             </p>
             <p className="mt-2">
-              Sie koennen Ihre Einwilligung zur Speicherung der Daten und deren
-              Nutzung zum Newsletter-Versand jederzeit widerrufen, z.B. ueber
+              Sie können Ihre Einwilligung zur Speicherung der Daten und deren
+              Nutzung zum Newsletter-Versand jederzeit widerrufen, z.B. über
               den Abmeldelink im Newsletter oder per E-Mail an{" "}
               <a
                 href={`mailto:${siteConfig.email}`}
@@ -213,7 +213,7 @@ export default function DatenschutzPage() {
               erfasst werden, werden auf den Servern des Hosters gespeichert.
               Hierbei kann es sich insbesondere um IP-Adressen,
               Kontaktanfragen, Meta- und Kommunikationsdaten, Vertragsdaten,
-              Kontaktdaten, Namen, Websitezugriffe und sonstige Daten, die ueber
+              Kontaktdaten, Namen, Websitezugriffe und sonstige Daten, die über
               eine Website generiert werden, handeln.
             </p>
             <p className="mt-2">
@@ -231,7 +231,7 @@ export default function DatenschutzPage() {
             </h2>
             <p>
               Diese Seite nutzt aus Sicherheitsgruenden und zum Schutz der
-              Uebertragung vertraulicher Inhalte, wie zum Beispiel Anfragen,
+              Übertragung vertraulicher Inhalte, wie zum Beispiel Anfragen,
               die Sie an uns als Seitenbetreiber senden, eine SSL- bzw.
               TLS-Verschluesselung. Eine verschluesselte Verbindung erkennen Sie
               daran, dass die Adresszeile des Browsers von &quot;http://&quot;
@@ -245,7 +245,7 @@ export default function DatenschutzPage() {
             <h2 className="mb-4 text-xs font-bold uppercase tracking-[0.2em] text-cs-gray-300">
               10. Ihre Rechte als betroffene Person
             </h2>
-            <p>Sie haben gegenueber uns folgende Rechte:</p>
+            <p>Sie haben gegenüber uns folgende Rechte:</p>
             <ul className="mt-3 list-inside list-disc space-y-1 pl-2">
               <li>
                 <strong className="text-cs-gray-300">Auskunftsrecht</strong>{" "}
@@ -259,7 +259,7 @@ export default function DatenschutzPage() {
               </li>
               <li>
                 <strong className="text-cs-gray-300">
-                  Recht auf Loeschung
+                  Recht auf Löschung
                 </strong>{" "}
                 (Art. 17 DSGVO)
               </li>
@@ -282,7 +282,7 @@ export default function DatenschutzPage() {
             </ul>
             <p className="mt-3">
               Sie haben zudem das Recht, sich bei einer
-              Datenschutz-Aufsichtsbehoerde ueber die Verarbeitung Ihrer
+              Datenschutz-Aufsichtsbehörde über die Verarbeitung Ihrer
               personenbezogenen Daten durch uns zu beschweren.
             </p>
           </div>
@@ -293,8 +293,8 @@ export default function DatenschutzPage() {
               11. Widerruf Ihrer Einwilligung
             </h2>
             <p>
-              Viele Datenverarbeitungsvorgaenge sind nur mit Ihrer
-              ausdruecklichen Einwilligung moeglich. Sie koennen eine bereits
+              Viele Datenverarbeitungsvorgänge sind nur mit Ihrer
+              ausdrücklichen Einwilligung möglich. Sie können eine bereits
               erteilte Einwilligung jederzeit widerrufen. Die Rechtmaessigkeit
               der bis zum Widerruf erfolgten Datenverarbeitung bleibt vom
               Widerruf unberuehrt.
@@ -307,10 +307,10 @@ export default function DatenschutzPage() {
               12. Aktualitaet und Aenderungen
             </h2>
             <p>
-              Diese Datenschutzerklaerung ist aktuell gueltig und hat den Stand
+              Diese Datenschutzerklärung ist aktuell gültig und hat den Stand
               Maerz 2026. Durch die Weiterentwicklung unserer Website oder
               aufgrund geaenderter gesetzlicher bzw. behoerdlicher Vorgaben kann
-              es notwendig werden, diese Datenschutzerklaerung zu aendern.
+              es notwendig werden, diese Datenschutzerklärung zu ändern.
             </p>
           </div>
         </div>

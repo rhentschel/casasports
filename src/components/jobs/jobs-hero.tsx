@@ -68,7 +68,7 @@ export function JobsHero() {
             loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
           )}
         >
-          Du brennst fuer Fitness und willst Menschen auf ihrem Weg begleiten?
+          Du brennst für Fitness und willst Menschen auf ihrem Weg begleiten?
           Dann bist du bei uns genau richtig.
         </p>
 

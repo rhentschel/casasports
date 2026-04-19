@@ -9,7 +9,7 @@ const steps = [
     icon: Send,
     title: "Bewerben",
     description:
-      "Fuelle unser Formular aus oder schick uns eine E-Mail. Kein formelles Anschreiben noetig, erzaehl einfach von dir.",
+      "Füllle unser Formular aus oder schick uns eine E-Mail. Kein formelles Anschreiben noetig, erzähl einfach von dir.",
     detail: "Dauert ca. 5 Minuten",
   },
   {
@@ -17,7 +17,7 @@ const steps = [
     icon: Users,
     title: "Kennenlernen",
     description:
-      "Wir laden dich zu einem lockeren Gespraech ins Studio ein. Kein Assessment-Center, sondern echtes Kennenlernen auf Augenhoehe.",
+      "Wir laden dich zu einem lockeren Gespräch ins Studio ein. Kein Assessment-Center, sondern echtes Kennenlernen auf Augenhoehe.",
     detail: "Innerhalb von 7 Tagen",
   },
   {
@@ -33,7 +33,7 @@ const steps = [
     icon: PartyPopper,
     title: "Willkommen",
     description:
-      "Passt alles? Dann starten wir gemeinsam durch. Mit persoenlicher Einarbeitung und deinem eigenen Mentoren aus dem Team.",
+      "Passt alles? Dann starten wir gemeinsam durch. Mit persönlicher Einarbeitung und deinem eigenen Mentoren aus dem Team.",
     detail: "Individuelle Einarbeitung",
   },
 ];

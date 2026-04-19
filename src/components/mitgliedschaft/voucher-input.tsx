@@ -35,7 +35,7 @@ export function VoucherInput({ value, onChange }: Props) {
       if (res.ok && data.valid) {
         onChange({ code: clean, valid: true, data: data.voucher });
       } else {
-        setError(data.error || "Dieser Gutschein ist nicht gueltig.");
+        setError(data.error || "Dieser Gutschein ist nicht gültig.");
         onChange(null);
       }
     } catch {

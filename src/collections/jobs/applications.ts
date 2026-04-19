@@ -46,8 +46,8 @@ export const JobApplications: CollectionConfig = {
     { name: "phone", label: "Telefon", type: "text", required: true },
     { name: "position", label: "Stelle", type: "text", required: true },
     { name: "experience", label: "Erfahrung", type: "text" },
-    { name: "availability", label: "Verfuegbarkeit", type: "text" },
-    { name: "startDate", label: "Fruehester Start", type: "date" },
+    { name: "availability", label: "Verfügbarkeit", type: "text" },
+    { name: "startDate", label: "Frühester Start", type: "date" },
     { name: "message", label: "Nachricht", type: "textarea", required: true },
     {
       name: "cv",

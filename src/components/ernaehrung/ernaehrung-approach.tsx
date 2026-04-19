@@ -10,7 +10,7 @@ const marqueeWords = [
   "Hydration",
   "Naehrstoff-Timing",
   "Supplements",
-  "Koerperanalyse",
+  "Körperanalyse",
 ];
 
 function NutritionMarquee() {
@@ -128,12 +128,12 @@ const problems = [
   {
     image: "/images/casasports-krafttraining-1.webp",
     title: "Hartes Training",
-    text: "Du gibst alles. Aber ohne die richtige Ernaehrung baust du langsamer auf als noetig.",
+    text: "Du gibst alles. Aber ohne die richtige Ernährung baust du langsamer auf als noetig.",
   },
   {
     image: "/images/casasports-kardio-power.webp",
     title: "Keine Energie",
-    text: "Muede im Training, muede im Alltag. Oft liegt es nicht am Schlaf, sondern am Teller.",
+    text: "Müde im Training, müde im Alltag. Oft liegt es nicht am Schlaf, sondern am Teller.",
   },
   {
     image: "/images/casasports-functional-training.webp",

@@ -22,7 +22,7 @@ export default function ImpressumPage() {
           {/* Angaben gem. § 5 TMG */}
           <div>
             <h2 className="mb-4 text-xs font-bold uppercase tracking-[0.2em] text-cs-gray-300">
-              Angaben gemass &sect; 5 TMG
+              Angaben gemäß &sect; 5 TMG
             </h2>
             <p className="text-cs-white font-semibold">{siteConfig.name}</p>
             <p>{siteConfig.owner}</p>
@@ -55,7 +55,7 @@ export default function ImpressumPage() {
               Umsatzsteuer-Identifikationsnummer
             </h2>
             <p>
-              Umsatzsteuer-Identifikationsnummer gemass &sect; 27a
+              Umsatzsteuer-Identifikationsnummer gemäß &sect; 27a
               Umsatzsteuergesetz:
             </p>
             <p className="mt-1 text-cs-white">{siteConfig.taxId}</p>
@@ -64,7 +64,7 @@ export default function ImpressumPage() {
           {/* Verantwortlich */}
           <div>
             <h2 className="mb-4 text-xs font-bold uppercase tracking-[0.2em] text-cs-gray-300">
-              Verantwortlich fuer den Inhalt gemass &sect; 18 Abs. 2 MStV
+              Verantwortlich für den Inhalt gemäß &sect; 18 Abs. 2 MStV
             </h2>
             <p>{siteConfig.owner}</p>
             <p>{siteConfig.address.street}</p>
@@ -107,17 +107,17 @@ export default function ImpressumPage() {
             </p>
           </div>
 
-          {/* Haftung fuer Inhalte */}
+          {/* Haftung für Inhalte */}
           <div>
             <h2 className="mb-4 text-xs font-bold uppercase tracking-[0.2em] text-cs-gray-300">
-              Haftung fuer Inhalte
+              Haftung für Inhalte
             </h2>
             <p>
-              Als Diensteanbieter sind wir gemass &sect; 7 Abs. 1 TMG fuer
+              Als Diensteanbieter sind wir gemäß &sect; 7 Abs. 1 TMG für
               eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen
               verantwortlich. Nach &sect;&sect; 8 bis 10 TMG sind wir als
-              Diensteanbieter jedoch nicht verpflichtet, uebermittelte oder
-              gespeicherte fremde Informationen zu ueberwachen oder nach
+              Diensteanbieter jedoch nicht verpflichtet, übermittelte oder
+              gespeicherte fremde Informationen zu überwachen oder nach
               Umstaenden zu forschen, die auf eine rechtswidrige Taetigkeit
               hinweisen.
             </p>
@@ -125,27 +125,27 @@ export default function ImpressumPage() {
               Verpflichtungen zur Entfernung oder Sperrung der Nutzung von
               Informationen nach den allgemeinen Gesetzen bleiben hiervon
               unberuehrt. Eine diesbezuegliche Haftung ist jedoch erst ab dem
-              Zeitpunkt der Kenntnis einer konkreten Rechtsverletzung moeglich.
+              Zeitpunkt der Kenntnis einer konkreten Rechtsverletzung möglich.
               Bei Bekanntwerden von entsprechenden Rechtsverletzungen werden wir
               diese Inhalte umgehend entfernen.
             </p>
           </div>
 
-          {/* Haftung fuer Links */}
+          {/* Haftung für Links */}
           <div>
             <h2 className="mb-4 text-xs font-bold uppercase tracking-[0.2em] text-cs-gray-300">
-              Haftung fuer Links
+              Haftung für Links
             </h2>
             <p>
               Unser Angebot enthaelt Links zu externen Websites Dritter, auf
-              deren Inhalte wir keinen Einfluss haben. Deshalb koennen wir fuer
-              diese fremden Inhalte auch keine Gewaehr uebernehmen. Fuer die
+              deren Inhalte wir keinen Einfluss haben. Deshalb können wir für
+              diese fremden Inhalte auch keine Gewähr übernehmen. Für die
               Inhalte der verlinkten Seiten ist stets der jeweilige Anbieter
               oder Betreiber der Seiten verantwortlich.
             </p>
             <p className="mt-2">
               Die verlinkten Seiten wurden zum Zeitpunkt der Verlinkung auf
-              moegliche Rechtsverstoesse ueberprueft. Rechtswidrige Inhalte
+              mögliche Rechtsverstösse überprueft. Rechtswidrige Inhalte
               waren zum Zeitpunkt der Verlinkung nicht erkennbar. Eine
               permanente inhaltliche Kontrolle der verlinkten Seiten ist jedoch
               ohne konkrete Anhaltspunkte einer Rechtsverletzung nicht zumutbar.
@@ -165,7 +165,7 @@ export default function ImpressumPage() {
               Vervielfaeltigung, Bearbeitung, Verbreitung und jede Art der
               Verwertung ausserhalb der Grenzen des Urheberrechtes beduerfen der
               schriftlichen Zustimmung des jeweiligen Autors bzw. Erstellers.
-              Downloads und Kopien dieser Seite sind nur fuer den privaten,
+              Downloads und Kopien dieser Seite sind nur für den privaten,
               nicht kommerziellen Gebrauch gestattet.
             </p>
             <p className="mt-2">

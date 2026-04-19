@@ -27,11 +27,11 @@ export async function POST(request: NextRequest) {
   const step = (body.step ?? "").trim()
 
   if (!sessionId || !isValidStep(step)) {
-    return NextResponse.json({ error: "sessionId und gueltiger step erforderlich" }, { status: 400 })
+    return NextResponse.json({ error: "sessionId und gültiger step erforderlich" }, { status: 400 })
   }
 
   if (!/^[a-zA-Z0-9_-]{8,64}$/.test(sessionId)) {
-    return NextResponse.json({ error: "Ungueltige Session ID" }, { status: 400 })
+    return NextResponse.json({ error: "Ungültige Session ID" }, { status: 400 })
   }
 
   try {

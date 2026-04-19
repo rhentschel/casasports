@@ -27,13 +27,13 @@ export const positions: Position[] = [
       "Du betreust unsere Mitglieder auf der Trainingsflaeche, erstellst individuelle Trainingsplaene und fuehrst Einweisungen durch.",
     tasks: [
       "Individuelle Trainingsbetreuung und Plangestaltung",
-      "Geraeteeinweisungen fuer neue Mitglieder",
-      "Durchfuehrung von Fitnesstests und Koerperanalysen",
+      "Geraeteeinweisungen für neue Mitglieder",
+      "Durchfuehrung von Fitnesstests und Körperanalysen",
       "Motivation und Begleitung unserer Mitglieder",
     ],
     requirements: [
-      "Abgeschlossene Ausbildung als Fitnesstrainer (B-Lizenz oder hoeher)",
-      "Leidenschaft fuer Fitness und Gesundheit",
+      "Abgeschlossene Ausbildung als Fitnesstrainer (B-Lizenz oder höher)",
+      "Leidenschaft für Fitness und Gesundheit",
       "Freundliches, offenes Auftreten",
       "Teamfaehigkeit und Zuverlaessigkeit",
     ],
@@ -53,9 +53,9 @@ export const positions: Position[] = [
       "Mitgestaltung des Kursplans",
     ],
     requirements: [
-      "Gueltige Kursleiterlizenz (z.B. Cycling, Group Fitness)",
+      "Gültige Kursleiterlizenz (z.B. Cycling, Group Fitness)",
       "Erfahrung in der Anleitung von Gruppen",
-      "Motivierende, energiegeladene Persoenlichkeit",
+      "Motivierende, energiegeladene Persönlichkeit",
       "Zuverlaessigkeit und Puenktlichkeit",
     ],
   },
@@ -69,14 +69,14 @@ export const positions: Position[] = [
       "Starte deine Karriere bei uns als Sport- und Fitnesskaufmann/-frau. Lerne alle Bereiche eines modernen Fitnessstudios kennen.",
     tasks: [
       "Mitgliederbetreuung an Empfang und Trainingsflaeche",
-      "Unterstuetzung bei der Kursplanung und -organisation",
+      "Unterstützung bei der Kursplanung und -organisation",
       "Kaufmaennische Aufgaben: Vertraege, Buchhaltung, Marketing",
       "Eigene Projekte planen und umsetzen",
     ],
     requirements: [
       "Mindestens Mittlere Reife oder vergleichbarer Abschluss",
-      "Begeisterung fuer Sport und Fitness",
-      "Kommunikationsstaerke und Serviceorientierung",
+      "Begeisterung für Sport und Fitness",
+      "Kommunikationsstärke und Serviceorientierung",
       "Eigeninitiative und Lernbereitschaft",
     ],
   },
@@ -84,15 +84,15 @@ export const positions: Position[] = [
     id: "empfang",
     title: "Empfang & Kundenbetreuung",
     type: "Festanstellung",
-    hours: "Teilzeit (Minijob moeglich)",
+    hours: "Teilzeit (Minijob möglich)",
     location: "Oer-Erkenschwick",
     description:
       "Du bist das Gesicht von Casa Sports. Am Empfang begruess du unsere Mitglieder, beraetest Interessenten und kuemmerst dich um alle Anliegen.",
     tasks: [
       "Freundlicher Empfang und Betreuung unserer Mitglieder",
       "Beratung von Interessenten und Fuehrung durch das Studio",
-      "Telefonische und persoenliche Terminvereinbarung",
-      "Unterstuetzung bei Verwaltungsaufgaben",
+      "Telefonische und persönliche Terminvereinbarung",
+      "Unterstützung bei Verwaltungsaufgaben",
     ],
     requirements: [
       "Freundliches, serviceorientiertes Auftreten",
@@ -212,7 +212,7 @@ export function JobsPositions() {
           Finde deinen <span className="text-cs-accent">Platz.</span>
         </h2>
         <p className="mt-6 max-w-lg text-[15px] leading-relaxed text-white/60">
-          Aktuell suchen wir Verstaerkung in diesen Bereichen. Keine passende
+          Aktuell suchen wir Verstärkung in diesen Bereichen. Keine passende
           Stelle dabei? Schick uns trotzdem deine Bewerbung.
         </p>
 

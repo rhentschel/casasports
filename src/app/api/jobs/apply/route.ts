@@ -16,7 +16,7 @@ const experienceLabels: Record<string, string> = {
   beginner: "Unter 1 Jahr",
   intermediate: "1-3 Jahre",
   experienced: "3-5 Jahre",
-  expert: "Ueber 5 Jahre",
+  expert: "Über 5 Jahre",
 };
 
 const availabilityLabels: Record<string, string> = {
@@ -107,7 +107,7 @@ export async function POST(request: Request) {
   try {
     const contentType = request.headers.get("content-type") || "";
 
-    // Legacy JSON support (Forms ohne Datei) + FormData support fuer CV-Upload
+    // Legacy JSON support (Forms ohne Datei) + FormData support für CV-Upload
     let name = "";
     let email = "";
     let phone = "";
@@ -156,14 +156,14 @@ export async function POST(request: Request) {
       !privacy
     ) {
       return NextResponse.json(
-        { error: "Bitte alle Pflichtfelder ausfuellen." },
+        { error: "Bitte alle Pflichtfelder ausfüllen." },
         { status: 400 }
       );
     }
 
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
       return NextResponse.json(
-        { error: "Ungueltige E-Mail-Adresse." },
+        { error: "Ungültige E-Mail-Adresse." },
         { status: 400 }
       );
     }
@@ -202,7 +202,7 @@ export async function POST(request: Request) {
         );
       }
 
-      // 4. Magic-Byte-Check - verifiziert echtes Format (schuetzt vor
+      // 4. Magic-Byte-Check - verifiziert echtes Format (schützt vor
       // umbenannten Dateien z.B. JS-Payload als evil.pdf)
       const arrayBuffer = await cvFile.arrayBuffer();
       const buffer = Buffer.from(arrayBuffer);

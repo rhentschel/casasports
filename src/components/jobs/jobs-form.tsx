@@ -33,11 +33,11 @@ function validateForm(data: FormData): FormErrors {
   const errors: FormErrors = {};
 
   if (!data.name.trim() || data.name.trim().length < 2) {
-    errors.name = "Bitte gib deinen vollstaendigen Namen ein.";
+    errors.name = "Bitte gib deinen vollständigen Namen ein.";
   }
 
   if (!data.email.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)) {
-    errors.email = "Bitte gib eine gueltige E-Mail-Adresse ein.";
+    errors.email = "Bitte gib eine gültige E-Mail-Adresse ein.";
   }
 
   if (!data.phone.trim()) {
@@ -45,15 +45,15 @@ function validateForm(data: FormData): FormErrors {
   }
 
   if (!data.position) {
-    errors.position = "Bitte waehle eine Stelle aus.";
+    errors.position = "Bitte wähle eine Stelle aus.";
   }
 
   if (!data.message.trim() || data.message.trim().length < 20) {
-    errors.message = "Bitte schreib uns mindestens ein paar Saetze ueber dich.";
+    errors.message = "Bitte schreib uns mindestens ein paar Sätze über dich.";
   }
 
   if (!data.privacy) {
-    errors.privacy = "Bitte stimme der Datenschutzerklaerung zu.";
+    errors.privacy = "Bitte stimme der Datenschutzerklärung zu.";
   }
 
   return errors;
@@ -149,7 +149,7 @@ export function JobsForm() {
             Bewerbung <span className="text-cs-accent">erhalten!</span>
           </h2>
           <p className="mt-6 text-[15px] leading-relaxed text-white/60">
-            Vielen Dank fuer dein Interesse an Casa Sports. Wir schauen uns
+            Vielen Dank für dein Interesse an Casa Sports. Wir schauen uns
             deine Bewerbung an und melden uns innerhalb weniger Tage bei dir.
           </p>
           <div className="mt-10 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
@@ -185,7 +185,7 @@ export function JobsForm() {
               Zeig uns, <span className="text-cs-accent">wer du bist.</span>
             </h2>
             <p className="mt-6 text-[15px] leading-relaxed text-white/60">
-              Kein formelles Anschreiben noetig. Erzaehl uns einfach kurz von
+              Kein formelles Anschreiben noetig. Erzähl uns einfach kurz von
               dir und warum du zu uns passt. Wir melden uns innerhalb weniger Tage.
             </p>
 
@@ -342,7 +342,7 @@ export function JobsForm() {
                     )}
                   >
                     <option value="" disabled>
-                      Stelle auswaehlen...
+                      Stelle auswählen...
                     </option>
                     {positions.map((pos) => (
                       <option key={pos.id} value={pos.id}>
@@ -371,12 +371,12 @@ export function JobsForm() {
                       !formData.experience && "text-cs-gray-600"
                     )}
                   >
-                    <option value="">Erfahrung auswaehlen...</option>
+                    <option value="">Erfahrung auswählen...</option>
                     <option value="none">Keine / Quereinsteiger</option>
                     <option value="beginner">Unter 1 Jahr</option>
                     <option value="intermediate">1-3 Jahre</option>
                     <option value="experienced">3-5 Jahre</option>
-                    <option value="expert">Ueber 5 Jahre</option>
+                    <option value="expert">Über 5 Jahre</option>
                   </select>
                 </div>
               </div>
@@ -385,7 +385,7 @@ export function JobsForm() {
               <div className="grid gap-5 sm:grid-cols-2">
                 <div>
                   <label htmlFor="availability" className="mb-2 block text-[11px] font-medium uppercase tracking-[0.15em] text-cs-gray-400">
-                    Verfuegbarkeit
+                    Verfügbarkeit
                   </label>
                   <select
                     id="availability"
@@ -397,7 +397,7 @@ export function JobsForm() {
                       !formData.availability && "text-cs-gray-600"
                     )}
                   >
-                    <option value="">Umfang auswaehlen...</option>
+                    <option value="">Umfang auswählen...</option>
                     <option value="fulltime">Vollzeit</option>
                     <option value="parttime">Teilzeit</option>
                     <option value="minijob">Minijob (520 EUR)</option>
@@ -407,7 +407,7 @@ export function JobsForm() {
                 </div>
                 <div>
                   <label htmlFor="startDate" className="mb-2 block text-[11px] font-medium uppercase tracking-[0.15em] text-cs-gray-400">
-                    Fruehester Start
+                    Frühester Start
                   </label>
                   <input
                     id="startDate"
@@ -423,7 +423,7 @@ export function JobsForm() {
               {/* Message */}
               <div>
                 <label htmlFor="message" className="mb-2 block text-[11px] font-medium uppercase tracking-[0.15em] text-cs-gray-400">
-                  Ueber dich *
+                  Über dich *
                 </label>
                 <textarea
                   id="message"
@@ -435,7 +435,7 @@ export function JobsForm() {
                   value={formData.message}
                   onChange={handleChange}
                   rows={5}
-                  placeholder="Erzaehl uns kurz von dir: Was motiviert dich? Welche Erfahrung bringst du mit? Welche Lizenzen oder Qualifikationen hast du?"
+                  placeholder="Erzähl uns kurz von dir: Was motiviert dich? Welche Erfahrung bringst du mit? Welche Lizenzen oder Qualifikationen hast du?"
                   className={cn(
                     "w-full resize-none border bg-cs-black/50 px-4 py-3.5 text-sm text-cs-white placeholder:text-cs-gray-600 transition-colors duration-300 focus:border-cs-accent focus:outline-none",
                     errors.message ? "border-red-500/50" : "border-white/[0.08]"
@@ -470,7 +470,7 @@ export function JobsForm() {
                     Ich stimme zu, dass meine Angaben zur Bearbeitung meiner
                     Bewerbung gespeichert und verarbeitet werden.{" "}
                     <a href="/datenschutz" className="text-cs-accent underline underline-offset-2 hover:text-cs-accent-hover">
-                      Datenschutzerklaerung
+                      Datenschutzerklärung
                     </a>
                   </span>
                 </label>

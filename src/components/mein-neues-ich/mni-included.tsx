@@ -8,7 +8,7 @@ const features = [
   {
     icon: <Dumbbell className="h-6 w-6" />,
     title: "Personal Training",
-    description: "Individuell angepasste Trainingseinheiten mit persoenlicher Betreuung durch unser Team.",
+    description: "Individuell angepasste Trainingseinheiten mit persönlicher Betreuung durch unser Team.",
   },
   {
     icon: <Users className="h-6 w-6" />,
@@ -17,8 +17,8 @@ const features = [
   },
   {
     icon: <Apple className="h-6 w-6" />,
-    title: "Ernaehrungsberatung",
-    description: "Rezept-E-Book und Konzept, das zu deinem Alltag passt. Kein Kalorienzaehlen.",
+    title: "Ernährungsberatung",
+    description: "Rezept-E-Book und Konzept, das zu deinem Alltag passt. Kein Kalorienzählen.",
   },
   {
     icon: <Monitor className="h-6 w-6" />,
@@ -28,7 +28,7 @@ const features = [
   {
     icon: <Heart className="h-6 w-6" />,
     title: "Gemeinschaft",
-    description: "Teil einer motivierten Gruppe, die dich mitzieht, anfeuert und unterstuetzt.",
+    description: "Teil einer motivierten Gruppe, die dich mitzieht, anfeuert und unterstützt.",
   },
   {
     icon: <Clock className="h-6 w-6" />,
@@ -45,7 +45,7 @@ export function MniIncluded() {
       <div ref={ref} className="reveal mx-auto max-w-7xl px-8 md:px-16">
         <div className="mx-auto max-w-2xl text-center">
           <p className="text-xs font-medium uppercase tracking-[0.2em] text-cs-accent">
-            Alles inklusive fuer 299 €
+            Alles inklusive für 299 €
           </p>
           <h2 className="mt-4 text-3xl font-black uppercase leading-[1.05] tracking-[-0.03em] text-cs-white md:text-4xl">
             Das steckt
@@ -53,7 +53,7 @@ export function MniIncluded() {
             <span className="text-cs-accent">im Programm.</span>
           </h2>
           <p className="mt-6 text-[15px] leading-relaxed text-white/60">
-            12 Wochen. Training, Ernaehrungscoaching, Motivation und persoenliche
+            12 Wochen. Training, Ernährungscoaching, Motivation und persönliche
             Betreuung. Keine versteckten Kosten, kein Abo.
           </p>
         </div>

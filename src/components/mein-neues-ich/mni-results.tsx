@@ -9,25 +9,25 @@ const results = [
     icon: <TrendingDown className="h-6 w-6" />,
     title: "Gewichtsreduktion",
     description:
-      "Fett verlieren, Muskeln aufbauen, Stoffwechsel aktivieren. Ohne Diaeten oder Kalorienzaehlen.",
+      "Fett verlieren, Muskeln aufbauen, Stoffwechsel aktivieren. Ohne Diäten oder Kalorienzählen.",
   },
   {
     icon: <Dumbbell className="h-6 w-6" />,
-    title: "Starker Koerper",
+    title: "Starker Körper",
     description:
-      "Intervall- und Krafttraining bringen deinen Kreislauf in Schwung und staerken deine Muskulatur.",
+      "Intervall- und Krafttraining bringen deinen Kreislauf in Schwung und stärken deine Muskulatur.",
   },
   {
     icon: <Brain className="h-6 w-6" />,
-    title: "Mentale Staerke",
+    title: "Mentale Stärke",
     description:
-      "Motivation und mentale Staerke gehoeren fest zur Challenge. Wir helfen dir, dranzubleiben.",
+      "Motivation und mentale Stärke gehoeren fest zur Challenge. Wir helfen dir, dranzubleiben.",
   },
   {
     icon: <Sparkles className="h-6 w-6" />,
-    title: "Neues Lebensgefuehl",
+    title: "Neues Lebensgefühl",
     description:
-      "Wieder mit Energie durch den Alltag gehen. Fitter, staerker und energiegeladener.",
+      "Wieder mit Energie durch den Alltag gehen. Fitter, stärker und energiegeladener.",
   },
 ];
 

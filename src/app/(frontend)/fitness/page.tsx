@@ -10,7 +10,7 @@ import { PageBreadcrumbs } from "@/components/schema/page-breadcrumbs";
 export const metadata: Metadata = {
   title: "Fitness",
   description:
-    "Krafttraining, Cardio, Functional Training und Personal Training im Casa Sports Oer-Erkenschwick. Professionelles Equipment, persoenliche Betreuung.",
+    "Krafttraining, Cardio, Functional Training und Personal Training im Casa Sports Oer-Erkenschwick. Professionelles Equipment, persönliche Betreuung.",
 };
 
 export default function FitnessPage() {

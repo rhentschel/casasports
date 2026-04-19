@@ -58,7 +58,7 @@ export function KurseHero() {
                 loaded ? "translate-y-0" : "translate-y-[120%]"
               )}
             >
-              <span className="text-cs-accent">staerker</span>{" "}
+              <span className="text-cs-accent">stärker</span>{" "}
               <span className="text-cs-white">werden.</span>
             </span>
           </span>
@@ -71,7 +71,7 @@ export function KurseHero() {
           )}
         >
           Gruppenkurse, die motivieren. Von Power Training bis Cycling.
-          Fuer Einsteiger und Fortgeschrittene.
+          Für Einsteiger und Fortgeschrittene.
         </p>
 
         <div

@@ -15,7 +15,7 @@ export function ArticleAuthor({ author }: ArticleAuthorProps) {
   return (
     <aside ref={ref} className="reveal mt-16 border-t border-white/[0.06] pt-10">
       <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-cs-gray-500">
-        Ueber den Autor
+        Über den Autor
       </p>
 
       <div className="mt-6 flex gap-6">

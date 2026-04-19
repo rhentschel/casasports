@@ -18,9 +18,9 @@ import { useReveal } from "@/lib/use-reveal";
 
 const benefits = [
   "Individueller Trainingsplan nach deinen Zielen",
-  "Regelmaessige Koerperanalyse und Fortschrittskontrolle",
-  "Technik-Coaching fuer sichere Ausfuehrung",
-  "Ernaehrungstipps passend zu deinem Training",
+  "Regelmäßige Körperanalyse und Fortschrittskontrolle",
+  "Technik-Coaching für sichere Ausführung",
+  "Ernährungstipps passend zu deinem Training",
   "Flexible Terminvereinbarung",
 ];
 

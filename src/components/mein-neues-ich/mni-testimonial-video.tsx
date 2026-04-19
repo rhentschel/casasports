@@ -24,7 +24,7 @@ export function MniTestimonialVideo() {
             <span className="text-cs-accent">Echte Ergebnisse.</span>
           </h2>
           <p className="mt-6 text-[15px] leading-relaxed text-white/60">
-            Hoer von Teilnehmenden, die mit dem 12-Wochen-Programm ihr Leben veraendert haben.
+            Hör von Teilnehmenden, die mit dem 12-Wochen-Programm ihr Leben verändert haben.
           </p>
         </div>
 

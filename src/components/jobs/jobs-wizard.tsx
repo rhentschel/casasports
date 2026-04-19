@@ -67,7 +67,7 @@ const iconMap: Record<string, typeof Dumbbell> = {
 const WIZARD_STEPS: { key: WizardStep; label: string }[] = [
   { key: "position", label: "Stelle" },
   { key: "personal", label: "Kontakt" },
-  { key: "details", label: "Ueber dich" },
+  { key: "details", label: "Über dich" },
   { key: "review", label: "Absenden" },
 ];
 
@@ -144,7 +144,7 @@ function StepPosition({
   return (
     <div>
       <p className="text-xs font-medium uppercase tracking-[0.2em] text-cs-accent">
-        Stelle waehlen
+        Stelle wählen
       </p>
       <h2 className="mt-3 text-2xl font-black uppercase leading-[1.05] tracking-[-0.03em] text-cs-white">
         Was passt zu dir?
@@ -254,7 +254,7 @@ function StepPosition({
         </div>
       </div>
 
-      {/* Details der gewaehlten Stelle */}
+      {/* Details der gewählten Stelle */}
       {selected && (
         <motion.div
           initial={{ opacity: 0, height: 0 }}
@@ -330,7 +330,7 @@ function StepPersonal({
   function handleNext() {
     const e: Record<string, string> = {};
     if (!data.name.trim() || data.name.trim().length < 2) e.name = "Bitte Vor- und Nachname eingeben";
-    if (!data.email.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)) e.email = "Gueltige E-Mail-Adresse eingeben";
+    if (!data.email.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)) e.email = "Gültige E-Mail-Adresse eingeben";
     if (!data.phone.trim()) e.phone = "Telefonnummer eingeben";
     setErrors(e);
     if (Object.keys(e).length === 0) onNext();
@@ -387,7 +387,7 @@ function StepPersonal({
       <div className="mt-8 flex items-center justify-between">
         <button onClick={onBack} className="group flex items-center gap-3 border border-white/[0.08] px-8 py-4 text-[13px] font-medium uppercase tracking-[0.15em] text-white/60 transition-all duration-500 hover:border-white/20 hover:text-white">
           <ArrowLeft className="h-4 w-4 transition-transform duration-[400ms] group-hover:-translate-x-1" />
-          Zurueck
+          Zurück
         </button>
         <button onClick={handleNext} className="group flex items-center gap-3 border border-cs-accent bg-cs-accent px-8 py-4 text-[13px] font-medium uppercase tracking-[0.15em] text-white transition-all duration-500 hover:bg-transparent">
           Weiter
@@ -438,7 +438,7 @@ function StepDetails({
       return;
     }
     if (file.size > MAX_CV_SIZE) {
-      setCvError("Datei ist groesser als 8 MB");
+      setCvError("Datei ist größer als 8 MB");
       return;
     }
     onChange("cv", file);
@@ -446,8 +446,8 @@ function StepDetails({
 
   function handleNext() {
     const e: Record<string, string> = {};
-    if (!data.message.trim() || data.message.trim().length < 20) e.message = "Mindestens ein paar Saetze ueber dich";
-    if (!data.privacy) e.privacy = "Bitte Datenschutzerklaerung zustimmen";
+    if (!data.message.trim() || data.message.trim().length < 20) e.message = "Mindestens ein paar Sätze über dich";
+    if (!data.privacy) e.privacy = "Bitte Datenschutzerklärung zustimmen";
     setErrors(e);
     if (Object.keys(e).length === 0) onNext();
   }
@@ -458,7 +458,7 @@ function StepDetails({
         Schritt 3
       </p>
       <h2 className="mt-3 text-2xl font-black uppercase leading-[1.05] tracking-[-0.03em] text-cs-white">
-        Erzaehl uns von dir
+        Erzähl uns von dir
       </h2>
 
       <div className="mt-8 space-y-4">
@@ -475,11 +475,11 @@ function StepDetails({
               <option value="beginner">Unter 1 Jahr</option>
               <option value="intermediate">1-3 Jahre</option>
               <option value="experienced">3-5 Jahre</option>
-              <option value="expert">Ueber 5 Jahre</option>
+              <option value="expert">Über 5 Jahre</option>
             </select>
           </div>
           <div>
-            <label className={labelClass}>Verfuegbarkeit</label>
+            <label className={labelClass}>Verfügbarkeit</label>
             <select
               value={data.availability}
               onChange={(e) => onChange("availability", e.target.value)}
@@ -494,7 +494,7 @@ function StepDetails({
             </select>
           </div>
           <div>
-            <label className={labelClass}>Fruehester Start</label>
+            <label className={labelClass}>Frühester Start</label>
             <input
               type="date"
               value={data.startDate}
@@ -505,7 +505,7 @@ function StepDetails({
         </div>
 
         <div>
-          <label className={labelClass}>Ueber dich *</label>
+          <label className={labelClass}>Über dich *</label>
           <textarea
             value={data.message}
             onChange={(e) => onChange("message", e.target.value)}
@@ -595,7 +595,7 @@ function StepDetails({
             Ich stimme zu, dass meine Angaben zur Bearbeitung meiner
             Bewerbung gespeichert werden.{" "}
             <a href="/datenschutz" className="text-cs-accent underline underline-offset-2 hover:text-cs-accent-hover">
-              Datenschutzerklaerung
+              Datenschutzerklärung
             </a>
           </span>
         </label>
@@ -605,7 +605,7 @@ function StepDetails({
       <div className="mt-8 flex items-center justify-between">
         <button onClick={onBack} className="group flex items-center gap-3 border border-white/[0.08] px-8 py-4 text-[13px] font-medium uppercase tracking-[0.15em] text-white/60 transition-all duration-500 hover:border-white/20 hover:text-white">
           <ArrowLeft className="h-4 w-4 transition-transform duration-[400ms] group-hover:-translate-x-1" />
-          Zurueck
+          Zurück
         </button>
         <button onClick={handleNext} className="group flex items-center gap-3 border border-cs-accent bg-cs-accent px-8 py-4 text-[13px] font-medium uppercase tracking-[0.15em] text-white transition-all duration-500 hover:bg-transparent">
           Weiter
@@ -644,7 +644,7 @@ function StepReview({
 
   const experienceLabels: Record<string, string> = {
     none: "Quereinsteiger", beginner: "Unter 1 Jahr",
-    intermediate: "1-3 Jahre", experienced: "3-5 Jahre", expert: "Ueber 5 Jahre",
+    intermediate: "1-3 Jahre", experienced: "3-5 Jahre", expert: "Über 5 Jahre",
   };
   const availabilityLabels: Record<string, string> = {
     fulltime: "Vollzeit", parttime: "Teilzeit", minijob: "Minijob",
@@ -668,7 +668,7 @@ function StepReview({
             <p className="mt-1 text-sm font-bold text-cs-white">{posLabel}</p>
           </div>
           <button onClick={() => onGoToStep("position")} className="text-[11px] text-cs-accent hover:text-cs-accent-hover transition-colors">
-            Aendern
+            Ändern
           </button>
         </div>
 
@@ -690,7 +690,7 @@ function StepReview({
             </div>
           </div>
           <button onClick={() => onGoToStep("personal")} className="shrink-0 text-[11px] text-cs-accent hover:text-cs-accent-hover transition-colors">
-            Aendern
+            Ändern
           </button>
         </div>
 
@@ -706,7 +706,7 @@ function StepReview({
             )}
             {details.availability && (
               <div className="flex justify-between gap-12">
-                <span className="text-white/50">Verfuegbarkeit</span>
+                <span className="text-white/50">Verfügbarkeit</span>
                 <span className="text-white/70">{availabilityLabels[details.availability]}</span>
               </div>
             )}
@@ -728,7 +728,7 @@ function StepReview({
             )}
           </div>
           <button onClick={() => onGoToStep("details")} className="shrink-0 text-[11px] text-cs-accent hover:text-cs-accent-hover transition-colors">
-            Aendern
+            Ändern
           </button>
         </div>
       </div>
@@ -743,7 +743,7 @@ function StepReview({
       <div className="mt-8 flex items-center justify-between">
         <button onClick={onBack} className="group flex items-center gap-3 border border-white/[0.08] px-8 py-4 text-[13px] font-medium uppercase tracking-[0.15em] text-white/60 transition-all duration-500 hover:border-white/20 hover:text-white">
           <ArrowLeft className="h-4 w-4 transition-transform duration-[400ms] group-hover:-translate-x-1" />
-          Zurueck
+          Zurück
         </button>
         <button
           onClick={onSubmit}
@@ -779,7 +779,7 @@ function StepSuccess() {
         Bewerbung <span className="text-cs-accent">erhalten!</span>
       </h2>
       <p className="mx-auto mt-6 max-w-md text-[15px] leading-relaxed text-white/60">
-        Vielen Dank fuer dein Interesse an Casa Sports. Wir schauen uns
+        Vielen Dank für dein Interesse an Casa Sports. Wir schauen uns
         deine Bewerbung an und melden uns innerhalb weniger Tage bei dir.
       </p>
       <div className="mt-10 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">

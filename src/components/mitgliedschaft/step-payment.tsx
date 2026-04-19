@@ -170,7 +170,7 @@ export function StepPayment({
           </div>
           <p className="sr-only" aria-live="polite">
             {ibanStatus === "loading" && "IBAN wird geprueft"}
-            {ibanStatus === "valid" && "IBAN gueltig"}
+            {ibanStatus === "valid" && "IBAN gültig"}
           </p>
           {ibanError && (
             <p

@@ -334,7 +334,7 @@ const statusColors: Record<string, string> = {
 
 const STEP_LABELS: Record<string, string> = {
   plan: "Tarif",
-  personal: "Persoenlich",
+  personal: "Persönlich",
   payment: "Zahlung",
   review: "Review",
   success: "Abschluss",
@@ -513,7 +513,7 @@ export function DashboardView({ userName }: { userName: string }) {
             value={`+${kpis.thisMonth}`}
             sub={
               monthDelta === 0
-                ? "keine Veraenderung"
+                ? "keine Veränderung"
                 : `${monthDelta > 0 ? "+" : ""}${monthDelta.toFixed(0)}% ggue. Vormonat`
             }
             trend={monthDelta}
@@ -870,7 +870,7 @@ export function DashboardView({ userName }: { userName: string }) {
 
         <p className="mt-12 flex items-center gap-2 text-[11px] tracking-wider text-white/30">
           <Calendar className="h-3 w-3" />
-          Daten aus Payload CMS · Magicline-Sync verfuegbar sobald Open API Key hinterlegt
+          Daten aus Payload CMS · Magicline-Sync verfügbar sobald Open API Key hinterlegt
         </p>
       </div>
     </div>

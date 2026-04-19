@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 
 const benefits = [
   "100% kostenlos und unverbindlich",
-  "Persoenliche Einweisung durch unser Team",
+  "Persönliche Einweisung durch unser Team",
   "Volle Geraete- und Kursauswahl",
   "Keine versteckten Kosten",
 ];

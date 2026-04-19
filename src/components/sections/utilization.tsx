@@ -73,7 +73,7 @@ export function Utilization() {
               Wann ist am wenigsten los?
             </h2>
             <p className="mt-4 text-[14px] leading-relaxed text-white/60">
-              Live-Auslastung fuer heute. So findest du deine ruhige Trainingszeit.
+              Live-Auslastung für heute. So findest du deine ruhige Trainingszeit.
             </p>
           </div>
 

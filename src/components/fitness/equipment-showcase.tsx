@@ -16,7 +16,7 @@ const highlights = [
   {
     icon: <Dumbbell className="h-5 w-5" />,
     title: "Freihanteln bis 60 kg",
-    text: "Komplett ausgestatteter Kurzhantelbereich fuer jedes Level.",
+    text: "Komplett ausgestatteter Kurzhantelbereich für jedes Level.",
   },
   {
     icon: <Gauge className="h-5 w-5" />,
@@ -26,7 +26,7 @@ const highlights = [
   {
     icon: <Repeat className="h-5 w-5" />,
     title: "Kabelzug-Station",
-    text: "Vielseitige Uebungsauswahl fuer isoliertes und funktionelles Training.",
+    text: "Vielseitige Übungsauswahl für isoliertes und funktionelles Training.",
   },
   {
     icon: <Zap className="h-5 w-5" />,
@@ -35,7 +35,7 @@ const highlights = [
   },
   {
     icon: <Wrench className="h-5 w-5" />,
-    title: "Regelmaessige Wartung",
+    title: "Regelmäßige Wartung",
     text: "Alle Geraete werden professionell gewartet und gepflegt.",
   },
   {
@@ -72,11 +72,11 @@ export function EquipmentShowcase() {
               Equipment, das
               <br />
               <span className="text-cs-accent">keine Wuensche</span> offen
-              laesst.
+              lässt.
             </h2>
             <p className="mt-6 max-w-sm text-[15px] leading-relaxed text-white/60">
               Wir investieren in Qualitaet. Nicht in Masse. Jedes Geraet ist
-              ausgewaehlt, damit du effizient und sicher trainieren kannst.
+              ausgewählt, damit du effizient und sicher trainieren kannst.
             </p>
 
             <div className="mt-10 grid grid-cols-1 gap-0 sm:grid-cols-2">

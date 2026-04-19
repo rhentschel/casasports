@@ -107,7 +107,7 @@ export function ProbetrainingForm({ source = "Probetraining Page" }: Props) {
         </h3>
         <p className="mt-4 text-[14px] leading-relaxed text-white/60">
           {selectedSlot
-            ? "Du bekommst gleich eine Bestaetigungsmail mit allen Details zu deinem Probetraining."
+            ? "Du bekommst gleich eine Bestätigungsmail mit allen Details zu deinem Probetraining."
             : "Dein Probetraining-Wunsch ist bei uns eingegangen. Wir melden uns innerhalb von 24 Stunden, um einen Termin zu vereinbaren."}
         </p>
       </div>
@@ -117,7 +117,7 @@ export function ProbetrainingForm({ source = "Probetraining Page" }: Props) {
   return (
     <form onSubmit={handleSubmit} noValidate>
       <p className="text-xs font-medium uppercase tracking-[0.2em] text-cs-accent">
-        {slotsEnabled ? "Termin waehlen" : "Jetzt anfragen"}
+        {slotsEnabled ? "Termin wählen" : "Jetzt anfragen"}
       </p>
       <h2 className="mt-2 text-2xl font-black uppercase leading-tight tracking-[-0.02em] text-cs-white">
         {slotsEnabled ? "Dein Slot." : "Deine Daten."}
@@ -273,16 +273,16 @@ export function ProbetrainingForm({ source = "Probetraining Page" }: Props) {
               <Loader2 className="h-4 w-4 animate-spin" /> Wird gesendet
             </>
           ) : slotsEnabled ? (
-            selectedSlot ? "Termin buchen" : "Bitte zuerst Slot waehlen"
+            selectedSlot ? "Termin buchen" : "Bitte zuerst Slot wählen"
           ) : (
             "Probetraining anfragen"
           )}
         </button>
         <p className="text-[10px] leading-relaxed text-white/55">
-          Mit dem Absenden erklaerst du dich einverstanden, dass wir dich zu
+          Mit dem Absenden erklärst du dich einverstanden, dass wir dich zu
           deiner Anfrage kontaktieren. Details in der{" "}
           <a href="/datenschutz" className="text-white/60 underline">
-            Datenschutzerklaerung
+            Datenschutzerklärung
           </a>
           .
         </p>

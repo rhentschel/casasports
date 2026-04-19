@@ -115,7 +115,7 @@ export const Posts: CollectionConfig = {
       defaultValue: false,
       admin: {
         position: "sidebar",
-        description: "Pillar-Artikel fuer Topic-Cluster",
+        description: "Pillar-Artikel für Topic-Cluster",
       },
     },
     {

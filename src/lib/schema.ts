@@ -62,7 +62,7 @@ export function healthClubSchema(): JsonLd {
       { "@type": "LocationFeatureSpecification", name: "Infrarotkabine" },
       { "@type": "LocationFeatureSpecification", name: "Wellness-Bereich" },
       { "@type": "LocationFeatureSpecification", name: "Personal Training" },
-      { "@type": "LocationFeatureSpecification", name: "Ernaehrungsberatung" },
+      { "@type": "LocationFeatureSpecification", name: "Ernährungsberatung" },
       { "@type": "LocationFeatureSpecification", name: "Parkplatz" },
     ],
   };

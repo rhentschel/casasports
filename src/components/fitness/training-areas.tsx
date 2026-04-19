@@ -8,7 +8,7 @@ const areas = [
     image: "/images/casasports-krafttraining-1.webp",
     title: "Kraftbereich",
     description:
-      "Freihanteln, Kabelzuege und gefuehrte Geraete. Alles, was du fuer gezielten Muskelaufbau brauchst.",
+      "Freihanteln, Kabelzuege und gefuehrte Geraete. Alles, was du für gezielten Muskelaufbau brauchst.",
     stats: "Freihantel & Maschinen",
   },
   {
@@ -22,7 +22,7 @@ const areas = [
     image: "/images/casasports-functional-training.webp",
     title: "Functional Area",
     description:
-      "Kettlebells, Battle Ropes, TRX und freie Flaeche. Training das deinen Koerper als Einheit fordert.",
+      "Kettlebells, Battle Ropes, TRX und freie Flaeche. Training das deinen Körper als Einheit fordert.",
     stats: "Beweglichkeit & Stabilitaet",
   },
 ];
@@ -41,7 +41,7 @@ export function TrainingAreas() {
         </h2>
         <p className="mt-6 max-w-md text-[15px] leading-relaxed text-white/60">
           Jeder Bereich ist durchdacht eingerichtet. Damit du dich auf das
-          konzentrieren kannst, was zaehlt: dein Training.
+          konzentrieren kannst, was zählt: dein Training.
         </p>
 
         <div className="mt-16 grid gap-5 md:grid-cols-3">

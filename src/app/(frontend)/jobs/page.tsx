@@ -44,7 +44,7 @@ export default async function JobsPage() {
             {/* Left: Image */}
             <div className="relative hidden overflow-hidden md:block">
               <Image
-                src="/images/casasports-kurse-fuer-alle.webp"
+                src="/images/casasports-kurse-für-alle.webp"
                 alt="Team Casa Sports"
                 fill
                 className="img-cinema object-cover object-center"
@@ -63,7 +63,7 @@ export default async function JobsPage() {
                   <span className="text-cs-gold">unseres Teams.</span>
                 </h1>
                 <p className="mt-5 max-w-sm text-[14px] leading-relaxed text-white/50">
-                  Du brennst fuer Fitness und willst Menschen auf ihrem Weg
+                  Du brennst für Fitness und willst Menschen auf ihrem Weg
                   begleiten? Bewirb dich jetzt.
                 </p>
               </div>
@@ -72,7 +72,7 @@ export default async function JobsPage() {
             {/* Mobile hero */}
             <div className="relative aspect-[16/9] overflow-hidden md:hidden">
               <Image
-                src="/images/casasports-kurse-fuer-alle.webp"
+                src="/images/casasports-kurse-für-alle.webp"
                 alt="Casa Sports Team"
                 fill
                 className="img-cinema object-cover"

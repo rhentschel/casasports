@@ -7,8 +7,8 @@ import { useReveal } from "@/lib/use-reveal";
 
 const steps = [
   { number: "01", label: "Analyse", text: "Wo stehst du? Was isst du aktuell?" },
-  { number: "02", label: "Strategie", text: "Was muss sich aendern? Was funktioniert schon?" },
-  { number: "03", label: "Umsetzung", text: "Kleine Schritte, grosse Wirkung. Keine Radikalkur." },
+  { number: "02", label: "Strategie", text: "Was muss sich ändern? Was funktioniert schon?" },
+  { number: "03", label: "Umsetzung", text: "Kleine Schritte, große Wirkung. Keine Radikalkur." },
   { number: "04", label: "Begleitung", text: "Wir bleiben dran. Anpassungen, Fragen, Motivation." },
 ];
 
@@ -25,7 +25,7 @@ export function ErnaehrungCTA() {
             <div className="relative aspect-[4/5] overflow-hidden">
               <Image
                 src="/images/team-training-1.webp"
-                alt="Ernaehrungsprogramm Casa Sports"
+                alt="Ernährungsprogramm Casa Sports"
                 fill
                 className="img-cinema object-cover"
               />
@@ -40,7 +40,7 @@ export function ErnaehrungCTA() {
                     12-Wochen-Programm
                   </p>
                   <p className="mt-1 text-[12px] text-white/60">
-                    Training + Ernaehrung + Betreuung. Alles in einem.
+                    Training + Ernährung + Betreuung. Alles in einem.
                   </p>
                 </div>
               </div>
@@ -105,13 +105,13 @@ export function ErnaehrungCTA() {
             Bereit?
           </p>
           <h2 className="mt-6 text-4xl font-black uppercase leading-[1.05] tracking-[-0.04em] text-white md:text-6xl lg:text-7xl">
-            Dein Koerper verdient
+            Dein Körper verdient
             <br />
             den richtigen <span className="text-cs-accent">Treibstoff.</span>
           </h2>
           <p className="mx-auto mt-8 max-w-sm text-[15px] leading-relaxed text-white/60">
-            Komm vorbei, trainiere kostenlos und sprich mit unserem Team ueber
-            deine Ernaehrung. Unverbindlich.
+            Komm vorbei, trainiere kostenlos und sprich mit unserem Team über
+            deine Ernährung. Unverbindlich.
           </p>
           <Link
             href="/probetraining"

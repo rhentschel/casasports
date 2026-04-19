@@ -23,7 +23,7 @@ export async function GET(request: NextRequest) {
 
   if (Number.isNaN(from.getTime()) || Number.isNaN(to.getTime())) {
     return NextResponse.json(
-      { error: "Ungueltiges Datum" },
+      { error: "Ungültiges Datum" },
       { status: 400 }
     )
   }

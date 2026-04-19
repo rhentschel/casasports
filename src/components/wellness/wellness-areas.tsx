@@ -69,7 +69,7 @@ export function WellnessAreas() {
             </button>
             <button
               onClick={scrollNext}
-              aria-label="Naechster Wellness-Bereich"
+              aria-label="Nächster Wellness-Bereich"
               className="flex h-10 w-10 items-center justify-center border border-white/[0.08] text-white/50 transition-all duration-300 hover:border-white/20 hover:text-white"
             >
               <ChevronRight className="h-5 w-5" aria-hidden="true" />

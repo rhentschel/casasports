@@ -34,7 +34,7 @@ export const navigation = [
   { label: "Mitglied werden", href: "/mitglied-werden" },
 ] as const;
 
-// Reduziertes Menu fuer Desktop-Header (Mitglied werden als CTA separat)
+// Reduziertes Menu für Desktop-Header (Mitglied werden als CTA separat)
 export const primaryNavigation = [
   {
     label: "Angebot",

@@ -131,7 +131,7 @@ export function TrialModal({ open, onClose, source = "Probetraining Button" }: P
               Probetraining anfragen
             </h3>
             <p className="mt-3 text-[13px] leading-relaxed text-white/60">
-              Lass uns deine Daten da und wir melden uns fuer einen Termin.
+              Lass uns deine Daten da und wir melden uns für einen Termin.
             </p>
 
             <form onSubmit={handleSubmit} className="mt-6 space-y-4" noValidate>
@@ -259,10 +259,10 @@ export function TrialModal({ open, onClose, source = "Probetraining Button" }: P
                 )}
               </button>
               <p className="text-[10px] leading-relaxed text-white/55">
-                Mit dem Absenden erklaerst du dich einverstanden, dass wir dich zu
+                Mit dem Absenden erklärst du dich einverstanden, dass wir dich zu
                 deiner Anfrage kontaktieren. Details in der{" "}
                 <a href="/datenschutz" className="text-white/60 underline">
-                  Datenschutzerklaerung
+                  Datenschutzerklärung
                 </a>
                 .
               </p>

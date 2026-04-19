@@ -24,7 +24,7 @@ export function MniInterview() {
             <span className="text-cs-accent">Interview.</span>
           </h2>
           <p className="mt-6 text-[15px] leading-relaxed text-white/60">
-            Im Gespraech erklaert Naim das 12-Wochen-Programm, die Trainings-Philosophie
+            Im Gespräch erklärt Naim das 12-Wochen-Programm, die Trainings-Philosophie
             und warum die Gemeinschaft den Unterschied macht.
           </p>
         </div>
@@ -33,7 +33,7 @@ export function MniInterview() {
           {playing ? (
             <iframe
               src={`https://www.youtube-nocookie.com/embed/${YOUTUBE_ID}?autoplay=1&rel=0`}
-              title="Interview: Naim erklaert Mein Neues Ich"
+              title="Interview: Naim erklärt Mein Neues Ich"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
               allowFullScreen
               className="absolute inset-0 h-full w-full"

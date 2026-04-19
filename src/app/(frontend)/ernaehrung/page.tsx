@@ -9,7 +9,7 @@ import { PageBreadcrumbs } from "@/components/schema/page-breadcrumbs";
 export const metadata: Metadata = {
   title: "Ernährung",
   description:
-    "Ernährungsberatung im Casa Sports Oer-Erkenschwick. Individuelle Ernaehrungskonzepte, die zu deinem Training und deinem Alltag passen. Keine Diaeten, sondern nachhaltige Ergebnisse.",
+    "Ernährungsberatung im Casa Sports Oer-Erkenschwick. Individuelle Ernährungskonzepte, die zu deinem Training und deinem Alltag passen. Keine Diäten, sondern nachhaltige Ergebnisse.",
 };
 
 export default function ErnaehrungPage() {

@@ -188,7 +188,7 @@ export function MembershipWizard() {
         },
       },
       communicationPreferences: [],
-      // Fuer Payload Collection (wird nicht an Magicline gesendet)
+      // Für Payload Collection (wird nicht an Magicline gesendet)
       _meta: {
         rateBundleName: bundleName,
         termValue: selectedTerm.termValue,
@@ -245,7 +245,7 @@ export function MembershipWizard() {
       aria-labelledby="wizard-title"
     >
       <h1 id="wizard-title" className="sr-only">
-        Mitgliedschaft abschliessen
+        Mitgliedschaft abschließen
       </h1>
       <div>
         {step !== "success" && <WizardProgress currentStep={step} />}

@@ -10,11 +10,11 @@ type Clip = { id: string; title: string };
 
 const clips: Clip[] = [
   { id: "5AnOMIU7w-s", title: "So laeuft das Training ab" },
-  { id: "bHMwkfxOVdQ", title: "Ernaehrung ohne Verbote" },
+  { id: "bHMwkfxOVdQ", title: "Ernährung ohne Verbote" },
   { id: "o6_nN9A_QwA", title: "Das Team stellt sich vor" },
   { id: "WuaKm57qVqI", title: "Motivation und Gemeinschaft" },
   { id: "DaQjtJiiJL8", title: "Fortschritt sichtbar machen" },
-  { id: "EYMOo7c8gIE", title: "Tipps fuer den Alltag" },
+  { id: "EYMOo7c8gIE", title: "Tipps für den Alltag" },
   { id: "XzHcFjMRamI", title: "Dein Weg zum Ziel" },
 ];
 
@@ -154,7 +154,7 @@ export function MniProgramVideo() {
               <span className="text-cs-accent">zum Programm.</span>
             </h2>
             <p className="mt-6 text-[15px] leading-relaxed text-white/60">
-              Einblicke in das 12-Wochen-Programm. Naim, das Team und die Mitglieder erzaehlen.
+              Einblicke in das 12-Wochen-Programm. Naim, das Team und die Mitglieder erzählen.
             </p>
           </div>
 
@@ -169,7 +169,7 @@ export function MniProgramVideo() {
             <button
               onClick={scrollNext}
               className="flex h-11 w-11 items-center justify-center border border-white/10 text-white/50 transition-all duration-300 hover:border-white/30 hover:text-white"
-              aria-label="Naechstes Video"
+              aria-label="Nächstes Video"
             >
               <ArrowRight className="h-4 w-4" />
             </button>

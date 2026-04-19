@@ -7,9 +7,9 @@ import { BlogCta } from "@/components/blog/blog-cta"
 import { getAllPosts, getAllCategories } from "@/lib/payload-data"
 
 export const metadata: Metadata = {
-  title: "Blog - Trainingstipps, Ernaehrung & Wellness",
+  title: "Blog - Trainingstipps, Ernährung & Wellness",
   description:
-    "Fitness-Blog von Casa Sports: Trainingstipps, Ernaehrungswissen und Wellness-Strategien. Fundiert, praxisnah und fuer jedes Level.",
+    "Fitness-Blog von Casa Sports: Trainingstipps, Ernährungswissen und Wellness-Strategien. Fundiert, praxisnah und für jedes Level.",
   alternates: {
     canonical: "https://sport.casasports.de/blog",
   },

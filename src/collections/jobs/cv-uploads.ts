@@ -2,7 +2,7 @@ import type { CollectionConfig } from "payload"
 
 export const CvUploads: CollectionConfig = {
   slug: "cv-uploads",
-  labels: { singular: "Lebenslauf", plural: "Lebenslaeufe" },
+  labels: { singular: "Lebenslauf", plural: "Lebensläufe" },
   upload: {
     mimeTypes: [
       "application/pdf",

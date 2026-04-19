@@ -26,7 +26,7 @@ const benefits = [
   {
     title: "Entwicklung",
     description:
-      "Vom Praktikanten zum Trainer, vom Trainer zur Leitung. Wir foerdern deinen persoenlichen Aufstieg.",
+      "Vom Praktikanten zum Trainer, vom Trainer zur Leitung. Wir fördern deinen persönlichen Aufstieg.",
     icon: <TrendingUp className="h-6 w-6" />,
   },
   {

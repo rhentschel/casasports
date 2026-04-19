@@ -71,7 +71,7 @@ export function FitnessHero() {
           )}
         >
           Von Einsteiger bis Leistungssportler. Professionelles Equipment,
-          persoenliche Betreuung und ein Plan, der zu dir passt.
+          persönliche Betreuung und ein Plan, der zu dir passt.
         </p>
 
         <div

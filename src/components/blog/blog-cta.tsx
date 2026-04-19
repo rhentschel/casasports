@@ -29,7 +29,7 @@ export function BlogCta() {
           <span className="text-cs-accent">Zeit zu trainieren.</span>
         </h2>
         <p className="mx-auto mt-8 max-w-sm text-[15px] leading-relaxed text-white/60">
-          Dein erstes Training bei Casa Sports geht auf uns. Lern uns kennen und ueberzeug dich selbst.
+          Dein erstes Training bei Casa Sports geht auf uns. Lern uns kennen und überzeug dich selbst.
         </p>
         <Link
           href="/mitglied-werden"

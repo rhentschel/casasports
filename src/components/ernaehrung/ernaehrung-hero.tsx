@@ -19,7 +19,7 @@ export function ErnaehrungHero() {
       <div className="absolute inset-0 animate-[kenburns_30s_ease-in-out_infinite_alternate]">
         <Image
           src="/images/casasports-bodyhealth.webp"
-          alt="Ernaehrungsberatung Casa Sports"
+          alt="Ernährungsberatung Casa Sports"
           fill
           className="img-cinema object-cover"
           priority
@@ -37,7 +37,7 @@ export function ErnaehrungHero() {
             loaded ? "opacity-100" : "opacity-0"
           )}
         >
-          Ernaehrung bei Casa Sports
+          Ernährung bei Casa Sports
         </p>
 
         <h1 className="text-[clamp(2.8rem,7.5vw,6.5rem)] font-black uppercase leading-[1.05] tracking-[-0.04em] text-cs-white">
@@ -59,7 +59,7 @@ export function ErnaehrungHero() {
               )}
             >
               <span className="text-cs-white">in der</span>{" "}
-              <span className="text-cs-accent">Kueche.</span>
+              <span className="text-cs-accent">Küche.</span>
             </span>
           </span>
         </h1>
@@ -72,7 +72,7 @@ export function ErnaehrungHero() {
         >
           Du kannst jeden Tag trainieren.
           <br />
-          Ohne die richtige Ernaehrung bleiben die Ergebnisse aus.
+          Ohne die richtige Ernährung bleiben die Ergebnisse aus.
         </p>
 
         <div

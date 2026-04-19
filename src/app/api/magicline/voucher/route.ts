@@ -15,7 +15,7 @@ export async function GET(request: NextRequest) {
 
   if (!/^[A-Za-z0-9_-]{1,64}$/.test(code)) {
     return NextResponse.json(
-      { valid: false, error: "Ungueltiges Gutschein-Format." },
+      { valid: false, error: "Ungültiges Gutschein-Format." },
       { status: 400 }
     );
   }
@@ -38,7 +38,7 @@ export async function GET(request: NextRequest) {
       return NextResponse.json({
         valid: false,
         code,
-        error: "Dieser Gutschein-Code ist nicht gueltig.",
+        error: "Dieser Gutschein-Code ist nicht gültig.",
       });
     }
 

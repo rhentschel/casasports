@@ -18,31 +18,31 @@ const benefits = [
     icon: <Zap className="h-6 w-6" />,
     title: "Schnellere Regeneration",
     description:
-      "Waerme steigert die Durchblutung und beschleunigt den Abtransport von Stoffwechselprodukten. Dein naechstes Training kommt schneller.",
+      "Wärme steigert die Durchblutung und beschleunigt den Abtransport von Stoffwechselprodukten. Dein nächstes Training kommt schneller.",
   },
   {
     icon: <Heart className="h-6 w-6" />,
     title: "Herz-Kreislauf-Training",
     description:
-      "Regelmaessige Saunagaenge trainieren dein Herz-Kreislauf-System und senken nachweislich den Blutdruck.",
+      "Regelmäßige Saunagaenge trainieren dein Herz-Kreislauf-System und senken nachweislich den Blutdruck.",
   },
   {
     icon: <Shield className="h-6 w-6" />,
-    title: "Staerkeres Immunsystem",
+    title: "Stärkeres Immunsystem",
     description:
-      "Der Wechsel zwischen Waerme und Abkuehlung haertet ab. Studien zeigen: Saunagaenger sind seltener krank.",
+      "Der Wechsel zwischen Wärme und Abkuehlung haertet ab. Studien zeigen: Saunagaenger sind seltener krank.",
   },
   {
     icon: <Moon className="h-6 w-6" />,
     title: "Besserer Schlaf",
     description:
-      "Die Tiefenentspannung nach der Sauna foerdert einen tiefen, erholsamen Schlaf. Und im Schlaf wachsen Muskeln.",
+      "Die Tiefenentspannung nach der Sauna fördert einen tiefen, erholsamen Schlaf. Und im Schlaf wachsen Muskeln.",
   },
   {
     icon: <Brain className="h-6 w-6" />,
     title: "Stressabbau",
     description:
-      "Waerme senkt den Cortisolspiegel und schuettet Endorphine aus. Du gehst entspannter nach Hause als du gekommen bist.",
+      "Wärme senkt den Cortisolspiegel und schüttet Endorphine aus. Du gehst entspannter nach Hause als du gekommen bist.",
   },
   {
     icon: <Sparkles className="h-6 w-6" />,
@@ -54,13 +54,13 @@ const benefits = [
     icon: <Droplets className="h-6 w-6" />,
     title: "Entgiftung",
     description:
-      "Intensives Schwitzen unterstuetzt den Koerper beim Ausscheiden von Giftstoffen ueber die Haut.",
+      "Intensives Schwitzen unterstützt den Körper beim Ausscheiden von Giftstoffen über die Haut.",
   },
   {
     icon: <Timer className="h-6 w-6" />,
     title: "Weniger Muskelkater",
     description:
-      "Infrarotwaerme dringt tief in die Muskulatur und lindert Verspannungen und Muskelkater nach dem Training.",
+      "Infrarotwärme dringt tief in die Muskulatur und lindert Verspannungen und Muskelkater nach dem Training.",
   },
 ];
 
