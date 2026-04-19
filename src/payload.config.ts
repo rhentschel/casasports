@@ -18,6 +18,8 @@ import { Courses } from "./collections/courses"
 import { JobPositions } from "./collections/jobs/positions"
 import { JobApplications } from "./collections/jobs/applications"
 import { MembershipSignups } from "./collections/membership-signups"
+import { Leads } from "./collections/leads"
+import { WizardSessions } from "./collections/wizard-sessions"
 import { SiteSettings } from "./globals/site-settings"
 import { Navigation } from "./globals/navigation"
 
@@ -61,6 +63,8 @@ export default buildConfig({
     JobPositions,
     JobApplications,
     MembershipSignups,
+    Leads,
+    WizardSessions,
   ],
   globals: [SiteSettings, Navigation],
   editor: lexicalEditor(),

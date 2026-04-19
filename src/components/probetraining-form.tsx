@@ -1,8 +1,12 @@
 "use client";
 
-import { useState } from "react";
-import { Loader2, Check } from "lucide-react";
+import { useEffect, useState } from "react";
+import { Loader2, Check, Calendar } from "lucide-react";
 import { cn } from "@/lib/utils";
+import {
+  ProbetrainingSlotPicker,
+  type TrialSlot,
+} from "./probetraining-slot-picker";
 
 type Props = { source?: string };
 
@@ -16,16 +20,62 @@ export function ProbetrainingForm({ source = "Probetraining Page" }: Props) {
   const [error, setError] = useState("");
   const [success, setSuccess] = useState(false);
 
+  const [slots, setSlots] = useState<TrialSlot[]>([]);
+  const [slotsLoading, setSlotsLoading] = useState(true);
+  const [slotsEnabled, setSlotsEnabled] = useState(false);
+  const [selectedSlot, setSelectedSlot] = useState<TrialSlot | null>(null);
+
+  useEffect(() => {
+    let cancelled = false;
+    (async () => {
+      try {
+        const res = await fetch("/api/magicline/trial-slots");
+        if (!res.ok) {
+          if (!cancelled) setSlotsLoading(false);
+          return;
+        }
+        const data = await res.json();
+        if (cancelled) return;
+        setSlots(Array.isArray(data.slots) ? data.slots : []);
+        setSlotsEnabled(!!data.enabled && (data.slots?.length ?? 0) > 0);
+      } catch {
+        // Slot fetch failure -> stay on Lead-Mode
+      } finally {
+        if (!cancelled) setSlotsLoading(false);
+      }
+    })();
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     setError("");
     setLoading(true);
 
+    const usingSlots = slotsEnabled && !!selectedSlot;
+
     try {
-      const res = await fetch("/api/magicline/lead", {
+      const endpoint = usingSlots
+        ? "/api/magicline/trial-book"
+        : "/api/magicline/lead";
+      const body = usingSlots
+        ? {
+            slotId: selectedSlot!.id,
+            firstname,
+            lastname,
+            email,
+            phone,
+            message,
+            source: `${source} · Slot ${selectedSlot!.start}`,
+          }
+        : { firstname, lastname, email, phone, message, source };
+
+      const res = await fetch(endpoint, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ firstname, lastname, email, phone, message, source }),
+        body: JSON.stringify(body),
       });
       const data = await res.json();
       if (!res.ok) {
@@ -48,14 +98,17 @@ export function ProbetrainingForm({ source = "Probetraining Page" }: Props) {
           <Check className="h-8 w-8 text-cs-accent" />
         </div>
         <p className="text-xs font-medium uppercase tracking-[0.2em] text-cs-accent">
-          Anfrage erhalten
+          {selectedSlot ? "Termin gebucht" : "Anfrage erhalten"}
         </p>
         <h3 className="mt-3 text-2xl font-black uppercase leading-tight tracking-[-0.02em] text-cs-white">
-          Wir melden uns bei dir.
+          {selectedSlot
+            ? "Wir sehen uns im Studio."
+            : "Wir melden uns bei dir."}
         </h3>
         <p className="mt-4 text-[14px] leading-relaxed text-white/60">
-          Dein Probetraining-Wunsch ist bei uns eingegangen. Wir melden uns
-          innerhalb von 24 Stunden, um einen Termin zu vereinbaren.
+          {selectedSlot
+            ? "Du bekommst gleich eine Bestaetigungsmail mit allen Details zu deinem Probetraining."
+            : "Dein Probetraining-Wunsch ist bei uns eingegangen. Wir melden uns innerhalb von 24 Stunden, um einen Termin zu vereinbaren."}
         </p>
       </div>
     );
@@ -64,11 +117,35 @@ export function ProbetrainingForm({ source = "Probetraining Page" }: Props) {
   return (
     <form onSubmit={handleSubmit} noValidate>
       <p className="text-xs font-medium uppercase tracking-[0.2em] text-cs-accent">
-        Jetzt anfragen
+        {slotsEnabled ? "Termin waehlen" : "Jetzt anfragen"}
       </p>
       <h2 className="mt-2 text-2xl font-black uppercase leading-tight tracking-[-0.02em] text-cs-white">
-        Deine Daten.
+        {slotsEnabled ? "Dein Slot." : "Deine Daten."}
       </h2>
+
+      {slotsLoading && (
+        <div className="mt-6 flex items-center gap-2 text-[12px] text-white/50">
+          <Loader2 className="h-3.5 w-3.5 animate-spin" /> Slots werden
+          geladen...
+        </div>
+      )}
+
+      {!slotsLoading && slotsEnabled && (
+        <div className="mt-6 border-b border-white/[0.06] pb-6">
+          <ProbetrainingSlotPicker
+            slots={slots}
+            selectedId={selectedSlot?.id ?? null}
+            onSelect={setSelectedSlot}
+          />
+        </div>
+      )}
+
+      {!slotsLoading && slotsEnabled && (
+        <p className="mt-5 flex items-center gap-2 text-[11px] uppercase tracking-[0.15em] text-white/50">
+          <Calendar className="h-3 w-3" />
+          Deine Daten
+        </p>
+      )}
 
       <div className="mt-6 space-y-4">
         <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
@@ -163,7 +240,11 @@ export function ProbetrainingForm({ source = "Probetraining Page" }: Props) {
             rows={3}
             value={message}
             onChange={(e) => setMessage(e.target.value)}
-            placeholder="Welche Trainingszeit passt dir? Hast du bestimmte Wuensche?"
+            placeholder={
+              slotsEnabled
+                ? "Hast du noch eine Frage vorab?"
+                : "Welche Trainingszeit passt dir? Hast du bestimmte Wuensche?"
+            }
             className="w-full resize-none border border-white/[0.08] bg-transparent px-3 py-2.5 text-[14px] text-cs-white placeholder-white/20 outline-none transition-colors focus:border-cs-accent"
           />
         </div>
@@ -180,16 +261,19 @@ export function ProbetrainingForm({ source = "Probetraining Page" }: Props) {
 
         <button
           type="submit"
-          disabled={loading}
+          disabled={loading || (slotsEnabled && !selectedSlot)}
           className={cn(
             "flex w-full items-center justify-center gap-2 border border-cs-accent bg-cs-accent px-6 py-4 text-[12px] font-bold uppercase tracking-[0.12em] text-cs-white transition-all duration-500 hover:bg-transparent hover:text-cs-accent",
-            loading && "cursor-not-allowed opacity-40"
+            (loading || (slotsEnabled && !selectedSlot)) &&
+              "cursor-not-allowed opacity-40"
           )}
         >
           {loading ? (
             <>
               <Loader2 className="h-4 w-4 animate-spin" /> Wird gesendet
             </>
+          ) : slotsEnabled ? (
+            selectedSlot ? "Termin buchen" : "Bitte zuerst Slot waehlen"
           ) : (
             "Probetraining anfragen"
           )}

@@ -21,11 +21,27 @@ export async function GET() {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 })
     }
 
-    const signups = await payload.find({
-      collection: "membership-signups",
-      limit: 10000,
-      sort: "-createdAt",
-    })
+    const [signups, leadsResult, wizardResult] = await Promise.all([
+      payload.find({
+        collection: "membership-signups",
+        limit: 10000,
+        sort: "-createdAt",
+      }),
+      payload
+        .find({
+          collection: "leads",
+          limit: 10000,
+          sort: "-createdAt",
+        })
+        .catch(() => ({ docs: [] as any[], totalDocs: 0 })),
+      payload
+        .find({
+          collection: "wizard-sessions",
+          limit: 10000,
+          sort: "-createdAt",
+        })
+        .catch(() => ({ docs: [] as any[], totalDocs: 0 })),
+    ])
 
     const now = new Date()
     const startOfMonth = new Date(now.getFullYear(), now.getMonth(), 1)
@@ -131,6 +147,65 @@ export async function GET() {
       (d: any) => new Date(d.createdAt) >= ninetyDaysAgo
     )
 
+    // Leads metrics
+    const leadsDocs = leadsResult.docs as any[]
+    const leadsTotal = leadsDocs.length
+    const leadsThisMonth = leadsDocs.filter(
+      (l: any) => new Date(l.createdAt) >= startOfMonth
+    ).length
+    const leadsLast30 = leadsDocs.filter(
+      (l: any) => new Date(l.createdAt) >= thirtyDaysAgo
+    ).length
+    const leadsOpen = leadsDocs.filter(
+      (l: any) => l.status === "neu" || l.status === "kontaktiert"
+    ).length
+    const leadsConverted = leadsDocs.filter((l: any) => l.status === "konvertiert").length
+    const leadsLost = leadsDocs.filter((l: any) => l.status === "verloren").length
+
+    // Leads by source
+    const sourceCounts: Record<string, number> = {}
+    leadsDocs.forEach((l: any) => {
+      const key = (l.source || "Unbekannt").toString().trim() || "Unbekannt"
+      sourceCounts[key] = (sourceCounts[key] || 0) + 1
+    })
+    const leadsBySource = Object.entries(sourceCounts)
+      .map(([source, count]) => ({ source, count }))
+      .sort((a, b) => b.count - a.count)
+      .slice(0, 6)
+
+    const conversionRate = leadsTotal > 0 ? (leadsConverted / leadsTotal) * 100 : 0
+
+    // Wizard funnel
+    const wizardDocs = wizardResult.docs as any[]
+    const wizardRecent = wizardDocs.filter(
+      (w: any) => new Date(w.createdAt) >= thirtyDaysAgo
+    )
+    const stepsOrder = ["plan", "personal", "payment", "review", "success"] as const
+    const stepIdx = (s: string) => stepsOrder.indexOf(s as (typeof stepsOrder)[number])
+    const funnel = stepsOrder.map((step, i) => {
+      const reached = wizardRecent.filter(
+        (w: any) => stepIdx(w.furthestStep) >= i
+      ).length
+      return { step, reached }
+    })
+    const starts = funnel[0]?.reached || 0
+    const completions = funnel[funnel.length - 1]?.reached || 0
+    const wizardConversion = starts > 0 ? (completions / starts) * 100 : 0
+
+    // Biggest drop-off
+    let biggestDropStep: string | null = null
+    let biggestDropPct = 0
+    for (let i = 1; i < funnel.length; i++) {
+      const prev = funnel[i - 1].reached
+      const curr = funnel[i].reached
+      if (prev === 0) continue
+      const dropPct = ((prev - curr) / prev) * 100
+      if (dropPct > biggestDropPct) {
+        biggestDropPct = dropPct
+        biggestDropStep = funnel[i - 1].step
+      }
+    }
+
     return NextResponse.json({
       kpis: {
         total: signups.totalDocs,
@@ -147,6 +222,24 @@ export async function GET() {
         arr,
         churnRate,
         avgMonthly,
+      },
+      leads: {
+        total: leadsTotal,
+        thisMonth: leadsThisMonth,
+        last30Days: leadsLast30,
+        open: leadsOpen,
+        converted: leadsConverted,
+        lost: leadsLost,
+        conversionRate,
+        bySource: leadsBySource,
+      },
+      wizard: {
+        starts,
+        completions,
+        conversion: wizardConversion,
+        funnel,
+        biggestDropStep,
+        biggestDropPct,
       },
       planBreakdown: Object.entries(planCounts)
         .map(([plan, count]) => ({ plan, count }))

@@ -18,6 +18,9 @@ import {
   Loader2,
   AlertCircle,
   Sparkles,
+  Inbox,
+  Filter,
+  AlertTriangle,
 } from "lucide-react"
 import { cn } from "@/lib/utils"
 
@@ -37,6 +40,24 @@ type Stats = {
     arr: number
     churnRate: number
     avgMonthly: number
+  }
+  leads?: {
+    total: number
+    thisMonth: number
+    last30Days: number
+    open: number
+    converted: number
+    lost: number
+    conversionRate: number
+    bySource: Array<{ source: string; count: number }>
+  }
+  wizard?: {
+    starts: number
+    completions: number
+    conversion: number
+    funnel: Array<{ step: string; reached: number }>
+    biggestDropStep: string | null
+    biggestDropPct: number
   }
   planBreakdown: Array<{ plan: string; count: number }>
   monthlyTrend: Array<{ month: string; count: number; mrr: number }>
@@ -311,6 +332,14 @@ const statusColors: Record<string, string> = {
   pausiert: "text-amber-400 border-amber-400/30 bg-amber-400/5",
 }
 
+const STEP_LABELS: Record<string, string> = {
+  plan: "Tarif",
+  personal: "Persoenlich",
+  payment: "Zahlung",
+  review: "Review",
+  success: "Abschluss",
+}
+
 const avatarColors = [
   "bg-cs-accent/80",
   "bg-amber-500/70",
@@ -504,6 +533,172 @@ export function DashboardView({ userName }: { userName: string }) {
             trend={-kpis.churnRate}
           />
         </div>
+
+        {/* ===== Leads + Funnel ===== */}
+        {(stats.leads || stats.wizard) && (
+          <div className="mt-10 grid grid-cols-1 gap-5 lg:grid-cols-[1fr_1.3fr]">
+            {/* Leads */}
+            {stats.leads && (
+              <div className="border border-white/[0.06] bg-white/[0.01] p-7 md:p-8">
+                <div className="flex items-center justify-between">
+                  <div>
+                    <p className="text-[11px] font-medium uppercase tracking-[0.2em] text-cs-accent">
+                      Leads
+                    </p>
+                    <h2 className="mt-2 text-xl font-black uppercase tracking-[-0.02em] text-cs-white">
+                      Interesse &amp; Conversion
+                    </h2>
+                  </div>
+                  <Link
+                    href="/admin/collections/leads"
+                    className="flex items-center gap-1 text-[11px] font-medium uppercase tracking-[0.15em] text-white/50 transition-colors hover:text-cs-accent"
+                  >
+                    Alle <ArrowUpRight className="h-3 w-3" />
+                  </Link>
+                </div>
+
+                <div className="mt-6 grid grid-cols-3 gap-3">
+                  <MiniStat
+                    icon={<Inbox className="h-3.5 w-3.5" />}
+                    value={stats.leads.open.toString()}
+                    label="Offen"
+                    accent
+                  />
+                  <MiniStat
+                    value={stats.leads.last30Days.toString()}
+                    label="30 Tage"
+                  />
+                  <MiniStat
+                    value={`${stats.leads.conversionRate.toFixed(0)}%`}
+                    label="Conversion"
+                  />
+                </div>
+
+                {stats.leads.bySource.length > 0 && (
+                  <div className="mt-6 space-y-3">
+                    <p className="text-[10px] font-medium uppercase tracking-[0.15em] text-white/40">
+                      <Filter className="mr-1 inline h-3 w-3" />
+                      Nach Quelle
+                    </p>
+                    {stats.leads.bySource.map((s, i) => {
+                      const pct =
+                        stats.leads!.total > 0
+                          ? (s.count / stats.leads!.total) * 100
+                          : 0
+                      return (
+                        <div key={s.source}>
+                          <div className="flex items-center justify-between text-[12px]">
+                            <div className="flex items-center gap-2">
+                              <div
+                                className={cn(
+                                  "h-2 w-2",
+                                  avatarColors[i % avatarColors.length]
+                                )}
+                              />
+                              <span className="truncate font-medium text-cs-white/90">
+                                {s.source}
+                              </span>
+                            </div>
+                            <span className="tracking-wider text-white/50">
+                              {s.count}
+                            </span>
+                          </div>
+                          <div className="mt-1.5 h-0.5 overflow-hidden bg-white/[0.04]">
+                            <div
+                              className={cn(
+                                "h-full transition-all duration-1000",
+                                avatarColors[i % avatarColors.length]
+                              )}
+                              style={{ width: `${pct}%` }}
+                            />
+                          </div>
+                        </div>
+                      )
+                    })}
+                  </div>
+                )}
+              </div>
+            )}
+
+            {/* Funnel */}
+            {stats.wizard && (
+              <div className="border border-white/[0.06] bg-white/[0.01] p-7 md:p-8">
+                <div className="flex items-center justify-between">
+                  <div>
+                    <p className="text-[11px] font-medium uppercase tracking-[0.2em] text-cs-accent">
+                      Wizard Funnel · 30 Tage
+                    </p>
+                    <h2 className="mt-2 text-xl font-black uppercase tracking-[-0.02em] text-cs-white">
+                      Drop-off &amp; Abschlussrate
+                    </h2>
+                  </div>
+                  <div className="text-right">
+                    <p className="text-2xl font-black tracking-[-0.03em] text-cs-accent">
+                      {stats.wizard.conversion.toFixed(1)}%
+                    </p>
+                    <p className="text-[10px] tracking-wider text-white/40">
+                      {stats.wizard.completions} / {stats.wizard.starts}
+                    </p>
+                  </div>
+                </div>
+
+                {stats.wizard.biggestDropStep && stats.wizard.biggestDropPct > 5 && (
+                  <div className="mt-5 flex items-start gap-2 border border-amber-400/20 bg-amber-400/[0.04] px-3 py-2.5">
+                    <AlertTriangle className="mt-0.5 h-3.5 w-3.5 shrink-0 text-amber-400" />
+                    <p className="text-[12px] leading-relaxed text-white/70">
+                      Groesster Dropoff:{" "}
+                      <span className="font-bold text-amber-400">
+                        {STEP_LABELS[stats.wizard.biggestDropStep] ??
+                          stats.wizard.biggestDropStep}
+                      </span>{" "}
+                      &rarr; verliert {stats.wizard.biggestDropPct.toFixed(0)}%.
+                    </p>
+                  </div>
+                )}
+
+                <div className="mt-6 space-y-4">
+                  {stats.wizard.funnel.map((f, i) => {
+                    const pct =
+                      stats.wizard!.starts > 0
+                        ? (f.reached / stats.wizard!.starts) * 100
+                        : 0
+                    const next = stats.wizard!.funnel[i + 1]
+                    const dropPct =
+                      next && f.reached > 0
+                        ? ((f.reached - next.reached) / f.reached) * 100
+                        : 0
+                    return (
+                      <div key={f.step}>
+                        <div className="flex items-center justify-between text-[12px]">
+                          <span className="font-medium uppercase tracking-[0.1em] text-cs-white">
+                            {STEP_LABELS[f.step] ?? f.step}
+                          </span>
+                          <span className="tracking-wider text-white/60">
+                            {f.reached}{" "}
+                            <span className="text-white/30">
+                              · {pct.toFixed(0)}%
+                            </span>
+                          </span>
+                        </div>
+                        <div className="mt-1.5 h-1 overflow-hidden bg-white/[0.04]">
+                          <div
+                            className="h-full bg-cs-accent transition-all duration-1000"
+                            style={{ width: `${pct}%` }}
+                          />
+                        </div>
+                        {next && dropPct > 0 && (
+                          <p className="mt-1 text-[10px] tracking-wider text-white/35">
+                            &darr; {dropPct.toFixed(0)}% Dropoff
+                          </p>
+                        )}
+                      </div>
+                    )
+                  })}
+                </div>
+              </div>
+            )}
+          </div>
+        )}
 
         {/* ===== Revenue Trend ===== */}
         <div className="mt-10 border border-white/[0.06] bg-white/[0.01] p-7 md:p-10">
@@ -764,6 +959,37 @@ function Metric({
       </p>
       <p className="mt-0.5 text-[10px] font-medium uppercase tracking-[0.15em] text-white/40">
         {label}
+      </p>
+    </div>
+  )
+}
+
+function MiniStat({
+  value,
+  label,
+  icon,
+  accent = false,
+}: {
+  value: string
+  label: string
+  icon?: React.ReactNode
+  accent?: boolean
+}) {
+  return (
+    <div className="border border-white/[0.06] bg-white/[0.01] p-3">
+      <div className="flex items-center gap-1.5 text-white/40">
+        {icon}
+        <span className="text-[9px] font-medium uppercase tracking-[0.15em]">
+          {label}
+        </span>
+      </div>
+      <p
+        className={cn(
+          "mt-2 text-2xl font-black tracking-[-0.03em]",
+          accent ? "text-cs-accent" : "text-cs-white"
+        )}
+      >
+        {value}
       </p>
     </div>
   )

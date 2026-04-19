@@ -6,7 +6,8 @@ import { sendLeadNotification } from "@/lib/email"
 
 export const dynamic = "force-dynamic"
 
-type LeadInput = {
+type BookInput = {
+  slotId: string
   firstname: string
   lastname: string
   email: string
@@ -20,23 +21,24 @@ function isValidEmail(email: string): boolean {
 }
 
 export async function POST(request: NextRequest) {
-  let body: Partial<LeadInput>
+  let body: Partial<BookInput>
   try {
     body = await request.json()
   } catch {
     return NextResponse.json({ error: "Invalid JSON" }, { status: 400 })
   }
 
+  const slotId = (body.slotId ?? "").trim()
   const firstname = (body.firstname ?? "").trim()
   const lastname = (body.lastname ?? "").trim()
   const email = (body.email ?? "").trim().toLowerCase()
   const phone = (body.phone ?? "").trim()
   const message = (body.message ?? "").trim()
-  const source = (body.source ?? "Website").trim()
+  const source = (body.source ?? "Probetraining Slot").trim()
 
-  if (!firstname || !lastname || !email) {
+  if (!slotId || !firstname || !lastname || !email) {
     return NextResponse.json(
-      { error: "Vorname, Nachname und E-Mail sind Pflichtfelder." },
+      { error: "Slot, Vorname, Nachname und E-Mail sind Pflicht." },
       { status: 400 }
     )
   }
@@ -47,30 +49,37 @@ export async function POST(request: NextRequest) {
     )
   }
 
-  const payload = {
+  const bookingPayload = {
     studioId: MAGICLINE_CONFIG.studioId,
+    timeslotId: slotId,
     firstname,
     lastname,
     email,
     ...(phone && { phone }),
-    ...(message && { message: `[${source}] ${message}` }),
+    ...(message && { message }),
   }
 
   try {
-    const res = await fetch(`${MAGICLINE_CONFIG.baseUrl}/connect/v1/lead`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-      body: JSON.stringify(payload),
-    })
+    const res = await fetch(
+      `${MAGICLINE_CONFIG.baseUrl}/connect/v1/trial-session`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify(bookingPayload),
+      }
+    )
 
     if (!res.ok) {
       const errBody = await res.text()
-      console.error("Magicline lead error:", res.status, errBody)
+      console.error("Trial booking error:", res.status, errBody)
       return NextResponse.json(
-        { error: "Leider konnte deine Anfrage nicht verschickt werden. Bitte versuche es erneut." },
+        {
+          error:
+            "Der gewuenschte Termin konnte nicht gebucht werden. Vielleicht ist er bereits vergeben.",
+        },
         { status: 502 }
       )
     }
@@ -78,7 +87,6 @@ export async function POST(request: NextRequest) {
     const data = await res.json()
 
     const payloadClient = await getPayload({ config })
-
     try {
       await payloadClient.create({
         collection: "leads",
@@ -87,28 +95,37 @@ export async function POST(request: NextRequest) {
           lastname,
           email,
           phone: phone || undefined,
-          message: message || undefined,
+          message: message
+            ? `${message}\n\nGebuchter Slot: ${slotId}`
+            : `Probetraining gebucht (Slot: ${slotId})`,
           source,
           magiclineLeadId: data?.id ? String(data.id) : undefined,
-          status: "neu",
+          status: "probetraining",
         },
       })
     } catch (persistError) {
-      console.error("Lead persist failed (non-blocking):", persistError)
+      console.error("Trial lead persist failed (non-blocking):", persistError)
     }
 
     try {
       await sendLeadNotification(
-        { firstname, lastname, email, phone, message, source },
+        {
+          firstname,
+          lastname,
+          email,
+          phone,
+          message: `[Probetraining-Slot gebucht] ${message}`,
+          source,
+        },
         payloadClient
       )
     } catch (mailError) {
-      console.error("Lead email notification failed (non-blocking):", mailError)
+      console.error("Trial notification failed (non-blocking):", mailError)
     }
 
-    return NextResponse.json({ ok: true, id: data.id, uuid: data.uuid })
+    return NextResponse.json({ ok: true, booking: data })
   } catch (error) {
-    console.error("Lead submit error:", error)
+    console.error("Trial booking unexpected error:", error)
     return NextResponse.json(
       { error: "Netzwerkfehler. Bitte versuche es erneut." },
       { status: 502 }

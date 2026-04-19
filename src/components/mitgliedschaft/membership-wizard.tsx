@@ -36,12 +36,46 @@ export function MembershipWizard() {
   const [error, setError] = useState<string | null>(null);
 
   // Wizard state
-  const [step, setStep] = useState<WizardStep>("plan");
+  const [step, setStepRaw] = useState<WizardStep>("plan");
   const [selectedTerm, setSelectedTerm] = useState<RateBundleTerm | null>(null);
   const [selectedModuleIds, setSelectedModuleIds] = useState<number[]>([]);
   const [personalData, setPersonalData] = useState<PersonalData>(INITIAL_PERSONAL_DATA);
   const [paymentData, setPaymentData] = useState<PaymentData>(INITIAL_PAYMENT_DATA);
   const [voucher, setVoucher] = useState<VoucherState | null>(null);
+  const [sessionId] = useState(() => {
+    if (typeof window === "undefined") return "";
+    const existing = window.sessionStorage.getItem("cs-wizard-session");
+    if (existing) return existing;
+    const fresh = `${Date.now()}-${Math.random().toString(36).slice(2, 10)}`;
+    window.sessionStorage.setItem("cs-wizard-session", fresh);
+    return fresh;
+  });
+
+  const trackStep = useCallback(
+    (nextStep: WizardStep) => {
+      if (!sessionId) return;
+      const referrer = typeof document !== "undefined" ? document.referrer : undefined;
+      fetch("/api/wizard/track", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ sessionId, step: nextStep, referrer }),
+        keepalive: true,
+      }).catch(() => {});
+    },
+    [sessionId]
+  );
+
+  const setStep = useCallback(
+    (next: WizardStep) => {
+      setStepRaw(next);
+      trackStep(next);
+    },
+    [trackStep]
+  );
+
+  useEffect(() => {
+    trackStep("plan");
+  }, [trackStep]);
 
   // Load rate bundles + SEPA text on mount
   useEffect(() => {
