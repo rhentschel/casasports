@@ -165,13 +165,13 @@ export default buildConfig({
             continue
           }
           const filepath = path.join(imagesDir, fn)
-          let buffer = await readFile(filepath)
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          let buffer: any = await readFile(filepath)
           let mimetype = MIME_MAP[ext]
           let size = (await stat(filepath)).size
 
           if (isAvif) {
-            const converted = await sharp(buffer).webp({ quality: 85 }).toBuffer()
-            buffer = Buffer.from(converted.buffer, converted.byteOffset, converted.byteLength)
+            buffer = await sharp(buffer).webp({ quality: 85 }).toBuffer()
             mimetype = "image/webp"
             size = buffer.length
           }
