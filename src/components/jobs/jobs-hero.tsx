@@ -16,7 +16,7 @@ export function JobsHero() {
     <section className="relative flex h-[85svh] min-h-[600px] items-end overflow-hidden bg-cs-black pb-24 md:pb-32">
       <div className="absolute inset-0 animate-[kenburns_30s_ease-in-out_infinite_alternate]">
         <Image
-          src="/images/team-training-1.webp"
+          src="/images/casasports-gruppentraining.webp"
           alt="Team Casa Sports"
           fill
           className="img-cinema object-cover"
