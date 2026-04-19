@@ -97,14 +97,37 @@ export function MegaMenu({ items, isOpen, onClose }: Props) {
               onClick={onClose}
               className="group relative flex min-h-[300px] flex-col justify-end overflow-hidden p-8"
             >
-              <Image
-                src="/images/casasports-personal-training.webp"
-                alt=""
-                fill
-                className="object-cover object-center transition-transform duration-[1.2s] ease-out group-hover:scale-105"
-                sizes="400px"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-black/20" />
+              {/* Ken Burns Layer */}
+              <div className="absolute inset-0 overflow-hidden">
+                <Image
+                  src="/images/casasports-functional-training.webp"
+                  alt=""
+                  fill
+                  className="img-cinema animate-megamenu-kenburns object-cover object-center will-change-transform transition-[filter,transform] duration-[1.2s] ease-out group-hover:scale-[1.08] group-hover:brightness-110"
+                  sizes="400px"
+                />
+              </div>
+
+              {/* Gradient Overlay */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black via-black/65 to-black/15" />
+
+              {/* Red diagonal sweep on hover */}
+              <div className="pointer-events-none absolute inset-0 overflow-hidden">
+                <div className="absolute inset-y-[-50%] -left-[120%] w-[60%] -rotate-12 bg-gradient-to-r from-transparent via-cs-accent/35 to-transparent opacity-0 transition-all duration-[900ms] ease-out group-hover:left-[120%] group-hover:opacity-100" />
+              </div>
+
+              {/* Animated accent line top */}
+              <div className="pointer-events-none absolute left-0 right-0 top-0 h-[2px] overflow-hidden">
+                <div className="h-full w-0 bg-cs-accent transition-all duration-700 ease-out group-hover:w-full" />
+              </div>
+
+              {/* Pulse dot */}
+              <div className="absolute right-5 top-5 flex h-2.5 w-2.5 items-center justify-center">
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-cs-accent opacity-60" />
+                <span className="relative inline-flex h-2 w-2 rounded-full bg-cs-accent" />
+              </div>
+
+              {/* Content */}
               <div className="relative">
                 <p className="text-[10px] font-bold uppercase tracking-[0.25em] text-cs-accent">
                   Kostenlos und unverbindlich
