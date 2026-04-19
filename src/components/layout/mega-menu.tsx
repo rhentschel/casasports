@@ -93,7 +93,7 @@ export function MegaMenu({ items, isOpen, onClose }: Props) {
 
             {/* Right: Feature Highlight */}
             <Link
-              href="/mitglied-werden"
+              href="/probetraining"
               onClick={onClose}
               className="group relative flex min-h-[300px] flex-col justify-end overflow-hidden p-8"
             >
@@ -107,7 +107,7 @@ export function MegaMenu({ items, isOpen, onClose }: Props) {
               <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-black/20" />
               <div className="relative">
                 <p className="text-[10px] font-bold uppercase tracking-[0.25em] text-cs-accent">
-                  Beliebt
+                  Kostenlos und unverbindlich
                 </p>
                 <h3 className="mt-3 text-2xl font-black uppercase leading-[0.95] tracking-[-0.03em] text-cs-white">
                   Dein erstes
@@ -117,10 +117,10 @@ export function MegaMenu({ items, isOpen, onClose }: Props) {
                   <span className="text-cs-accent">geht auf uns.</span>
                 </h3>
                 <p className="mt-4 text-[13px] leading-relaxed text-white/70">
-                  44,90 € All-in Mitgliedschaft inkl. Wellness &amp; Sauna.
+                  Komm vorbei, lerne das Studio kennen, trainiere gratis.
                 </p>
                 <div className="mt-5 inline-flex items-center gap-2 border border-cs-accent bg-cs-accent/10 px-5 py-2.5 text-[11px] font-bold uppercase tracking-[0.15em] text-cs-accent transition-all duration-300 group-hover:bg-cs-accent group-hover:text-cs-white">
-                  Mitglied werden
+                  Probetraining anfragen
                   <ArrowUpRight className="h-3.5 w-3.5 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
                 </div>
               </div>
