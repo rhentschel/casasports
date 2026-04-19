@@ -44,7 +44,7 @@ export default async function JobsPage() {
             {/* Left: Image */}
             <div className="relative hidden overflow-hidden md:block">
               <Image
-                src="/images/team-training-1.webp"
+                src="/images/casasports-kurse-fuer-alle.webp"
                 alt="Team Casa Sports"
                 fill
                 className="img-cinema object-cover object-center"
@@ -72,7 +72,7 @@ export default async function JobsPage() {
             {/* Mobile hero */}
             <div className="relative aspect-[16/9] overflow-hidden md:hidden">
               <Image
-                src="/images/team-training-2.webp"
+                src="/images/casasports-kurse-fuer-alle.webp"
                 alt="Casa Sports Team"
                 fill
                 className="img-cinema object-cover"
