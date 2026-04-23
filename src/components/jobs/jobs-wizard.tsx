@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useCallback } from "react";
+import { useState, useCallback, Fragment } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import {
   ArrowRight,
@@ -140,8 +140,6 @@ function StepPosition({
   onSelect: (id: string) => void;
   onNext: () => void;
 }) {
-  const selected = positions.find((p) => p.id === selectedId);
-
   return (
     <div>
       <p className="text-xs font-medium uppercase tracking-[0.2em] text-cs-accent">
@@ -157,66 +155,108 @@ function StepPosition({
           const Icon = iconMap[pos.icon] || Dumbbell;
 
           return (
-            <div
-              key={pos.id}
-              className={cn(
-                "relative cursor-pointer border p-5 transition-all duration-300",
-                isSelected
-                  ? "border-cs-accent bg-cs-accent/[0.04]"
-                  : "border-white/[0.06] hover:border-white/[0.12]"
-              )}
-              onClick={() => onSelect(pos.id)}
-            >
-              <div className="flex items-center justify-between">
-                <div className="flex items-start gap-4">
-                  <div
-                    className={cn(
-                      "flex h-10 w-10 shrink-0 items-center justify-center border transition-all duration-300",
-                      isSelected
-                        ? "border-cs-accent/30 bg-cs-accent/10"
-                        : "border-white/[0.06] bg-white/[0.02]"
-                    )}
-                  >
-                    <Icon
+            <Fragment key={pos.id}>
+              <div
+                className={cn(
+                  "relative cursor-pointer border p-5 transition-all duration-300",
+                  isSelected
+                    ? "border-cs-accent bg-cs-accent/[0.04]"
+                    : "border-white/[0.06] hover:border-white/[0.12]"
+                )}
+                onClick={() => onSelect(pos.id)}
+              >
+                <div className="flex items-center justify-between">
+                  <div className="flex items-start gap-4">
+                    <div
                       className={cn(
-                        "h-4 w-4 transition-colors",
-                        isSelected ? "text-cs-accent" : "text-white/55"
+                        "flex h-10 w-10 shrink-0 items-center justify-center border transition-all duration-300",
+                        isSelected
+                          ? "border-cs-accent/30 bg-cs-accent/10"
+                          : "border-white/[0.06] bg-white/[0.02]"
                       )}
-                    />
-                  </div>
-                  <div>
-                    <h3 className="text-base font-black uppercase tracking-[-0.01em] text-cs-white">
-                      {pos.title}
-                    </h3>
-                    <div className="mt-1.5 flex flex-wrap gap-3">
-                      <span className="flex items-center gap-1 text-[10px] text-white/60">
-                        <Briefcase className="h-3 w-3" />
-                        {pos.type}
-                      </span>
-                      <span className="flex items-center gap-1 text-[10px] text-white/60">
-                        <Clock className="h-3 w-3" />
-                        {pos.hours}
-                      </span>
-                      <span className="flex items-center gap-1 text-[10px] text-white/60">
-                        <MapPin className="h-3 w-3" />
-                        Oer-Erkenschwick
-                      </span>
+                    >
+                      <Icon
+                        className={cn(
+                          "h-4 w-4 transition-colors",
+                          isSelected ? "text-cs-accent" : "text-white/55"
+                        )}
+                      />
+                    </div>
+                    <div>
+                      <h3 className="text-base font-black uppercase tracking-[-0.01em] text-cs-white">
+                        {pos.title}
+                      </h3>
+                      <div className="mt-1.5 flex flex-wrap gap-3">
+                        <span className="flex items-center gap-1 text-[10px] text-white/60">
+                          <Briefcase className="h-3 w-3" />
+                          {pos.type}
+                        </span>
+                        <span className="flex items-center gap-1 text-[10px] text-white/60">
+                          <Clock className="h-3 w-3" />
+                          {pos.hours}
+                        </span>
+                        <span className="flex items-center gap-1 text-[10px] text-white/60">
+                          <MapPin className="h-3 w-3" />
+                          Oer-Erkenschwick
+                        </span>
+                      </div>
                     </div>
                   </div>
-                </div>
 
-                <div
-                  className={cn(
-                    "flex h-6 w-6 shrink-0 items-center justify-center rounded-full border-2 transition-all",
-                    isSelected
-                      ? "border-cs-accent bg-cs-accent"
-                      : "border-white/20"
-                  )}
-                >
-                  {isSelected && <Check className="h-3.5 w-3.5 text-white" />}
+                  <div
+                    className={cn(
+                      "flex h-6 w-6 shrink-0 items-center justify-center rounded-full border-2 transition-all",
+                      isSelected
+                        ? "border-cs-accent bg-cs-accent"
+                        : "border-white/20"
+                    )}
+                  >
+                    {isSelected && <Check className="h-3.5 w-3.5 text-white" />}
+                  </div>
                 </div>
               </div>
-            </div>
+
+              {isSelected && (
+                <motion.div
+                  initial={{ opacity: 0, height: 0 }}
+                  animate={{ opacity: 1, height: "auto" }}
+                  exit={{ opacity: 0, height: 0 }}
+                  className="overflow-hidden border-l-2 border-cs-accent bg-white/[0.015] px-6 py-5"
+                >
+                  <p className="text-base leading-relaxed text-white/70">
+                    {pos.description}
+                  </p>
+                  <div className="mt-5 grid gap-6 md:grid-cols-2">
+                    <div>
+                      <h4 className="text-[10px] font-bold uppercase tracking-[0.3em] text-cs-accent">
+                        Deine Aufgaben
+                      </h4>
+                      <ul className="mt-3 space-y-2">
+                        {pos.tasks.map((t) => (
+                          <li key={t} className="flex items-start gap-2 text-base text-white/60">
+                            <span className="mt-1.5 h-1 w-1 shrink-0 bg-cs-accent" />
+                            {t}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                    <div>
+                      <h4 className="text-[10px] font-bold uppercase tracking-[0.3em] text-cs-accent">
+                        Was du mitbringst
+                      </h4>
+                      <ul className="mt-3 space-y-2">
+                        {pos.requirements.map((r) => (
+                          <li key={r} className="flex items-start gap-2 text-base text-white/60">
+                            <span className="mt-1.5 h-1 w-1 shrink-0 bg-cs-accent" />
+                            {r}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+                </motion.div>
+              )}
+            </Fragment>
           );
         })}
 
@@ -254,47 +294,6 @@ function StepPosition({
           </div>
         </div>
       </div>
-
-      {/* Details der gewählten Stelle */}
-      {selected && (
-        <motion.div
-          initial={{ opacity: 0, height: 0 }}
-          animate={{ opacity: 1, height: "auto" }}
-          className="mt-6 border border-white/[0.04] bg-white/[0.01] p-6"
-        >
-          <p className="text-base leading-relaxed text-white/60">
-            {selected.description}
-          </p>
-          <div className="mt-5 grid gap-6 md:grid-cols-2">
-            <div>
-              <h4 className="text-[10px] font-bold uppercase tracking-[0.3em] text-cs-accent">
-                Deine Aufgaben
-              </h4>
-              <ul className="mt-3 space-y-2">
-                {selected.tasks.map((t) => (
-                  <li key={t} className="flex items-start gap-2 text-base text-white/50">
-                    <span className="mt-1.5 h-1 w-1 shrink-0 bg-cs-accent" />
-                    {t}
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <div>
-              <h4 className="text-[10px] font-bold uppercase tracking-[0.3em] text-cs-accent">
-                Was du mitbringst
-              </h4>
-              <ul className="mt-3 space-y-2">
-                {selected.requirements.map((r) => (
-                  <li key={r} className="flex items-start gap-2 text-base text-white/50">
-                    <span className="mt-1.5 h-1 w-1 shrink-0 bg-cs-accent" />
-                    {r}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-        </motion.div>
-      )}
 
       <div className="mt-8 flex justify-end">
         <button

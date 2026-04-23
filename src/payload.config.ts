@@ -223,6 +223,99 @@ export default buildConfig({
       payload.logger.error({ err }, "images-sync failed")
     }
 
+    // Umlaut-Korrektur fuer bestehende job-positions (idempotent)
+    try {
+      const UMLAUT_MAP: [RegExp, string][] = [
+        [/Trainingsplaene/g, "Trainingspläne"],
+        [/Trainingsplaen/g, "Trainingsplän"],
+        [/Plaene/g, "Pläne"],
+        [/plaen/g, "plän"],
+        [/Geraete/g, "Geräte"],
+        [/Geraet/g, "Gerät"],
+        [/geraet/g, "gerät"],
+        [/Koerper/g, "Körper"],
+        [/koerper/g, "körper"],
+        [/Hoeher/g, "Höher"],
+        [/hoeher/g, "höher"],
+        [/Fuehrung/g, "Führung"],
+        [/Durchfuehrung/g, "Durchführung"],
+        [/fuehrst/g, "führst"],
+        [/fuehrt/g, "führt"],
+        [/fuehren/g, "führen"],
+        [/einfuehr/g, "einführ"],
+        [/Einfuehr/g, "Einführ"],
+        [/Faehigkeit/g, "Fähigkeit"],
+        [/faehigkeit/g, "fähigkeit"],
+        [/faehig/g, "fähig"],
+        [/Zuverlaessig/g, "Zuverlässig"],
+        [/zuverlaessig/g, "zuverlässig"],
+        [/Selbststaendig/g, "Selbstständig"],
+        [/selbststaendig/g, "selbstständig"],
+        [/Staerke/g, "Stärke"],
+        [/staerke/g, "stärke"],
+        [/Taeglich/g, "Täglich"],
+        [/taeglich/g, "täglich"],
+        [/regelmaessig/g, "regelmäßig"],
+        [/Regelmaessig/g, "Regelmäßig"],
+        [/Qualitaet/g, "Qualität"],
+        [/Naehe/g, "Nähe"],
+        [/Ueber /g, "Über "],
+        [/ ueber /g, " über "],
+        [/Mueller/g, "Müller"],
+        [/fuer /g, "für "],
+        [/Fuer /g, "Für "],
+      ]
+
+      const all = await payload.find({
+        collection: "job-positions",
+        limit: 100,
+        overrideAccess: true,
+      })
+
+      let fixed = 0
+      for (const pos of all.docs) {
+        const apply = (s: string | null | undefined): string => {
+          if (!s) return s as unknown as string
+          let out = s
+          for (const [re, rep] of UMLAUT_MAP) out = out.replace(re, rep)
+          return out
+        }
+        const newData: Record<string, unknown> = {}
+        let changed = false
+        const origDesc = pos.description as string | undefined
+        const newDesc = apply(origDesc)
+        if (origDesc && newDesc !== origDesc) {
+          newData.description = newDesc
+          changed = true
+        }
+        const tasks = (pos.tasks as { task: string; id?: string }[] | undefined) ?? []
+        const newTasks = tasks.map((t) => ({ ...t, task: apply(t.task) }))
+        if (JSON.stringify(tasks.map((t) => t.task)) !== JSON.stringify(newTasks.map((t) => t.task))) {
+          newData.tasks = newTasks
+          changed = true
+        }
+        const reqs = (pos.requirements as { requirement: string; id?: string }[] | undefined) ?? []
+        const newReqs = reqs.map((r) => ({ ...r, requirement: apply(r.requirement) }))
+        if (JSON.stringify(reqs.map((r) => r.requirement)) !== JSON.stringify(newReqs.map((r) => r.requirement))) {
+          newData.requirements = newReqs
+          changed = true
+        }
+
+        if (changed) {
+          await payload.update({
+            collection: "job-positions",
+            id: pos.id,
+            data: newData,
+            overrideAccess: true,
+          })
+          fixed++
+        }
+      }
+      payload.logger.info(`positions-umlaut-fix: ${fixed}/${all.docs.length} aktualisiert`)
+    } catch (err) {
+      payload.logger.error({ err }, "positions-umlaut-fix failed")
+    }
+
     // Seed job-positions (idempotent) - Praktikum
     try {
       const existing = await payload.find({
