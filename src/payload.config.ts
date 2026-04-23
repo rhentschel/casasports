@@ -136,7 +136,7 @@ export default buildConfig({
         files = await readdir(imagesDir)
       } catch {
         payload.logger.info("images-sync: public/images not found, skipped")
-        return
+        files = []
       }
 
       const imageFiles = files.filter((f) =>
@@ -219,11 +219,51 @@ export default buildConfig({
       payload.logger.info(
         `images-sync: imported=${imported} skipped=${skipped} repaired=${repaired} total=${imageFiles.length}`
       )
-      // eslint-disable-next-line no-unreachable
-      return
-
     } catch (err) {
       payload.logger.error({ err }, "images-sync failed")
+    }
+
+    // Seed job-positions (idempotent) - Praktikum
+    try {
+      const existing = await payload.find({
+        collection: "job-positions",
+        where: { title: { equals: "Praktikum" } },
+        limit: 1,
+        overrideAccess: true,
+      })
+      if (existing.docs.length === 0) {
+        await payload.create({
+          collection: "job-positions",
+          data: {
+            title: "Praktikum",
+            type: "Praktikum",
+            hours: "Vollzeit / Teilzeit",
+            icon: "Briefcase",
+            description:
+              "Schnupper in den Alltag eines modernen Fitnessstudios. Du bekommst Einblicke in Training, Kundenbetreuung, Kurse und Wellness und entscheidest am Ende, ob eine Ausbildung oder Karriere bei uns das Richtige ist.",
+            tasks: [
+              { task: "Trainingsflaeche begleiten und Mitglieder unterstuetzen" },
+              { task: "In Kurse, Personal Training und Wellness reinschnuppern" },
+              { task: "Empfang und Kundenservice kennenlernen" },
+              { task: "Eigene Projekte je nach Interesse uebernehmen" },
+            ],
+            requirements: [
+              { requirement: "Interesse an Fitness, Gesundheit und Menschen" },
+              { requirement: "Zuverlaessig, offen und motiviert" },
+              { requirement: "Mindestalter 15 Jahre (Schuelerpraktikum moeglich)" },
+              { requirement: "Keine Vorkenntnisse noetig" },
+            ],
+            active: true,
+            sortOrder: 50,
+          },
+          overrideAccess: true,
+        })
+        payload.logger.info("positions-seed: Praktikum angelegt")
+      } else {
+        payload.logger.info("positions-seed: Praktikum existiert bereits")
+      }
+    } catch (err) {
+      payload.logger.error({ err }, "positions-seed failed")
     }
   },
   admin: {

@@ -62,6 +62,7 @@ const iconMap: Record<string, typeof Dumbbell> = {
   Users,
   GraduationCap,
   Headphones,
+  Briefcase,
 };
 
 const WIZARD_STEPS: { key: WizardStep; label: string }[] = [

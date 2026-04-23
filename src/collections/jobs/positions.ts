@@ -42,6 +42,7 @@ export const JobPositions: CollectionConfig = {
         { label: "Gruppe (Kursleiter)", value: "Users" },
         { label: "Ausbildung", value: "GraduationCap" },
         { label: "Empfang", value: "Headphones" },
+        { label: "Praktikum", value: "Briefcase" },
       ],
     },
     {
