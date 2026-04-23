@@ -223,6 +223,46 @@ export default buildConfig({
       payload.logger.error({ err }, "images-sync failed")
     }
 
+    // Autor-Bild-Link: verknuepft authors.image mit team-*.webp aus Media-Collection (idempotent)
+    try {
+      const AUTHOR_IMAGE_MAP: Record<string, string> = {
+        hidayet: "team-hidayet.webp",
+        naim: "naim-casasports.webp",
+        jennifer: "team-jennifer.webp",
+        eren: "team-eren.webp",
+        renate: "team-renate.webp",
+      }
+      let linked = 0
+      for (const [slug, filename] of Object.entries(AUTHOR_IMAGE_MAP)) {
+        const author = await payload.find({
+          collection: "authors",
+          where: { slug: { equals: slug } },
+          limit: 1,
+          overrideAccess: true,
+        })
+        if (author.docs.length === 0) continue
+        const a = author.docs[0] as { id: string | number; image?: unknown }
+        if (a.image && typeof a.image === "object") continue
+        const media = await payload.find({
+          collection: "media",
+          where: { filename: { equals: filename } },
+          limit: 1,
+          overrideAccess: true,
+        })
+        if (media.docs.length === 0) continue
+        await payload.update({
+          collection: "authors",
+          id: a.id,
+          data: { image: media.docs[0].id } as unknown as Record<string, unknown>,
+          overrideAccess: true,
+        })
+        linked++
+      }
+      payload.logger.info(`authors-image-link: ${linked} verknuepft`)
+    } catch (err) {
+      payload.logger.error({ err }, "authors-image-link failed")
+    }
+
     // Umlaut-Korrektur fuer bestehende job-positions (idempotent)
     try {
       const UMLAUT_MAP: [RegExp, string][] = [

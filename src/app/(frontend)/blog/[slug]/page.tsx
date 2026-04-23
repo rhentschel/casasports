@@ -11,6 +11,8 @@ import { ArticleTags } from "@/components/blog/article-tags"
 import { ArticleClusterNav } from "@/components/blog/article-cluster-nav"
 import { ArticleRelated } from "@/components/blog/article-related"
 import { ArticleSchema } from "@/components/blog/article-schema"
+import { KeyTakeaway } from "@/components/blog/key-takeaway"
+import { ArticleFaq } from "@/components/blog/article-faq"
 import { BlogCta } from "@/components/blog/blog-cta"
 import { getPostBySlug, getAllPostSlugs, getAllPosts, getClusterForPost } from "@/lib/payload-data"
 import { calculateReadingTime, lexicalToHtml } from "@/lib/blog-utils"
@@ -108,6 +110,8 @@ export default async function BlogPostPage({ params }: PageProps) {
     tags,
     seo: (post as any).seo || {},
     relatedSlugs: (post as any).relatedSlugs || [],
+    faq: (post as any).faq || [],
+    keyTakeaway: (post as any).keyTakeaway || "",
   }
 
   // Fetch related posts (use relatedSlugs if available, otherwise get all and filter)
@@ -165,7 +169,13 @@ export default async function BlogPostPage({ params }: PageProps) {
       <article className="mx-auto max-w-7xl px-8 py-12 md:px-16 md:py-16">
         <div className="grid gap-12 lg:grid-cols-[1fr_280px]">
           <div className="min-w-0">
+            {(post as any).keyTakeaway && (
+              <KeyTakeaway text={(post as any).keyTakeaway} />
+            )}
             <ArticleBody content={contentHtml} />
+            {Array.isArray((post as any).faq) && (post as any).faq.length > 0 && (
+              <ArticleFaq items={(post as any).faq} />
+            )}
             <ArticleTags tags={tags} />
             {authorForComponent && <ArticleAuthor author={authorForComponent} />}
             {clusterForComponent && (
@@ -174,7 +184,10 @@ export default async function BlogPostPage({ params }: PageProps) {
           </div>
 
           <aside className="hidden lg:block">
-            <ArticleToc content={contentHtml} />
+            <ArticleToc
+              content={contentHtml}
+              hasFaq={Array.isArray((post as any).faq) && (post as any).faq.length > 0}
+            />
           </aside>
         </div>
       </article>

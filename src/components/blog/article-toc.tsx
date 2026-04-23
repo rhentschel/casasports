@@ -1,15 +1,16 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import { List } from "lucide-react"
+import { List, HelpCircle } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { extractHeadings } from "@/lib/blog-utils"
 
 interface ArticleTocProps {
   content: string
+  hasFaq?: boolean
 }
 
-export function ArticleToc({ content }: ArticleTocProps) {
+export function ArticleToc({ content, hasFaq = false }: ArticleTocProps) {
   const headings = extractHeadings(content)
   const [activeId, setActiveId] = useState("")
 
@@ -29,37 +30,72 @@ export function ArticleToc({ content }: ArticleTocProps) {
       const el = document.getElementById(h.id)
       if (el) observer.observe(el)
     }
+    if (hasFaq) {
+      const el = document.getElementById("faq")
+      if (el) observer.observe(el)
+    }
 
     return () => observer.disconnect()
-  }, [headings])
+  }, [headings, hasFaq])
 
-  if (headings.length < 3) return null
+  if (headings.length < 2 && !hasFaq) return null
 
   return (
     <nav className="sticky top-24" aria-label="Inhaltsverzeichnis">
-      <div className="border-l border-white/[0.06] pl-6">
-        <p className="flex items-center gap-2 text-[11px] font-bold uppercase tracking-[0.25em] text-cs-gray-500">
+      <div className="border-l-2 border-white/[0.08] pl-6">
+        <p className="flex items-center gap-2 text-[11px] font-bold uppercase tracking-[0.25em] text-cs-gray-400">
           <List className="h-3.5 w-3.5" />
           Inhalt
         </p>
 
-        <ul className="mt-4 space-y-2.5">
-          {headings.map((h) => (
-            <li key={h.id}>
+        <ul className="mt-4 space-y-3">
+          {headings.map((h) => {
+            const isActive = activeId === h.id
+            return (
+              <li key={h.id} className="relative">
+                {isActive && (
+                  <span
+                    aria-hidden
+                    className="absolute -left-[26px] top-1 h-[calc(100%-4px)] w-0.5 bg-cs-accent"
+                  />
+                )}
+                <a
+                  href={`#${h.id}`}
+                  className={cn(
+                    "block text-[14px] leading-snug transition-colors duration-300",
+                    h.level === 3 && "pl-4",
+                    isActive
+                      ? "text-cs-accent"
+                      : "text-cs-gray-400 hover:text-cs-white"
+                  )}
+                >
+                  {h.text}
+                </a>
+              </li>
+            )
+          })}
+          {hasFaq && (
+            <li className="relative">
+              {activeId === "faq" && (
+                <span
+                  aria-hidden
+                  className="absolute -left-[26px] top-1 h-[calc(100%-4px)] w-0.5 bg-cs-accent"
+                />
+              )}
               <a
-                href={`#${h.id}`}
+                href="#faq"
                 className={cn(
-                  "block text-[13px] leading-snug transition-colors duration-300",
-                  h.level === 3 && "pl-4",
-                  activeId === h.id
+                  "flex items-center gap-1.5 text-[14px] leading-snug transition-colors duration-300",
+                  activeId === "faq"
                     ? "text-cs-accent"
-                    : "text-cs-gray-500 hover:text-cs-white"
+                    : "text-cs-gray-400 hover:text-cs-white"
                 )}
               >
-                {h.text}
+                <HelpCircle className="h-3.5 w-3.5" />
+                Häufige Fragen
               </a>
             </li>
-          ))}
+          )}
         </ul>
       </div>
     </nav>

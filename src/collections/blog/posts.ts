@@ -128,6 +128,36 @@ export const Posts: CollectionConfig = {
       },
     },
     {
+      name: "keyTakeaway",
+      label: "Key Takeaway (Kernaussage)",
+      type: "textarea",
+      admin: {
+        description: "1-3 Saetze, die die wichtigste Frage direkt beantworten. Wird ganz oben im Artikel als Hervorhebung angezeigt.",
+      },
+    },
+    {
+      name: "faq",
+      label: "FAQ",
+      type: "array",
+      admin: {
+        description: "Haeufige Fragen zum Thema - wird am Ende des Artikels als FAQ-Block und als FAQPage-Schema ausgegeben.",
+      },
+      fields: [
+        {
+          name: "question",
+          label: "Frage",
+          type: "text",
+          required: true,
+        },
+        {
+          name: "answer",
+          label: "Antwort",
+          type: "textarea",
+          required: true,
+        },
+      ],
+    },
+    {
       name: "relatedPosts",
       label: "Verwandte Beitraege",
       type: "relationship",
