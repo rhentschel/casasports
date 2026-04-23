@@ -226,6 +226,141 @@ export default buildConfig({
       payload.logger.error({ err }, "images-sync failed")
     }
 
+    // Blog-Content-Seed: keyTakeaway + faq fuer bestehende Artikel (idempotent, nur wenn leer)
+    try {
+      type BlogSeed = { keyTakeaway: string; faq: { question: string; answer: string }[] }
+      const BLOG_CONTENT: Record<string, BlogSeed> = {
+        "sauna-nach-dem-training": {
+          keyTakeaway:
+            "Sauna nach dem Training unterstützt Regeneration, Durchblutung und Entspannung. Wichtig sind kurze Saunagänge zwischen acht und zwölf Minuten sowie ausreichend Flüssigkeit davor und danach.",
+          faq: [
+            { question: "Wie lange sollte ich nach dem Training in die Sauna?", answer: "Für Sportler sind zwei Saunagänge à acht bis zwölf Minuten ideal. Wichtiger als die Länge ist, dass du auf deinen Körper hörst und nicht erschöpft in die Hitze gehst." },
+            { question: "Direkt nach dem Training oder mit Pause?", answer: "Plane etwa fünfzehn bis dreißig Minuten Pause ein, damit dein Kreislauf runterfährt. Dusche kurz ab, trinke etwas und iss einen kleinen Snack bevor du in die Sauna gehst." },
+            { question: "Wie oft pro Woche ist sinnvoll?", answer: "Zwei- bis dreimal pro Woche sind eine gute Orientierung. Wer intensiv trainiert, kann häufiger saunieren, sollte dann aber besonders auf Flüssigkeitshaushalt und Schlaf achten." },
+            { question: "Was trinke ich am besten vorher und nachher?", answer: "Wasser und ungesüßter Tee sind die beste Wahl. Nach dem Saunieren hilft eine leicht salzhaltige Brühe oder Mineralwasser, um Elektrolyte aufzufüllen." },
+            { question: "Wann sollte ich auf die Sauna nach dem Training verzichten?", answer: "Bei Infekten, Kreislaufproblemen, unbehandeltem Bluthochdruck oder starker Erschöpfung ist die Sauna tabu. Bei Schwangerschaft oder Vorerkrankungen immer vorher ärztlich abklären." },
+          ],
+        },
+        "krafttraining-fuer-anfaenger": {
+          keyTakeaway:
+            "Als Anfänger brauchst du keine perfekte Technik am ersten Tag. Starte mit Ganzkörper-Einheiten zweimal pro Woche, lerne Grundübungen langsam und steigere Gewicht oder Wiederholungen erst, wenn die Bewegung sauber sitzt.",
+          faq: [
+            { question: "Wie oft pro Woche sollte ich als Anfänger trainieren?", answer: "Zwei bis drei Ganzkörper-Einheiten pro Woche mit mindestens einem Tag Pause dazwischen sind optimal. Dein Körper braucht die Ruhezeit, um stärker zu werden." },
+            { question: "Geräte oder freie Gewichte zum Einstieg?", answer: "Eine Mischung ist ideal. Geräte geben Sicherheit und führen die Bewegung, mit freien Gewichten lernst du Koordination und Stabilisation. Unsere Trainer zeigen dir, womit du starten solltest." },
+            { question: "Wie viele Sätze und Wiederholungen?", answer: "Drei Sätze à acht bis zwölf Wiederholungen pro Übung sind ein bewährter Startpunkt. Wichtig ist, dass die letzten zwei Wiederholungen anstrengend, aber technisch sauber ausgeführt werden." },
+            { question: "Ist starker Muskelkater ein gutes Zeichen?", answer: "Leichter Muskelkater ist normal, starker Muskelkater bedeutet meist, dass du zu viel zu schnell wolltest. Fahre die Intensität zurück und gib dem Körper mehr Zeit zur Anpassung." },
+            { question: "Brauche ich am Anfang einen Trainer?", answer: "Ein Einführungstermin ist sehr empfehlenswert, auch wenn du kein Komplettpaket buchst. So lernst du die Grundübungen technisch richtig und sparst dir Rückschritte durch falsche Ausführung." },
+          ],
+        },
+        "cardio-oder-krafttraining": {
+          keyTakeaway:
+            "Weder Cardio noch Krafttraining ist pauschal besser. Für Fettabbau und eine definierte Figur wirkt die Kombination am stärksten, für reine Ausdauer liegt der Fokus auf Cardio, für Muskelaufbau auf Kraft.",
+          faq: [
+            { question: "Reicht Cardio allein zum Abnehmen?", answer: "Cardio verbrennt Kalorien während des Trainings, Krafttraining erhöht deinen Grundumsatz langfristig. Die Kombination ist für die meisten Menschen der nachhaltigste Weg." },
+            { question: "Macht Krafttraining Frauen muskulös?", answer: "Nein. Ohne gezielte Ernährung und sehr hohe Trainingsvolumen baust du keine massiven Muskeln auf. Du bekommst eine festere und definiertere Figur." },
+            { question: "Zuerst Kraft oder Cardio im Training?", answer: "Wenn Muskelaufbau das Ziel ist, starte mit Krafttraining. Cardio im Anschluss ist dann Feinschliff. Beim reinen Ausdauertraining kehrt sich die Reihenfolge um." },
+            { question: "Wie viele Einheiten pro Woche sind optimal?", answer: "Drei bis vier Einheiten mit einer Mischung aus beidem sind für die meisten realistisch und wirksam. Wichtig ist Regelmäßigkeit, nicht die perfekte Aufteilung." },
+            { question: "Kann ich beides im selben Training machen?", answer: "Ja, das nennt sich Hybrid-Training. Ideal sind zwanzig bis dreißig Minuten Krafttraining gefolgt von fünfzehn bis zwanzig Minuten Cardio auf moderatem Niveau." },
+          ],
+        },
+        "functional-training-im-alltag": {
+          keyTakeaway:
+            "Functional Training trainiert komplette Bewegungsmuster statt einzelner Muskeln. Das spiegelt wider, was du im Alltag brauchst und beugt Schmerzen, Haltungsproblemen und Verletzungen vor.",
+          faq: [
+            { question: "Was ist der Unterschied zu klassischem Krafttraining?", answer: "Klassisches Training isoliert Muskeln an Geräten, Functional Training verbindet mehrere Gelenke und Muskeln in einer Bewegung. Das Ergebnis ist alltagsnahe Kraft und bessere Koordination." },
+            { question: "Für wen ist Functional Training geeignet?", answer: "Für wirklich jeden. Ob Einsteiger, Büromensch mit Rückenschmerzen oder Leistungssportler, die Übungen lassen sich individuell anpassen." },
+            { question: "Brauche ich spezielles Equipment?", answer: "Für den Einstieg reicht dein Körpergewicht. Bei uns im Studio gibt es zusätzlich Kettlebells, TRX-Schlingen, Bälle und Boxen für mehr Variation." },
+            { question: "Wie oft pro Woche sollte ich üben?", answer: "Zwei bis drei Einheiten pro Woche reichen für spürbare Verbesserungen. Die Übungen sind gelenkschonend und gut mit anderem Training kombinierbar." },
+            { question: "Hilft Functional Training bei Rückenschmerzen?", answer: "Ja, weil es die Tiefenmuskulatur und Rumpfstabilität stärkt. Bei akuten Beschwerden zuerst ärztlich abklären und dann gezielt mit einem Trainer starten." },
+          ],
+        },
+        "proteinbedarf-berechnen": {
+          keyTakeaway:
+            "Dein Proteinbedarf hängt von Gewicht, Trainingspensum und Ziel ab. Als Orientierung für aktive Sportler gelten etwa 1,6 bis 2 Gramm Protein pro Kilogramm Körpergewicht pro Tag.",
+          faq: [
+            { question: "Wie berechne ich meinen Bedarf konkret?", answer: "Multipliziere dein Körpergewicht in Kilogramm mit einem Faktor zwischen 1,6 und 2. Bei achtzig Kilo Körpergewicht landest du also bei ungefähr 128 bis 160 Gramm Protein pro Tag." },
+            { question: "Reicht normale Ernährung oder brauche ich Shakes?", answer: "Wer regelmäßig Fleisch, Fisch, Eier, Milchprodukte oder Hülsenfrüchte isst, schafft den Bedarf meist ohne Shakes. Pulver ist ein bequemer Backup für unterwegs, kein Muss." },
+            { question: "Ist zu viel Protein schädlich?", answer: "Für gesunde Menschen mit ausreichend Flüssigkeit ist ein Überschuss unkritisch, wird aber nicht zusätzlich für Muskelaufbau genutzt. Bei Nierenvorerkrankungen vorher ärztlich abklären." },
+            { question: "Wann sollte ich Protein zu mir nehmen?", answer: "Verteile Protein auf drei bis fünf Mahlzeiten über den Tag. Eine proteinreiche Mahlzeit nach dem Training ist sinnvoll, der magische Zeitpunkt direkt danach ist aber überholt." },
+            { question: "Pflanzlich oder tierisch, was ist besser?", answer: "Tierisches Protein ist von Natur aus komplett, pflanzliches musst du kombinieren. Mit etwas Planung funktioniert pflanzliche Ernährung genauso gut, besonders bei Hülsenfrüchten und Vollkorn." },
+          ],
+        },
+        "fitness-training-der-komplette-guide": {
+          keyTakeaway:
+            "Ein solider Fitnessplan für Einsteiger besteht aus Ganzkörper-Krafttraining zwei- bis dreimal pro Woche, ergänzt durch moderates Cardio und mindestens einem Ruhetag zwischen intensiven Einheiten.",
+          faq: [
+            { question: "Wie fange ich am besten an?", answer: "Beginne mit einem Einführungstermin, bei dem wir Ziele besprechen und Grundübungen zeigen. Starte mit weniger Gewicht als du dir zutraust, Technik kommt vor Kraft." },
+            { question: "Wie lange sollte eine Einheit dauern?", answer: "Fünfundvierzig bis sechzig Minuten inklusive Aufwärmen und Abkühlen sind für die meisten optimal. Kürzer und intensiver ist oft effektiver als stundenlang." },
+            { question: "Wann sehe ich erste Ergebnisse?", answer: "Nach vier bis sechs Wochen fühlst du dich fitter, nach acht bis zwölf Wochen siehst du Veränderungen. Nachhaltige Ergebnisse brauchen Monate, keine Tage." },
+            { question: "Soll ich jeden Tag trainieren?", answer: "Nein. Muskeln wachsen in den Pausen. Drei bis vier Trainingstage plus Bewegung im Alltag sind für die meisten ideal." },
+            { question: "Brauche ich separate Bauchmuskel-Einheiten?", answer: "Grundübungen wie Kniebeuge und Kreuzheben trainieren den Rumpf bereits mit. Zwei kurze gezielte Einheiten pro Woche reichen als Ergänzung." },
+          ],
+        },
+        "sporternaehrung-der-komplette-guide": {
+          keyTakeaway:
+            "Sporternährung dreht sich um drei Hebel: genug Protein für Muskeln, Kohlenhydrate als Energie ums Training herum und Mikronährstoffe für Regeneration. Dazu ausreichend Wasser über den Tag verteilt.",
+          faq: [
+            { question: "Was esse ich vor dem Training?", answer: "Etwa ein bis zwei Stunden vor dem Training eine leichte Mahlzeit mit Kohlenhydraten und etwas Protein, zum Beispiel Haferflocken mit Quark und Beeren." },
+            { question: "Und nach dem Training?", answer: "Eine ausgewogene Mahlzeit innerhalb der nächsten zwei Stunden reicht völlig. Ideal sind Protein und Kohlenhydrate, etwa Reis mit Hähnchen oder Tofu und Gemüse." },
+            { question: "Wie viele Mahlzeiten pro Tag sind optimal?", answer: "Drei bis vier Hauptmahlzeiten plus ein bis zwei Snacks passen für die meisten. Wichtiger als die Anzahl ist, dass du über den Tag genug Protein und Gesamtkalorien erreichst." },
+            { question: "Muss ich Kalorien zählen?", answer: "Am Anfang hilft es, ein Gefühl für Portionen zu bekommen. Dauerhaft zählen ist nicht nötig, sobald du weißt, wie viel du wovon brauchst." },
+            { question: "Welche Supplements sind wirklich sinnvoll?", answer: "Proteinpulver als Ergänzung, Kreatin für Kraft und Omega-3 bei wenig Fisch im Speiseplan sind die drei am besten untersuchten. Alles andere ist Feinschliff oder unnötig." },
+          ],
+        },
+        "wellness-und-regeneration-guide": {
+          keyTakeaway:
+            "Regeneration ist kein Extra, sondern Teil deines Trainings. In der Erholung wachsen Muskeln. Wechsel aus Sauna, Kältereiz, gutem Schlaf und aktivem Stretching macht deutlich mehr aus als reine Belastung.",
+          faq: [
+            { question: "Wie viel Schlaf brauche ich bei regelmäßigem Training?", answer: "Sieben bis neun Stunden sind der wichtigste Regenerationshebel überhaupt. Ohne ausreichend Schlaf bleibt der beste Trainingsplan unter seinen Möglichkeiten." },
+            { question: "Sauna oder Kältetherapie, was ist besser?", answer: "Beides wirkt, aber anders. Sauna entspannt und fördert Durchblutung, Kälte reduziert Entzündungsreaktionen akut. Für Muskelaufbau direkt nach dem Training lieber keine Kälte, für reine Regeneration gerne." },
+            { question: "Aktive oder passive Regeneration?", answer: "Eine Mischung. Passives Ausruhen gibt dem Nervensystem Ruhe, leichte Bewegung wie Spaziergang oder lockeres Radfahren bringt Nährstoffe in die Muskeln." },
+            { question: "Wie erkenne ich Übertraining?", answer: "Typische Zeichen sind dauerhafte Müdigkeit, schlechter Schlaf, Leistungsabfall, häufige Infekte und Lustlosigkeit. Dann hilft nur eine echte Pause von mindestens einer Woche." },
+            { question: "Wann ist ein kompletter Ruhetag Pflicht?", answer: "Mindestens ein voller Ruhetag pro Woche sollte fest eingeplant sein. Wer hart trainiert, braucht eher zwei. Aktive Erholung wie Spaziergang ist an Ruhetagen erlaubt." },
+          ],
+        },
+      }
+
+      const allPosts = await payload.find({
+        collection: "posts",
+        limit: 200,
+        overrideAccess: true,
+      })
+
+      let seeded = 0
+      for (const post of allPosts.docs) {
+        const p = post as {
+          id: string | number
+          slug?: string
+          keyTakeaway?: string | null
+          faq?: unknown
+        }
+        if (!p.slug) continue
+        const seed = BLOG_CONTENT[p.slug]
+        if (!seed) continue
+
+        const hasKeyTakeaway =
+          typeof p.keyTakeaway === "string" && p.keyTakeaway.trim().length > 0
+        const hasFaq = Array.isArray(p.faq) && p.faq.length > 0
+
+        if (hasKeyTakeaway && hasFaq) continue
+
+        const updateData: Record<string, unknown> = {}
+        if (!hasKeyTakeaway) updateData.keyTakeaway = seed.keyTakeaway
+        if (!hasFaq) updateData.faq = seed.faq
+
+        await payload.update({
+          collection: "posts",
+          id: p.id,
+          data: updateData,
+          overrideAccess: true,
+        })
+        seeded++
+      }
+      payload.logger.info(`blog-content-seed: ${seeded}/${allPosts.docs.length} aktualisiert`)
+    } catch (err) {
+      payload.logger.error({ err }, "blog-content-seed failed")
+    }
+
     // Autor-Bild-Link: verknuepft authors.image mit team-*.webp aus Media-Collection (idempotent)
     try {
       const AUTHOR_IMAGE_MAP: Record<string, string> = {
