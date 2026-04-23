@@ -403,6 +403,7 @@ export function JobsForm() {
                     <option value="minijob">Minijob (520 EUR)</option>
                     <option value="freelance">Freiberuflich / Honorar</option>
                     <option value="training">Ausbildung</option>
+                    <option value="internship">Praktikum</option>
                   </select>
                 </div>
                 <div>

@@ -491,6 +491,7 @@ function StepDetails({
               <option value="minijob">Minijob (520 EUR)</option>
               <option value="freelance">Freiberuflich</option>
               <option value="training">Ausbildung</option>
+              <option value="internship">Praktikum</option>
             </select>
           </div>
           <div>
@@ -648,7 +649,7 @@ function StepReview({
   };
   const availabilityLabels: Record<string, string> = {
     fulltime: "Vollzeit", parttime: "Teilzeit", minijob: "Minijob",
-    freelance: "Freiberuflich", training: "Ausbildung",
+    freelance: "Freiberuflich", training: "Ausbildung", internship: "Praktikum",
   };
 
   return (

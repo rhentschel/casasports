@@ -25,6 +25,7 @@ const availabilityLabels: Record<string, string> = {
   minijob: "Minijob (520 EUR)",
   freelance: "Freiberuflich / Honorar",
   training: "Ausbildung",
+  internship: "Praktikum",
 };
 
 const ALLOWED_CV_MIMES = [
