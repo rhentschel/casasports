@@ -234,7 +234,7 @@ function StepPosition({
               <h3 className="text-base font-black uppercase tracking-[-0.01em] text-cs-white">
                 Initiativbewerbung
               </h3>
-              <p className="mt-1 text-[11px] text-white/55">
+              <p className="mt-1 text-base text-white/55">
                 Keine passende Stelle? Bewirb dich trotzdem.
               </p>
             </div>
@@ -261,7 +261,7 @@ function StepPosition({
           animate={{ opacity: 1, height: "auto" }}
           className="mt-6 border border-white/[0.04] bg-white/[0.01] p-6"
         >
-          <p className="text-sm leading-relaxed text-white/60">
+          <p className="text-base leading-relaxed text-white/60">
             {selected.description}
           </p>
           <div className="mt-5 grid gap-6 md:grid-cols-2">
@@ -271,7 +271,7 @@ function StepPosition({
               </h4>
               <ul className="mt-3 space-y-2">
                 {selected.tasks.map((t) => (
-                  <li key={t} className="flex items-start gap-2 text-[13px] text-white/50">
+                  <li key={t} className="flex items-start gap-2 text-base text-white/50">
                     <span className="mt-1.5 h-1 w-1 shrink-0 bg-cs-accent" />
                     {t}
                   </li>
@@ -284,7 +284,7 @@ function StepPosition({
               </h4>
               <ul className="mt-3 space-y-2">
                 {selected.requirements.map((r) => (
-                  <li key={r} className="flex items-start gap-2 text-[13px] text-white/50">
+                  <li key={r} className="flex items-start gap-2 text-base text-white/50">
                     <span className="mt-1.5 h-1 w-1 shrink-0 bg-cs-accent" />
                     {r}
                   </li>
@@ -523,7 +523,7 @@ function StepDetails({
             ) : (
               <span />
             )}
-            <span className="text-[11px] text-white/55">
+            <span className="text-base text-white/55">
               {data.message.length} Zeichen
             </span>
           </div>
@@ -538,10 +538,10 @@ function StepDetails({
                   <FileText className="h-4 w-4 text-cs-accent" />
                 </div>
                 <div className="min-w-0">
-                  <p className="truncate text-[13px] font-medium text-cs-white">
+                  <p className="truncate text-base font-medium text-cs-white">
                     {data.cv.name}
                   </p>
-                  <p className="text-[11px] text-white/50">
+                  <p className="text-base text-white/50">
                     {formatBytes(data.cv.size)}
                   </p>
                 </div>
@@ -564,10 +564,10 @@ function StepDetails({
             >
               <Upload className="h-4 w-4 text-white/55" />
               <div className="flex-1">
-                <p className="text-[13px] text-white/70">
+                <p className="text-base text-white/70">
                   Lebenslauf hochladen
                 </p>
-                <p className="text-[11px] text-white/45">
+                <p className="text-base text-white/45">
                   PDF, DOC oder DOCX, max. 8 MB
                 </p>
               </div>
@@ -591,7 +591,7 @@ function StepDetails({
             onChange={(e) => onChange("privacy", e.target.checked)}
             className="mt-1 h-4 w-4 shrink-0 appearance-none border border-white/[0.15] bg-cs-black checked:border-cs-accent checked:bg-cs-accent transition-colors cursor-pointer"
           />
-          <span className="text-xs leading-relaxed text-white/60">
+          <span className="text-base leading-relaxed text-white/60">
             Ich stimme zu, dass meine Angaben zur Bearbeitung meiner
             Bewerbung gespeichert werden.{" "}
             <a href="/datenschutz" className="text-cs-accent underline underline-offset-2 hover:text-cs-accent-hover">
@@ -665,16 +665,16 @@ function StepReview({
         <div className="flex items-center justify-between border border-white/[0.06] p-5">
           <div>
             <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-white/55">Stelle</p>
-            <p className="mt-1 text-sm font-bold text-cs-white">{posLabel}</p>
+            <p className="mt-1 text-base font-bold text-cs-white">{posLabel}</p>
           </div>
-          <button onClick={() => onGoToStep("position")} className="text-[11px] text-cs-accent hover:text-cs-accent-hover transition-colors">
+          <button onClick={() => onGoToStep("position")} className="text-base text-cs-accent hover:text-cs-accent-hover transition-colors">
             Ändern
           </button>
         </div>
 
         {/* Personal */}
         <div className="flex items-start justify-between border border-white/[0.06] p-5">
-          <div className="space-y-2 text-[13px]">
+          <div className="space-y-2 text-base">
             <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-white/55">Kontaktdaten</p>
             <div className="flex justify-between gap-12">
               <span className="text-white/50">Name</span>
@@ -689,14 +689,14 @@ function StepReview({
               <span className="text-white/70">{personal.phone}</span>
             </div>
           </div>
-          <button onClick={() => onGoToStep("personal")} className="shrink-0 text-[11px] text-cs-accent hover:text-cs-accent-hover transition-colors">
+          <button onClick={() => onGoToStep("personal")} className="shrink-0 text-base text-cs-accent hover:text-cs-accent-hover transition-colors">
             Ändern
           </button>
         </div>
 
         {/* Details */}
         <div className="flex items-start justify-between border border-white/[0.06] p-5">
-          <div className="space-y-2 text-[13px]">
+          <div className="space-y-2 text-base">
             <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-white/55">Details</p>
             {details.experience && (
               <div className="flex justify-between gap-12">
@@ -727,7 +727,7 @@ function StepReview({
               </div>
             )}
           </div>
-          <button onClick={() => onGoToStep("details")} className="shrink-0 text-[11px] text-cs-accent hover:text-cs-accent-hover transition-colors">
+          <button onClick={() => onGoToStep("details")} className="shrink-0 text-base text-cs-accent hover:text-cs-accent-hover transition-colors">
             Ändern
           </button>
         </div>
@@ -736,7 +736,7 @@ function StepReview({
       {status === "error" && (
         <div className="mt-6 flex items-start gap-3 border border-red-500/20 bg-red-500/10 p-4">
           <AlertCircle className="mt-0.5 h-4 w-4 shrink-0 text-red-400" />
-          <p className="text-sm text-red-400">{errorMessage}</p>
+          <p className="text-base text-red-400">{errorMessage}</p>
         </div>
       )}
 
@@ -778,7 +778,7 @@ function StepSuccess() {
       <h2 className="mt-8 text-3xl font-black uppercase leading-[1.05] tracking-[-0.03em] text-cs-white md:text-4xl">
         Bewerbung <span className="text-cs-accent">erhalten!</span>
       </h2>
-      <p className="mx-auto mt-6 max-w-md text-[15px] leading-relaxed text-white/60">
+      <p className="mx-auto mt-6 max-w-md text-base leading-relaxed text-white/60">
         Vielen Dank für dein Interesse an Casa Sports. Wir schauen uns
         deine Bewerbung an und melden uns innerhalb weniger Tage bei dir.
       </p>

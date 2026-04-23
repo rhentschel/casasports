@@ -16,7 +16,7 @@ export const kursTypeConfig = {
   "Cycling": { bg: "bg-blue-500/10", text: "text-blue-400", dot: "bg-blue-400", image: "/images/casasports-spinning-kurs-1.webp" },
   "Functional": { bg: "bg-emerald-500/10", text: "text-emerald-400", dot: "bg-emerald-400", image: "/images/casasports-functional-training.webp" },
   "Cardio": { bg: "bg-orange-500/10", text: "text-orange-400", dot: "bg-orange-400", image: "/images/casasports-kardio-power.webp" },
-  "Zirkeltraining": { bg: "bg-purple-500/10", text: "text-purple-400", dot: "bg-purple-400", image: "/images/casasports-kurse-für-alle.webp" },
+  "Zirkeltraining": { bg: "bg-purple-500/10", text: "text-purple-400", dot: "bg-purple-400", image: "/images/casasports-kurse-fuer-alle.webp" },
   "Gruppentraining": { bg: "bg-cs-gold/10", text: "text-cs-gold", dot: "bg-cs-gold", image: "/images/casasports-gruppentraining.webp" },
 } as const;
 

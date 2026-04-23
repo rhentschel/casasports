@@ -95,7 +95,7 @@ function TerminModal({ onClose }: { onClose: () => void }) {
 
         {/* Content */}
         <div className="px-8 pb-8 pt-6">
-          <p className="text-[14px] leading-relaxed text-white/45">
+          <p className="text-base leading-relaxed text-white/45">
             Ruf uns an oder schreib uns. Wir finden einen Termin, der in deinen
             Alltag passt.
           </p>
@@ -113,10 +113,10 @@ function TerminModal({ onClose }: { onClose: () => void }) {
                 <Phone className="h-4 w-4 text-cs-gold" />
               </div>
               <div>
-                <p className="text-[15px] font-semibold text-white">
+                <p className="text-base font-semibold text-white">
                   {siteConfig.phone}
                 </p>
-                <p className="text-[12px] text-white/50">Direkt anrufen</p>
+                <p className="text-base text-white/50">Direkt anrufen</p>
               </div>
               <ArrowRight className="ml-auto h-4 w-4 text-white/15 transition-all duration-300 group-hover:translate-x-1 group-hover:text-cs-gold" />
             </a>
@@ -129,10 +129,10 @@ function TerminModal({ onClose }: { onClose: () => void }) {
                 <Mail className="h-4 w-4 text-cs-gold" />
               </div>
               <div>
-                <p className="text-[15px] font-semibold text-white">
+                <p className="text-base font-semibold text-white">
                   {siteConfig.email}
                 </p>
-                <p className="text-[12px] text-white/50">E-Mail schreiben</p>
+                <p className="text-base text-white/50">E-Mail schreiben</p>
               </div>
               <ArrowRight className="ml-auto h-4 w-4 text-white/15 transition-all duration-300 group-hover:translate-x-1 group-hover:text-cs-gold" />
             </a>
@@ -147,10 +147,10 @@ function TerminModal({ onClose }: { onClose: () => void }) {
                 <Instagram className="h-4 w-4 text-cs-gold" />
               </div>
               <div>
-                <p className="text-[15px] font-semibold text-white">
+                <p className="text-base font-semibold text-white">
                   @casa__sports
                 </p>
-                <p className="text-[12px] text-white/50">
+                <p className="text-base text-white/50">
                   DM auf Instagram
                 </p>
               </div>
@@ -163,11 +163,11 @@ function TerminModal({ onClose }: { onClose: () => void }) {
 
           {/* Info row */}
           <div className="mt-5 flex gap-6">
-            <div className="flex items-center gap-2 text-[12px] text-white/50">
+            <div className="flex items-center gap-2 text-base text-white/50">
               <Clock className="h-3.5 w-3.5 text-cs-gold/50" />
               7 Tage geoeffnet
             </div>
-            <div className="flex items-center gap-2 text-[12px] text-white/50">
+            <div className="flex items-center gap-2 text-base text-white/50">
               <MapPin className="h-3.5 w-3.5 text-cs-gold/50" />
               {siteConfig.address.street}
             </div>
@@ -232,7 +232,7 @@ export function PersonalTraining() {
 
           {/* Right: Content panel */}
           <div className="bg-[#141414] px-8 py-12 md:px-12 md:py-16 lg:px-16">
-            <p className="text-[15px] leading-relaxed text-white/60">
+            <p className="text-base leading-relaxed text-white/60">
               Du willst mehr als nur ein Geraet bedienen? Im Personal Training
               arbeiten wir gemeinsam an deinen Zielen. Strukturiert,
               motivierend, auf den Punkt.
@@ -244,7 +244,7 @@ export function PersonalTraining() {
               {benefits.map((benefit) => (
                 <li key={benefit} className="flex items-start gap-3">
                   <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-cs-gold/60" />
-                  <span className="text-[14px] leading-relaxed text-white/50">
+                  <span className="text-base leading-relaxed text-white/50">
                     {benefit}
                   </span>
                 </li>

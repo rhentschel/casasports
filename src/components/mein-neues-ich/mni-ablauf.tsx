@@ -64,7 +64,7 @@ export function MniAblauf() {
               <h3 className="text-lg font-black uppercase tracking-[-0.01em] text-cs-white">
                 {step.title}
               </h3>
-              <p className="max-w-lg text-[15px] leading-relaxed text-white/50">
+              <p className="max-w-lg text-base leading-relaxed text-white/50">
                 {step.description}
               </p>
             </div>

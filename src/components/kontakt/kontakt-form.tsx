@@ -62,7 +62,7 @@ export function KontaktForm() {
         <h3 className="mt-6 text-2xl font-black uppercase tracking-tight text-cs-white">
           Danke für deine Nachricht.
         </h3>
-        <p className="mt-3 text-[14px] leading-relaxed text-white/60">
+        <p className="mt-3 text-base leading-relaxed text-white/60">
           Wir melden uns innerhalb von 24 Stunden bei dir. In dringenden Fällen
           erreichst du uns telefonisch.
         </p>
@@ -111,7 +111,7 @@ export function KontaktForm() {
           <select
             name="topic"
             defaultValue={topics[0]}
-            className="border border-white/10 bg-cs-black px-4 py-3 text-[14px] text-cs-white transition-colors focus:border-cs-accent focus:outline-none"
+            className="border border-white/10 bg-cs-black px-4 py-3 text-base text-cs-white transition-colors focus:border-cs-accent focus:outline-none"
           >
             {topics.map((t) => (
               <option key={t} value={t}>
@@ -131,19 +131,19 @@ export function KontaktForm() {
           required
           rows={5}
           maxLength={5000}
-          className="resize-y border border-white/10 bg-cs-black px-4 py-3 text-[14px] leading-relaxed text-cs-white transition-colors focus:border-cs-accent focus:outline-none"
+          className="resize-y border border-white/10 bg-cs-black px-4 py-3 text-base leading-relaxed text-cs-white transition-colors focus:border-cs-accent focus:outline-none"
           placeholder="Was können wir für dich tun?"
         />
       </div>
 
       {status === "error" && (
-        <p className="border border-cs-accent/40 bg-cs-accent/10 px-4 py-3 text-[13px] text-cs-accent">
+        <p className="border border-cs-accent/40 bg-cs-accent/10 px-4 py-3 text-base text-cs-accent">
           {errorMsg}
         </p>
       )}
 
       <div className="flex flex-col items-start justify-between gap-4 border-t border-white/[0.06] pt-5 sm:flex-row sm:items-center">
-        <p className="text-[11px] text-white/40">
+        <p className="text-base text-white/40">
           Mit dem Absenden stimmst du unserer{" "}
           <a
             href="/datenschutz"
@@ -192,7 +192,7 @@ function Field({ label, name, type = "text", required }: FieldProps) {
         type={type}
         name={name}
         required={required}
-        className="border border-white/10 bg-cs-black px-4 py-3 text-[14px] text-cs-white transition-colors placeholder:text-white/30 focus:border-cs-accent focus:outline-none"
+        className="border border-white/10 bg-cs-black px-4 py-3 text-base text-cs-white transition-colors placeholder:text-white/30 focus:border-cs-accent focus:outline-none"
       />
     </div>
   );

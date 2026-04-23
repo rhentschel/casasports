@@ -49,7 +49,7 @@ const courses = [
     icon: <Heart className="h-5 w-5" />,
   },
   {
-    image: "/images/casasports-kurse-für-alle.webp",
+    image: "/images/casasports-kurse-fuer-alle.webp",
     title: "Zirkeltraining",
     description:
       "Ganzkörper-Workout im Zirkel. Station für Station arbeitest du dich durch Kraft- und Ausdauerübungen.",
@@ -80,7 +80,7 @@ export function KurseGrid() {
         <h2 className="mt-4 text-3xl font-black uppercase leading-[1.05] tracking-[-0.03em] text-cs-white md:text-5xl">
           Kurse, die bewegen.
         </h2>
-        <p className="mt-6 max-w-md text-[15px] leading-relaxed text-white/60">
+        <p className="mt-6 max-w-md text-base leading-relaxed text-white/60">
           Jeder Kurs wird von erfahrenen Trainern geleitet. Kleine Gruppen,
           persönliche Korrekturen, echte Ergebnisse.
         </p>
@@ -119,11 +119,11 @@ export function KurseGrid() {
                   <div className="text-cs-gray-500 transition-colors duration-300 group-hover:text-cs-accent">
                     {course.icon}
                   </div>
-                  <h3 className="text-[15px] font-black uppercase tracking-[-0.01em] text-cs-white">
+                  <h3 className="text-base font-black uppercase tracking-[-0.01em] text-cs-white">
                     {course.title}
                   </h3>
                 </div>
-                <p className="mt-3 text-[13px] leading-relaxed text-cs-gray-400">
+                <p className="mt-3 text-base leading-relaxed text-cs-gray-400">
                   {course.description}
                 </p>
               </div>

@@ -51,7 +51,7 @@ export function JobsProcess() {
           <h2 className="mt-4 text-3xl font-black uppercase leading-[1.05] tracking-[-0.03em] text-cs-white md:text-5xl">
             In 4 Schritten <span className="text-cs-accent">ins Team.</span>
           </h2>
-          <p className="mx-auto mt-6 max-w-lg text-[15px] leading-relaxed text-white/60">
+          <p className="mx-auto mt-6 max-w-lg text-base leading-relaxed text-white/60">
             Unser Bewerbungsprozess ist unkompliziert und transparent.
             Kein Marathon aus Bewerbungsrunden, sondern ein ehrlicher Austausch.
           </p>
@@ -78,7 +78,7 @@ export function JobsProcess() {
                 <h3 className="text-sm font-bold uppercase tracking-[0.1em] text-cs-white">
                   {step.title}
                 </h3>
-                <p className="mt-3 flex-1 text-sm leading-relaxed text-cs-gray-400">
+                <p className="mt-3 flex-1 text-base leading-relaxed text-cs-gray-400">
                   {step.description}
                 </p>
                 <p className="mt-4 text-[11px] font-medium uppercase tracking-[0.15em] text-cs-accent/70">

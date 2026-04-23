@@ -101,7 +101,7 @@ export function BenefitsGrid() {
               </div>
 
               {/* Title with accent bar */}
-              <div className="relative z-10 mb-2 px-8 text-[15px] font-bold">
+              <div className="relative z-10 mb-2 px-8 text-base font-bold">
                 <div className="absolute inset-y-0 left-0 h-6 w-[2px] origin-center rounded-r-full bg-cs-gray-700 transition-all duration-300 group-hover/feature:h-8 group-hover/feature:bg-cs-accent" />
                 <span className="inline-block text-cs-white transition-transform duration-300 group-hover/feature:translate-x-2">
                   {benefit.title}
@@ -109,7 +109,7 @@ export function BenefitsGrid() {
               </div>
 
               {/* Description */}
-              <p className="relative z-10 max-w-xs px-8 text-[13px] leading-relaxed text-cs-gray-400">
+              <p className="relative z-10 max-w-xs px-8 text-base leading-relaxed text-cs-gray-400">
                 {benefit.description}
               </p>
             </div>

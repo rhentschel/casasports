@@ -113,13 +113,13 @@ export function StepReview({
             </h3>
             <button
               onClick={() => onGoToStep("personal")}
-              className="flex items-center gap-1.5 text-[11px] text-cs-accent transition-colors hover:text-cs-accent-hover"
+              className="flex items-center gap-1.5 text-base text-cs-accent transition-colors hover:text-cs-accent-hover"
             >
               <Pencil className="h-3 w-3" />
               Ändern
             </button>
           </div>
-          <div className="mt-3 space-y-1 text-[13px] text-white/60">
+          <div className="mt-3 space-y-1 text-base text-white/60">
             <p>
               {genderMap[personalData.gender] || ""}{" "}
               {personalData.firstName} {personalData.lastName}
@@ -145,13 +145,13 @@ export function StepReview({
             </h3>
             <button
               onClick={() => onGoToStep("payment")}
-              className="flex items-center gap-1.5 text-[11px] text-cs-accent transition-colors hover:text-cs-accent-hover"
+              className="flex items-center gap-1.5 text-base text-cs-accent transition-colors hover:text-cs-accent-hover"
             >
               <Pencil className="h-3 w-3" />
               Ändern
             </button>
           </div>
-          <div className="mt-3 space-y-1 text-[13px] text-white/60">
+          <div className="mt-3 space-y-1 text-base text-white/60">
             <p>{paymentData.accountHolder}</p>
             <p className="font-mono tracking-wider">
               {maskIban(paymentData.iban)}
@@ -170,7 +170,7 @@ export function StepReview({
             </h3>
             <button
               onClick={() => onGoToStep("plan")}
-              className="flex items-center gap-1.5 text-[11px] text-cs-accent transition-colors hover:text-cs-accent-hover"
+              className="flex items-center gap-1.5 text-base text-cs-accent transition-colors hover:text-cs-accent-hover"
             >
               <Pencil className="h-3 w-3" />
               Ändern
@@ -178,24 +178,24 @@ export function StepReview({
           </div>
 
           <div className="mt-4 space-y-2.5">
-            <div className="flex justify-between text-[13px]">
+            <div className="flex justify-between text-base">
               <span className="text-white/60">Tarif</span>
               <span className="font-medium text-cs-white">{bundleName}</span>
             </div>
-            <div className="flex justify-between text-[13px]">
+            <div className="flex justify-between text-base">
               <span className="text-white/60">Mindestlaufzeit</span>
               <span className="font-medium text-cs-white">
                 {term.termValue} Monate
               </span>
             </div>
-            <div className="flex justify-between text-[13px]">
+            <div className="flex justify-between text-base">
               <span className="text-white/60">Monatlicher Beitrag</span>
               <span className="font-medium text-cs-white">
                 {formatPrice(term.price)} €
               </span>
             </div>
             {starterFee && (
-              <div className="flex justify-between text-[13px]">
+              <div className="flex justify-between text-base">
                 <span className="text-white/60">
                   {starterFee.name} (einmalig)
                 </span>
@@ -205,7 +205,7 @@ export function StepReview({
               </div>
             )}
             {servicePauschalen.map((mod) => (
-              <div key={mod.id} className="flex justify-between text-[13px]">
+              <div key={mod.id} className="flex justify-between text-base">
                 <span className="text-white/60">
                   {mod.name} (jährlich)
                 </span>
@@ -214,7 +214,7 @@ export function StepReview({
                 </span>
               </div>
             ))}
-            <div className="flex justify-between text-[13px]">
+            <div className="flex justify-between text-base">
               <span className="text-white/60">Kündigungsfrist</span>
               <span className="font-medium text-cs-white">
                 {term.cancellationPeriod}{" "}
@@ -222,14 +222,14 @@ export function StepReview({
                 zum Ende der Laufzeit
               </span>
             </div>
-            <div className="flex justify-between text-[13px]">
+            <div className="flex justify-between text-base">
               <span className="text-white/60">Verlängerung</span>
               <span className="font-medium text-cs-white">
                 {term.extensionFixedTerm}{" "}
                 {term.extensionFixedTermUnit === "MONTH" ? "Monat" : "Monate"}
               </span>
             </div>
-            <div className="flex justify-between text-[13px]">
+            <div className="flex justify-between text-base">
               <span className="text-white/60">Zahlungsart</span>
               <span className="font-medium text-cs-white">
                 SEPA-Lastschrift
@@ -238,7 +238,7 @@ export function StepReview({
 
             {/* Divider + Gesamtpreis */}
             <div className="border-t border-white/[0.08] pt-3">
-              <div className="flex justify-between text-[13px]">
+              <div className="flex justify-between text-base">
                 <span className="font-medium text-white/70">
                   Gesamtpreis Mindestvertragslaufzeit
                 </span>
@@ -246,7 +246,7 @@ export function StepReview({
                   {formatPrice(totalWithSp)} €
                 </span>
               </div>
-              <p className="mt-1.5 text-[11px] text-white/55">
+              <p className="mt-1.5 text-base text-white/55">
                 Alle Preise inkl. 19% MwSt. Keine weiteren Kosten.
               </p>
             </div>
@@ -264,7 +264,7 @@ export function StepReview({
             <p className="mb-2 text-[11px] font-medium uppercase tracking-[0.15em] text-white/60">
               SEPA-Lastschriftmandat
             </p>
-            <p className="max-h-24 overflow-y-auto text-[12px] leading-relaxed text-white/50">
+            <p className="max-h-24 overflow-y-auto text-base leading-relaxed text-white/50">
               {sepaText}
             </p>
           </div>
@@ -279,7 +279,7 @@ export function StepReview({
               onChange={(e) => setSepaAccepted(e.target.checked)}
               className="mt-0.5 h-4 w-4 shrink-0 accent-cs-accent"
             />
-            <span className="text-[12px] leading-relaxed text-white/50">
+            <span className="text-base leading-relaxed text-white/50">
               Ich erteile das SEPA-Lastschriftmandat und ermächtige Casa
               Sports, die fälligen Beträge von meinem Konto per Lastschrift
               einzuziehen. *
@@ -293,7 +293,7 @@ export function StepReview({
               onChange={(e) => setAgbAccepted(e.target.checked)}
               className="mt-0.5 h-4 w-4 shrink-0 accent-cs-accent"
             />
-            <span className="text-[12px] leading-relaxed text-white/50">
+            <span className="text-base leading-relaxed text-white/50">
               Ich habe die Allgemeinen Geschäftsbedingungen gelesen und
               akzeptiere diese. *
             </span>
@@ -306,7 +306,7 @@ export function StepReview({
               onChange={(e) => setWiderrufAccepted(e.target.checked)}
               className="mt-0.5 h-4 w-4 shrink-0 accent-cs-accent"
             />
-            <span className="text-[12px] leading-relaxed text-white/50">
+            <span className="text-base leading-relaxed text-white/50">
               Ich habe die Widerrufsbelehrung zur Kenntnis genommen. Mir ist
               bekannt, dass ich den Vertrag innerhalb von 14 Tagen ohne Angabe
               von Gründen widerrufen kann. *
@@ -317,7 +317,7 @@ export function StepReview({
         {/* Error */}
         {error && (
           <div className="border border-cs-accent/30 bg-cs-accent/5 p-4">
-            <p className="text-sm text-cs-accent">{error}</p>
+            <p className="text-base text-cs-accent">{error}</p>
           </div>
         )}
       </div>

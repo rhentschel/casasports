@@ -47,7 +47,7 @@ export function BlogHero() {
 
         <p
           className={cn(
-            "mt-6 max-w-lg text-[15px] leading-relaxed text-white/60 transition-all duration-1000 delay-500",
+            "mt-6 max-w-lg text-base leading-relaxed text-white/60 transition-all duration-1000 delay-500",
             loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
           )}
         >

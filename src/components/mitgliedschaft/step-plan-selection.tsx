@@ -80,7 +80,7 @@ function Accordion({
         onClick={() => setOpen((prev) => !prev)}
         className="flex w-full items-center justify-between py-3 text-left"
       >
-        <span className="flex items-center gap-2 text-[13px] font-medium text-white/60">
+        <span className="flex items-center gap-2 text-base font-medium text-white/60">
           {icon}
           {title}
         </span>
@@ -197,11 +197,11 @@ export function StepPlanSelection({
                     </h3>
                     <p className="mt-0.5 text-2xl font-black tracking-[-0.03em] text-cs-white">
                       {formatPrice(term.price)} €{" "}
-                      <span className="text-sm font-medium text-white/60">
+                      <span className="text-base font-medium text-white/60">
                         mtl.
                       </span>
                     </p>
-                    <p className="mt-1 text-[11px] text-white/55">
+                    <p className="mt-1 text-base text-white/55">
                       {term.termValue} Monate Mindestvertragslaufzeit
                     </p>
                   </div>
@@ -247,7 +247,7 @@ export function StepPlanSelection({
         <div className="mt-6">
           {/* Vertragsdetails */}
           <Accordion title="Vertragsdetails">
-            <div className="space-y-2 text-[13px]">
+            <div className="space-y-2 text-base">
               <div className="flex justify-between">
                 <span className="text-white/50">Vertrag</span>
                 <span className="text-white/70">{selectedBundle.name}</span>
@@ -291,7 +291,7 @@ export function StepPlanSelection({
             title="Kostenübersicht"
             icon={<Info className="h-3 w-3" />}
           >
-            <div className="space-y-2 text-[13px]">
+            <div className="space-y-2 text-base">
               <div className="flex justify-between">
                 <span className="text-white/50">Mitgliedsbeitrag</span>
                 <span className="text-white/70">
@@ -337,7 +337,7 @@ export function StepPlanSelection({
 
           {/* Überblick nach Verlängerung */}
           <Accordion title="Überblick nach Verlängerung">
-            <div className="space-y-2 text-[13px]">
+            <div className="space-y-2 text-base">
               <div className="flex justify-between">
                 <span className="text-white/50">Monatsbeitrag</span>
                 <span className="text-white/70">
@@ -373,7 +373,7 @@ export function StepPlanSelection({
             <p className="mt-1 text-3xl font-black tracking-[-0.03em] text-cs-white">
               {formatPrice(selectedTerm.price)} €
             </p>
-            <p className="mt-1 text-[11px] text-white/55">
+            <p className="mt-1 text-base text-white/55">
               Monatlich per SEPA-Lastschrift. Inkl. 19% MwSt.
             </p>
           </div>

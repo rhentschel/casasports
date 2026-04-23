@@ -112,7 +112,7 @@ function TrainerSlide({ trainer }: { trainer: Trainer }) {
           <h3 className="mt-3 text-4xl font-black uppercase leading-[1.05] tracking-[-0.03em] text-cs-white md:text-5xl">
             {trainer.name}
           </h3>
-          <p className="mt-4 max-w-md text-[15px] leading-[1.7] text-white/60">
+          <p className="mt-4 max-w-md text-base leading-[1.7] text-white/60">
             &ldquo;{trainer.quote}&rdquo;
           </p>
         </div>
@@ -154,7 +154,7 @@ export function MniTrainers() {
             <br />
             <span className="text-cs-accent">Deine Begleiter.</span>
           </h2>
-          <p className="mt-6 text-[15px] leading-relaxed text-white/60">
+          <p className="mt-6 text-base leading-relaxed text-white/60">
             12 Wochen an deiner Seite. Mit Erfahrung, Herz und einem klaren Plan für dich.
           </p>
         </div>

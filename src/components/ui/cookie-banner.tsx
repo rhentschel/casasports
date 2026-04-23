@@ -120,7 +120,7 @@ export function CookieBanner() {
           </div>
 
           <div className="flex flex-col gap-3 border-t border-white/[0.06] px-8 py-6 md:flex-row md:items-center md:justify-between md:px-10">
-            <p className="text-xs text-cs-gray-500">
+            <p className="text-base text-cs-gray-500">
               Mehr in unserer{" "}
               <Link
                 href="/datenschutz"
@@ -171,7 +171,7 @@ export function CookieBanner() {
           >
             Wir respektieren deine Privatsphäre.
           </h2>
-          <p className="mt-4 text-[13px] leading-relaxed text-cs-gray-400">
+          <p className="mt-4 text-base leading-relaxed text-cs-gray-400">
             Wir nutzen Cookies, um diese Seite zu betreiben und besser zu
             machen. Details in der{" "}
             <Link
@@ -261,7 +261,7 @@ function ConsentRow({
             />
           </button>
         </div>
-        <p className="mt-2 text-xs leading-relaxed text-cs-gray-400">
+        <p className="mt-2 text-base leading-relaxed text-cs-gray-400">
           {description}
         </p>
       </div>

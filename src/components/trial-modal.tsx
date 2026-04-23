@@ -108,7 +108,7 @@ export function TrialModal({ open, onClose, source = "Probetraining Button" }: P
             <h3 className="mt-3 text-2xl font-black uppercase leading-tight tracking-[-0.02em] text-cs-white">
               Wir melden uns bei dir.
             </h3>
-            <p className="mt-4 text-[14px] leading-relaxed text-white/60">
+            <p className="mt-4 text-base leading-relaxed text-white/60">
               Dein Probetraining-Wunsch ist bei uns eingegangen. Wir melden uns
               innerhalb von 24 Stunden, um einen Termin zu vereinbaren.
             </p>
@@ -130,7 +130,7 @@ export function TrialModal({ open, onClose, source = "Probetraining Button" }: P
             >
               Probetraining anfragen
             </h3>
-            <p className="mt-3 text-[13px] leading-relaxed text-white/60">
+            <p className="mt-3 text-base leading-relaxed text-white/60">
               Lass uns deine Daten da und wir melden uns für einen Termin.
             </p>
 
@@ -152,7 +152,7 @@ export function TrialModal({ open, onClose, source = "Probetraining Button" }: P
                     aria-required="true"
                     value={firstname}
                     onChange={(e) => setFirstname(e.target.value)}
-                    className="w-full border border-white/[0.08] bg-transparent px-3 py-2.5 text-[14px] text-cs-white outline-none transition-colors focus:border-cs-accent"
+                    className="w-full border border-white/[0.08] bg-transparent px-3 py-2.5 text-base text-cs-white outline-none transition-colors focus:border-cs-accent"
                   />
                 </div>
                 <div>
@@ -171,7 +171,7 @@ export function TrialModal({ open, onClose, source = "Probetraining Button" }: P
                     aria-required="true"
                     value={lastname}
                     onChange={(e) => setLastname(e.target.value)}
-                    className="w-full border border-white/[0.08] bg-transparent px-3 py-2.5 text-[14px] text-cs-white outline-none transition-colors focus:border-cs-accent"
+                    className="w-full border border-white/[0.08] bg-transparent px-3 py-2.5 text-base text-cs-white outline-none transition-colors focus:border-cs-accent"
                   />
                 </div>
               </div>
@@ -193,7 +193,7 @@ export function TrialModal({ open, onClose, source = "Probetraining Button" }: P
                   aria-invalid={error ? "true" : undefined}
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="w-full border border-white/[0.08] bg-transparent px-3 py-2.5 text-[14px] text-cs-white outline-none transition-colors focus:border-cs-accent"
+                  className="w-full border border-white/[0.08] bg-transparent px-3 py-2.5 text-base text-cs-white outline-none transition-colors focus:border-cs-accent"
                 />
               </div>
               <div>
@@ -211,7 +211,7 @@ export function TrialModal({ open, onClose, source = "Probetraining Button" }: P
                   inputMode="tel"
                   value={phone}
                   onChange={(e) => setPhone(e.target.value)}
-                  className="w-full border border-white/[0.08] bg-transparent px-3 py-2.5 text-[14px] text-cs-white outline-none transition-colors focus:border-cs-accent"
+                  className="w-full border border-white/[0.08] bg-transparent px-3 py-2.5 text-base text-cs-white outline-none transition-colors focus:border-cs-accent"
                 />
               </div>
               <div>
@@ -228,7 +228,7 @@ export function TrialModal({ open, onClose, source = "Probetraining Button" }: P
                   value={message}
                   onChange={(e) => setMessage(e.target.value)}
                   placeholder="Welche Trainingszeit passt dir? Hast du bestimmte Wuensche?"
-                  className="w-full resize-none border border-white/[0.08] bg-transparent px-3 py-2.5 text-[14px] text-cs-white placeholder-white/20 outline-none transition-colors focus:border-cs-accent"
+                  className="w-full resize-none border border-white/[0.08] bg-transparent px-3 py-2.5 text-base text-cs-white placeholder-white/20 outline-none transition-colors focus:border-cs-accent"
                 />
               </div>
 
@@ -238,7 +238,7 @@ export function TrialModal({ open, onClose, source = "Probetraining Button" }: P
                   aria-live="assertive"
                   className="border border-cs-accent/30 bg-cs-accent/5 px-4 py-3"
                 >
-                  <p className="text-[13px] text-cs-accent">{error}</p>
+                  <p className="text-base text-cs-accent">{error}</p>
                 </div>
               )}
 

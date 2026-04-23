@@ -82,7 +82,7 @@ export function MegaMenu({ items, isOpen, onClose }: Props) {
                       {item.label}
                     </h3>
                     {item.description && (
-                      <p className="text-[13px] leading-relaxed text-white/55">
+                      <p className="text-base leading-relaxed text-white/55">
                         {item.description}
                       </p>
                     )}
@@ -139,7 +139,7 @@ export function MegaMenu({ items, isOpen, onClose }: Props) {
                   <br />
                   <span className="text-cs-accent">geht auf uns.</span>
                 </h3>
-                <p className="mt-4 text-[13px] leading-relaxed text-white/70">
+                <p className="mt-4 text-base leading-relaxed text-white/70">
                   Komm vorbei, lerne das Studio kennen, trainiere gratis.
                 </p>
                 <div className="mt-5 inline-flex items-center gap-2 border border-cs-accent bg-cs-accent/10 px-5 py-2.5 text-[11px] font-bold uppercase tracking-[0.15em] text-cs-accent transition-all duration-300 group-hover:bg-cs-accent group-hover:text-white">

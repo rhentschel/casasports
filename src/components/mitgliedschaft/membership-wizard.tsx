@@ -227,7 +227,7 @@ export function MembershipWizard() {
     return (
       <div className="flex min-h-[60vh] items-center justify-center px-6 py-12">
         <div className="text-center">
-          <p className="text-sm text-cs-accent">{error}</p>
+          <p className="text-base text-cs-accent">{error}</p>
           <button
             onClick={() => window.location.reload()}
             className="mt-6 border border-white/[0.08] px-6 py-3 text-[13px] font-medium uppercase tracking-[0.15em] text-white/60 transition-all hover:border-white/20 hover:text-white"
@@ -312,7 +312,7 @@ export function MembershipWizard() {
         </AnimatePresence>
 
         {step !== "success" && (
-          <p className="mt-10 border-t border-white/[0.04] pt-6 text-center text-[11px] text-white/60">
+          <p className="mt-10 border-t border-white/[0.04] pt-6 text-center text-base text-white/60">
             Fragen oder Hilfe? Ruf uns an{" "}
             <a
               href="tel:0236857060"

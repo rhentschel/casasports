@@ -21,7 +21,7 @@ export function MniFaq() {
             <h2 className="mt-4 text-3xl font-black uppercase leading-[1.05] tracking-[-0.03em] text-cs-white md:text-4xl">
               FAQ
             </h2>
-            <p className="mt-6 text-[15px] leading-relaxed text-white/60">
+            <p className="mt-6 text-base leading-relaxed text-white/60">
               Alles was du über das &quot;Mein neues Ich&quot;-Programm wissen musst.
             </p>
           </div>
@@ -38,7 +38,7 @@ export function MniFaq() {
                   }
                   className="flex w-full items-center justify-between py-5 text-left"
                 >
-                  <span className="pr-8 text-[15px] font-medium text-cs-white">
+                  <span className="pr-8 text-base font-medium text-cs-white">
                     {faq.question}
                   </span>
                   <ChevronDown
@@ -56,7 +56,7 @@ export function MniFaq() {
                       : "max-h-0"
                   )}
                 >
-                  <p className="text-[14px] leading-relaxed text-white/50">
+                  <p className="text-base leading-relaxed text-white/50">
                     {faq.answer}
                   </p>
                 </div>

@@ -19,7 +19,7 @@ export function Footer() {
                 className="object-contain object-left"
               />
             </Link>
-            <p className="mt-6 text-sm leading-relaxed text-cs-gray-500">
+            <p className="mt-6 text-base leading-relaxed text-cs-gray-500">
               Fitnessstudio, Kurse, Wellness und Sauna in Oer-Erkenschwick.
               Persönlich betreut seit Tag eins.
             </p>
@@ -68,7 +68,7 @@ export function Footer() {
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-sm text-cs-gray-400 transition-colors duration-300 hover:text-white"
+                    className="text-base text-cs-gray-400 transition-colors duration-300 hover:text-white"
                   >
                     {link.label}
                   </Link>
@@ -86,7 +86,7 @@ export function Footer() {
               <li>
                 <a
                   href={`tel:${siteConfig.phone.replace(/\s/g, "")}`}
-                  className="flex items-center gap-3 text-sm text-cs-gray-400 transition-colors duration-300 hover:text-white"
+                  className="flex items-center gap-3 text-base text-cs-gray-400 transition-colors duration-300 hover:text-white"
                 >
                   <Phone className="h-4 w-4 shrink-0 text-cs-accent" />
                   {siteConfig.phone}
@@ -95,14 +95,14 @@ export function Footer() {
               <li>
                 <a
                   href={`mailto:${siteConfig.email}`}
-                  className="flex items-center gap-3 text-sm text-cs-gray-400 transition-colors duration-300 hover:text-white"
+                  className="flex items-center gap-3 text-base text-cs-gray-400 transition-colors duration-300 hover:text-white"
                 >
                   <Mail className="h-4 w-4 shrink-0 text-cs-accent" />
                   {siteConfig.email}
                 </a>
               </li>
               <li>
-                <span className="flex items-start gap-3 text-sm text-cs-gray-400">
+                <span className="flex items-start gap-3 text-base text-cs-gray-400">
                   <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-cs-accent" />
                   <span>
                     {siteConfig.address.street}
@@ -127,7 +127,7 @@ export function Footer() {
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-sm text-cs-gray-400 transition-colors duration-300 hover:text-white"
+                    className="text-base text-cs-gray-400 transition-colors duration-300 hover:text-white"
                   >
                     {link.label}
                   </Link>
@@ -144,10 +144,10 @@ export function Footer() {
       {/* Bottom bar */}
       <div className="border-t border-cs-gray-800/50">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-6">
-          <p className="text-xs text-cs-gray-400">
+          <p className="text-base text-cs-gray-400">
             &copy; {new Date().getFullYear()} {siteConfig.name}
           </p>
-          <p className="text-xs text-cs-gray-500">
+          <p className="text-base text-cs-gray-500">
             Karlstra&szlig;e 40, 45739 Oer-Erkenschwick
           </p>
         </div>

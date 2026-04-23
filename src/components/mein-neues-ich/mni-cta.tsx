@@ -35,7 +35,7 @@ export function MniCta() {
           <br />
           <span className="text-cs-accent">Keine Ausreden.</span>
         </h2>
-        <p className="mx-auto mt-6 max-w-md text-[15px] leading-relaxed text-white/60">
+        <p className="mx-auto mt-6 max-w-md text-base leading-relaxed text-white/60">
           Training, Ernährungscoaching, Motivation in der Gruppe und persönliche
           Betreuung. Alles inklusive. Kein Abo.
         </p>

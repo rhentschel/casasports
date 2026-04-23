@@ -57,7 +57,7 @@ export function ProbetrainingSlotPicker({ slots, selectedId, onSelect }: Props) 
 
   if (slots.length === 0) {
     return (
-      <p className="text-[13px] text-white/50">
+      <p className="text-base text-white/50">
         Aktuell sind keine freien Slots verfügbar. Bitte nutze das Formular
         darunter.
       </p>
@@ -86,7 +86,7 @@ export function ProbetrainingSlotPicker({ slots, selectedId, onSelect }: Props) 
                       : "border-white/[0.08] bg-transparent text-cs-white hover:border-cs-accent/60"
                   )}
                 >
-                  <span className="flex items-center gap-1.5 text-[13px] font-bold tracking-wider">
+                  <span className="flex items-center gap-1.5 text-base font-bold tracking-wider">
                     <Clock className="h-3 w-3 opacity-70" />
                     {formatTime(slot.start)}
                   </span>

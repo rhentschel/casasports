@@ -62,7 +62,7 @@ export function VoucherInput({ value, onChange }: Props) {
             <p className="text-[11px] font-medium uppercase tracking-[0.15em] text-green-400">
               Gutschein aktiv
             </p>
-            <p className="mt-0.5 font-mono text-[12px] text-cs-white">
+            <p className="mt-0.5 font-mono text-base text-cs-white">
               {value.code.toUpperCase()}
             </p>
           </div>
@@ -114,7 +114,7 @@ export function VoucherInput({ value, onChange }: Props) {
           {loading ? <Loader2 className="h-4 w-4 animate-spin" /> : "Einloesen"}
         </button>
       </div>
-      {error && <p className="mt-2 text-[12px] text-cs-accent">{error}</p>}
+      {error && <p className="mt-2 text-base text-cs-accent">{error}</p>}
     </div>
   );
 }

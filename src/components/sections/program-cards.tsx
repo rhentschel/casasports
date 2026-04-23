@@ -52,7 +52,7 @@ export function ProgramCards() {
               <h3 className="mt-4 text-sm font-black uppercase tracking-[-0.01em] text-cs-white">
                 {program.title}
               </h3>
-              <p className="mt-1 text-[13px] text-cs-gray-400">
+              <p className="mt-1 text-base text-cs-gray-400">
                 {program.subtitle}
               </p>
             </div>

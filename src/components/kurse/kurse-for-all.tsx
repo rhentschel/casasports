@@ -22,7 +22,7 @@ export function KurseForAll() {
           {/* Left: Image */}
           <div className="relative hidden overflow-hidden md:block">
             <Image
-              src="/images/casasports-kurse-für-alle.webp"
+              src="/images/casasports-kurse-fuer-alle.webp"
               alt="Kurse für alle Level bei Casa Sports"
               fill
               className="img-cinema object-cover object-center"
@@ -45,7 +45,7 @@ export function KurseForAll() {
           {/* Mobile hero */}
           <div className="relative aspect-[16/9] overflow-hidden md:hidden">
             <Image
-              src="/images/casasports-kurse-für-alle.webp"
+              src="/images/casasports-kurse-fuer-alle.webp"
               alt="Kurse für alle Level bei Casa Sports"
               fill
               className="img-cinema object-cover"
@@ -69,7 +69,7 @@ export function KurseForAll() {
               <br />
               um <span className="text-cs-accent">anzufangen.</span>
             </h2>
-            <p className="mt-6 max-w-md text-[15px] leading-relaxed text-white/60">
+            <p className="mt-6 max-w-md text-base leading-relaxed text-white/60">
               Egal ob du zum ersten Mal trainierst oder seit Jahren dabei bist.
               Unsere Kurse sind so aufgebaut, dass jeder mitkommt und
               gefordert wird.
@@ -81,7 +81,7 @@ export function KurseForAll() {
               {points.map((point) => (
                 <li key={point} className="flex items-start gap-3">
                   <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-cs-accent/60" />
-                  <span className="text-[14px] leading-relaxed text-white/50">
+                  <span className="text-base leading-relaxed text-white/50">
                     {point}
                   </span>
                 </li>

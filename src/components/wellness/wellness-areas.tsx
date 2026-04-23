@@ -112,14 +112,14 @@ export function WellnessAreas() {
 
                 {/* Text below */}
                 <div className="mt-5 pr-8">
-                  <p className="text-[14px] leading-relaxed text-white/50">
+                  <p className="text-base leading-relaxed text-white/50">
                     {area.description}
                   </p>
                   <ul className="mt-3 flex flex-wrap gap-x-4 gap-y-1">
                     {area.highlights.map((h) => (
                       <li
                         key={h}
-                        className="flex items-center gap-2 text-[12px] text-white/60"
+                        className="flex items-center gap-2 text-base text-white/60"
                       >
                         <div className="h-1 w-1 shrink-0 bg-cs-accent" />
                         {h}

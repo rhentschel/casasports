@@ -158,7 +158,7 @@ function DetailOverlay({
             <span className="text-3xl font-black tabular-nums tracking-[-0.04em] text-white sm:text-4xl">
               {entry.time}
             </span>
-            <span className="text-[13px] text-white/50">
+            <span className="text-base text-white/50">
               {entry.duration} Min
             </span>
           </div>
@@ -172,7 +172,7 @@ function DetailOverlay({
               <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-white/50">
                 Trainer
               </p>
-              <p className="mt-1 text-[15px] font-semibold text-white">
+              <p className="mt-1 text-base font-semibold text-white">
                 {entry.trainer}
               </p>
             </div>
@@ -180,7 +180,7 @@ function DetailOverlay({
               <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-white/50">
                 Raum
               </p>
-              <p className="mt-1 text-[15px] font-semibold text-white">
+              <p className="mt-1 text-base font-semibold text-white">
                 {entry.room}
               </p>
             </div>
@@ -315,13 +315,13 @@ export function Kursplan({ schedule: scheduleProp }: KursplanProps) {
               <Clock className="h-4 w-4 text-cs-accent" />
             </div>
             {currentKurs ? (
-              <p className="text-[13px] text-white/60">
+              <p className="text-base text-white/60">
                 <span className="mr-1 inline-block h-2 w-2 animate-pulse rounded-full bg-emerald-400" />
                 <span className="font-bold text-white">Jetzt:</span>{" "}
                 {currentKurs.name} mit {currentKurs.trainer}
               </p>
             ) : nextKurs ? (
-              <p className="text-[13px] text-white/60">
+              <p className="text-base text-white/60">
                 <span className="font-bold text-white">Nächster Kurs:</span>{" "}
                 {nextKurs.name} mit {nextKurs.trainer}{" "}
                 <span className="text-cs-accent">in {countdown}</span>
@@ -379,7 +379,7 @@ export function Kursplan({ schedule: scheduleProp }: KursplanProps) {
           {activeFilters.size > 0 && (
             <button
               onClick={() => setActiveFilters(new Set())}
-              className="ml-1 text-[11px] text-white/50 underline underline-offset-2 transition-colors hover:text-white/60"
+              className="ml-1 text-base text-white/50 underline underline-offset-2 transition-colors hover:text-white/60"
             >
               Alle
             </button>
@@ -423,7 +423,7 @@ export function Kursplan({ schedule: scheduleProp }: KursplanProps) {
                       isPast && "opacity-40"
                     )}
                   >
-                    <td className="px-6 py-4 text-[14px] font-bold tabular-nums text-cs-white">
+                    <td className="px-6 py-4 text-base font-bold tabular-nums text-cs-white">
                       {time}
                     </td>
                     {dayNames.map((_, dayIdx) => {
@@ -433,7 +433,7 @@ export function Kursplan({ schedule: scheduleProp }: KursplanProps) {
                       if (!entry) {
                         return (
                           <td key={dayIdx} className="px-3 py-4 text-center">
-                            <span className="text-[11px] text-cs-gray-800">—</span>
+                            <span className="text-base text-cs-gray-800">—</span>
                           </td>
                         );
                       }
@@ -507,7 +507,7 @@ export function Kursplan({ schedule: scheduleProp }: KursplanProps) {
             ))}
           </div>
 
-          <p className="mt-4 text-[13px] text-cs-gray-500">
+          <p className="mt-4 text-base text-cs-gray-500">
             {dayNamesFull[mobileDay]}
           </p>
 
@@ -550,9 +550,9 @@ export function Kursplan({ schedule: scheduleProp }: KursplanProps) {
                             </span>
                           )}
                         </div>
-                        <p className="mt-3 text-[14px] font-bold tabular-nums text-cs-white">
+                        <p className="mt-3 text-base font-bold tabular-nums text-cs-white">
                           {entry.time} Uhr
-                          <span className="ml-2 text-[12px] font-normal text-white/50">
+                          <span className="ml-2 text-base font-normal text-white/50">
                             {entry.duration} Min
                           </span>
                         </p>
@@ -571,7 +571,7 @@ export function Kursplan({ schedule: scheduleProp }: KursplanProps) {
                       </button>
                     </div>
 
-                    <div className="mt-3 flex items-center gap-4 text-[12px] text-white/60">
+                    <div className="mt-3 flex items-center gap-4 text-base text-white/60">
                       <span className="flex items-center gap-1.5">
                         <User className="h-3 w-3 text-cs-accent/60" />
                         {entry.trainer}
@@ -608,7 +608,7 @@ export function Kursplan({ schedule: scheduleProp }: KursplanProps) {
               })}
             {schedule.filter((e) => e.day === mobileDay && isVisible(e))
               .length === 0 && (
-              <p className="py-8 text-center text-[13px] text-white/50">
+              <p className="py-8 text-center text-base text-white/50">
                 {showFavsOnly
                   ? "Keine Favoriten an diesem Tag."
                   : "Keine Kurse für diesen Filter."}
@@ -617,7 +617,7 @@ export function Kursplan({ schedule: scheduleProp }: KursplanProps) {
           </div>
         </div>
 
-        <p className="mt-8 text-[12px] text-cs-gray-600">
+        <p className="mt-8 text-base text-cs-gray-600">
           Aenderungen vorbehalten. Aktuelle Zeiten im Studio erfragen.
         </p>
       </div>

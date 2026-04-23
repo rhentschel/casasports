@@ -105,7 +105,7 @@ export function ProbetrainingForm({ source = "Probetraining Page" }: Props) {
             ? "Wir sehen uns im Studio."
             : "Wir melden uns bei dir."}
         </h3>
-        <p className="mt-4 text-[14px] leading-relaxed text-white/60">
+        <p className="mt-4 text-base leading-relaxed text-white/60">
           {selectedSlot
             ? "Du bekommst gleich eine Bestätigungsmail mit allen Details zu deinem Probetraining."
             : "Dein Probetraining-Wunsch ist bei uns eingegangen. Wir melden uns innerhalb von 24 Stunden, um einen Termin zu vereinbaren."}
@@ -124,7 +124,7 @@ export function ProbetrainingForm({ source = "Probetraining Page" }: Props) {
       </h2>
 
       {slotsLoading && (
-        <div className="mt-6 flex items-center gap-2 text-[12px] text-white/50">
+        <div className="mt-6 flex items-center gap-2 text-base text-white/50">
           <Loader2 className="h-3.5 w-3.5 animate-spin" /> Slots werden
           geladen...
         </div>
@@ -165,7 +165,7 @@ export function ProbetrainingForm({ source = "Probetraining Page" }: Props) {
               aria-required="true"
               value={firstname}
               onChange={(e) => setFirstname(e.target.value)}
-              className="w-full border border-white/[0.08] bg-transparent px-3 py-2.5 text-[14px] text-cs-white outline-none transition-colors focus:border-cs-accent"
+              className="w-full border border-white/[0.08] bg-transparent px-3 py-2.5 text-base text-cs-white outline-none transition-colors focus:border-cs-accent"
             />
           </div>
           <div>
@@ -184,7 +184,7 @@ export function ProbetrainingForm({ source = "Probetraining Page" }: Props) {
               aria-required="true"
               value={lastname}
               onChange={(e) => setLastname(e.target.value)}
-              className="w-full border border-white/[0.08] bg-transparent px-3 py-2.5 text-[14px] text-cs-white outline-none transition-colors focus:border-cs-accent"
+              className="w-full border border-white/[0.08] bg-transparent px-3 py-2.5 text-base text-cs-white outline-none transition-colors focus:border-cs-accent"
             />
           </div>
         </div>
@@ -206,7 +206,7 @@ export function ProbetrainingForm({ source = "Probetraining Page" }: Props) {
             aria-invalid={error ? "true" : undefined}
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className="w-full border border-white/[0.08] bg-transparent px-3 py-2.5 text-[14px] text-cs-white outline-none transition-colors focus:border-cs-accent"
+            className="w-full border border-white/[0.08] bg-transparent px-3 py-2.5 text-base text-cs-white outline-none transition-colors focus:border-cs-accent"
           />
         </div>
         <div>
@@ -224,7 +224,7 @@ export function ProbetrainingForm({ source = "Probetraining Page" }: Props) {
             inputMode="tel"
             value={phone}
             onChange={(e) => setPhone(e.target.value)}
-            className="w-full border border-white/[0.08] bg-transparent px-3 py-2.5 text-[14px] text-cs-white outline-none transition-colors focus:border-cs-accent"
+            className="w-full border border-white/[0.08] bg-transparent px-3 py-2.5 text-base text-cs-white outline-none transition-colors focus:border-cs-accent"
           />
         </div>
         <div>
@@ -245,7 +245,7 @@ export function ProbetrainingForm({ source = "Probetraining Page" }: Props) {
                 ? "Hast du noch eine Frage vorab?"
                 : "Welche Trainingszeit passt dir? Hast du bestimmte Wuensche?"
             }
-            className="w-full resize-none border border-white/[0.08] bg-transparent px-3 py-2.5 text-[14px] text-cs-white placeholder-white/20 outline-none transition-colors focus:border-cs-accent"
+            className="w-full resize-none border border-white/[0.08] bg-transparent px-3 py-2.5 text-base text-cs-white placeholder-white/20 outline-none transition-colors focus:border-cs-accent"
           />
         </div>
 
@@ -255,7 +255,7 @@ export function ProbetrainingForm({ source = "Probetraining Page" }: Props) {
             aria-live="assertive"
             className="border border-cs-accent/30 bg-cs-accent/5 px-4 py-3"
           >
-            <p className="text-[13px] text-cs-accent">{error}</p>
+            <p className="text-base text-cs-accent">{error}</p>
           </div>
         )}
 

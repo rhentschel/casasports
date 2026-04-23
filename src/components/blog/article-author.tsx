@@ -30,8 +30,8 @@ export function ArticleAuthor({ author }: ArticleAuthorProps) {
 
         <div>
           <h3 className="text-lg font-bold text-cs-white">{author.name}</h3>
-          <p className="text-[13px] text-cs-accent">{author.role}</p>
-          <p className="mt-3 text-[14px] leading-relaxed text-white/60">
+          <p className="text-base text-cs-accent">{author.role}</p>
+          <p className="mt-3 text-base leading-relaxed text-white/60">
             {author.bio}
           </p>
 
@@ -39,7 +39,7 @@ export function ArticleAuthor({ author }: ArticleAuthorProps) {
             {author.expertise.map((e: any) => (
               <span
                 key={e}
-                className="border border-white/[0.06] px-2.5 py-1 text-[11px] text-cs-gray-400"
+                className="border border-white/[0.06] px-2.5 py-1 text-base text-cs-gray-400"
               >
                 {e}
               </span>
@@ -51,7 +51,7 @@ export function ArticleAuthor({ author }: ArticleAuthorProps) {
               href={author.social.instagram}
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-3 inline-flex items-center gap-1.5 text-[12px] text-cs-gray-500 transition-colors duration-300 hover:text-cs-accent"
+              className="mt-3 inline-flex items-center gap-1.5 text-base text-cs-gray-500 transition-colors duration-300 hover:text-cs-accent"
             >
               <Instagram className="h-3.5 w-3.5" />
               Instagram

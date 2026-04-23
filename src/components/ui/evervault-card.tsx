@@ -81,7 +81,7 @@ function CardPattern({
         className="absolute inset-0 opacity-0 mix-blend-overlay transition duration-500 group-hover/card:opacity-100"
         style={style}
       >
-        <p className="absolute inset-x-0 h-full break-words whitespace-pre-wrap font-mono text-xs font-bold text-white transition duration-500">
+        <p className="absolute inset-x-0 h-full break-words whitespace-pre-wrap font-mono text-base font-bold text-white transition duration-500">
           {randomString}
         </p>
       </motion.div>

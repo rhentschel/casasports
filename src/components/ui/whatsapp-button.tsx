@@ -42,7 +42,7 @@ export function WhatsappButton() {
               <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-cs-accent">
                 WhatsApp
               </p>
-              <p className="mt-2 text-[15px] font-black uppercase leading-[1.15] tracking-tight text-cs-white">
+              <p className="mt-2 text-base font-black uppercase leading-[1.15] tracking-tight text-cs-white">
                 Schnell eine Frage?
               </p>
             </div>
@@ -55,7 +55,7 @@ export function WhatsappButton() {
               <X className="h-3.5 w-3.5" />
             </button>
           </div>
-          <p className="mt-3 text-[12px] leading-relaxed text-white/60">
+          <p className="mt-3 text-base leading-relaxed text-white/60">
             Wir antworten meist innerhalb einer Stunde. Wähle ein Thema:
           </p>
           <div className="mt-4 flex flex-col gap-2">

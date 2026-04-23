@@ -55,7 +55,7 @@ export function Features() {
                 <h3 className="text-lg font-black uppercase tracking-[-0.01em] text-white">
                   {feature.title}
                 </h3>
-                <p className="mt-3 max-h-0 overflow-hidden text-[14px] leading-relaxed text-white/50 transition-all duration-[600ms] ease-[var(--ease-hover)] group-hover:max-h-24">
+                <p className="mt-3 max-h-0 overflow-hidden text-base leading-relaxed text-white/50 transition-all duration-[600ms] ease-[var(--ease-hover)] group-hover:max-h-24">
                   {feature.text}
                 </p>
               </div>

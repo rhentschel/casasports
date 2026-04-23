@@ -108,11 +108,11 @@ export function Header() {
               <Link
                 href="/probetraining"
                 onClick={() => setIsOpen(false)}
-                className="inline-block border border-cs-accent bg-cs-accent px-8 py-4 text-[13px] font-medium uppercase tracking-[0.15em] text-white"
+                className="inline-block border border-cs-accent bg-cs-accent px-8 py-4 text-[14px] font-medium uppercase tracking-[0.15em] text-white"
               >
                 Gratis Probetraining
               </Link>
-              <p className="mt-6 text-[13px] tracking-[0.1em] text-white/50">
+              <p className="mt-6 text-[14px] tracking-[0.1em] text-white/50">
                 {siteConfig.phone}
               </p>
             </div>
@@ -154,7 +154,7 @@ export function Header() {
                     <button
                       type="button"
                       className={cn(
-                        "flex items-center gap-1 px-3 py-2 text-[11px] font-medium uppercase tracking-[0.12em] transition-colors duration-300",
+                        "flex items-center gap-1 px-3 py-2 text-[14px] font-medium uppercase tracking-[0.12em] transition-colors duration-300",
                         isOpenMega
                           ? "text-cs-white"
                           : "text-white/60 hover:text-white"
@@ -176,7 +176,7 @@ export function Header() {
                 <Link
                   key={item.href}
                   href={item.href}
-                  className="px-3 py-2 text-[11px] font-medium uppercase tracking-[0.12em] text-white/60 transition-colors duration-300 hover:text-white"
+                  className="px-3 py-2 text-[14px] font-medium uppercase tracking-[0.12em] text-white/60 transition-colors duration-300 hover:text-white"
                 >
                   {item.label}
                 </Link>

@@ -31,7 +31,7 @@ export default function ProbetrainingPage() {
               <br />
               <span className="text-cs-accent">geht auf uns.</span>
             </h1>
-            <p className="mt-6 max-w-md text-[15px] leading-relaxed text-white/60">
+            <p className="mt-6 max-w-md text-base leading-relaxed text-white/60">
               Komm vorbei, lerne das Studio kennen und trainiere kostenlos. Keine
               versteckten Kosten, kein Vertrag, keine Verpflichtung.
             </p>
@@ -42,13 +42,13 @@ export default function ProbetrainingPage() {
                   <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center border border-cs-accent/40 bg-cs-accent/10">
                     <Check className="h-3 w-3 text-cs-accent" />
                   </span>
-                  <span className="text-[14px] text-cs-white">{b}</span>
+                  <span className="text-base text-cs-white">{b}</span>
                 </li>
               ))}
             </ul>
 
             <div className="mt-10 hidden border-l-2 border-cs-accent pl-5 lg:block">
-              <p className="text-[13px] italic leading-relaxed text-white/60">
+              <p className="text-base italic leading-relaxed text-white/60">
                 &ldquo;Jeder startet irgendwo. Wichtig ist, dass du startest.
                 Den Rest machen wir gemeinsam.&rdquo;
               </p>

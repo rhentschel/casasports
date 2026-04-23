@@ -18,7 +18,7 @@ export default function DatenschutzPage() {
           Datenschutz
         </h1>
 
-        <div className="mt-16 space-y-12 text-sm leading-relaxed text-cs-gray-400">
+        <div className="mt-16 space-y-12 text-base leading-relaxed text-cs-gray-400">
           {/* 1. Verantwortlicher */}
           <div>
             <h2 className="mb-4 text-xs font-bold uppercase tracking-[0.2em] text-cs-gray-300">

@@ -22,7 +22,7 @@ export function WellnessCTA() {
           <br />
           mehr als nur <span className="text-cs-accent">Training.</span>
         </h2>
-        <p className="mx-auto mt-8 max-w-sm text-[15px] leading-relaxed text-white/60">
+        <p className="mx-auto mt-8 max-w-sm text-base leading-relaxed text-white/60">
           Teste alles: Fitness, Kurse, Sauna und Wellness. Dein erstes Training
           geht auf uns.
         </p>

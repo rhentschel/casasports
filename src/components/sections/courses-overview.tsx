@@ -14,7 +14,7 @@ const courses = [
   { name: "Functional", image: "/images/casasports-functional-training.webp" },
   { name: "Gruppentraining", image: "/images/casasports-gruppentraining.webp" },
   { name: "Cardio", image: "/images/casasports-kardio-power.webp" },
-  { name: "Kurse für alle", image: "/images/casasports-kurse-für-alle.webp" },
+  { name: "Kurse für alle", image: "/images/casasports-kurse-fuer-alle.webp" },
 ];
 
 export function CoursesOverview() {

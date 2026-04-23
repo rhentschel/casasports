@@ -38,7 +38,7 @@ export default function MitgliedWerdenPage() {
                 <br />
                 <span className="text-cs-gold">zu uns.</span>
               </h1>
-              <p className="mt-5 max-w-sm text-[14px] leading-relaxed text-white/50">
+              <p className="mt-5 max-w-sm text-base leading-relaxed text-white/50">
                 Wähle deinen Tarif und werde Teil der Casa Sports Familie.
               </p>
             </div>

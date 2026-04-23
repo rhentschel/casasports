@@ -9,7 +9,7 @@ interface BreadcrumbsProps {
 export function Breadcrumbs({ category, title }: BreadcrumbsProps) {
   return (
     <nav aria-label="Breadcrumb" className="mx-auto max-w-7xl px-8 py-6 md:px-16">
-      <ol className="flex flex-wrap items-center gap-1 text-[12px] text-cs-gray-500">
+      <ol className="flex flex-wrap items-center gap-1 text-base text-cs-gray-500">
         <li>
           <Link href="/" className="transition-colors duration-300 hover:text-cs-white">Home</Link>
         </li>

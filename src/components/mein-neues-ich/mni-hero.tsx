@@ -64,7 +64,7 @@ export function MniHero() {
 
         <p
           className={cn(
-            "mt-8 max-w-lg text-[15px] leading-relaxed text-white/60 transition-all delay-[600ms] duration-1000",
+            "mt-8 max-w-lg text-base leading-relaxed text-white/60 transition-all delay-[600ms] duration-1000",
             loaded ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0"
           )}
         >

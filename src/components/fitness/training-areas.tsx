@@ -39,7 +39,7 @@ export function TrainingAreas() {
         <h2 className="mt-4 max-w-lg text-3xl font-black uppercase leading-[1.05] tracking-[-0.03em] text-cs-white md:text-5xl">
           Drei Bereiche. Ein Ziel.
         </h2>
-        <p className="mt-6 max-w-md text-[15px] leading-relaxed text-white/60">
+        <p className="mt-6 max-w-md text-base leading-relaxed text-white/60">
           Jeder Bereich ist durchdacht eingerichtet. Damit du dich auf das
           konzentrieren kannst, was zählt: dein Training.
         </p>
@@ -66,7 +66,7 @@ export function TrainingAreas() {
                 <h3 className="mt-2 text-xl font-black uppercase tracking-[-0.01em] text-white">
                   {area.title}
                 </h3>
-                <p className="mt-3 max-h-0 overflow-hidden text-[14px] leading-relaxed text-white/50 transition-all duration-[600ms] ease-[var(--ease-hover)] group-hover:max-h-24">
+                <p className="mt-3 max-h-0 overflow-hidden text-base leading-relaxed text-white/50 transition-all duration-[600ms] ease-[var(--ease-hover)] group-hover:max-h-24">
                   {area.description}
                 </p>
               </div>

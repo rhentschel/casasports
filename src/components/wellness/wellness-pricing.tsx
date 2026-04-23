@@ -70,7 +70,7 @@ export function WellnessPricing() {
             <br />
             <span className="text-cs-accent">Passt perfekt zusammen.</span>
           </h2>
-          <p className="mt-6 text-[15px] leading-relaxed text-white/60">
+          <p className="mt-6 text-base leading-relaxed text-white/60">
             Für nur 15 € mehr pro Monat bekommst du zum Wellness-Bereich das
             komplette Fitness-Erlebnis dazu. Die meisten entscheiden sich für
             All-in.
@@ -113,10 +113,10 @@ export function WellnessPricing() {
                 >
                   {plan.price}€
                 </span>
-                <span className="text-[14px] text-white/50">{plan.period}</span>
+                <span className="text-base text-white/50">{plan.period}</span>
               </div>
 
-              <p className="mt-4 text-[14px] leading-relaxed text-white/60">
+              <p className="mt-4 text-base leading-relaxed text-white/60">
                 {plan.description}
               </p>
 
@@ -142,7 +142,7 @@ export function WellnessPricing() {
                     >
                       {feature.icon}
                     </span>
-                    <span className="text-[14px] text-white/50">
+                    <span className="text-base text-white/50">
                       {feature.text}
                     </span>
                   </li>
@@ -166,7 +166,7 @@ export function WellnessPricing() {
               {/* Social proof note — fixed height so cards stay aligned */}
               <div className="flex h-8 items-center justify-center">
                 {plan.note && (
-                  <p className="text-center text-[11px] text-cs-accent/40">
+                  <p className="text-center text-base text-cs-accent/40">
                     {plan.note}
                   </p>
                 )}

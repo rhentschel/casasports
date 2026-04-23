@@ -81,7 +81,7 @@ function TeamSlide({
           <h2 className="mt-3 text-4xl font-black uppercase leading-[1.05] tracking-[-0.03em] text-cs-white md:text-5xl">
             {member.name}
           </h2>
-          <p className="mt-4 max-w-md text-[15px] leading-[1.7] text-white/60">
+          <p className="mt-4 max-w-md text-base leading-[1.7] text-white/60">
             &ldquo;{member.quote}&rdquo;
           </p>
         </div>

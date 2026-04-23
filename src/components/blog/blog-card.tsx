@@ -48,17 +48,17 @@ export function BlogCard({ post, variant = "default" }: { post: any; variant?: "
                 {categoryName && <span className="text-[11px] font-medium uppercase tracking-[0.2em] text-cs-accent">{categoryName}</span>}
               </div>
               <h2 className="mt-4 text-3xl font-black uppercase leading-[1.05] tracking-[-0.03em] text-cs-white md:text-5xl lg:text-6xl">{post.title}</h2>
-              <p className="mt-5 max-w-xl text-[15px] leading-relaxed text-white/60">{post.excerpt}</p>
+              <p className="mt-5 max-w-xl text-base leading-relaxed text-white/60">{post.excerpt}</p>
               <div className="mt-6 flex flex-wrap items-center gap-4">
                 {authorData && (
                   <div className="flex items-center gap-2.5">
                     <div className="relative h-8 w-8 overflow-hidden rounded-full border border-white/10"><Image src={authorData.image} alt={authorData.name} fill className="object-cover" /></div>
-                    <span className="text-[13px] text-cs-gray-400">{authorData.name}</span>
+                    <span className="text-base text-cs-gray-400">{authorData.name}</span>
                   </div>
                 )}
                 <span className="hidden text-white/10 md:inline">|</span>
-                <span className="text-[13px] text-cs-gray-500">{formatDate(post.publishedAt)}</span>
-                <span className="flex items-center gap-1 text-[13px] text-cs-gray-500"><Clock className="h-3.5 w-3.5" />{readingTime} Min.</span>
+                <span className="text-base text-cs-gray-500">{formatDate(post.publishedAt)}</span>
+                <span className="flex items-center gap-1 text-base text-cs-gray-500"><Clock className="h-3.5 w-3.5" />{readingTime} Min.</span>
                 <span className="ml-auto hidden items-center gap-2 text-[13px] font-medium uppercase tracking-[0.15em] text-cs-accent transition-all duration-500 group-hover:gap-3 md:inline-flex">Lesen<ArrowRight className="h-4 w-4 transition-transform duration-[400ms] group-hover:translate-x-1" /></span>
               </div>
             </div>
@@ -79,9 +79,9 @@ export function BlogCard({ post, variant = "default" }: { post: any; variant?: "
           <div className="flex flex-col justify-center p-8 md:p-10">
             {categoryName && <p className="text-[11px] font-medium uppercase tracking-[0.2em] text-cs-accent">{categoryName}</p>}
             <h3 className="mt-3 text-xl font-black uppercase leading-[1.1] tracking-[-0.02em] text-cs-white transition-colors duration-500 group-hover:text-cs-accent md:text-2xl">{post.title}</h3>
-            <p className="mt-3 text-[14px] leading-relaxed text-white/50">{post.excerpt}</p>
+            <p className="mt-3 text-base leading-relaxed text-white/50">{post.excerpt}</p>
             <div className="mt-6 flex items-center justify-between">
-              <div className="flex items-center gap-3 text-[12px] text-cs-gray-500">
+              <div className="flex items-center gap-3 text-base text-cs-gray-500">
                 {authorData && (
                   <div className="flex items-center gap-2">
                     <div className="relative h-5 w-5 overflow-hidden rounded-full"><Image src={authorData.image} alt={authorData.name} fill className="object-cover" /></div>
@@ -111,12 +111,12 @@ export function BlogCard({ post, variant = "default" }: { post: any; variant?: "
         <div className="relative z-10 w-full p-6 md:p-7">
           {categoryName && <p className="text-[10px] font-medium uppercase tracking-[0.2em] text-cs-accent">{categoryName}</p>}
           <h3 className="mt-2 text-lg font-black uppercase leading-[1.1] tracking-[-0.02em] text-cs-white md:text-xl">{post.title}</h3>
-          <p className="mt-0 max-h-0 overflow-hidden text-[13px] leading-relaxed text-white/50 transition-all duration-[600ms] ease-[var(--ease-hover)] group-hover:mt-3 group-hover:max-h-20">{post.excerpt}</p>
+          <p className="mt-0 max-h-0 overflow-hidden text-base leading-relaxed text-white/50 transition-all duration-[600ms] ease-[var(--ease-hover)] group-hover:mt-3 group-hover:max-h-20">{post.excerpt}</p>
           <div className="mt-4 flex items-center justify-between">
             {authorData && (
               <div className="flex items-center gap-2">
                 <div className="relative h-5 w-5 overflow-hidden rounded-full border border-white/10"><Image src={authorData.image} alt={authorData.name} fill className="object-cover" /></div>
-                <span className="text-[11px] text-cs-gray-500">{authorData.name}</span>
+                <span className="text-base text-cs-gray-500">{authorData.name}</span>
               </div>
             )}
             <ArrowRight className="h-4 w-4 -translate-x-2 text-cs-accent opacity-0 transition-all duration-500 group-hover:translate-x-0 group-hover:opacity-100" />

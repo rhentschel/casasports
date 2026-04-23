@@ -53,7 +53,7 @@ function FaqItem({
         onClick={() => setIsOpen(!isOpen)}
         className="flex w-full items-center justify-between py-6 text-left"
       >
-        <span className="pr-8 text-[15px] font-medium text-cs-white">
+        <span className="pr-8 text-base font-medium text-cs-white">
           {question}
         </span>
         <ChevronDown
@@ -70,7 +70,7 @@ function FaqItem({
         )}
       >
         <div className="overflow-hidden">
-          <p className="pb-6 text-sm leading-relaxed text-cs-gray-400">
+          <p className="pb-6 text-base leading-relaxed text-cs-gray-400">
             {answer}
           </p>
         </div>
@@ -94,13 +94,13 @@ export function JobsFaq() {
             <h2 className="mt-4 text-3xl font-black uppercase leading-[1.05] tracking-[-0.03em] text-cs-white md:text-4xl">
               Noch <span className="text-cs-accent">Fragen?</span>
             </h2>
-            <p className="mt-6 text-[15px] leading-relaxed text-white/60">
+            <p className="mt-6 text-base leading-relaxed text-white/60">
               Hier findest du Antworten auf die häufigsten Fragen. Falls deine
               nicht dabei ist, ruf uns einfach an oder schreib uns.
             </p>
             <a
               href="tel:0236857060"
-              className="mt-6 inline-block text-sm text-cs-accent transition-colors hover:text-cs-accent-hover"
+              className="mt-6 inline-block text-base text-cs-accent transition-colors hover:text-cs-accent-hover"
             >
               02368 57060
             </a>

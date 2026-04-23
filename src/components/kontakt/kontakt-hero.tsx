@@ -21,7 +21,7 @@ export function KontaktHero() {
           Wir freuen uns, <br />
           von dir zu hören.
         </h1>
-        <p className="mt-6 max-w-xl text-[15px] leading-relaxed text-white/60">
+        <p className="mt-6 max-w-xl text-base leading-relaxed text-white/60">
           Ob Frage, Feedback oder Probetraining: Wir sind für dich da.
           Schreib uns, ruf an oder komm einfach vorbei.
         </p>

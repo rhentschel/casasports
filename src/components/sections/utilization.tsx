@@ -72,7 +72,7 @@ export function Utilization() {
             <h2 className="mt-3 text-3xl font-black uppercase leading-[1.05] tracking-[-0.03em] text-cs-white md:text-4xl">
               Wann ist am wenigsten los?
             </h2>
-            <p className="mt-4 text-[14px] leading-relaxed text-white/60">
+            <p className="mt-4 text-base leading-relaxed text-white/60">
               Live-Auslastung für heute. So findest du deine ruhige Trainingszeit.
             </p>
           </div>

@@ -51,7 +51,7 @@ export function FitnessPhilosophy() {
             <br />
             mit <span className="text-cs-accent">System.</span>
           </h2>
-          <p className="mt-6 text-[15px] leading-relaxed text-white/60">
+          <p className="mt-6 text-base leading-relaxed text-white/60">
             Gutes Training ist kein Zufall. Es ist das Ergebnis von Planung,
             Betreuung und der richtigen Umgebung.
           </p>
@@ -73,14 +73,14 @@ export function FitnessPhilosophy() {
                 {pillar.icon}
               </div>
 
-              <div className="relative z-10 mb-2 px-8 text-[15px] font-bold">
+              <div className="relative z-10 mb-2 px-8 text-base font-bold">
                 <div className="absolute inset-y-0 left-0 h-6 w-[2px] origin-center rounded-r-full bg-cs-gray-700 transition-all duration-300 group-hover/feature:h-8 group-hover/feature:bg-cs-accent" />
                 <span className="inline-block text-cs-white transition-transform duration-300 group-hover/feature:translate-x-2">
                   {pillar.title}
                 </span>
               </div>
 
-              <p className="relative z-10 max-w-xs px-8 text-[13px] leading-relaxed text-cs-gray-400">
+              <p className="relative z-10 max-w-xs px-8 text-base leading-relaxed text-cs-gray-400">
                 {pillar.description}
               </p>
             </div>

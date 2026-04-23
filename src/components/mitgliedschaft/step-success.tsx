@@ -28,12 +28,12 @@ export function StepSuccess() {
         <span className="text-cs-gold">Casa Sports!</span>
       </h2>
 
-      <p className="mx-auto mt-6 max-w-md text-[15px] leading-relaxed text-white/60">
+      <p className="mx-auto mt-6 max-w-md text-base leading-relaxed text-white/60">
         Dein Vertrag wurde erfolgreich abgeschlossen. Du erhältst in Kürze
         eine Bestätigung per E-Mail.
       </p>
 
-      <p className="mt-4 text-[14px] text-white/60">
+      <p className="mt-4 text-base text-white/60">
         Wir freuen uns auf dich im Studio!
       </p>
 

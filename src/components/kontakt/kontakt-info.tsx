@@ -57,7 +57,7 @@ export function KontaktInfo() {
                 <p className="text-[10px] font-bold uppercase tracking-[0.25em] text-white/50">
                   {item.label}
                 </p>
-                <p className="mt-1.5 break-words text-[15px] text-cs-white">
+                <p className="mt-1.5 break-words text-base text-cs-white">
                   {item.value}
                 </p>
               </div>
@@ -79,7 +79,7 @@ export function KontaktInfo() {
               {openingHours.map((slot) => (
                 <div
                   key={slot.days}
-                  className="flex items-center justify-between gap-4 text-[14px]"
+                  className="flex items-center justify-between gap-4 text-base"
                 >
                   <dt className="text-white/70">{slot.days}</dt>
                   <dd className="font-semibold text-cs-white">{slot.hours}</dd>

@@ -58,7 +58,7 @@ export function NewsletterModal({ isOpen, onClose }: NewsletterModalProps) {
                 <p className="text-lg font-black uppercase tracking-tight text-cs-accent">
                   Danke!
                 </p>
-                <p className="mt-2 text-sm text-cs-gray-400">
+                <p className="mt-2 text-base text-cs-gray-400">
                   Du bist jetzt auf der Liste.
                 </p>
               </div>
@@ -70,7 +70,7 @@ export function NewsletterModal({ isOpen, onClose }: NewsletterModalProps) {
                 <h3 className="mt-3 text-2xl font-black uppercase leading-[1.05] tracking-[-0.03em] text-cs-white">
                   Bleib am Ball.
                 </h3>
-                <p className="mt-4 text-sm leading-relaxed text-cs-gray-400">
+                <p className="mt-4 text-base leading-relaxed text-cs-gray-400">
                   Kursänderungen, Aktionen und Fitness-Tipps direkt in dein
                   Postfach. Kein Spam.
                 </p>
@@ -82,7 +82,7 @@ export function NewsletterModal({ isOpen, onClose }: NewsletterModalProps) {
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="Deine E-Mail"
-                    className="w-full border border-white/[0.08] bg-cs-black px-4 py-3 text-sm text-cs-white placeholder:text-cs-gray-500 focus:border-cs-accent focus:outline-none"
+                    className="w-full border border-white/[0.08] bg-cs-black px-4 py-3 text-base text-cs-white placeholder:text-cs-gray-500 focus:border-cs-accent focus:outline-none"
                   />
                   <button
                     type="submit"

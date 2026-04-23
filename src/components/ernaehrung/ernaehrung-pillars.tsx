@@ -40,7 +40,7 @@ export function ErnaehrungPillars() {
               <br />
               <span className="text-cs-accent">Sondern Verstehen.</span>
             </h2>
-            <p className="mt-6 max-w-sm text-[15px] leading-relaxed text-white/60">
+            <p className="mt-6 max-w-sm text-base leading-relaxed text-white/60">
               Wir glauben nicht an Crash-Diäten. Wir zeigen dir, wie Ernährung
               funktioniert, damit du es selbst umsetzen kannst. Nicht nur bis
               zum Sommer, sondern dauerhaft.
@@ -50,7 +50,7 @@ export function ErnaehrungPillars() {
               {points.map((point) => (
                 <li key={point} className="flex items-start gap-3">
                   <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-cs-accent/60" />
-                  <span className="text-[14px] leading-relaxed text-white/50">
+                  <span className="text-base leading-relaxed text-white/50">
                     {point}
                   </span>
                 </li>

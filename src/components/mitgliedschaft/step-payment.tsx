@@ -98,7 +98,7 @@ export function StepPayment({
         <h2 className="mt-4 text-3xl font-black uppercase leading-[1.05] tracking-[-0.03em] text-cs-white md:text-4xl">
           Zahlungsdaten
         </h2>
-        <p className="mt-6 text-[15px] leading-relaxed text-white/60">
+        <p className="mt-6 text-base leading-relaxed text-white/60">
           Zahlung per SEPA-Lastschrift. Sicher und bequem.
         </p>
       </div>
@@ -176,7 +176,7 @@ export function StepPayment({
             <p
               id="step3-iban-error"
               role="alert"
-              className="mt-1.5 text-[11px] text-cs-accent"
+              className="mt-1.5 text-base text-cs-accent"
             >
               {ibanError}
             </p>
@@ -223,7 +223,7 @@ export function StepPayment({
             <p className="mb-3 text-[11px] font-medium uppercase tracking-[0.15em] text-white/60">
               SEPA-Lastschriftmandat
             </p>
-            <p className="text-[13px] leading-relaxed text-white/50">
+            <p className="text-base leading-relaxed text-white/50">
               {sepaText}
             </p>
           </div>

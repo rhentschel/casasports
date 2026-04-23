@@ -66,7 +66,7 @@ export function ErnaehrungHero() {
 
         <p
           className={cn(
-            "mt-8 max-w-sm text-[15px] leading-relaxed text-white/60 transition-all delay-600 duration-1000",
+            "mt-8 max-w-sm text-base leading-relaxed text-white/60 transition-all delay-600 duration-1000",
             loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
           )}
         >

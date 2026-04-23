@@ -148,7 +148,7 @@ export function JobsForm() {
           <h2 className="mt-8 text-3xl font-black uppercase leading-[1.05] tracking-[-0.03em] text-cs-white md:text-4xl">
             Bewerbung <span className="text-cs-accent">erhalten!</span>
           </h2>
-          <p className="mt-6 text-[15px] leading-relaxed text-white/60">
+          <p className="mt-6 text-base leading-relaxed text-white/60">
             Vielen Dank für dein Interesse an Casa Sports. Wir schauen uns
             deine Bewerbung an und melden uns innerhalb weniger Tage bei dir.
           </p>
@@ -184,7 +184,7 @@ export function JobsForm() {
             <h2 className="mt-4 text-3xl font-black uppercase leading-[1.05] tracking-[-0.03em] text-cs-white md:text-5xl">
               Zeig uns, <span className="text-cs-accent">wer du bist.</span>
             </h2>
-            <p className="mt-6 text-[15px] leading-relaxed text-white/60">
+            <p className="mt-6 text-base leading-relaxed text-white/60">
               Kein formelles Anschreiben noetig. Erzähl uns einfach kurz von
               dir und warum du zu uns passt. Wir melden uns innerhalb weniger Tage.
             </p>
@@ -196,13 +196,13 @@ export function JobsForm() {
                 </p>
                 <a
                   href="mailto:info@casasports.de?subject=Bewerbung"
-                  className="mt-3 block text-sm text-cs-accent transition-colors hover:text-cs-accent-hover"
+                  className="mt-3 block text-base text-cs-accent transition-colors hover:text-cs-accent-hover"
                 >
                   info@casasports.de
                 </a>
                 <a
                   href="tel:0236857060"
-                  className="mt-1 block text-sm text-cs-gray-400 transition-colors hover:text-white"
+                  className="mt-1 block text-base text-cs-gray-400 transition-colors hover:text-white"
                 >
                   02368 57060
                 </a>
@@ -211,7 +211,7 @@ export function JobsForm() {
                 <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-cs-gray-500">
                   Vorbeikommen
                 </p>
-                <p className="mt-3 text-sm leading-relaxed text-cs-gray-400">
+                <p className="mt-3 text-base leading-relaxed text-cs-gray-400">
                   Karlstrasse 40<br />
                   45739 Oer-Erkenschwick
                 </p>
@@ -220,7 +220,7 @@ export function JobsForm() {
                 <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-cs-gray-500">
                   Hinweis
                 </p>
-                <p className="mt-3 text-xs leading-relaxed text-cs-gray-500">
+                <p className="mt-3 text-base leading-relaxed text-cs-gray-500">
                   Mit * markierte Felder sind Pflichtfelder. Alle anderen
                   Angaben sind freiwillig, helfen uns aber bei der Einschaetzung.
                 </p>
@@ -254,7 +254,7 @@ export function JobsForm() {
                   )}
                 />
                 {errors.name && (
-                  <p id="name-error" role="alert" className="mt-1.5 text-xs text-red-400">
+                  <p id="name-error" role="alert" className="mt-1.5 text-base text-red-400">
                     {errors.name}
                   </p>
                 )}
@@ -285,7 +285,7 @@ export function JobsForm() {
                     )}
                   />
                   {errors.email && (
-                    <p id="email-error" role="alert" className="mt-1.5 text-xs text-red-400">
+                    <p id="email-error" role="alert" className="mt-1.5 text-base text-red-400">
                       {errors.email}
                     </p>
                   )}
@@ -313,7 +313,7 @@ export function JobsForm() {
                     )}
                   />
                   {errors.phone && (
-                    <p id="phone-error" role="alert" className="mt-1.5 text-xs text-red-400">
+                    <p id="phone-error" role="alert" className="mt-1.5 text-base text-red-400">
                       {errors.phone}
                     </p>
                   )}
@@ -352,7 +352,7 @@ export function JobsForm() {
                     <option value="initiativ">Initiativbewerbung</option>
                   </select>
                   {errors.position && (
-                    <p id="position-error" role="alert" className="mt-1.5 text-xs text-red-400">
+                    <p id="position-error" role="alert" className="mt-1.5 text-base text-red-400">
                       {errors.position}
                     </p>
                   )}
@@ -415,7 +415,7 @@ export function JobsForm() {
                     type="date"
                     value={formData.startDate}
                     onChange={handleChange}
-                    className="w-full border border-white/[0.08] bg-cs-black/50 px-4 py-3.5 text-sm text-cs-white transition-colors duration-300 focus:border-cs-accent focus:outline-none"
+                    className="w-full border border-white/[0.08] bg-cs-black/50 px-4 py-3.5 text-base text-cs-white transition-colors duration-300 focus:border-cs-accent focus:outline-none"
                   />
                 </div>
               </div>
@@ -441,11 +441,11 @@ export function JobsForm() {
                     errors.message ? "border-red-500/50" : "border-white/[0.08]"
                   )}
                 />
-                <p id="message-hint" className="mt-1.5 text-right text-[11px] text-cs-gray-600">
+                <p id="message-hint" className="mt-1.5 text-right text-base text-cs-gray-600">
                   {formData.message.length} / 20 Zeichen min.
                 </p>
                 {errors.message && (
-                  <p id="message-error" role="alert" className="mt-1 text-xs text-red-400">
+                  <p id="message-error" role="alert" className="mt-1 text-base text-red-400">
                     {errors.message}
                   </p>
                 )}
@@ -466,7 +466,7 @@ export function JobsForm() {
                     onChange={handleChange}
                     className="mt-1 h-4 w-4 shrink-0 appearance-none border border-white/[0.15] bg-cs-black/50 checked:border-cs-accent checked:bg-cs-accent transition-colors cursor-pointer"
                   />
-                  <span className="text-xs leading-relaxed text-cs-gray-400">
+                  <span className="text-base leading-relaxed text-cs-gray-400">
                     Ich stimme zu, dass meine Angaben zur Bearbeitung meiner
                     Bewerbung gespeichert und verarbeitet werden.{" "}
                     <a href="/datenschutz" className="text-cs-accent underline underline-offset-2 hover:text-cs-accent-hover">
@@ -475,7 +475,7 @@ export function JobsForm() {
                   </span>
                 </label>
                 {errors.privacy && (
-                  <p id="privacy-error" role="alert" className="mt-1.5 text-xs text-red-400">
+                  <p id="privacy-error" role="alert" className="mt-1.5 text-base text-red-400">
                     {errors.privacy}
                   </p>
                 )}
@@ -489,7 +489,7 @@ export function JobsForm() {
                   className="flex items-start gap-3 border border-red-500/20 bg-red-500/10 p-4"
                 >
                   <AlertCircle className="mt-0.5 h-4 w-4 shrink-0 text-red-400" aria-hidden="true" />
-                  <p className="text-sm text-red-400">{errorMessage}</p>
+                  <p className="text-base text-red-400">{errorMessage}</p>
                 </div>
               )}
 

@@ -53,7 +53,7 @@ export default async function CategoryPage({ params }: PageProps) {
             {category.name}
           </h1>
           {category.description && (
-            <p className="mt-4 max-w-lg text-[15px] leading-relaxed text-white/60">
+            <p className="mt-4 max-w-lg text-base leading-relaxed text-white/60">
               {category.description}
             </p>
           )}

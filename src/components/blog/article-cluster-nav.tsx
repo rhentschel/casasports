@@ -32,7 +32,7 @@ export function ArticleClusterNav({ cluster, currentSlug }: ArticleClusterNavPro
           </p>
           <Link
             href={`/blog/${cluster.pillarSlug}`}
-            className={`mt-1.5 block text-[15px] font-bold leading-snug transition-colors duration-300 ${
+            className={`mt-1.5 block text-base font-bold leading-snug transition-colors duration-300 ${
               cluster.pillarSlug === currentSlug
                 ? "text-cs-accent"
                 : "text-cs-white hover:text-cs-accent"
@@ -52,7 +52,7 @@ export function ArticleClusterNav({ cluster, currentSlug }: ArticleClusterNavPro
             <Link
               key={slug}
               href={`/blog/${slug}`}
-              className={`group flex items-center gap-2 text-[14px] leading-snug transition-colors duration-300 ${
+              className={`group flex items-center gap-2 text-base leading-snug transition-colors duration-300 ${
                 slug === currentSlug
                   ? "text-cs-accent"
                   : "text-white/60 hover:text-cs-white"

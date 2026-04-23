@@ -105,7 +105,7 @@ function VideoCard({
           <p className="text-[11px] font-medium uppercase tracking-[0.15em] text-cs-white/70">
             Zum Programm
           </p>
-          <p className="mt-2 text-[15px] font-bold uppercase tracking-[-0.01em] text-cs-white md:text-lg">
+          <p className="mt-2 text-base font-bold uppercase tracking-[-0.01em] text-cs-white md:text-lg">
             {clip.title}
           </p>
         </div>
@@ -153,7 +153,7 @@ export function MniProgramVideo() {
               <br />
               <span className="text-cs-accent">zum Programm.</span>
             </h2>
-            <p className="mt-6 text-[15px] leading-relaxed text-white/60">
+            <p className="mt-6 text-base leading-relaxed text-white/60">
               Einblicke in das 12-Wochen-Programm. Naim, das Team und die Mitglieder erzählen.
             </p>
           </div>

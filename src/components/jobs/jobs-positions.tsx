@@ -117,15 +117,15 @@ function PositionCard({ position }: { position: Position }) {
             {position.title}
           </h3>
           <div className="mt-3 flex flex-wrap gap-4">
-            <span className="flex items-center gap-1.5 text-xs text-cs-gray-400">
+            <span className="flex items-center gap-1.5 text-base text-cs-gray-400">
               <Briefcase className="h-3.5 w-3.5 text-cs-accent" />
               {position.type}
             </span>
-            <span className="flex items-center gap-1.5 text-xs text-cs-gray-400">
+            <span className="flex items-center gap-1.5 text-base text-cs-gray-400">
               <Clock className="h-3.5 w-3.5 text-cs-accent" />
               {position.hours}
             </span>
-            <span className="flex items-center gap-1.5 text-xs text-cs-gray-400">
+            <span className="flex items-center gap-1.5 text-base text-cs-gray-400">
               <MapPin className="h-3.5 w-3.5 text-cs-accent" />
               {position.location}
             </span>
@@ -147,7 +147,7 @@ function PositionCard({ position }: { position: Position }) {
       >
         <div className="overflow-hidden">
           <div className="border-t border-white/[0.04] px-6 pb-8 pt-6 md:px-8">
-            <p className="text-sm leading-relaxed text-white/60">
+            <p className="text-base leading-relaxed text-white/60">
               {position.description}
             </p>
 
@@ -160,7 +160,7 @@ function PositionCard({ position }: { position: Position }) {
                   {position.tasks.map((task) => (
                     <li
                       key={task}
-                      className="flex items-start gap-3 text-sm text-cs-gray-400"
+                      className="flex items-start gap-3 text-base text-cs-gray-400"
                     >
                       <span className="mt-1.5 h-1 w-1 shrink-0 bg-cs-accent" />
                       {task}
@@ -176,7 +176,7 @@ function PositionCard({ position }: { position: Position }) {
                   {position.requirements.map((req) => (
                     <li
                       key={req}
-                      className="flex items-start gap-3 text-sm text-cs-gray-400"
+                      className="flex items-start gap-3 text-base text-cs-gray-400"
                     >
                       <span className="mt-1.5 h-1 w-1 shrink-0 bg-cs-accent" />
                       {req}
@@ -211,7 +211,7 @@ export function JobsPositions() {
         <h2 className="mt-4 text-3xl font-black uppercase leading-[1.05] tracking-[-0.03em] text-cs-white md:text-5xl">
           Finde deinen <span className="text-cs-accent">Platz.</span>
         </h2>
-        <p className="mt-6 max-w-lg text-[15px] leading-relaxed text-white/60">
+        <p className="mt-6 max-w-lg text-base leading-relaxed text-white/60">
           Aktuell suchen wir Verstärkung in diesen Bereichen. Keine passende
           Stelle dabei? Schick uns trotzdem deine Bewerbung.
         </p>

@@ -23,7 +23,7 @@ export function MniInterview() {
             <br />
             <span className="text-cs-accent">Interview.</span>
           </h2>
-          <p className="mt-6 text-[15px] leading-relaxed text-white/60">
+          <p className="mt-6 text-base leading-relaxed text-white/60">
             Im Gespräch erklärt Naim das 12-Wochen-Programm, die Trainings-Philosophie
             und warum die Gemeinschaft den Unterschied macht.
           </p>

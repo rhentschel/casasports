@@ -66,7 +66,7 @@ export function WellnessPreview() {
                 <h3 className="text-lg font-black uppercase tracking-[-0.01em] text-white">
                   {item.title}
                 </h3>
-                <p className="mt-2 max-h-0 overflow-hidden text-[14px] leading-relaxed text-white/50 transition-all duration-[600ms] ease-[var(--ease-hover)] group-hover:max-h-16">
+                <p className="mt-2 max-h-0 overflow-hidden text-base leading-relaxed text-white/50 transition-all duration-[600ms] ease-[var(--ease-hover)] group-hover:max-h-16">
                   {item.text}
                 </p>
               </div>
