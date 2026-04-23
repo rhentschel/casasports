@@ -52,6 +52,11 @@ export function MegaMenu({ items, isOpen, onClose }: Props) {
             <div className="grid grid-cols-2 gap-0 border-r border-white/[0.06]">
               {items.map((item, idx) => {
                 const Icon = item.icon ? ICONS[item.icon] : null;
+                const isLastSpan =
+                  idx === items.length - 1 && items.length % 2 === 1;
+                const isLastRow = isLastSpan
+                  ? true
+                  : idx >= items.length - (items.length % 2 === 0 ? 2 : 1);
                 return (
                   <Link
                     key={item.href}
@@ -59,11 +64,9 @@ export function MegaMenu({ items, isOpen, onClose }: Props) {
                     onClick={onClose}
                     className={cn(
                       "group relative flex flex-col gap-3 border-white/[0.06] p-6 transition-colors hover:bg-white/[0.03]",
-                      idx % 2 === 0 && "border-r",
-                      idx < items.length - 2 && "border-b",
-                      idx === items.length - 1 &&
-                        items.length % 2 === 1 &&
-                        "col-span-2"
+                      idx % 2 === 0 && !isLastSpan && "border-r",
+                      !isLastRow && "border-b",
+                      isLastSpan && "col-span-2"
                     )}
                   >
                     <div className="flex items-start justify-between">
