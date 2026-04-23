@@ -83,6 +83,9 @@ const INIT_TABLES_SQL = [
   `CREATE INDEX IF NOT EXISTS pld_rels_leads_id_idx ON payload_locked_documents_rels (leads_id)`,
   `CREATE INDEX IF NOT EXISTS pld_rels_wizard_sessions_id_idx ON payload_locked_documents_rels (wizard_sessions_id)`,
   `CREATE INDEX IF NOT EXISTS pld_rels_cv_uploads_id_idx ON payload_locked_documents_rels (cv_uploads_id)`,
+  // Posts: keyTakeaway + faq (JSON) - idempotent
+  `ALTER TABLE posts ADD COLUMN IF NOT EXISTS key_takeaway TEXT`,
+  `ALTER TABLE posts ADD COLUMN IF NOT EXISTS faq JSONB`,
 ]
 
 export default buildConfig({

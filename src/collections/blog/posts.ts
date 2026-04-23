@@ -138,24 +138,10 @@ export const Posts: CollectionConfig = {
     {
       name: "faq",
       label: "FAQ",
-      type: "array",
+      type: "json",
       admin: {
-        description: "Haeufige Fragen zum Thema - wird am Ende des Artikels als FAQ-Block und als FAQPage-Schema ausgegeben.",
+        description: "JSON-Array: [{\"question\":\"...\", \"answer\":\"...\"}]. Wird am Ende des Artikels als FAQ-Block und als FAQPage-Schema ausgegeben.",
       },
-      fields: [
-        {
-          name: "question",
-          label: "Frage",
-          type: "text",
-          required: true,
-        },
-        {
-          name: "answer",
-          label: "Antwort",
-          type: "textarea",
-          required: true,
-        },
-      ],
     },
     {
       name: "relatedPosts",
