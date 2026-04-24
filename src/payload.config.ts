@@ -254,6 +254,11 @@ export default buildConfig({
       const { abnehmenMitKaloriendefizit } = await import("./data/blog/content/abnehmen-mit-kaloriendefizit")
       const { veganMuskelaufbau } = await import("./data/blog/content/vegan-muskelaufbau")
       const { supplementsWasLohntSich } = await import("./data/blog/content/supplements-was-lohnt-sich")
+      // Welle 3: Wellness Cluster
+      const { eisbadenKaelteTherapie } = await import("./data/blog/content/eisbaden-kaelte-therapie")
+      const { schlafOptimierenSportler } = await import("./data/blog/content/schlaf-optimieren-sportler")
+      const { foamRollingGuide } = await import("./data/blog/content/foam-rolling-guide")
+      const { mobilityRoutineAlltag } = await import("./data/blog/content/mobility-routine-alltag")
       const CONTENT_SEEDS = [
         saunaNachDemTraining,
         krafttrainingFuerAnfaenger,
@@ -273,6 +278,11 @@ export default buildConfig({
         abnehmenMitKaloriendefizit,
         veganMuskelaufbau,
         supplementsWasLohntSich,
+        // Welle 3
+        eisbadenKaelteTherapie,
+        schlafOptimierenSportler,
+        foamRollingGuide,
+        mobilityRoutineAlltag,
       ]
 
       // Helper: finde Category/Author via exact slug, fallback substring-match auf slug/name
