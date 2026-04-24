@@ -18,19 +18,18 @@ function slugify(text: string): string {
 
 function replaceImageMarkers(html: string): string {
   // [[IMG:filename-or-path|alt|caption]] -> <figure><img ... /><figcaption>...</figcaption></figure>
-  // Wenn der Wert mit "/" startet, wird er als direkter Pfad unter /images/... genutzt.
-  // Sonst wird /api/media/file/{filename} angenommen (Payload-Media).
+  // Keine CSS-Klassen noetig: wird via Descendant-Selektor .blog-prose figure gestylt.
   return html.replace(
     /(?:<p[^>]*>\s*)?\[\[IMG:([^|]+)\|([^|]*)\|([^\]]*)\]\](?:\s*<\/p>)?/g,
     (_m, raw, alt, caption) => {
       const value = raw.trim()
       const src = value.startsWith("/") ? value : `/api/media/file/${value}`
       const altAttr = alt.trim().replace(/"/g, "&quot;")
-      const fig = `<figure class="blog-figure"><img src="${src}" alt="${altAttr}" loading="lazy" /></figure>`
+      const fig = `<figure><img src="${src}" alt="${altAttr}" loading="lazy" /></figure>`
       if (!caption.trim()) return fig
       return fig.replace(
         "</figure>",
-        `<figcaption class="blog-figcaption">${caption.trim()}</figcaption></figure>`
+        `<figcaption>${caption.trim()}</figcaption></figure>`
       )
     }
   )
