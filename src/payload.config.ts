@@ -226,6 +226,47 @@ export default buildConfig({
       payload.logger.error({ err }, "images-sync failed")
     }
 
+    // Blog-Artikel-Content-Seed: komplette Neuschreibung mit Lexical-content + keyTakeaway + faq
+    // Idempotent via content-version Marker in keyTakeaway (erste 20 Zeichen)
+    try {
+      const { saunaNachDemTraining } = await import("./data/blog/content/sauna-nach-dem-training")
+      const CONTENT_SEEDS = [saunaNachDemTraining]
+
+      let updated = 0
+      for (const seed of CONTENT_SEEDS) {
+        const found = await payload.find({
+          collection: "posts",
+          where: { slug: { equals: seed.slug } },
+          limit: 1,
+          overrideAccess: true,
+        })
+        if (found.docs.length === 0) continue
+        const p = found.docs[0] as { id: string | number; keyTakeaway?: string }
+        // Version-Marker: wenn der aktuelle keyTakeaway mit dem neuen exakt startet, skip
+        const currentKT = (p.keyTakeaway || "").trim()
+        const newKT = seed.keyTakeaway.trim()
+        if (currentKT === newKT) continue
+
+        await payload.update({
+          collection: "posts",
+          id: p.id,
+          data: {
+            title: seed.title,
+            excerpt: seed.excerpt,
+            content: seed.content,
+            keyTakeaway: seed.keyTakeaway,
+            faq: seed.faq,
+          } as unknown as Record<string, unknown>,
+          overrideAccess: true,
+        })
+        updated++
+        payload.logger.info(`blog-rewrite: ${seed.slug} aktualisiert`)
+      }
+      payload.logger.info(`blog-rewrite-seed: ${updated}/${CONTENT_SEEDS.length} Artikel neu geschrieben`)
+    } catch (err) {
+      payload.logger.error({ err }, "blog-rewrite-seed failed")
+    }
+
     // Blog-Content-Seed: keyTakeaway + faq fuer bestehende Artikel (idempotent, nur wenn leer)
     try {
       type BlogSeed = { keyTakeaway: string; faq: { question: string; answer: string }[] }
