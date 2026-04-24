@@ -426,42 +426,81 @@ export default buildConfig({
       payload.logger.error({ err }, "blog-content-seed failed")
     }
 
-    // Autor-Bild-Link: verknuepft authors.image mit team-*.webp aus Media-Collection (idempotent)
+    // Autor-Bild-Link: erzwingt korrekte Verknuepfung authors.image mit Media-Eintrag
+    // Idempotent: wenn die Media-ID bereits stimmt, wird nicht ueberschrieben.
     try {
-      const AUTHOR_IMAGE_MAP: Record<string, string> = {
-        hidayet: "team-hidayet.webp",
-        naim: "naim-casasports.webp",
-        jennifer: "team-jennifer.webp",
-        eren: "team-eren.webp",
-        renate: "team-renate.webp",
+      const AUTHOR_IMAGE_MAP: Record<string, string[]> = {
+        // Mehrere Kandidaten pro Slug (erste Media die existiert wird genommen)
+        hidayet: ["team-hidayet.webp"],
+        naim: ["naim-casasports.webp", "team-naim-2.webp"],
+        jennifer: ["team-jennifer.webp"],
+        eren: ["team-eren.webp"],
+        renate: ["team-renate.webp"],
       }
       let linked = 0
-      for (const [slug, filename] of Object.entries(AUTHOR_IMAGE_MAP)) {
-        const author = await payload.find({
-          collection: "authors",
-          where: { slug: { equals: slug } },
-          limit: 1,
-          overrideAccess: true,
-        })
-        if (author.docs.length === 0) continue
-        const a = author.docs[0] as { id: string | number; image?: unknown }
-        if (a.image && typeof a.image === "object") continue
-        const media = await payload.find({
-          collection: "media",
-          where: { filename: { equals: filename } },
-          limit: 1,
-          overrideAccess: true,
-        })
-        if (media.docs.length === 0) continue
+      let skipped = 0
+      let notFound: string[] = []
+
+      // Autoren mit depth=0 laden, damit wir die raw Image-ID bekommen
+      const authors = await payload.find({
+        collection: "authors",
+        limit: 100,
+        depth: 0,
+        overrideAccess: true,
+      })
+
+      for (const a of authors.docs as Array<{ id: number | string; slug?: string; image?: unknown }>) {
+        const slug = a.slug
+        if (!slug) continue
+        const candidates = AUTHOR_IMAGE_MAP[slug]
+        if (!candidates) continue
+
+        // Erstes existierendes Media finden
+        let media: { id: string | number } | null = null
+        for (const filename of candidates) {
+          const found = await payload.find({
+            collection: "media",
+            where: { filename: { equals: filename } },
+            limit: 1,
+            overrideAccess: true,
+          })
+          if (found.docs.length > 0) {
+            media = found.docs[0] as { id: string | number }
+            break
+          }
+        }
+
+        if (!media) {
+          notFound.push(`${slug} (kandidaten: ${candidates.join(", ")})`)
+          continue
+        }
+
+        // Aktuelle image-ID pruefen
+        const currentImageId =
+          typeof a.image === "number" || typeof a.image === "string"
+            ? a.image
+            : a.image && typeof a.image === "object" && "id" in a.image
+            ? (a.image as { id: number | string }).id
+            : null
+
+        if (currentImageId === media.id) {
+          skipped++
+          continue
+        }
+
         await payload.update({
           collection: "authors",
           id: a.id,
-          data: { image: media.docs[0].id } as unknown as Record<string, unknown>,
+          data: { image: media.id } as unknown as Record<string, unknown>,
           overrideAccess: true,
         })
         linked++
       }
-      payload.logger.info(`authors-image-link: ${linked} verknuepft`)
+      payload.logger.info(
+        `authors-image-link: linked=${linked} skipped=${skipped}${
+          notFound.length > 0 ? ` notFound=[${notFound.join("; ")}]` : ""
+        }`
+      )
     } catch (err) {
       payload.logger.error({ err }, "authors-image-link failed")
     }
