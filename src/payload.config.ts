@@ -249,6 +249,11 @@ export default buildConfig({
       const { kreuzhebenFuerAnfaenger } = await import("./data/blog/content/kreuzheben-fuer-anfaenger")
       const { hiitTrainingErklaert } = await import("./data/blog/content/hiit-training-erklaert")
       const { klimmzugLernenVonNull } = await import("./data/blog/content/klimmzug-lernen-von-null")
+      // Welle 2: Sporternaehrung Cluster
+      const { kreatinMonohydratGuide } = await import("./data/blog/content/kreatin-monohydrat-guide")
+      const { abnehmenMitKaloriendefizit } = await import("./data/blog/content/abnehmen-mit-kaloriendefizit")
+      const { veganMuskelaufbau } = await import("./data/blog/content/vegan-muskelaufbau")
+      const { supplementsWasLohntSich } = await import("./data/blog/content/supplements-was-lohnt-sich")
       const CONTENT_SEEDS = [
         saunaNachDemTraining,
         krafttrainingFuerAnfaenger,
@@ -263,22 +268,43 @@ export default buildConfig({
         kreuzhebenFuerAnfaenger,
         hiitTrainingErklaert,
         klimmzugLernenVonNull,
+        // Welle 2
+        kreatinMonohydratGuide,
+        abnehmenMitKaloriendefizit,
+        veganMuskelaufbau,
+        supplementsWasLohntSich,
       ]
 
-      // Helper: finde Category/Author/Media IDs fuer neue Posts
-      const findFirstByField = async <T,>(
-        collection: "categories" | "authors" | "media",
-        field: string,
-        value: string
+      // Helper: finde Category/Author via exact slug, fallback substring-match auf slug/name
+      const findByFuzzySlug = async <T,>(
+        collection: "categories" | "authors",
+        slugOrKey: string
       ): Promise<T | null> => {
-        const r = await payload.find({
+        // Exact match
+        const exact = await payload.find({
           collection,
-          where: { [field]: { equals: value } },
+          where: { slug: { equals: slugOrKey } },
           limit: 1,
           overrideAccess: true,
           depth: 0,
         })
-        return (r.docs[0] as T) || null
+        if (exact.docs.length > 0) return exact.docs[0] as unknown as T
+        // Fallback: substring in slug oder name
+        const all = await payload.find({
+          collection,
+          limit: 100,
+          overrideAccess: true,
+          depth: 0,
+        })
+        const key = slugOrKey.toLowerCase()
+        const match = all.docs.find((d: unknown) => {
+          const x = d as { slug?: string; name?: string }
+          return (
+            (x.slug || "").toLowerCase().includes(key) ||
+            (x.name || "").toLowerCase().includes(key)
+          )
+        })
+        return (match as unknown as T) || null
       }
 
       let updated = 0
@@ -308,14 +334,12 @@ export default buildConfig({
           }
           if (!seedAny.categorySlug || !seedAny.authorSlug) continue
 
-          const cat = await findFirstByField<{ id: number | string }>(
+          const cat = await findByFuzzySlug<{ id: number | string }>(
             "categories",
-            "slug",
             seedAny.categorySlug
           )
-          const aut = await findFirstByField<{ id: number | string }>(
+          const aut = await findByFuzzySlug<{ id: number | string }>(
             "authors",
-            "slug",
             seedAny.authorSlug
           )
           if (!cat || !aut) {
