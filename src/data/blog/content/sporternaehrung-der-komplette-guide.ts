@@ -1,4 +1,4 @@
-import { root, paragraph, heading, ul, ol, bold, link, text } from "../lexical-builder"
+import { root, paragraph, heading, ul, ol, bold, link, text, table } from "../lexical-builder"
 
 export const sporternaehrungDerKompletteGuide = {
   slug: "sporternaehrung-der-komplette-guide",
@@ -53,6 +53,16 @@ export const sporternaehrungDerKompletteGuide = {
     paragraph(
       "Sporternährung ist kein Hexenwerk und auch keine Hochwissenschaft. Wer ein paar Grundregeln kennt und in den Alltag einbaut, holt aus dem Training deutlich mehr raus, regeneriert besser und hält das Gewicht dort, wo es sein soll. Dieser Guide geht die wichtigsten Hebel durch, basierend auf aktuellen Empfehlungen von ACSM, ISSN und anderen Fachgesellschaften."
     ),
+
+    heading("h2", "Makronährstoffe im Überblick"),
+
+    table([
+      ["Nährstoff", "Bedarf pro kg / Tag", "Funktion", "Hauptquellen"],
+      ["Protein", "1,4 - 2,2 g", "Muskelaufbau und -reparatur", "Fleisch, Fisch, Eier, Quark, Hülsenfrüchte"],
+      ["Kohlenhydrate", "3 - 12 g", "Energie fürs Training", "Reis, Haferflocken, Kartoffeln, Obst"],
+      ["Fett", "0,8 - 1,2 g", "Hormone, Vitamine, Zellbau", "Olivenöl, Nüsse, Avocado, fetter Fisch"],
+      ["Wasser", "30 - 40 ml", "Alles", "Wasser, Tee, Mineralwasser"],
+    ]),
 
     heading("h2", "Die drei Makronährstoffe im Überblick"),
 

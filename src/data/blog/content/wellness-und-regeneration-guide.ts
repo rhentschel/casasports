@@ -1,4 +1,4 @@
-import { root, paragraph, heading, ul, ol, bold, link, text } from "../lexical-builder"
+import { root, paragraph, heading, ul, ol, bold, link, text, table, image } from "../lexical-builder"
 
 export const wellnessUndRegenerationGuide = {
   slug: "wellness-und-regeneration-guide",
@@ -82,6 +82,21 @@ export const wellnessUndRegenerationGuide = {
     ),
 
     heading("h2", "Die 5 Säulen guter Regeneration"),
+
+    image(
+      "/images/blog/regeneration-chart.svg",
+      "Säulen der Regeneration mit Gewichtung",
+      "Die fünf Hebel der Regeneration - Schlaf ist mit Abstand der wichtigste Einzelfaktor."
+    ),
+
+    table([
+      ["Säule", "Empfohlene Dosis", "Wirkung"],
+      ["Schlaf", "7-9 Std/Nacht", "Wachstumshormone, Glykogen, Nervensystem"],
+      ["Ernährung", "Protein + KH + Flüssigkeit", "Muskelsubstrat und Energie-Reserven"],
+      ["Aktive Erholung", "1-2x leichte Aktivität/Woche", "Durchblutung, Stoffwechsel-Abbau"],
+      ["Wärme (Sauna)", "2-3x 8-12 Min/Woche", "Plasma, Heat-Shock-Proteine"],
+      ["Stress-Management", "Täglich 5-10 Min", "Cortisol runter, Schlafqualität"],
+    ]),
 
     heading("h3", "Säule 1: Schlaf"),
     paragraph(

@@ -1,4 +1,4 @@
-import { root, paragraph, heading, ul, ol, bold, link, text } from "../lexical-builder"
+import { root, paragraph, heading, ul, ol, bold, link, text, table } from "../lexical-builder"
 
 export const krafttrainingFuerAnfaenger = {
   slug: "krafttraining-fuer-anfaenger",
@@ -69,6 +69,20 @@ export const krafttrainingFuerAnfaenger = {
     paragraph(
       "Neu in 2026: Die ACSM rückt von prozentualen Gewichtsangaben (% vom Einer-Maximum) ab und empfiehlt für Einsteiger das RIR-Konzept (Reps in Reserve), also wie viele Wiederholungen du noch mit sauberer Technik schaffen würdest. Das macht Training intuitiver und passt sich besser an Tagesform an."
     ),
+
+    heading("h2", "Wochenplan-Progression in 12 Wochen"),
+    paragraph(
+      "So sieht eine typische Progression für einen Anfänger aus. Die Zahlen sind Richtwerte, Fortschritt ist individuell."
+    ),
+
+    table([
+      ["Woche", "Einheiten", "Satz x Wdh", "Fokus", "Intensität (RIR)"],
+      ["1-2", "2x Ganzkörper", "2 x 10", "Technik lernen", "3-4 RIR"],
+      ["3-4", "3x Ganzkörper", "2 x 10", "Bewegungen automatisieren", "3 RIR"],
+      ["5-8", "3x Ganzkörper", "3 x 8-12", "Gewicht steigern", "2 RIR"],
+      ["9-12", "3x Ganzkörper oder Split", "3 x 8-12", "Plateaus brechen", "1-2 RIR"],
+      ["12+", "3-4x Split", "3-4 x 6-12", "Spezialisierung", "1-2 RIR"],
+    ]),
 
     heading("h2", "Das ideale Einsteiger-Programm: 3×20 Minuten"),
     paragraph(

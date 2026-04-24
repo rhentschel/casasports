@@ -1,4 +1,4 @@
-import { root, paragraph, heading, ul, ol, bold, link, text } from "../lexical-builder"
+import { root, paragraph, heading, ul, ol, bold, link, text, table } from "../lexical-builder"
 
 export const fitnessTrainingDerKompletteGuide = {
   slug: "fitness-training-der-komplette-guide",
@@ -85,6 +85,14 @@ export const fitnessTrainingDerKompletteGuide = {
     ),
 
     heading("h2", "Ein 12-Wochen-Plan für absolute Einsteiger"),
+
+    table([
+      ["Phase", "Woche", "Kraft", "Cardio", "Fokus"],
+      ["Aufbau", "1-4", "3x Ganzkörper 30-40 Min", "1-2x moderat 25-35 Min", "Technik und Gewohnheit"],
+      ["Progression", "5-8", "3x Ganzkörper 40-50 Min", "2x, davon 1x Intervall", "Gewicht und Wiederholungen steigern"],
+      ["Konsolidierung", "9-12", "3-4x Split 45-60 Min", "2-3x unterschiedliche Intensität", "Plateaus brechen, Routine festigen"],
+      ["Spezialisierung", "12+", "4x Split 45-60 Min", "2-3x zielabhängig", "Ziel-fokussierte Planung"],
+    ]),
 
     heading("h3", "Woche 1-4: Technik und Gewohnheit"),
     paragraph(

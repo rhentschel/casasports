@@ -1,4 +1,4 @@
-import { root, paragraph, heading, ul, ol, bold, link, text } from "../lexical-builder"
+import { root, paragraph, heading, ul, ol, bold, link, text, table } from "../lexical-builder"
 
 export const functionalTrainingImAlltag = {
   slug: "functional-training-im-alltag",
@@ -116,6 +116,17 @@ export const functionalTrainingImAlltag = {
     ),
 
     heading("h2", "Die sieben Grundmuster im Detail"),
+
+    table([
+      ["Muster", "Beispiel-Übungen", "Alltags-Transfer"],
+      ["Squat", "Kniebeuge, Goblet Squat", "Aufstehen, Treppen, schweres Heben"],
+      ["Hinge", "Kreuzheben, Good Morning, Swing", "Dinge aus dem Kofferraum, Bücken"],
+      ["Push", "Liegestütz, Schulterdrücken", "Türen, Schränke, Umzug"],
+      ["Pull", "Klimmzug, Rudern", "Haltung, Gegenpol zum Sitzen"],
+      ["Rotate", "Pallof-Press, Medizinball-Wurf", "Sport, Werfen, Drehbewegung"],
+      ["Carry", "Farmers Walk, Suitcase Carry", "Einkauf, Koffer, Wasserkisten"],
+      ["Locomotion", "Gehen, Bear-Crawl, Sprint", "Grundlage aller Bewegung"],
+    ]),
     ul([
       [bold("Squat"), text(": Kniebeuge in allen Varianten. Haupttreiber für Beinkraft und Mobilität der Hüfte.")],
       [bold("Hinge"), text(": Hüftbeuge. Kreuzheben, Good Mornings, Swings. Schützt den Rücken.")],

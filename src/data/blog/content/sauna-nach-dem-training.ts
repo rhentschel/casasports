@@ -1,4 +1,4 @@
-import { root, paragraph, heading, ul, ol, bold, link, text } from "../lexical-builder"
+import { root, paragraph, heading, ul, ol, bold, link, text, table, image } from "../lexical-builder"
 
 export const saunaNachDemTraining = {
   slug: "sauna-nach-dem-training",
@@ -122,6 +122,17 @@ export const saunaNachDemTraining = {
     ),
 
     heading("h2", "Klassische finnische Sauna oder Infrarot?"),
+
+    table([
+      ["Kriterium", "Finnisch", "Infrarot", "Empfehlung"],
+      ["Temperatur", "80-100 °C", "55-70 °C", "Infrarot schonender"],
+      ["Dauer pro Gang", "8-12 Min", "15-30 Min", "Infrarot laenger"],
+      ["Kreislauf-Belastung", "Hoch", "Moderat", "Infrarot bei hartem Training"],
+      ["Muskelkater-Effekt", "Stark", "Stark", "Gleichwertig"],
+      ["Muskelaufbau-Phase", "Moeglich", "Empfohlen", "Infrarot"],
+      ["Vor Wettkampf", "Nein", "Eher nein", "Beide vermeiden"],
+      ["Entspannung", "Intensiv", "Moderat", "Finnisch klassisch"],
+    ]),
     paragraph(
       "Beide Varianten wirken, aber nicht identisch. Die finnische Sauna arbeitet mit hohen Lufttemperaturen (80-100 Grad) und wahlweise niedriger oder höherer Luftfeuchte. Der Kreislauf wird stark gefordert, der Schweißausstoß ist intensiv. Für reine Entspannung und Herz-Kreislauf-Training klassisch stark."
     ),

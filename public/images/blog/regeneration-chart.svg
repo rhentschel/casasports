@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 420" font-family="Inter, system-ui, sans-serif">
+  <rect width="800" height="420" fill="#0a0a0a"/>
+  <text x="40" y="40" fill="#e63946" font-size="13" font-weight="700" letter-spacing="2.5">RELATIVE GEWICHTUNG</text>
+  <text x="40" y="72" fill="#f5f5f0" font-size="22" font-weight="900" letter-spacing="-0.5">Die 5 Säulen der Regeneration</text>
+
+  <!-- Bars sortiert nach Impact -->
+  <!-- Schlaf: 100% -->
+  <text x="40" y="130" fill="#f5f5f0" font-size="13" font-weight="600">Schlaf (7-9 Std)</text>
+  <rect x="40" y="140" width="720" height="22" fill="#e63946"/>
+  <text x="400" y="156" fill="#f5f5f0" font-size="11" font-weight="700" text-anchor="middle">Höchster Einzel-Hebel</text>
+
+  <!-- Ernährung: 85% -->
+  <text x="40" y="190" fill="#f5f5f0" font-size="13" font-weight="600">Ernährung (Protein + Kalorien)</text>
+  <rect x="40" y="200" width="612" height="22" fill="#c1303b"/>
+  <text x="346" y="216" fill="#f5f5f0" font-size="11" font-weight="700" text-anchor="middle">Substrat fürs Wachstum</text>
+
+  <!-- Aktive Erholung: 60% -->
+  <text x="40" y="250" fill="#f5f5f0" font-size="13" font-weight="600">Aktive Erholung + Mobility</text>
+  <rect x="40" y="260" width="432" height="22" fill="#8a2a32"/>
+  <text x="256" y="276" fill="#f5f5f0" font-size="11" font-weight="700" text-anchor="middle">Durchblutung</text>
+
+  <!-- Waerme/Sauna: 50% -->
+  <text x="40" y="310" fill="#f5f5f0" font-size="13" font-weight="600">Sauna + Infrarot</text>
+  <rect x="40" y="320" width="360" height="22" fill="#6a2028"/>
+  <text x="220" y="336" fill="#f5f5f0" font-size="11" font-weight="700" text-anchor="middle">Plasma, HSP</text>
+
+  <!-- Stress-Management: 45% -->
+  <text x="40" y="370" fill="#f5f5f0" font-size="13" font-weight="600">Stress-Management</text>
+  <rect x="40" y="380" width="324" height="22" fill="#4a1619"/>
+  <text x="202" y="396" fill="#f5f5f0" font-size="11" font-weight="700" text-anchor="middle">Cortisol runter</text>
+</svg>

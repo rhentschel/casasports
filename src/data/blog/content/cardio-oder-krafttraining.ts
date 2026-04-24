@@ -1,4 +1,4 @@
-import { root, paragraph, heading, ul, ol, bold, link, text } from "../lexical-builder"
+import { root, paragraph, heading, ul, ol, bold, link, text, table, image } from "../lexical-builder"
 
 export const cardioOderKrafttraining = {
   slug: "cardio-oder-krafttraining",
@@ -74,6 +74,21 @@ export const cardioOderKrafttraining = {
     ),
 
     heading("h2", "Welches Ziel braucht welche Gewichtung?"),
+
+    image(
+      "/images/blog/cardio-kraft-chart.svg",
+      "Gewichtungs-Diagramm Cardio vs Krafttraining nach Ziel",
+      "Empfohlene prozentuale Aufteilung von Cardio und Krafttraining nach Trainingsziel."
+    ),
+
+    table([
+      ["Ziel", "Kraft %", "Cardio %", "Einheiten pro Woche"],
+      ["Abnehmen & Figur", "50", "50", "3-4 Kraft + 2-3 Cardio"],
+      ["Muskelaufbau", "70", "30", "3-4 Kraft + 1-2 Cardio"],
+      ["Ausdauer verbessern", "30", "70", "2 Kraft + 3-5 Cardio"],
+      ["Gesundheit & Langlebigkeit", "50", "50", "2-3 Kraft + 2-3 Cardio"],
+      ["Hybrid (Functional)", "50", "50", "3x kombiniert"],
+    ]),
 
     heading("h3", "Ziel 1: Abnehmen und Figur verbessern"),
     paragraph(
