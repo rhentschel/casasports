@@ -441,8 +441,8 @@ export default buildConfig({
     // Autor-Bild-Link: erzwingt korrekte Verknuepfung authors.image mit Media-Eintrag
     // Idempotent: wenn die Media-ID bereits stimmt, wird nicht ueberschrieben.
     try {
+      // Matcher: wenn slug ODER name einen der Keys als Substring enthaelt, nimm die Media
       const AUTHOR_IMAGE_MAP: Record<string, string[]> = {
-        // Mehrere Kandidaten pro Slug (erste Media die existiert wird genommen)
         hidayet: ["team-hidayet.webp"],
         naim: ["naim-casasports.webp", "team-naim-2.webp"],
         jennifer: ["team-jennifer.webp"],
@@ -461,11 +461,20 @@ export default buildConfig({
         overrideAccess: true,
       })
 
-      for (const a of authors.docs as Array<{ id: number | string; slug?: string; image?: unknown }>) {
-        const slug = a.slug
-        if (!slug) continue
-        const candidates = AUTHOR_IMAGE_MAP[slug]
-        if (!candidates) continue
+      for (const a of authors.docs as Array<{ id: number | string; slug?: string; name?: string; image?: unknown }>) {
+        const slug = (a.slug || "").toLowerCase()
+        const name = (a.name || "").toLowerCase()
+        if (!slug && !name) continue
+
+        // Finde passenden Map-Key per Substring in slug oder name
+        const matchedKey = Object.keys(AUTHOR_IMAGE_MAP).find(
+          (key) => slug.includes(key) || name.includes(key)
+        )
+        if (!matchedKey) {
+          notFound.push(`${slug || name} (kein Mapping)`)
+          continue
+        }
+        const candidates = AUTHOR_IMAGE_MAP[matchedKey]
 
         // Erstes existierendes Media finden
         let media: { id: string | number } | null = null
