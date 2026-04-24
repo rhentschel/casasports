@@ -438,6 +438,65 @@ export default buildConfig({
       payload.logger.error({ err }, "blog-content-seed failed")
     }
 
+    // Autor-Profil-Seed: Name, Role, Bio, Expertise (idempotent via bio-Marker)
+    try {
+      type AuthorProfile = {
+        name: string
+        role: string
+        bio: string
+        expertise: string[]
+      }
+      const AUTHOR_PROFILES: Record<string, AuthorProfile> = {
+        naim: {
+          name: "Naim Obeid",
+          role: "Inhaber & Fitness-Experte",
+          bio:
+            "Naim hat Casa Sports mit 25 Jahren Erfahrung in der Fitnessbranche aufgebaut. Als A-lizensierter Trainer, Sport- und Fitnesskaufmann (IHK), Personal Trainer und Ernährungsberater ist er Gründer des Programms Mein Neues Ich.",
+          expertise: [
+            "A-Lizenz Fitness-Trainer",
+            "Sport- und Fitnesskaufmann (IHK)",
+            "Personal Training",
+            "Ernährungsberatung",
+            "Mein Neues Ich",
+          ],
+        },
+      }
+      const BIO_MARKER = "25 Jahren Erfahrung"
+      let profileUpdates = 0
+      const profileAuthors = await payload.find({
+        collection: "authors",
+        limit: 100,
+        depth: 0,
+        overrideAccess: true,
+      })
+      for (const a of profileAuthors.docs as Array<{ id: number | string; slug?: string; name?: string; bio?: string }>) {
+        const slug = (a.slug || "").toLowerCase()
+        const name = (a.name || "").toLowerCase()
+        const matchedKey = Object.keys(AUTHOR_PROFILES).find(
+          (key) => slug.includes(key) || name.includes(key)
+        )
+        if (!matchedKey) continue
+        if (a.bio && a.bio.includes(BIO_MARKER)) continue // schon geseedet
+
+        const profile = AUTHOR_PROFILES[matchedKey]
+        await payload.update({
+          collection: "authors",
+          id: a.id,
+          data: {
+            name: profile.name,
+            role: profile.role,
+            bio: profile.bio,
+            expertise: profile.expertise.map((skill) => ({ skill })),
+          } as unknown as Record<string, unknown>,
+          overrideAccess: true,
+        })
+        profileUpdates++
+      }
+      payload.logger.info(`authors-profile-seed: ${profileUpdates} aktualisiert`)
+    } catch (err) {
+      payload.logger.error({ err }, "authors-profile-seed failed")
+    }
+
     // Autor-Bild-Link: erzwingt korrekte Verknuepfung authors.image mit Media-Eintrag
     // Idempotent: wenn die Media-ID bereits stimmt, wird nicht ueberschrieben.
     try {
