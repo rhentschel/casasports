@@ -232,7 +232,23 @@ export default buildConfig({
     // Zum Re-Seed: seededContentAt im Admin auf leer setzen.
     try {
       const { saunaNachDemTraining } = await import("./data/blog/content/sauna-nach-dem-training")
-      const CONTENT_SEEDS = [saunaNachDemTraining]
+      const { krafttrainingFuerAnfaenger } = await import("./data/blog/content/krafttraining-fuer-anfaenger")
+      const { cardioOderKrafttraining } = await import("./data/blog/content/cardio-oder-krafttraining")
+      const { functionalTrainingImAlltag } = await import("./data/blog/content/functional-training-im-alltag")
+      const { proteinbedarfBerechnen } = await import("./data/blog/content/proteinbedarf-berechnen")
+      const { fitnessTrainingDerKompletteGuide } = await import("./data/blog/content/fitness-training-der-komplette-guide")
+      const { sporternaehrungDerKompletteGuide } = await import("./data/blog/content/sporternaehrung-der-komplette-guide")
+      const { wellnessUndRegenerationGuide } = await import("./data/blog/content/wellness-und-regeneration-guide")
+      const CONTENT_SEEDS = [
+        saunaNachDemTraining,
+        krafttrainingFuerAnfaenger,
+        cardioOderKrafttraining,
+        functionalTrainingImAlltag,
+        proteinbedarfBerechnen,
+        fitnessTrainingDerKompletteGuide,
+        sporternaehrungDerKompletteGuide,
+        wellnessUndRegenerationGuide,
+      ]
 
       let updated = 0
       let skipped = 0
