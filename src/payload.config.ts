@@ -244,6 +244,11 @@ export default buildConfig({
       const { fitnessTrainingDerKompletteGuide } = await import("./data/blog/content/fitness-training-der-komplette-guide")
       const { sporternaehrungDerKompletteGuide } = await import("./data/blog/content/sporternaehrung-der-komplette-guide")
       const { wellnessUndRegenerationGuide } = await import("./data/blog/content/wellness-und-regeneration-guide")
+      // Welle 1: Fitness-Training Cluster
+      const { kniebeugeRichtigAusfuehren } = await import("./data/blog/content/kniebeuge-richtig-ausfuehren")
+      const { kreuzhebenFuerAnfaenger } = await import("./data/blog/content/kreuzheben-fuer-anfaenger")
+      const { hiitTrainingErklaert } = await import("./data/blog/content/hiit-training-erklaert")
+      const { klimmzugLernenVonNull } = await import("./data/blog/content/klimmzug-lernen-von-null")
       const CONTENT_SEEDS = [
         saunaNachDemTraining,
         krafttrainingFuerAnfaenger,
@@ -253,10 +258,32 @@ export default buildConfig({
         fitnessTrainingDerKompletteGuide,
         sporternaehrungDerKompletteGuide,
         wellnessUndRegenerationGuide,
+        // Welle 1
+        kniebeugeRichtigAusfuehren,
+        kreuzhebenFuerAnfaenger,
+        hiitTrainingErklaert,
+        klimmzugLernenVonNull,
       ]
+
+      // Helper: finde Category/Author/Media IDs fuer neue Posts
+      const findFirstByField = async <T,>(
+        collection: "categories" | "authors" | "media",
+        field: string,
+        value: string
+      ): Promise<T | null> => {
+        const r = await payload.find({
+          collection,
+          where: { [field]: { equals: value } },
+          limit: 1,
+          overrideAccess: true,
+          depth: 0,
+        })
+        return (r.docs[0] as T) || null
+      }
 
       let updated = 0
       let skipped = 0
+      let created = 0
       for (const seed of CONTENT_SEEDS) {
         const found = await payload.find({
           collection: "posts",
@@ -264,7 +291,62 @@ export default buildConfig({
           limit: 1,
           overrideAccess: true,
         })
-        if (found.docs.length === 0) continue
+
+        // NEUER ARTIKEL: anlegen wenn slug nicht existiert und seed 'categorySlug' hat
+        if (found.docs.length === 0) {
+          const seedAny = seed as unknown as {
+            slug: string
+            title: string
+            excerpt: string
+            content: unknown
+            keyTakeaway: string
+            faq: unknown
+            categorySlug?: string
+            authorSlug?: string
+            coverImagePath?: string
+            publishedAt?: string
+          }
+          if (!seedAny.categorySlug || !seedAny.authorSlug) continue
+
+          const cat = await findFirstByField<{ id: number | string }>(
+            "categories",
+            "slug",
+            seedAny.categorySlug
+          )
+          const aut = await findFirstByField<{ id: number | string }>(
+            "authors",
+            "slug",
+            seedAny.authorSlug
+          )
+          if (!cat || !aut) {
+            payload.logger.warn(
+              `blog-rewrite: ${seed.slug} - Category/Author nicht gefunden`
+            )
+            continue
+          }
+
+          await payload.create({
+            collection: "posts",
+            data: {
+              slug: seedAny.slug,
+              title: seedAny.title,
+              excerpt: seedAny.excerpt,
+              content: seedAny.content,
+              keyTakeaway: seedAny.keyTakeaway,
+              faq: seedAny.faq,
+              category: cat.id,
+              author: aut.id,
+              publishedAt: seedAny.publishedAt || new Date().toISOString(),
+              coverImagePath: seedAny.coverImagePath || "/images/casasports-hero-1.webp",
+              seededContentAt: new Date().toISOString(),
+              seededContentVersion: CONTENT_VERSION,
+            } as unknown as Record<string, unknown>,
+            overrideAccess: true,
+          })
+          created++
+          payload.logger.info(`blog-rewrite: ${seed.slug} NEU angelegt`)
+          continue
+        }
         const p = found.docs[0] as {
           id: string | number
           seededContentAt?: string | null
@@ -298,7 +380,7 @@ export default buildConfig({
         updated++
         payload.logger.info(`blog-rewrite: ${seed.slug} aktualisiert`)
       }
-      payload.logger.info(`blog-rewrite-seed: updated=${updated} skipped=${skipped} total=${CONTENT_SEEDS.length}`)
+      payload.logger.info(`blog-rewrite-seed: created=${created} updated=${updated} skipped=${skipped} total=${CONTENT_SEEDS.length}`)
     } catch (err) {
       payload.logger.error({ err }, "blog-rewrite-seed failed")
     }
