@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 520" font-family="Inter, system-ui, sans-serif">
+  <rect width="800" height="520" fill="#0a0a0a"/>
+  <text x="40" y="40" fill="#e63946" font-size="13" font-weight="700" letter-spacing="2.5">WIRKSAMKEITS-HIERARCHIE</text>
+  <text x="40" y="72" fill="#f5f5f0" font-size="22" font-weight="900" letter-spacing="-0.5">Die Fitness-Pyramide: Was was bringt</text>
+
+  <!-- Pyramide - von unten nach oben werden die Stufen schmaler -->
+  <!-- Base: Konsistenz -->
+  <polygon points="80,470 720,470 700,430 100,430" fill="#e63946"/>
+  <text x="400" y="458" fill="#f5f5f0" font-size="14" font-weight="700" text-anchor="middle">KONSISTENZ (80% des Erfolgs)</text>
+
+  <!-- 2. Ebene: Schlaf & Ernährung -->
+  <polygon points="100,430 700,430 680,380 120,380" fill="#c1303b"/>
+  <text x="400" y="410" fill="#f5f5f0" font-size="13" font-weight="700" text-anchor="middle">SCHLAF + ERNÄHRUNG</text>
+
+  <!-- 3. Ebene: Protein + Kaloriencontrolling -->
+  <polygon points="120,380 680,380 650,320 150,320" fill="#a12a34"/>
+  <text x="400" y="355" fill="#f5f5f0" font-size="12" font-weight="600" text-anchor="middle">PROTEIN-ZIEL (1,6-2,2 g/kg) + KALORIEN</text>
+
+  <!-- 4. Ebene: Krafttraining Grundübungen -->
+  <polygon points="150,320 650,320 620,260 180,260" fill="#8a2a32"/>
+  <text x="400" y="294" fill="#f5f5f0" font-size="12" font-weight="600" text-anchor="middle">KRAFTTRAINING: GRUNDÜBUNGEN</text>
+
+  <!-- 5. Ebene: Progressive Overload -->
+  <polygon points="180,260 620,260 580,200 220,200" fill="#6d2128"/>
+  <text x="400" y="234" fill="#f5f5f0" font-size="12" font-weight="600" text-anchor="middle">PROGRESSIVE OVERLOAD</text>
+
+  <!-- 6. Ebene: Cardio + Mobility -->
+  <polygon points="220,200 580,200 540,140 260,140" fill="#521a1f"/>
+  <text x="400" y="174" fill="#f5f5f0" font-size="12" font-weight="600" text-anchor="middle">CARDIO + MOBILITY</text>
+
+  <!-- 7. Ebene: Feinschliff (Timing, Supplements) -->
+  <polygon points="260,140 540,140 500,85 300,85" fill="#3a1218"/>
+  <text x="400" y="115" fill="#f5f5f0" font-size="11" font-weight="500" text-anchor="middle">TIMING + SUPPLEMENTS</text>
+
+  <!-- Top: Details (5%) -->
+  <polygon points="300,85 500,85 460,45 340,45" fill="#1a0a0d"/>
+  <text x="400" y="68" fill="#999" font-size="10" font-weight="500" text-anchor="middle">DETAILS (&lt; 5%)</text>
+
+  <!-- Beschriftung rechts/links -->
+  <text x="740" y="478" fill="#e63946" font-size="10" font-weight="700" text-anchor="end">HOHE WIRKUNG</text>
+  <text x="740" y="60" fill="#666" font-size="10" font-weight="700" text-anchor="end">GERINGE WIRKUNG</text>
+</svg>

@@ -218,9 +218,115 @@ export const sporternaehrungDerKompletteGuide = {
       " findest du die Details zu unserem Ansatz: nachhaltig, alltagstauglich, ohne Verbote."
     ),
 
+    heading("h2", "Makro-Ziele nach Ziel und Körpergewicht"),
+    paragraph(
+      "Die konkreten Mengen hängen von Körpergewicht und Ziel ab. Hier Orientierungswerte für die wichtigsten Szenarien:"
+    ),
+
+    table([
+      ["Ziel", "Protein (g/kg)", "Kohlenhydrate (g/kg)", "Fett (% kcal)", "Kalorien-Balance"],
+      ["Muskelaufbau", "1,8-2,2", "4-7", "20-30%", "+200-400 kcal"],
+      ["Fettabbau mit Muskelerhalt", "2,0-2,5", "2-4", "25-30%", "-300-500 kcal"],
+      ["Allgemeine Fitness", "1,4-1,8", "3-5", "25-35%", "Neutral"],
+      ["Ausdauer-Sport", "1,4-1,8", "5-10", "20-30%", "Neutral bis +"],
+      ["Ultra-Ausdauer", "1,6-2,0", "7-12", "20-30%", "+500-1000 kcal"],
+    ]),
+
+    heading("h2", "Die Rolle der Ballaststoffe"),
+    paragraph(
+      "Ballaststoffe werden in Sporternährung oft vergessen. Dabei sind sie zentral für:"
+    ),
+    ul([
+      "Sättigung bei Kaloriendefizit",
+      "Stabilen Blutzucker, konstantere Energie",
+      "Darmgesundheit und Mikrobiom",
+      "Reduziertes Risiko für Herz-Kreislauf-Erkrankungen",
+      "Bessere Verdauung bei proteinreicher Ernährung",
+    ]),
+    paragraph(
+      "Ziel: 30-40 g Ballaststoffe pro Tag aus Vollkorn, Hülsenfrüchten, Gemüse, Obst. Bei sehr hoher Proteinzufuhr besonders wichtig, weil tierische Quellen keine Ballaststoffe enthalten."
+    ),
+
+    heading("h2", "Mikronährstoffe: Die stillen Helden"),
+    paragraph(
+      "Vitamine und Mineralstoffe sind keine Energielieferanten, aber für alle Stoffwechselprozesse essentiell. Kritische Nährstoffe für Sportler:"
+    ),
+
+    table([
+      ["Nährstoff", "Funktion", "Quellen", "Bei Sportlern häufig defizitär"],
+      ["Vitamin D", "Knochen, Immunsystem, Testosteron", "Sonne, fetter Fisch, Eier", "Winter, Indoor-Training"],
+      ["Eisen", "Sauerstoff-Transport", "Rotes Fleisch, Hülsenfrüchte, Spinat", "Frauen, Ausdauer-Sportler"],
+      ["Magnesium", "Muskelfunktion, Schlaf", "Nüsse, Vollkorn, grünes Gemüse", "Hohe Trainingsvolumen"],
+      ["Zink", "Immunsystem, Testosteron", "Fleisch, Samen, Hülsenfrüchte", "Vegetarier"],
+      ["B12", "Blutbildung, Nerven", "Nur tierisch", "Veganer zwingend"],
+      ["Omega-3", "Entzündung, Herz, Gehirn", "Fetter Fisch, Algen", "Wenig Fischesser"],
+    ]),
+
+    heading("h2", "Spezielle Ernährungsansätze im Überblick"),
+
+    heading("h3", "Low-Carb / Keto"),
+    paragraph(
+      "Unter 50 g Kohlenhydrate pro Tag. Funktioniert für Fettabbau und stabilen Energiespiegel. Nachteil: reduzierte Leistung bei hochintensiver Belastung, lange Adaptationsphase (2-4 Wochen). Nicht empfohlen für Kraft-/Ausdauer-Leistungsathleten."
+    ),
+
+    heading("h3", "Intermittierendes Fasten"),
+    paragraph(
+      "16:8 oder 18:6 Essensfenster. Bei konstantem Kaloriendefizit gleich wirksam wie normale Verteilung. Problem: Protein in wenigen Mahlzeiten unterbringen wird schwieriger. Mögliche Probleme mit Trainings-Energie beim nüchternen Morgensport."
+    ),
+
+    heading("h3", "Flexible Dieting / IIFYM"),
+    paragraph(
+      "If It Fits Your Macros - solange Makros stimmen, ist egal was du isst. Der pragmatischste Ansatz für die meisten Menschen. Vermeidet Verbote, fördert Durchhaltevermögen. Mindestens 80% aus vollwertigen Lebensmitteln empfohlen."
+    ),
+
+    heading("h3", "Mediterrane Ernährung"),
+    paragraph(
+      "Viel Gemüse, Hülsenfrüchte, Vollkorn, Olivenöl, Fisch, moderates Fleisch. Wissenschaftlich einer der am besten untersuchten Ernährungsansätze für Langzeit-Gesundheit. Gut kombinierbar mit Sportlerbedürfnissen."
+    ),
+
+    heading("h2", "Hydration im Detail"),
+
+    table([
+      ["Zeitpunkt", "Menge", "Art"],
+      ["Tagsüber regulär", "30-40 ml/kg KG", "Wasser, ungesüßter Tee"],
+      ["Vor Training (2h)", "500-600 ml", "Wasser"],
+      ["Vor Training (15-30 Min)", "200-300 ml", "Wasser"],
+      ["Während Training < 60 Min", "150-250 ml alle 15 Min", "Wasser"],
+      ["Während Training > 60 Min", "500-1000 ml/h", "Sportgetränk mit 6% KH + Salz"],
+      ["Nach Training", "150% des Gewichtsverlusts", "Wasser + Elektrolyte"],
+      ["Hitze/hohes Schwitzen", "+500 ml/h extra", "Mineralstoffreich"],
+    ]),
+
+    heading("h2", "Mahlzeiten-Prep und Planung"),
+    paragraph(
+      "Die beste Ernährungsstrategie scheitert oft an der Umsetzung. Meal Prep macht's einfacher:"
+    ),
+    ol([
+      "Sonntag 2-3 Stunden einplanen",
+      "Große Mengen kochen: 500-800 g Hähnchen, 500 g Reis, 500 g Süßkartoffeln",
+      "Gemüse waschen, schneiden, vorportionieren",
+      "Proteinquellen variieren: Hähnchen, Lachs, Eier, Tofu, Linsen",
+      "Gläser/Dosen für 5-7 Portionen",
+      "Einfrieren: manche Gerichte halten sich 3 Monate",
+      "Snacks vorbereiten: Quark-Portionen, Obst, Nüsse",
+    ]),
+
     heading("h2", "Fazit"),
     paragraph(
       "Sporternährung ist simpler, als viele denken. Kenne deinen Proteinbedarf (1,6-2,2 g/kg), passe die Kohlenhydrate an dein Trainingspensum an, iss genug Gemüse und trinke ausreichend Wasser. Timing ist Feinschliff, Gesamtqualität ist der Hauptschalter. Drei gut strukturierte Mahlzeiten plus ein oder zwei Snacks pro Tag decken alles ab, was ein aktiver Mensch braucht."
+    ),
+    paragraph(
+      "Die fünf wichtigsten Regeln: ",
+      bold("Erstens"),
+      " ausreichend Protein über den Tag verteilt. ",
+      bold("Zweitens"),
+      " Kohlenhydrate passend zur Trainingsbelastung. ",
+      bold("Drittens"),
+      " gesunde Fette nicht meiden. ",
+      bold("Viertens"),
+      " Gemüse als Basis jeder Mahlzeit. ",
+      bold("Fünftens"),
+      " ausreichend trinken und schlafen."
     ),
     paragraph(
       "Starte mit einer Bestandsaufnahme: Protokolliere drei Tage lang, was du isst, und vergleiche mit den Empfehlungen aus diesem Guide. Die Lücken, die dabei sichtbar werden, sind dein einfachster Hebel für bessere Leistung und Regeneration."

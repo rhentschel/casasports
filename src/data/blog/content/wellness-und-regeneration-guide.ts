@@ -206,6 +206,80 @@ export const wellnessUndRegenerationGuide = {
       "."
     ),
 
+    heading("h2", "Biologische Marker für Regeneration"),
+    paragraph(
+      "Wer seine Regeneration objektiv messen will, kann auf verschiedene Marker zurückgreifen:"
+    ),
+
+    table([
+      ["Marker", "Was es zeigt", "Gut vs schlecht", "Wie messen"],
+      ["Ruheherzfrequenz", "Kreislauf-Status", "Niedriger = besser", "Morgens im Bett, Pulsmesser"],
+      ["HRV (Heart Rate Variability)", "Vegetative Balance", "Höher = besser", "Apps, Wearables wie Whoop/Oura"],
+      ["Schlafqualität", "Regenerative Kapazität", "Tiefschlaf > 15%", "Wearable, subjektive Einschätzung"],
+      ["Stimmung & Motivation", "Zentralnervensystem", "Positiv, Leistungsbereitschaft", "Tägliche 1-10 Skala"],
+      ["Maximalkraft-Tests", "Trainierte Kraft verfügbar", "Stabil oder steigt", "Grip, Kniebeuge-Test"],
+      ["Muskelkater", "Akute Überlastung", "Mild, 24-48h vorbei", "Subjektiv, 1-10 Skala"],
+      ["Schlafbedarf", "Chronische Ermüdung", "Konstant, kein zusätzlicher Bedarf", "Wochenschnitt"],
+    ]),
+    paragraph(
+      "Wer mehrere dieser Marker über 4-8 Wochen trackt, erkennt Trends viel besser als über Einzelwerte. Ein schlechter Tag ist normal, eine schlechte Woche ein Warnzeichen."
+    ),
+
+    heading("h2", "Regenerations-Protokolle für verschiedene Szenarien"),
+
+    heading("h3", "Nach intensivem Krafttraining"),
+    ol([
+      "Sofort: Cool-Down 5-10 Min, Stretching",
+      "Innerhalb 30 Min: Proteinshake + Kohlenhydrate",
+      "Innerhalb 2h: volle Mahlzeit mit Protein + KH + Gemüse",
+      "1-2h vor Schlaf: leichte Mobility oder Sauna optional",
+      "Folgetag: moderate Bewegung, kein erneutes intensives Training der gleichen Muskelgruppe",
+    ]),
+
+    heading("h3", "Nach langer Ausdauer-Einheit"),
+    ol([
+      "Sofort: Kohlenhydrat-Getränk (1-1,2 g/kg KG)",
+      "Innerhalb 30 Min: schnelle Kohlenhydrate + etwas Protein",
+      "Innerhalb 2-4h: volle Mahlzeit",
+      "Nachmittag: Nap 20-40 Min optional",
+      "Abend: kühlere Dusche, früh ins Bett",
+    ]),
+
+    heading("h3", "Während intensiver Trainingsblöcke (mehrere Wochen hart)"),
+    ul([
+      "Deload-Woche alle 6-8 Wochen: 40-60% Volumen",
+      "Schlaf-Priorität: 1-2h mehr als normal",
+      "Kalorien nicht reduzieren, auch bei Abnehm-Ziel",
+      "Massage oder Physio alle 2-3 Wochen",
+      "HRV-Monitoring bei Möglichkeit",
+      "Soziale Aktivitäten reduzieren, Energie sparen",
+    ]),
+
+    heading("h3", "Bei Anzeichen von Überlastung"),
+    ol([
+      "7-14 Tage komplette Trainingspause",
+      "Aktivität: nur leichte Spaziergänge, Yoga, Schwimmen",
+      "Schlaf maximieren: 9-10 Stunden wenn möglich",
+      "Ernährung: keine Diät, volle Energieversorgung",
+      "Stress-Reduktion: Arbeit reduzieren wenn möglich",
+      "Deload-Woche mit 50% Volumen als Wiedereinstieg",
+      "Erst bei stabiler HRV und Motivation zurück in normale Belastung",
+    ]),
+
+    heading("h2", "Regeneration nach Alter"),
+    paragraph(
+      "Regenerationszeit steigt mit dem Alter messbar an. Was ein 25-Jähriger in 24 Stunden erholt, braucht beim 50-Jährigen oft 48-72 Stunden."
+    ),
+
+    table([
+      ["Alter", "Empfohlene Pause zwischen intensiven Einheiten", "Schlafbedarf", "Besonderheiten"],
+      ["18-30", "24-48 Std", "7-9 Std", "Schnelle Regeneration"],
+      ["30-45", "36-48 Std", "7-9 Std", "Leichte Verlängerung"],
+      ["45-55", "48-72 Std", "7-8 Std", "Mobility wichtiger"],
+      ["55-65", "48-96 Std", "7-8 Std", "Krafttraining-Frequenz reduzieren"],
+      ["65+", "72-96 Std", "7-9 Std", "Aktivität vor Intensität"],
+    ]),
+
     heading("h2", "Fazit"),
     paragraph(
       "Regeneration ist kein Luxus, sondern der Multiplikator deines Trainings. Sieben bis neun Stunden Schlaf, ausreichend Protein, aktive und passive Erholungseinheiten und bewusstes Stress-Management bringen langfristig mehr Fortschritt als jede zusätzliche Trainingseinheit. Wer die Säulen dieses Guides umsetzt, hält Leistung stabil, beugt Verletzungen vor und holt aus seinem Training das Maximum heraus."
