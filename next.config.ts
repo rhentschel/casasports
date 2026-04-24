@@ -14,6 +14,10 @@ const nextConfig: NextConfig = {
       },
       {
         protocol: "https",
+        hostname: "sport.casasports.de",
+      },
+      {
+        protocol: "https",
         hostname: "i.ytimg.com",
       },
     ],
