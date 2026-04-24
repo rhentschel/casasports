@@ -238,35 +238,117 @@ html.light .img-cinema {
   margin-top: 0;
 }
 
-/* Tabellen */
+/* Tabellen - Premium Dark Theme */
 .blog-prose table {
   width: 100%;
-  margin: 2em 0;
-  border-collapse: collapse;
+  margin: 2.5em 0;
+  border-collapse: separate;
+  border-spacing: 0;
   font-size: 0.95em;
-}
-
-.blog-prose thead,
-.blog-prose tr:first-child {
-  background: rgba(230, 57, 70, 0.06);
+  background: linear-gradient(180deg, rgba(255,255,255,0.02) 0%, rgba(0,0,0,0) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  overflow: hidden;
 }
 
 .blog-prose th,
 .blog-prose td {
-  padding: 0.85em 1em;
+  padding: 1em 1.25em;
   text-align: left;
-  border: 1px solid rgba(255, 255, 255, 0.08);
   color: var(--cs-white);
-  vertical-align: top;
+  vertical-align: middle;
+  border: 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.blog-prose tbody tr:last-child td,
+.blog-prose tr:last-child td {
+  border-bottom: 0;
+}
+
+/* Header: subtle, accent tracking */
+.blog-prose thead,
+.blog-prose tr:first-child {
+  background: rgba(230, 57, 70, 0.08);
+  position: relative;
 }
 
 .blog-prose th,
 .blog-prose tr:first-child td {
   font-weight: 700;
   color: var(--cs-accent);
-  font-size: 0.85em;
+  font-size: 0.72em;
   text-transform: uppercase;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.18em;
+  padding: 0.9em 1.25em;
+  border-bottom: 1px solid rgba(230, 57, 70, 0.25);
+}
+
+/* Erste Spalte fett hervorgehoben */
+.blog-prose tbody tr td:first-child,
+.blog-prose tr:not(:first-child) td:first-child {
+  font-weight: 600;
+  color: var(--cs-white);
+  position: relative;
+  padding-left: 1.75em;
+}
+
+.blog-prose tbody tr td:first-child::before,
+.blog-prose tr:not(:first-child) td:first-child::before {
+  content: "";
+  position: absolute;
+  left: 0.9em;
+  top: 50%;
+  width: 3px;
+  height: 3px;
+  background: var(--cs-accent);
+  transform: translateY(-50%);
+  border-radius: 0;
+}
+
+/* Header erste Spalte: kein Akzent-Dot */
+.blog-prose thead tr td:first-child::before,
+.blog-prose tr:first-child td:first-child::before {
+  display: none;
+}
+
+.blog-prose thead tr td:first-child,
+.blog-prose tr:first-child td:first-child {
+  padding-left: 1.25em;
+}
+
+/* Zebra + Hover */
+.blog-prose tbody tr:nth-child(even):not(:first-child),
+.blog-prose tr:nth-child(2n+3) {
+  background: rgba(255, 255, 255, 0.015);
+}
+
+.blog-prose tbody tr:hover,
+.blog-prose tr:not(:first-child):hover {
+  background: rgba(230, 57, 70, 0.04);
+}
+
+/* Zahlen / Werte rechtsbündig rendern wenn es ums Messen geht */
+.blog-prose td:nth-child(2),
+.blog-prose td:nth-child(3) {
+  font-variant-numeric: tabular-nums;
+  color: rgba(245, 245, 240, 0.85);
+  font-weight: 500;
+}
+
+/* Letzte Spalte etwas leiser (Hinweis/Meta) */
+.blog-prose tr td:last-child:not(:first-child):not(:nth-child(2)):not(:nth-child(3)) {
+  color: rgba(255, 255, 255, 0.55);
+  font-size: 0.92em;
+  font-style: italic;
+}
+
+/* Mobile: horizontal scroll */
+@media (max-width: 640px) {
+  .blog-prose table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
 }
 
 /* Figure / Bilder */
