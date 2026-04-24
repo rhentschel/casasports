@@ -148,6 +148,48 @@ export const klimmzugLernenVonNull = {
       "Regeneration? Schlaf, Ernährung, Stress prüfen",
     ]),
 
+    heading("h2", "Griffvarianten und ihre Unterschiede"),
+
+    table([
+      ["Griff", "Handposition", "Primäre Muskeln", "Schwierigkeit"],
+      ["Chin-Up (Supination)", "Handflächen zum Körper", "Latissimus, Bizeps", "Leichteste Variante"],
+      ["Pull-Up (Pronation)", "Handflächen weg vom Körper", "Latissimus, Rücken breit", "Standard-Klimmzug"],
+      ["Neutral Grip", "Parallele Griffe, Handflächen zueinander", "Lat, Bizeps, wenig Schulter-Stress", "Mittel, schulterfreundlich"],
+      ["Weiter Griff", "Deutlich über Schulterbreit", "Breiter Rücken, Schulter", "Schwieriger, Fokus Breite"],
+      ["Enger Griff", "Schmaler als Schulter", "Mittlerer Rücken, Bizeps", "Fokus auf Volumen, enge Bewegung"],
+      ["Ein-Arm-Klimmzug", "Eine Hand, andere assistiert", "Maximale Kraft", "Elite-Niveau"],
+    ]),
+
+    heading("h2", "Anatomie: Welche Muskeln arbeiten?"),
+    paragraph(
+      "Klimmzüge sind eine der komplexesten Körpergewichtsübungen. Beteiligt sind:"
+    ),
+    ul([
+      [bold("Latissimus dorsi"), text(": der breite Rückenmuskel, Hauptantrieb der Zugbewegung")],
+      [bold("Rhomboids + Trapezius mittel"), text(": ziehen die Schulterblätter zusammen")],
+      [bold("Bizeps brachii + Brachialis"), text(": beugen den Arm (bei Chin-Up dominanter)")],
+      [bold("Deltoideus posterior"), text(": hintere Schulter, stabilisiert")],
+      [bold("Rectus abdominis + Core"), text(": hält den Körper in gerader Linie")],
+      [bold("Unterarmflexoren"), text(": Griffkraft, oft der limitierende Faktor")],
+    ]),
+    paragraph(
+      "Wer Probleme hat, dem Kinn die Stange zu überqueren, hat meist ein schwaches Latissimus-Aktivierungsmuster. Scapular Pulls und Face Pulls davor helfen."
+    ),
+
+    heading("h2", "Zusatzgewicht-Progression"),
+    paragraph(
+      "Sobald du 8-10 saubere Klimmzüge schaffst, beginnt die Gewichts-Progression mit Dip-Gürtel:"
+    ),
+
+    table([
+      ["Stufe", "Klimmzüge Körpergewicht", "Zusatzgewicht", "Ziel"],
+      ["Einstieg", "5-8 sauber", "0 kg", "Grundtechnik"],
+      ["Intermediate", "8-12", "5-10 kg", "Kraft aufbauen"],
+      ["Fortgeschritten", "5-8 mit 15-20 kg", "15-25 kg", "Maximalkraft"],
+      ["Elite", "3-5 mit 30+ kg", "30+ kg", "Spezialisierung"],
+      ["One-Arm-Vorbereitung", "5 mit 50% Körpergewicht", "50% KG", "Richtung Ein-Arm"],
+    ]),
+
     heading("h2", "Was nach dem ersten Klimmzug?"),
     paragraph(
       "Herzlichen Glückwunsch - du gehörst jetzt zu einer kleinen Minderheit. Die nächsten Ziele:"

@@ -147,6 +147,52 @@ export const kreuzhebenFuerAnfaenger = {
       [bold("Klimmzüge und Rudern"), text(": stärken den Latissimus, wichtig fürs Halten der Stange")],
     ]),
 
+    heading("h2", "Kreuzheben-Varianten im Vergleich"),
+
+    table([
+      ["Variante", "Fußstand", "Primäre Muskeln", "Geeignet für"],
+      ["Konventionell", "Hüftbreit", "Rücken, Glutes, Hamstrings", "Einstieg, breite Wirkung"],
+      ["Sumo", "Breit, Füße ausgedreht", "Quads, Glutes, Innenschenkel", "Kurzer Oberkörper, Hüftmobility"],
+      ["Rumänisch (RDL)", "Hüftbreit, Knie leicht gebeugt", "Hamstrings, Glutes", "Hypertrophie hintere Kette"],
+      ["Kreuzheben von Block", "Hüftbreit, Hantel erhöht", "Lockout, Rücken", "Unterstützt Oberschenkel-Probleme"],
+      ["Deficit-Deadlift", "Hüftbreit, auf Erhöhung stehend", "Extra ROM, Hamstrings", "Fortgeschrittene"],
+      ["Snatch-Grip", "Breiter Griff (Langhantel)", "Oberer Rücken, Kraft unten", "Olympische Heber"],
+      ["Trap-Bar-Deadlift", "Mittig in Trap-Bar", "Quads, Glutes", "Anfängerfreundlich, weniger Rücken"],
+    ]),
+
+    heading("h2", "Kreuzheben und die Wirbelsäule"),
+    paragraph(
+      "Die meistgestellte Frage: 'Ist Kreuzheben mit rundem Rücken immer gefährlich?' Neuere Forschung differenziert. Eine 2026 veröffentlichte ",
+      link(
+        "https://www.mdpi.com/2075-4663/14/4/151",
+        "Review in Sports (MDPI)"
+      ),
+      " fasst zusammen: Moderate Lumbalflexion ist nicht per se verletzend, aber mehrere Faktoren erhöhen das Risiko:"
+    ),
+    ul([
+      "Last zu hoch für die aktuelle Konditionsstufe",
+      "Schnelle Belastungssteigerung (>10% pro Woche)",
+      "Ermüdung in späten Sätzen",
+      "Schlafmangel und hoher Lebensstress",
+      "Vorausgegangene Rückenverletzungen ohne Reha",
+      "Fehlendes Bracing der Rumpfmuskulatur",
+    ]),
+
+    heading("h2", "Grip-Varianten und Griffkraft"),
+    paragraph(
+      "Die Griffkraft ist oft der limitierende Faktor bei Kreuzheben. Die drei häufigsten Griffe:"
+    ),
+
+    table([
+      ["Griff", "Technik", "Vorteil", "Nachteil"],
+      ["Doppel-Overhand", "Beide Handflächen zum Körper", "Symmetrisch, sicher", "Griffkraft-limitiert"],
+      ["Wechselgriff (Mixed)", "Eine Hand zum, eine weg", "Mehr Griffkraft", "Asymmetrisch, Bizeps-Risiko"],
+      ["Hook Grip", "Daumen unter Fingern", "Sehr sicher, wie Olympisch", "Schmerzhaft am Anfang"],
+    ]),
+    paragraph(
+      "Griffkraft trainieren: Farmer Walks, Dead Hangs, Grip Trainer. Zughilfen (Wrist Straps) sind als Werkzeug erlaubt, aber am Anfang lieber Griffkraft selbst aufbauen."
+    ),
+
     heading("h2", "Wann du Kreuzheben nicht machen solltest"),
     ul([
       "Akute Rückenschmerzen ohne ärztliche Abklärung",

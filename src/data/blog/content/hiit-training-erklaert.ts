@@ -127,6 +127,42 @@ export const hiitTrainingErklaert = {
       "Tabata 2-3 mal pro Woche plus 10.000 Schritte täglich reicht für substanzielle gesundheitliche Gewinne - besonders für Stoffwechsel und Herz-Kreislauf."
     ),
 
+    heading("h2", "HIIT für verschiedene Fitness-Level"),
+
+    table([
+      ["Level", "Wochenvolumen", "Intensität", "Erholung dazwischen"],
+      ["Anfänger", "2x 10-15 Min", "70-80% Max-HF", "48-72 Std"],
+      ["Fortgeschritten", "3x 15-20 Min", "80-90% Max-HF", "24-48 Std"],
+      ["Elite", "3-4x 15-25 Min", "90-95% Max-HF", "24 Std"],
+      ["Leistungssport", "4-5x 20-30 Min + SIT", "Maximal", "Strukturierte Periodisierung"],
+    ]),
+
+    heading("h2", "HIIT-Übungen nach Equipment"),
+
+    table([
+      ["Equipment", "Übungen", "Vorteile"],
+      ["Körpergewicht", "Burpees, Mountain Climbers, Jump Squats, High Knees", "Immer möglich, kostenlos"],
+      ["Laufband", "Sprint-Intervalle 5-15% Steigung", "Controllable Intensität"],
+      ["Rudergerät", "30s all-out, 30s leicht", "Ganzkörper, gelenkschonend"],
+      ["Fahrrad", "Tabata auf Spinning-Bike", "Keine Gelenkbelastung"],
+      ["Ski-Ergometer", "Double-Poling-Intervalle", "Oberkörper-fokussiert"],
+      ["Kettlebell", "Swings, Snatches, Clean & Press", "Kombiniert Kraft + Cardio"],
+      ["Freie Fläche", "Shuttle Runs, Bear Crawls, Sprungseil", "Abwechslungsreich"],
+    ]),
+
+    heading("h2", "Physiologische Mechanismen von HIIT"),
+    paragraph(
+      "Warum wirkt HIIT so stark? Die Schlüsselmechanismen:"
+    ),
+    ul([
+      [bold("EPOC (Nachbrenneffekt)"), text(": erhöhter Kalorienverbrauch 12-24h nach dem Training")],
+      [bold("Mitochondriale Biogenese"), text(": neue Energie-Kraftwerke in Muskelzellen")],
+      [bold("Verbessertes Schlagvolumen"), text(": Herz pumpt mehr Blut pro Schlag")],
+      [bold("Höhere Insulinsensitivität"), text(": Blutzucker besser reguliert")],
+      [bold("Laktat-Toleranz"), text(": Muskulatur puffert Säure schneller")],
+      [bold("Hormonspitzen"), text(": kurze kräftige Ausschüttung von Wachstumshormon")],
+    ]),
+
     heading("h2", "Warm-up und Cool-down nicht vergessen"),
     paragraph(
       "HIIT ohne Warm-up ist ein Verletzungsrisiko. Mindestens 5 Minuten leichte Bewegung, dynamisches Stretching, ein paar Stufen auf 60-70 Prozent Intensität. Nach dem HIIT mindestens 3-5 Minuten langsames Auslaufen, damit dein Puls kontrolliert runterkommt."

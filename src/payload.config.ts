@@ -230,7 +230,7 @@ export default buildConfig({
 
     // Content-Version: erhoehen, wenn alle Artikel mit neuem Content/Layout geseedet werden sollen.
     // Aktuelle Version: "v2-2026-04-24" (mit Tabellen + Bildern).
-    const CONTENT_VERSION = "v6-2026-04-24"
+    const CONTENT_VERSION = "v7-2026-04-24"
 
     // Blog-Artikel-Content-Seed: schreibt Content, wenn seededContentAt NICHT passt.
     // User-Edits im Admin bleiben erhalten, solange keyTakeaway/seededContentAt zu seiner Version gehoeren.
