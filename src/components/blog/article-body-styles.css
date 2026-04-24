@@ -84,29 +84,6 @@
 .bp-article tr:not(:first-child) td:first-child {
   font-weight: 600;
   color: #f5f5f0;
-  position: relative;
-  padding-left: 1.75em;
-}
-
-.bp-article tbody tr td:first-child::before,
-.bp-article tr:not(:first-child) td:first-child::before {
-  content: "";
-  position: absolute;
-  left: 0.9em;
-  top: 50%;
-  width: 3px;
-  height: 3px;
-  background: #e63946;
-  transform: translateY(-50%);
-}
-
-.bp-article thead tr td:first-child::before,
-.bp-article tr:first-child td:first-child::before {
-  display: none;
-}
-
-.bp-article thead tr td:first-child,
-.bp-article tr:first-child td:first-child {
   padding-left: 1.25em;
 }
 

@@ -14,6 +14,7 @@ export function ArticleBody({ content }: ArticleBodyProps) {
     <div ref={ref} className="reveal bp-article" id="article-content">
       <div
         className="blog-prose"
+        spellCheck={false}
         dangerouslySetInnerHTML={{ __html: content }}
       />
     </div>
