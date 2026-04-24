@@ -190,6 +190,32 @@ export const supplementsWasLohntSich = {
       "Der Supplement-Aufwand für einen ambitionierten Kraftsportler liegt bei 20-40 Euro pro Monat. Wer mehr ausgibt, zahlt meist für Marketing. Gute Quellen: MyProtein, ESN, Rocka Nutrition (Deutschland) oder direkt vom Hersteller mit Zertifizierung."
     ),
 
+    heading("h2", "Kennzeichen eines seriösen Herstellers"),
+
+    table([
+      ["Kriterium", "Gut", "Rote Flagge"],
+      ["Zutatenliste", "5-10 Zutaten, alle bekannt", "30+ Zutaten, proprietäre Blends"],
+      ["Dosierung", "Transparent pro Portion", "Proprietary Blend ohne Mengenangabe"],
+      ["Zertifizierung", "Informed Sport, NSF, Cologne List", "Keine"],
+      ["Produktionsort", "Deutschland, EU, USA (GMP)", "Unklare Herkunft"],
+      ["Preis", "Realistisch (5-30 € für Basis-Supplements)", "Extrem hoch"],
+      ["Marketing-Claims", "Wissenschaftlich untermauert", "Testo-Boost, Fatburn, Quick Gains"],
+      ["Unabhängige Tests", "Labor-Ergebnisse veröffentlicht", "Intransparent"],
+    ]),
+
+    heading("h2", "Übersicht: Kosten eines sinnvollen Supplement-Stacks"),
+
+    table([
+      ["Supplement", "Monatsmenge", "Kosten/Monat", "Priorität"],
+      ["Kreatin-Monohydrat", "100 g (3-5 g tgl.)", "3-5 €", "Höchste"],
+      ["Whey oder Vegan-Protein", "1-2 kg", "20-30 €", "Hoch"],
+      ["Vitamin D3 (Winter)", "1 Tropfen tgl.", "1-3 €", "Hoch"],
+      ["Omega-3 (1-2 g EPA+DHA)", "60-90 Kapseln", "10-15 €", "Mittel"],
+      ["Magnesium", "300-400 mg tgl.", "3-5 €", "Mittel bei Defizit"],
+      ["Koffein", "vor Training", "5-10 €", "Mittel"],
+      ["Basis-Stack gesamt", "—", "25-40 €", "Für 95% genug"],
+    ]),
+
     heading("h2", "Was Casa Sports dir empfehlen kann"),
     paragraph(
       "Wir verkaufen keine Supplements im Studio und haben keine Partnerschaften - unsere Empfehlungen sind neutral. In der Ernährungsberatung besprechen wir deinen individuellen Bedarf auf Basis deiner Bluttest-Werte und Trainingsziele."

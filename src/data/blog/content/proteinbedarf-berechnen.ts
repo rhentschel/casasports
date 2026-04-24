@@ -171,6 +171,47 @@ export const proteinbedarfBerechnen = {
       "Nicht sinnvoll: Pulver als Ersatz für vollwertige Mahlzeiten über den Tag. Echte Lebensmittel liefern Ballaststoffe, Mikronährstoffe und Sättigung, was Pulver nicht kann."
     ),
 
+    heading("h2", "Protein-Qualität: Biologische Wertigkeit und DIAAS"),
+    paragraph(
+      "Nicht jedes Gramm Protein ist gleich wertvoll. Zwei Messgrößen werden verwendet: die klassische Biologische Wertigkeit (BV, Ei = 100 als Referenz) und der modernere DIAAS-Score, der auch die Verdaulichkeit berücksichtigt."
+    ),
+
+    table([
+      ["Lebensmittel", "BV", "DIAAS (%)", "Hinweis"],
+      ["Molkenprotein (Whey)", "104", "125", "Höchster Wert"],
+      ["Eier (ganz)", "100", "113", "Referenz-Protein"],
+      ["Kuhmilch", "91", "118", "Plus Calcium"],
+      ["Rindfleisch", "80", "99", "Vollwertig"],
+      ["Lachs", "83", "100+", "Plus Omega-3"],
+      ["Soja-Protein-Isolat", "74", "89", "Beste pflanzliche Quelle"],
+      ["Quinoa", "83", "75", "Komplettes Profil, pflanzlich"],
+      ["Hülsenfrüchte allein", "65", "55-70", "Kombination nötig"],
+      ["Weizenprotein", "54", "40", "Lysin-limitiert"],
+    ]),
+    paragraph(
+      "Praxis: Wer täglich eine Mischung aus 2-3 Proteinquellen isst, deckt alle essenziellen Aminosäuren auch mit pflanzlichen Quellen ab. Details im ",
+      link("/blog/vegan-muskelaufbau", "Vegan-Muskelaufbau-Guide", false),
+      "."
+    ),
+
+    heading("h2", "Die 9 essenziellen Aminosäuren"),
+
+    table([
+      ["Aminosäure", "Funktion", "Quellen"],
+      ["Leucin", "Triggert Muskelproteinsynthese (mTOR)", "Fleisch, Eier, Whey"],
+      ["Isoleucin", "Energie im Muskel", "Fleisch, Fisch, Eier"],
+      ["Valin", "Muskelreparatur", "Milchprodukte, Hülsen"],
+      ["Lysin", "Kollagen, Immunsystem", "Fleisch, Fisch (Getreide limitiert)"],
+      ["Methionin", "Entgiftung, Schwefelträger", "Eier, Fisch (Hülsen limitiert)"],
+      ["Threonin", "Gewebe-Reparatur", "Fleisch, Fisch, Linsen"],
+      ["Tryptophan", "Serotonin-Vorstufe", "Pute, Milch, Nüsse"],
+      ["Phenylalanin", "Vorstufe für Adrenalin", "Fleisch, Eier, Soja"],
+      ["Histidin", "Histamin, Wachstum", "Fleisch, Hülsenfrüchte"],
+    ]),
+    paragraph(
+      "Besonders Leucin ist entscheidend: 2,5-3 g pro Mahlzeit maximiert die Muskelproteinsynthese. 30-40 g Whey oder 180 g mageres Fleisch liefern diese Menge zuverlässig."
+    ),
+
     heading("h2", "Typische Fehler"),
     ul([
       "Zu wenig Protein in der Diät: Wer Kalorien reduziert, aber nicht Protein anhebt, verliert Muskeln statt Fett.",

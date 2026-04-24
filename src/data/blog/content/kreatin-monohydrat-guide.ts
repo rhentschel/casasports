@@ -126,6 +126,37 @@ export const kreatinMonohydratGuide = {
       "Keine einzige Studie zeigt messbare Vorteile dieser Varianten gegenüber Monohydrat. Sie sind nur teurer."
     ),
 
+    heading("h2", "Kreatin und Gehirn: Der unterschätzte Effekt"),
+    paragraph(
+      "Kreatin ist nicht nur für Muskeln. Etwa 95 Prozent des Körper-Kreatins sitzt in Muskeln, aber auch das Gehirn nutzt Kreatin als Energiespeicher. Neuere Forschung zeigt mehrere kognitive Effekte:"
+    ),
+    ul([
+      "Bessere kognitive Leistung bei Schlafmangel",
+      "Reduzierte mentale Ermüdung bei komplexen Aufgaben",
+      "Mögliche neuroprotektive Effekte (Forschung noch jung)",
+      "Verbesserte Arbeitsgedächtnis-Leistung",
+      "Hinweise auf mildernde Wirkung bei leichten Depressionen",
+    ]),
+    paragraph(
+      "Für kognitive Effekte werden höhere Dosen diskutiert (5-10 g/Tag), aber 3-5 g für Sportler sind schon ein guter Ausgangspunkt."
+    ),
+
+    heading("h2", "Kreatin-Formen im Vergleich"),
+
+    table([
+      ["Form", "Bioverfügbarkeit", "Preis", "Empfehlung"],
+      ["Kreatin-Monohydrat", "99-100%", "Niedrig", "Goldstandard, beste Wahl"],
+      ["Creapure (reines Monohydrat)", "99-100%", "Mittel", "Zertifizierte Reinheit"],
+      ["Kreatin-Ethyl-Ester", "Geringer als Monohydrat", "Hoch", "Nicht empfehlenswert"],
+      ["Kreatin-HCL", "Ähnlich Monohydrat", "Hoch", "Marketing, kein Vorteil"],
+      ["Kre-Alkalyn", "Ähnlich Monohydrat", "Hoch", "Kein evidenzbasierter Vorteil"],
+      ["Kreatin-Citrat", "Gut, leicht löslich", "Mittel", "Alternative bei Magenempfindlichkeit"],
+      ["Kreatin-Nitrate", "Gut", "Hoch", "Keine belegten Zusatzvorteile"],
+    ]),
+    paragraph(
+      "Fazit: Kreatin-Monohydrat (günstig oder Creapure) ist praktisch immer die beste Wahl. Alle 'innovativen' Formen sind Marketing ohne wissenschaftliche Grundlage."
+    ),
+
     heading("h2", "Wer besonders profitiert"),
     ul([
       "Kraftsportler und Bodybuilder (stärkster Effekt)",

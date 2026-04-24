@@ -155,6 +155,38 @@ export const abnehmenMitKaloriendefizit = {
       "Kein Plan für die Zeit nach der Diät: Gewichtswiederzunahme",
     ]),
 
+    heading("h2", "Sättigung: Der unterschätzte Faktor"),
+    paragraph(
+      "Lebensmittel mit hohem Sättigungsindex machen das Defizit deutlich erträglicher. Die Sättigung wird beeinflusst durch Protein, Ballaststoffe, Wasser und Kauzeit."
+    ),
+
+    table([
+      ["Lebensmittel", "Sättigungsindex (Weißbrot = 100)", "Gründe"],
+      ["Kartoffeln (gekocht)", "323", "Hohe Dichte, Wasser, Ballaststoffe"],
+      ["Fisch", "225", "Protein, niedrige Kaloriendichte"],
+      ["Haferflocken", "209", "Beta-Glucan, Ballaststoffe"],
+      ["Eier", "150", "Protein, Fett"],
+      ["Äpfel", "197", "Ballaststoffe, Wasser, Kauzeit"],
+      ["Vollkornbrot", "154", "Ballaststoffe"],
+      ["Quark / Skyr", "140", "Protein, Volumen"],
+      ["Cornflakes", "118", "Leer, wenig sättigend"],
+      ["Weißbrot (Referenz)", "100", "-"],
+      ["Donut", "68", "Zucker + Fett, kaum sättigend"],
+      ["Croissant", "47", "Schlechtester Wert"],
+    ]),
+
+    heading("h2", "Häufige Plateaus und wie du sie löst"),
+
+    table([
+      ["Plateau-Grund", "Symptom", "Lösung"],
+      ["Gewicht unverändert 2 Wochen", "Stoffwechsel-Adaptation", "50-100 kcal weiter reduzieren oder Diet-Break"],
+      ["Extreme Müdigkeit", "Zu aggressives Defizit", "Defizit auf 300 kcal reduzieren, 1 Woche pausieren"],
+      ["Heißhunger-Attacken", "Protein zu niedrig oder Schlafmangel", "Protein auf 2,2 g/kg, 7+ Std Schlaf"],
+      ["Ständiges Grübeln über Essen", "Psychologische Erschöpfung", "2 Wochen Erhaltung, dann neu ansetzen"],
+      ["Kraftverlust im Training", "Zu wenig Kohlenhydrate", "50-100 g mehr KH an Trainingstagen"],
+      ["Stimmungsschwankungen", "Diät-Dauer zu lang", "Refeed-Mahlzeit + 1 Woche Pause"],
+    ]),
+
     heading("h2", "Wenn der Fortschritt stoppt"),
     paragraph(
       "Nach 3-4 Wochen sind Plateaus normal. Strategien:"
