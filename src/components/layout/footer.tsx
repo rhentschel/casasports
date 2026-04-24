@@ -143,12 +143,23 @@ export function Footer() {
 
       {/* Bottom bar */}
       <div className="border-t border-cs-gray-800/50">
-        <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-6">
+        <div className="mx-auto flex max-w-7xl flex-col items-start justify-between gap-3 px-6 py-6 md:flex-row md:items-center">
           <p className="text-base text-cs-gray-400">
             &copy; {new Date().getFullYear()} {siteConfig.name}
           </p>
           <p className="text-base text-cs-gray-500">
             Karlstra&szlig;e 40, 45739 Oer-Erkenschwick
+          </p>
+          <p className="text-base text-cs-gray-500">
+            Webdesign:{" "}
+            <a
+              href="https://rolandhentschel.de"
+              target="_blank"
+              rel="noopener"
+              className="transition-colors duration-300 hover:text-cs-accent"
+            >
+              rolandhentschel.de
+            </a>
           </p>
         </div>
       </div>
