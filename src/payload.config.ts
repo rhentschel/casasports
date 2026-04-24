@@ -86,6 +86,7 @@ const INIT_TABLES_SQL = [
   // Posts: keyTakeaway + faq (JSON) - idempotent
   `ALTER TABLE posts ADD COLUMN IF NOT EXISTS key_takeaway TEXT`,
   `ALTER TABLE posts ADD COLUMN IF NOT EXISTS faq JSONB`,
+  `ALTER TABLE posts ADD COLUMN IF NOT EXISTS seeded_content_at TIMESTAMP`,
 ]
 
 export default buildConfig({
@@ -226,13 +227,15 @@ export default buildConfig({
       payload.logger.error({ err }, "images-sync failed")
     }
 
-    // Blog-Artikel-Content-Seed: komplette Neuschreibung mit Lexical-content + keyTakeaway + faq
-    // Idempotent via content-version Marker in keyTakeaway (erste 20 Zeichen)
+    // Blog-Artikel-Content-Seed: schreibt Content nur wenn seededContentAt NICHT gesetzt ist.
+    // User-Edits im Admin bleiben erhalten (seededContentAt bleibt gesetzt).
+    // Zum Re-Seed: seededContentAt im Admin auf leer setzen.
     try {
       const { saunaNachDemTraining } = await import("./data/blog/content/sauna-nach-dem-training")
       const CONTENT_SEEDS = [saunaNachDemTraining]
 
       let updated = 0
+      let skipped = 0
       for (const seed of CONTENT_SEEDS) {
         const found = await payload.find({
           collection: "posts",
@@ -241,11 +244,15 @@ export default buildConfig({
           overrideAccess: true,
         })
         if (found.docs.length === 0) continue
-        const p = found.docs[0] as { id: string | number; keyTakeaway?: string }
-        // Version-Marker: wenn der aktuelle keyTakeaway mit dem neuen exakt startet, skip
-        const currentKT = (p.keyTakeaway || "").trim()
-        const newKT = seed.keyTakeaway.trim()
-        if (currentKT === newKT) continue
+        const p = found.docs[0] as {
+          id: string | number
+          seededContentAt?: string | null
+        }
+        // Nur seeden wenn noch nie geseedet (oder Admin hat Marker geleert)
+        if (p.seededContentAt) {
+          skipped++
+          continue
+        }
 
         await payload.update({
           collection: "posts",
@@ -256,13 +263,14 @@ export default buildConfig({
             content: seed.content,
             keyTakeaway: seed.keyTakeaway,
             faq: seed.faq,
+            seededContentAt: new Date().toISOString(),
           } as unknown as Record<string, unknown>,
           overrideAccess: true,
         })
         updated++
         payload.logger.info(`blog-rewrite: ${seed.slug} aktualisiert`)
       }
-      payload.logger.info(`blog-rewrite-seed: ${updated}/${CONTENT_SEEDS.length} Artikel neu geschrieben`)
+      payload.logger.info(`blog-rewrite-seed: updated=${updated} skipped=${skipped} total=${CONTENT_SEEDS.length}`)
     } catch (err) {
       payload.logger.error({ err }, "blog-rewrite-seed failed")
     }

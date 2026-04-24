@@ -128,6 +128,15 @@ export const Posts: CollectionConfig = {
       },
     },
     {
+      name: "seededContentAt",
+      label: "Auto-Seed Marker",
+      type: "date",
+      admin: {
+        position: "sidebar",
+        description: "Wird vom onInit-Seed gesetzt. Feld leeren, um Artikel beim nächsten Deploy neu zu seeden. NIEMALS überschreibt der Seed ein Feld wenn dieser Wert gesetzt ist.",
+      },
+    },
+    {
       name: "keyTakeaway",
       label: "Key Takeaway (Kernaussage)",
       type: "textarea",
