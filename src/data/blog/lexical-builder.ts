@@ -101,6 +101,87 @@ export function ol(items: (string | (LexNode | string)[])[]): LexNode {
   }
 }
 
+// Tabelle: rows ist Array von Cell-Arrays. Erste Row wird als Kopfzeile gerendert.
+export function table(rows: (LexNode | string)[][]): LexNode {
+  return {
+    type: "table",
+    format: "",
+    indent: 0,
+    version: 1,
+    direction: null,
+    children: rows.map((cells, rowIdx) => ({
+      type: "tablerow",
+      format: "",
+      indent: 0,
+      version: 1,
+      direction: null,
+      height: 0,
+      children: cells.map((cell) => ({
+        type: "tablecell",
+        format: "",
+        indent: 0,
+        version: 1,
+        direction: null,
+        headerState: rowIdx === 0 ? 1 : 0,
+        colSpan: 1,
+        rowSpan: 1,
+        backgroundColor: null,
+        children: [
+          {
+            type: "paragraph",
+            format: "",
+            indent: 0,
+            version: 1,
+            direction: "ltr",
+            textFormat: 0,
+            textStyle: "",
+            children: [typeof cell === "string" ? text(cell) : cell],
+          },
+        ],
+      })),
+    })),
+  }
+}
+
+// Bild-Node: wird via Platzhalter "[[IMG:filename|alt|caption]]" ausgegeben
+// und in lexicalToHtml nach der Konvertierung durch <figure>-HTML ersetzt.
+export function image(filename: string, alt: string, caption?: string): LexNode {
+  const marker = `[[IMG:${filename}|${alt}|${caption || ""}]]`
+  return {
+    type: "paragraph",
+    format: "",
+    indent: 0,
+    version: 1,
+    direction: "ltr",
+    textFormat: 0,
+    textStyle: "",
+    children: [text(marker)],
+  }
+}
+
+// Bloc-Quote fuer Testimonials oder wissenschaftliche Zitate
+export function quote(str: string, source?: string): LexNode {
+  return {
+    type: "quote",
+    format: "",
+    indent: 0,
+    version: 1,
+    direction: "ltr",
+    children: [
+      text(str),
+      ...(source ? [text(` — ${source}`, 2)] : []),
+    ],
+  }
+}
+
+// Horizontal Rule als Sektions-Trenner
+export function hr(): LexNode {
+  return {
+    type: "horizontalrule",
+    version: 1,
+  }
+}
+
 export function root(children: LexNode[]): LexNode {
   return {
     root: {

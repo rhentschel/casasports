@@ -87,6 +87,7 @@ const INIT_TABLES_SQL = [
   `ALTER TABLE posts ADD COLUMN IF NOT EXISTS key_takeaway TEXT`,
   `ALTER TABLE posts ADD COLUMN IF NOT EXISTS faq JSONB`,
   `ALTER TABLE posts ADD COLUMN IF NOT EXISTS seeded_content_at TIMESTAMP`,
+  `ALTER TABLE posts ADD COLUMN IF NOT EXISTS seeded_content_version VARCHAR(50)`,
 ]
 
 export default buildConfig({
@@ -227,9 +228,13 @@ export default buildConfig({
       payload.logger.error({ err }, "images-sync failed")
     }
 
-    // Blog-Artikel-Content-Seed: schreibt Content nur wenn seededContentAt NICHT gesetzt ist.
-    // User-Edits im Admin bleiben erhalten (seededContentAt bleibt gesetzt).
-    // Zum Re-Seed: seededContentAt im Admin auf leer setzen.
+    // Content-Version: erhoehen, wenn alle Artikel mit neuem Content/Layout geseedet werden sollen.
+    // Aktuelle Version: "v2-2026-04-24" (mit Tabellen + Bildern).
+    const CONTENT_VERSION = "v2-2026-04-24"
+
+    // Blog-Artikel-Content-Seed: schreibt Content, wenn seededContentAt NICHT passt.
+    // User-Edits im Admin bleiben erhalten, solange keyTakeaway/seededContentAt zu seiner Version gehoeren.
+    // Zum Re-Seed: seededContentAt im Admin auf leer setzen ODER CONTENT_VERSION hier erhoehen.
     try {
       const { saunaNachDemTraining } = await import("./data/blog/content/sauna-nach-dem-training")
       const { krafttrainingFuerAnfaenger } = await import("./data/blog/content/krafttraining-fuer-anfaenger")
@@ -263,9 +268,15 @@ export default buildConfig({
         const p = found.docs[0] as {
           id: string | number
           seededContentAt?: string | null
+          seededContentVersion?: string | null
         }
-        // Nur seeden wenn noch nie geseedet (oder Admin hat Marker geleert)
-        if (p.seededContentAt) {
+        // Skip: wenn User manuell Version gesetzt hat (z.B. "manual")
+        if (p.seededContentVersion && !p.seededContentVersion.startsWith("v")) {
+          skipped++
+          continue
+        }
+        // Skip: wenn aktuelle Version bereits gleich Code-Version
+        if (p.seededContentVersion === CONTENT_VERSION) {
           skipped++
           continue
         }
@@ -280,6 +291,7 @@ export default buildConfig({
             keyTakeaway: seed.keyTakeaway,
             faq: seed.faq,
             seededContentAt: new Date().toISOString(),
+            seededContentVersion: CONTENT_VERSION,
           } as unknown as Record<string, unknown>,
           overrideAccess: true,
         })

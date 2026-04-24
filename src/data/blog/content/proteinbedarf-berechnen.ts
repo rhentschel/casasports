@@ -1,4 +1,4 @@
-import { root, paragraph, heading, ul, ol, bold, link, text } from "../lexical-builder"
+import { root, paragraph, heading, ul, ol, bold, link, text, table, image } from "../lexical-builder"
 
 export const proteinbedarfBerechnen = {
   slug: "proteinbedarf-berechnen",
@@ -81,6 +81,11 @@ export const proteinbedarfBerechnen = {
       ),
       ") bestätigen diese Werte und betonen zusätzlich, dass gezielte Verteilung fast so wichtig ist wie die Gesamtmenge."
     ),
+    image(
+      "/images/blog/proteinbedarf-chart.svg",
+      "Balkendiagramm Proteinbedarf pro Kilogramm Körpergewicht nach Aktivitätslevel",
+      "Proteinbedarf in Gramm pro Kilogramm Körpergewicht nach Aktivitätsprofil (ISSN 2017, aktualisiert 2025)."
+    ),
 
     heading("h2", "Beispielrechnung: Dein persönlicher Bedarf"),
     paragraph("Nehmen wir drei typische Profile:"),
@@ -106,6 +111,20 @@ export const proteinbedarfBerechnen = {
     ]),
 
     heading("h2", "Die besten Proteinquellen im Vergleich"),
+
+    table([
+      ["Lebensmittel", "Protein pro 100 g", "Kalorien", "Hinweis"],
+      ["Hähnchenbrust", "23-25 g", "110 kcal", "Sehr mager, vielseitig"],
+      ["Rind mager", "22-26 g", "150 kcal", "Plus Eisen und Zink"],
+      ["Lachs, Thunfisch", "20-25 g", "200 kcal", "Plus Omega-3"],
+      ["Eier", "6 g pro Ei", "70 kcal", "Komplettes Aminosäureprofil"],
+      ["Quark mager", "12-14 g", "70 kcal", "Perfekt als Snack"],
+      ["Skyr", "10-12 g", "65 kcal", "Sehr gut sättigend"],
+      ["Harzer Käse", "29 g", "120 kcal", "Höchste Proteindichte"],
+      ["Tofu", "12-16 g", "120 kcal", "Vielseitig, vegan"],
+      ["Linsen gekocht", "8-10 g", "120 kcal", "Plus Ballaststoffe"],
+      ["Whey-Pulver (30 g)", "22-25 g", "120 kcal", "Schnell verfügbar"],
+    ]),
 
     heading("h3", "Tierische Quellen"),
     ul([

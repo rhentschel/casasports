@@ -133,7 +133,16 @@ export const Posts: CollectionConfig = {
       type: "date",
       admin: {
         position: "sidebar",
-        description: "Wird vom onInit-Seed gesetzt. Feld leeren, um Artikel beim nächsten Deploy neu zu seeden. NIEMALS überschreibt der Seed ein Feld wenn dieser Wert gesetzt ist.",
+        description: "Wird vom onInit-Seed gesetzt. Feld leeren, um Artikel beim nächsten Deploy neu zu seeden.",
+      },
+    },
+    {
+      name: "seededContentVersion",
+      label: "Auto-Seed Content-Version",
+      type: "text",
+      admin: {
+        position: "sidebar",
+        description: "Beim Seed gesetzt. Wenn Code eine neuere Version liefert, wird automatisch re-seeded (User-Edits gehen dabei verloren). Zum Fixieren: Wert entfernen oder auf 'manual' setzen.",
       },
     },
     {
