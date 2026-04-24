@@ -259,6 +259,11 @@ export default buildConfig({
       const { schlafOptimierenSportler } = await import("./data/blog/content/schlaf-optimieren-sportler")
       const { foamRollingGuide } = await import("./data/blog/content/foam-rolling-guide")
       const { mobilityRoutineAlltag } = await import("./data/blog/content/mobility-routine-alltag")
+      // Welle 4: Ziele-Pillar (neuer Pillar + Cluster)
+      const { trainingFuerDeineZiele } = await import("./data/blog/content/training-fuer-deine-ziele")
+      const { muskelaufbauNaturalGuide } = await import("./data/blog/content/muskelaufbau-natural-guide")
+      const { fitUeber40 } = await import("./data/blog/content/fit-ueber-40")
+      const { rueckenschmerzenDurchTrainingBesiegen } = await import("./data/blog/content/rueckenschmerzen-durch-training-besiegen")
       const CONTENT_SEEDS = [
         saunaNachDemTraining,
         krafttrainingFuerAnfaenger,
@@ -283,6 +288,11 @@ export default buildConfig({
         schlafOptimierenSportler,
         foamRollingGuide,
         mobilityRoutineAlltag,
+        // Welle 4: Ziele-Pillar
+        trainingFuerDeineZiele,
+        muskelaufbauNaturalGuide,
+        fitUeber40,
+        rueckenschmerzenDurchTrainingBesiegen,
       ]
 
       // Helper: finde Category/Author via exact slug, fallback substring-match auf slug/name
