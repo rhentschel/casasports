@@ -137,6 +137,66 @@ export const functionalTrainingImAlltag = {
       [bold("Locomotion"), text(": Gehen, Laufen, Krabbeln, Bear-Crawl. Bewegung fortbewegen.")],
     ]),
 
+    heading("h2", "Anatomie der tiefen Rumpfmuskulatur"),
+    paragraph(
+      "Rumpfstabilität wird oft mit 'Sixpack' verwechselt. Tatsächlich besteht das 'Core' aus mehreren Schichten, die zusammenarbeiten müssen:"
+    ),
+
+    table([
+      ["Muskel", "Funktion", "Trainiert mit"],
+      ["Transversus abdominis", "Tiefe Bauchstabilisation, Korsett", "Dead Bug, Plank, Pallof-Press"],
+      ["Multifidi", "Wirbelsegment-Stabilität", "Bird Dog, Rumänisches Kreuzheben"],
+      ["Beckenboden", "Druckstabilisation nach unten", "Bewusstes Anspannen, Kniebeuge"],
+      ["Zwerchfell", "Intra-abdominaler Druck", "Diaphragmatische Atmung"],
+      ["Rectus abdominis", "Rumpfbeugung (sichtbare Sixpack)", "Crunches, Hanging Leg Raises"],
+      ["Obliquus externus/internus", "Rotation und Lateralflexion", "Pallof-Press, Russian Twist"],
+      ["Erector spinae", "Rumpfstreckung", "Kreuzheben, Good Morning"],
+      ["Quadratus lumborum", "Seitliche Stabilität der Wirbelsäule", "Side Plank, Farmer Carry einseitig"],
+    ]),
+    paragraph(
+      "Die sichtbaren Bauchmuskeln (Rectus abdominis) sind nur einer von acht zentralen Akteuren. Wer nur Crunches macht, ignoriert die wichtigeren tiefen Schichten."
+    ),
+
+    heading("h2", "Progression in Functional Training"),
+    paragraph(
+      "Auch im Functional Training gibt es klare Progressions-Stufen. Nicht auf die nächste Stufe, bevor die aktuelle sauber funktioniert:"
+    ),
+
+    table([
+      ["Stufe", "Merkmal", "Beispiel"],
+      ["1: Grundform", "Körpergewicht, statisch", "Plank, Bird Dog"],
+      ["2: Bewegung hinzu", "Körpergewicht, dynamisch", "Pushup, Squat, Lunge"],
+      ["3: Zusatzgewicht", "Kurzhantel/Kettlebell", "Goblet Squat, Turkish Get-up"],
+      ["4: Komplexität", "Mehrere Gelenke kombiniert", "Clean, Snatch"],
+      ["5: Instabilität", "Wackelige Unterlage", "Bosu-Squat, TRX"],
+      ["6: Explosivität", "Sprung- und Wurfelemente", "Box Jump, Medicine Ball Slam"],
+      ["7: Kombination", "Mehrere Muster verkettet", "Burpee, Kettlebell Complex"],
+    ]),
+
+    heading("h2", "Functional für unterschiedliche Sportarten"),
+
+    heading("h3", "Läufer"),
+    paragraph(
+      "Einseitige Beinkraft (Lunges, Single-Leg-Deadlifts), Rumpfstabilität gegen Rotation, Hüftstrecker-Arbeit für bessere Schrittlänge. Besonders Hip-Hinge-Pattern trainieren."
+    ),
+
+    heading("h3", "Radfahrer"),
+    paragraph(
+      "Gegenpol zur nach-vorn-gebeugten Haltung: Brustmobilität, Schulterretraktion, Rückenstrecker. Zusätzlich Glute-Aktivierung, weil Radfahrer oft inaktive Gesäße haben."
+    ),
+
+    heading("h3", "Tennis/Badminton/Squash"),
+    paragraph(
+      "Rotations-Power (Medizinball-Würfe, Wood Chops), Laterale Bewegung, Schulter-Stabilität. Plyometrische Elemente für schnelle Richtungswechsel."
+    ),
+
+    heading("h3", "Büromenschen"),
+    paragraph(
+      "Gegenpol zum Sitzen: Hüftbeuger öffnen, obere Rücken stärken, Brustmuskel dehnen, Core aktivieren. Siehe ",
+      link("/blog/mobility-routine-alltag", "Mobility-Routine", false),
+      "."
+    ),
+
     heading("h2", "Häufige Fehler vermeiden"),
     ul([
       "Zu viel Instabilität zu früh: Wer Squats auf dem Bosu-Ball macht, ohne sie am Boden zu beherrschen, trainiert Chaos.",

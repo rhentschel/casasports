@@ -136,6 +136,51 @@ export const kniebeugeRichtigAusfuehren = {
       ],
     ]),
 
+    heading("h2", "Kniebeuge-Varianten und ihre Unterschiede"),
+
+    table([
+      ["Variante", "Stangen-Position", "Hauptmuskeln", "Schwierigkeit", "Geeignet für"],
+      ["High Bar Back Squat", "Oberer Trapez", "Quads, Glutes", "Mittel", "Anfänger, Einstieg"],
+      ["Low Bar Back Squat", "Hinteres Delta", "Glutes, hintere Kette", "Hoch", "Powerlifter"],
+      ["Front Squat", "Vordere Schultern", "Quads, Oberer Rücken", "Hoch", "Koordination, Mobility-Test"],
+      ["Goblet Squat", "Kurzhantel vor Brust", "Quads, Glutes, Core", "Niedrig", "Anfänger, Aufwärmen"],
+      ["Overhead Squat", "Arme über Kopf", "Ganzkörper-Mobility", "Sehr hoch", "Leistungssport, Mobility"],
+      ["Box Squat", "auf Box setzend", "Glutes betont", "Mittel", "Technik-Training"],
+      ["Bulgarian Split Squat", "Einbeinig, hinterer Fuß erhöht", "Quads, Glutes einseitig", "Mittel-Hoch", "Balance-Asymmetrie"],
+      ["Pistol Squat", "Einbeinig volle Hocke", "Quads, Balance", "Sehr hoch", "Körpergewichts-Athleten"],
+    ]),
+
+    heading("h2", "Kniebeuge und Kniegesundheit"),
+    paragraph(
+      "Der Mythos: 'Kniebeugen sind schlecht für die Knie'. Die Realität: Kniebeugen mit korrekter Technik stärken Knie, Sehnen und Bänder nachweislich. Problematisch sind:"
+    ),
+    ul([
+      "Knie-Einknicken unter Last (Valgus)",
+      "Sehr schwere Lasten ohne Progression",
+      "Ignorieren von akuten Schmerzen",
+      "Überlastung ohne ausreichende Regeneration",
+      "Schlechte Schuhe (z.B. joggingdämpfende Sohlen)",
+    ]),
+    paragraph(
+      "Bei bekannten Knie-Problemen zuerst Physiotherapie, dann langsame Heranführung mit reduziertem Bewegungsumfang (Box Squats), Quad-spezifischem Aufbau (Beinstrecker, Leg Press) und Einbeinübungen."
+    ),
+
+    heading("h2", "Atmung und Bracing im Detail"),
+    paragraph(
+      "Das 'Valsalva-Manöver' (tief einatmen, Rumpf fest anspannen, halten) ist die Grundlage aller schweren Kniebeugen. Die Schritte:"
+    ),
+    ol([
+      "Vor der Wiederholung: 70-80% einatmen, nicht voll",
+      "Bauch nach außen drücken, gegen die Wirbelsäule",
+      "Rumpf anspannen wie für einen Schlag",
+      "Atem halten während der Bewegung",
+      "Am Endpunkt (oben) kontrolliert ausatmen oder neu atmen",
+      "Bei mehreren Wiederholungen: zwischen Wdh neu atmen, nicht durchgängig halten",
+    ]),
+    paragraph(
+      "Nicht empfohlen für: unkontrollierten Bluthochdruck, Herzerkrankungen, Glaukom. Dann mit normaler Atmung arbeiten und Lasten moderat halten."
+    ),
+
     heading("h2", "Wie oft pro Woche?"),
     paragraph(
       "Einmal pro Woche als Minimum, zweimal für Fortschritt. Drei oder mehr sind nur für Fortgeschrittene mit sehr guter Regeneration sinnvoll. Zwischen schweren Squat-Einheiten mindestens 48 Stunden Pause."

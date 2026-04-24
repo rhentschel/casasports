@@ -157,6 +157,109 @@ export const krafttrainingFuerAnfaenger = {
       "Zwischen 30 und 60 Minuten reichen völlig. Länger trainiert zu haben heißt nicht besser. Wer kürzer und intensiver arbeitet, bekommt oft mehr Fortschritt als mit zweistündigen Sessions. Am Anfang hilft ein fester Zeitblock (zum Beispiel dienstags, donnerstags und samstags von 18 bis 19 Uhr), weil Konsistenz wichtiger ist als Perfektion."
     ),
 
+    heading("h2", "Progressive Overload: Der Schlüssel zum Fortschritt"),
+    paragraph(
+      "Progressive Overload bedeutet: dein Training muss schwerer werden, sonst adaptiert dein Körper nicht weiter. Nach den ersten 4-6 Wochen der Technik-Lernphase ist dies das zentrale Prinzip. Die sechs Hebel für progressive Steigerung:"
+    ),
+
+    table([
+      ["Hebel", "Umsetzung", "Typische Steigerung"],
+      ["Gewicht", "Mehr kg bei gleichen Wiederholungen", "+1-2,5 kg alle 1-2 Wochen"],
+      ["Wiederholungen", "Mehr Reps bei gleichem Gewicht", "+1-2 pro Woche"],
+      ["Sätze", "Mehr Arbeits-Sätze pro Übung", "von 2 auf 3, von 3 auf 4"],
+      ["Pausenzeit", "Kürzere Pausen zwischen Sätzen", "von 2 Min auf 90 Sek"],
+      ["Tempo", "Langsamere negative Phase", "3-sekündiges Absenken"],
+      ["Range of Motion", "Größerer Bewegungsumfang", "tiefer squat, weiter kreuzheben"],
+    ]),
+    paragraph(
+      "Wichtig: Nicht alles gleichzeitig steigern. Ein Parameter pro Woche ändern, sonst wird die Technik wackelig. Trainingstagebuch ist Pflicht, sonst weißt du nicht wo du stehst."
+    ),
+
+    heading("h2", "Warm-up und Cool-down: Nicht optional"),
+    paragraph(
+      "Ohne Warm-up erhöht sich das Verletzungsrisiko messbar. Die ideale Struktur:"
+    ),
+
+    heading("h3", "Warm-up (8-12 Minuten)"),
+    ol([
+      "5 Min leichtes Cardio (Fahrrad, Rudergerät): Puls erhöhen auf 100-120 bpm",
+      "3-5 Min dynamische Mobility: Kniebeuge-Variationen, Armkreisen, Hip-Openers",
+      "1-2 Aufwärmsätze der ersten Übung mit leichterem Gewicht",
+      "Bei Schwerer-Gewichts-Training: zusätzlich 1-2 'Ramp-up'-Sätze",
+    ]),
+
+    heading("h3", "Cool-down (5-10 Minuten)"),
+    ol([
+      "3 Min langsames Auslaufen: Herzfrequenz runter",
+      "5 Min statisches Stretching der trainierten Muskelgruppen",
+      "Atemübungen für parasympathische Aktivierung",
+      "Ausreichend Flüssigkeit trinken",
+    ]),
+
+    heading("h2", "Die wichtigsten Grundübungen im Überblick"),
+
+    table([
+      ["Übung", "Primäre Muskeln", "Schwierigkeit", "Lernzeit"],
+      ["Kniebeuge", "Beine, Glutes, Core", "Mittel", "2-4 Wochen"],
+      ["Kreuzheben", "Gesamte Rückseite, Core", "Hoch", "4-8 Wochen"],
+      ["Bankdrücken", "Brust, Trizeps, Schulter", "Mittel", "2-3 Wochen"],
+      ["Klimmzug", "Rücken, Bizeps", "Sehr hoch (für Anfänger)", "6-12 Wochen"],
+      ["Schulterdrücken", "Schulter, Trizeps", "Mittel", "2-3 Wochen"],
+      ["Rudern", "Oberer Rücken, Bizeps", "Niedrig", "1-2 Wochen"],
+      ["Ausfallschritte", "Beine, Balance", "Niedrig-Mittel", "1-2 Wochen"],
+      ["Dip", "Brust, Trizeps, Schulter", "Hoch", "4-8 Wochen"],
+    ]),
+
+    heading("h2", "Frauen und Krafttraining"),
+    paragraph(
+      "Der hartnäckigste Mythos: Krafttraining macht Frauen massig. Wissenschaftlich falsch. Frauen haben 10-20 mal weniger Testosteron als Männer, was den Muskelaufbau natürlicherweise begrenzt."
+    ),
+    paragraph(
+      "Was Krafttraining bei Frauen tatsächlich bewirkt:"
+    ),
+    ul([
+      "Festere, definiertere Figur ohne 'Massigkeit'",
+      "Bessere Körperhaltung",
+      "Höheren Grundumsatz (erleichtert Gewichtsmanagement)",
+      "Stärkere Knochen (Osteoporose-Prävention)",
+      "Bessere Hormonbalance, besonders in den Wechseljahren",
+      "Höhere Alltagskraft und weniger Rückenprobleme",
+    ]),
+    paragraph(
+      "Empfohlenes Protokoll ist identisch zum männlichen Training. Frauen brauchen keine spezielle 'sanfte' Version, im Gegenteil - viele unterfordern sich und verschenken Potenzial."
+    ),
+
+    heading("h2", "Krafttraining und Alter"),
+
+    table([
+      ["Altersgruppe", "Fokus", "Besonderheit"],
+      ["18-30", "Basis aufbauen, Grundübungen lernen", "Maximale Adaptation möglich"],
+      ["30-45", "Erhalt und Progression", "Immer noch fast alle Anpassungen möglich"],
+      ["45-60", "Muskelerhalt priorisieren", "Längere Regeneration, mehr Mobility"],
+      ["60-75", "Sarkopenie-Prävention", "2-3x/Wo Krafttraining ist der wichtigste Hebel"],
+      ["75+", "Funktionelle Kraft", "Alltagsfunktion vor Ästhetik"],
+    ]),
+    paragraph(
+      "Krafttraining ist in keinem Alter zu spät. Studien an 80+-jährigen zeigen, dass 12 Wochen Krafttraining die Muskelmasse messbar erhöhen können. Details im ",
+      link("/blog/fitness-training-der-komplette-guide", "Fitness-Training Guide", false),
+      "."
+    ),
+
+    heading("h2", "Psychologie des Dranbleibens"),
+    paragraph(
+      "Die meisten Einsteiger scheitern nicht an der Technik, sondern an der Konsistenz. Strategien die funktionieren:"
+    ),
+    ul([
+      "Feste Trainingstage im Kalender blocken (nicht 'wenn ich Zeit habe')",
+      "Gleiche Zeit im Tag: Routine etabliert sich schneller",
+      "Trainingspartner oder Gruppenkurs: soziale Verpflichtung",
+      "Trainingstagebuch führen: sichtbarer Fortschritt motiviert",
+      "80/20-Regel: perfekte Trainings an 20% der Tage, ok-Trainings an 80%",
+      "Mindestens 8 Wochen am Stück einen Plan durchziehen",
+      "Nach 12 Wochen Review: was hat funktioniert, was nicht",
+      "Ausrüstung mögen: gute Schuhe, Musik, bequeme Kleidung",
+    ]),
+
     heading("h2", "Praxistipps aus dem Studio"),
     ul([
       "Trainings-Tagebuch führen: App oder Notizblock, Gewicht und Wiederholungen pro Satz festhalten.",

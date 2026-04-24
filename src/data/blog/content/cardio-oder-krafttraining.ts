@@ -133,6 +133,58 @@ export const cardioOderKrafttraining = {
       "Kraft und moderates Cardio in eine Session, Intensität in die separate Cardio-Einheit.",
     ]),
 
+    heading("h2", "Herzfrequenz-Zonen verstehen"),
+    paragraph(
+      "Egal ob Cardio oder Kraft - die Intensität bestimmt den Effekt. Die klassischen 5 Zonen nach Prozent der maximalen Herzfrequenz:"
+    ),
+
+    table([
+      ["Zone", "% Max-HF", "Gefühl", "Wirkung", "Dauer"],
+      ["Zone 1", "50-60%", "Erholung, Plaudern", "Regeneration, Fettstoffwechsel", "beliebig"],
+      ["Zone 2", "60-70%", "Gespräch problemlos", "Ausdauer-Basis, mitochondriale Dichte", "30-90 Min"],
+      ["Zone 3", "70-80%", "Kurze Sätze", "Aerobe Kapazität", "20-60 Min"],
+      ["Zone 4", "80-90%", "Einzelne Worte", "Anaerobe Schwelle", "2-10 Min Intervalle"],
+      ["Zone 5", "90-100%", "Unmöglich zu sprechen", "VO2max, Sprint-Power", "10-30 Sek Intervalle"],
+    ]),
+    paragraph(
+      "Die Maximal-Herzfrequenz ist grob: 220 minus Alter. Präziser via Lauftest (Cooper, Conconi) oder Sportmediziner-Diagnostik. Zone 2 ist der am häufigsten vernachlässigte Bereich - dort passieren die wichtigsten aerob-kardiovaskulären Anpassungen."
+    ),
+
+    heading("h2", "Wissenschaftliche Unterschiede zwischen Cardio- und Kraft-Adaptationen"),
+
+    table([
+      ["Adaptation", "Krafttraining", "Cardio"],
+      ["Muskelquerschnitt", "Deutlich größer", "Leicht größer (bei hoher Intensität)"],
+      ["Herz-Schlagvolumen", "Minimal größer", "Deutlich größer"],
+      ["Mitochondriendichte", "Leicht erhöht", "Stark erhöht"],
+      ["Knochendichte", "Stark erhöht", "Moderat erhöht (nur bei Aufprall)"],
+      ["Insulinsensitivität", "Stark verbessert", "Sehr stark verbessert"],
+      ["Blutdruck", "Leicht gesenkt", "Deutlich gesenkt"],
+      ["Cholesterin (HDL)", "Moderat erhöht", "Stark erhöht"],
+      ["Körperfett-Abbau", "Moderat effektiv", "Stark effektiv"],
+      ["Stresshormone", "Akut erhöht, chronisch balanciert", "Akut erhöht, chronisch gesenkt"],
+      ["Wachstumshormon", "Stark erhöht", "Leicht erhöht"],
+    ]),
+
+    heading("h2", "Zusätzliche Ziele und Programme"),
+
+    heading("h3", "Ziel: Schneller werden (Sprint, Fußball, Tennis)"),
+    paragraph(
+      "Mischung aus explosivem Krafttraining (60%) und gezieltem Sprint-Training (40%). Zwei Kraft-Einheiten mit Fokus auf Unterkörper und Rumpf plus zwei Sprint-Einheiten mit vollem Intervall-Protokoll."
+    ),
+
+    heading("h3", "Ziel: Gelenke schonen bei Übergewicht"),
+    paragraph(
+      "Anfangs Krafttraining priorisieren (sitzend oder im Maschinenbereich), Cardio auf dem Fahrrad oder im Schwimmbecken. Laufen erst ab einem BMI unter 30 sinnvoll, sonst Knie und Sprunggelenke überlastet."
+    ),
+
+    heading("h3", "Ziel: Rückenschmerzen reduzieren"),
+    paragraph(
+      "Krafttraining mit Fokus auf Core und Rücken plus sanftes Cardio (Schwimmen, Fahrradergometer). Gezielte Übungen wie Deadbugs, Plank-Variationen, Hip-Hinges. Details im ",
+      link("/blog/functional-training-im-alltag", "Functional-Training-Artikel", false),
+      "."
+    ),
+
     heading("h2", "Die fünf häufigsten Fehler"),
     ul([
       "Ausschließlich cardioen, um abzunehmen: Muskelmasse geht verloren, Körper wirkt schlapp.",
