@@ -143,6 +143,20 @@ export const mobilityRoutineAlltag = {
       "Kniebeuge-Position, eine Hand am Boden, Knie über Zehen des vorderen Fußes schieben, Ferse bleibt am Boden. 10 Wiederholungen, pulsierend. Grundlage für alle Squat- und Lauf-Übungen."
     ),
 
+    heading("h2", "Mobility vs. Flexibility: Der Unterschied"),
+
+    table([
+      ["Aspekt", "Flexibility", "Mobility"],
+      ["Definition", "Passive Bewegungsreichweite", "Aktive kontrollierte Bewegungsreichweite"],
+      ["Test", "Fuß berührt Boden im Spagat", "Kannst Spagat aktiv halten ohne Stütze"],
+      ["Training", "Statisches Dehnen", "Dynamische Übungen in endständigen Positionen"],
+      ["Beispiel", "Passiver Übersplit im Hürdenstretch", "Controlled Articular Rotations (CARs)"],
+      ["Wichtig für", "Pilates, klassisches Stretching", "Alltag, Sport, Prävention"],
+    ]),
+    paragraph(
+      "Mobility ist für Sportler und Alltag relevanter. Wer nur flexibel ist aber keine Kontrolle hat, verletzt sich leichter."
+    ),
+
     heading("h2", "Wann du welche Routine machen solltest"),
 
     table([

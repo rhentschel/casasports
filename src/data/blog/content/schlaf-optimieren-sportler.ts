@@ -152,6 +152,34 @@ export const schlafOptimierenSportler = {
       ["Schwere Mahlzeiten", "Verdauung aktiv", "2-3h Abstand, leichter essen"],
     ]),
 
+    heading("h2", "Schlafphasen verstehen"),
+    paragraph(
+      "Ein gesunder Schlaf zyklisch aus vier Phasen, die sich 4-6 Mal pro Nacht wiederholen:"
+    ),
+
+    table([
+      ["Phase", "Anteil (gesund)", "Funktion", "Was passiert"],
+      ["N1 (Leichtschlaf)", "5-10%", "Übergang", "Muskeln entspannen, Atmung verlangsamt"],
+      ["N2 (Stable Sleep)", "45-55%", "Konsolidierung", "Herzfrequenz sinkt, Temperatur fällt"],
+      ["N3 (Tiefschlaf)", "15-25%", "Körperliche Regeneration", "Wachstumshormon, Immunsystem"],
+      ["REM", "20-25%", "Mentale Regeneration", "Träume, Gedächtnis, Kreativität"],
+    ]),
+    paragraph(
+      "Ein voller Zyklus dauert 90-120 Minuten. Alkohol, Koffein, Stress reduzieren besonders den Tiefschlaf. Krafttraining wird ohne ausreichend Tiefschlaf weniger effektiv."
+    ),
+
+    heading("h2", "Chronotyp bestimmen"),
+
+    table([
+      ["Chronotyp", "Peak", "Optimale Trainingszeit", "Anteil Bevölkerung"],
+      ["Lerche (morgens)", "6-10 Uhr", "7-11 Uhr", "~25%"],
+      ["Neutral", "9-18 Uhr", "flexibel", "~50%"],
+      ["Eule (abends)", "17-22 Uhr", "16-20 Uhr", "~25%"],
+    ]),
+    paragraph(
+      "Den eigenen Typ zu kennen und Training sowie Schlafenszeiten danach auszurichten, bringt oft mehr als jede Supplementation."
+    ),
+
     heading("h2", "Naps: Das strategische Mittagsschläfchen"),
     paragraph(
       "Naps sind besonders wirksam für Sportler im Schlafdefizit oder mit Doppeltrainings-Tagen. Regeln:"

@@ -116,6 +116,22 @@ export const eisbadenKaelteTherapie = {
       "Direkt nach sehr langen Ausdauer-Einheiten (Unterkühlungsgefahr)",
     ]),
 
+    heading("h2", "Physiologische Reaktionen im Detail"),
+    paragraph(
+      "Was beim Eintauchen in Kaltwasser genau passiert, in Zeitlupe:"
+    ),
+
+    table([
+      ["Zeit", "Reaktion", "Messbar"],
+      ["0-30 Sek", "Cold Shock, Hyperventilation", "Atemfrequenz 3-4x normal"],
+      ["30 Sek - 3 Min", "Vasokonstriktion, Blutdruckanstieg", "Haut 5-10°C kühler"],
+      ["3-10 Min", "Brown-Fat-Aktivierung", "Wärmeproduktion steigt"],
+      ["10-15 Min", "Erste Unterkühlung bei < 10°C", "Kerntemp. sinkt 0,3-0,5°C"],
+      ["Nach Ausstieg", "Vasodilatation, Reperfusion", "Hautrötung, Wärmegefühl"],
+      ["30 Min danach", "Endorphin-Peak", "Euphorie-Gefühl"],
+      ["2-4 Std", "Anti-Inflammatorische Kaskade", "CK-Werte reduziert"],
+    ]),
+
     heading("h2", "Wie du sicher einsteigst"),
     ol([
       "Start: 3-5 Minuten bei 15°C nach einem lockeren Training",

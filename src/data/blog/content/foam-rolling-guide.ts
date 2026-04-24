@@ -141,6 +141,17 @@ export const foamRollingGuide = {
       "Bei Osteoporose oder Knochenbrüchen vorher ärztlich abklären",
     ]),
 
+    heading("h2", "Mechanismen: Warum Foam Rolling wirkt"),
+    paragraph(
+      "Die Theorie der 'mechanischen Faszien-Lösung' ist umstritten. Vier Mechanismen sind besser belegt:"
+    ),
+    ul([
+      [bold("Neurologisch"), text(": Reduziert Schutzspannung der Muskeln (Autogenic Inhibition) über Golgi-Sehnenorgane")],
+      [bold("Durchblutung"), text(": Lokale Hyperämie verbessert Nährstoffversorgung kurzfristig")],
+      [bold("Propriozeptiv"), text(": Sensorischer Input verbessert Körperwahrnehmung und Muskelaktivierung")],
+      [bold("Parasympathikus"), text(": Aktiviert Ruhe-Modus, senkt Cortisol")],
+    ]),
+
     heading("h2", "Unterschiedliche Rollen im Vergleich"),
 
     table([

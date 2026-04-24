@@ -144,6 +144,21 @@ export const veganMuskelaufbau = {
       "Vegane Ernährung kann zu Defiziten in diesen Nährstoffen führen. 1-2x pro Jahr Bluttest machen lassen und gezielt supplementieren."
     ),
 
+    heading("h2", "Protein-Kombinationen für komplettes Aminosäureprofil"),
+
+    table([
+      ["Kombination", "Protein/Portion", "Leucin", "Komplett?"],
+      ["Reis + schwarze Bohnen", "18 g", "1,5 g", "Ja"],
+      ["Haferflocken + Sojamilch", "12 g", "1,0 g", "Ja"],
+      ["Vollkornbrot + Hummus", "15 g", "1,2 g", "Ja"],
+      ["Quinoa + Kichererbsen", "14 g", "1,1 g", "Ja"],
+      ["Linsen + Reis", "16 g", "1,3 g", "Ja"],
+      ["Tofu + Sesamsaat", "14 g", "1,2 g", "Ja"],
+      ["Edamame + Quinoa", "20 g", "1,6 g", "Ja"],
+      ["Nur Reis", "4 g", "0,3 g", "Nein (Lysin arm)"],
+      ["Nur Linsen", "9 g", "0,7 g", "Nein (Methionin arm)"],
+    ]),
+
     heading("h2", "Trainingsplanung für Veganer"),
     paragraph(
       "Grundsätzlich dasselbe wie bei omnivoren Kraftsportlern. Einziger Unterschied: auf ausreichende Kalorienversorgung achten. Pflanzliche Ernährung ist oft sättigender (viel Volumen, viele Ballaststoffe), was bei Muskelaufbau-Phasen problematisch sein kann, wenn Kalorien reichen müssen."
