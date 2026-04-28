@@ -225,12 +225,30 @@ const PAGE_LABELS: Record<string, string> = {
   "/mitglied-werden": "Mitglied werden",
   "/impressum": "Impressum",
   "/datenschutz": "Datenschutz",
+  "/rechner": "Rechner",
+  "/rechner/bmi": "BMI Rechner",
+  "/rechner/proteinbedarf": "Proteinbedarf",
+  "/rechner/kalorienbedarf": "Kalorienbedarf",
+  "/rechner/1rm": "1-Rep-Max",
+  "/rechner/trainingspuls": "Trainingspuls",
+  "/rechner/wasserbedarf": "Wasserbedarf",
+  "/rechner/koerperfett": "Körperfett",
+  "/rechner/taille-huefte": "Taille-Hüfte-Verhältnis",
+  "/rechner/kalorienverbrauch": "Kalorienverbrauch",
 };
 
 export function breadcrumbsForPath(path: string): JsonLd {
-  const label = PAGE_LABELS[path] ?? path.replace(/^\//, "");
-  return breadcrumbSchema([
+  const segments = path.split("/").filter(Boolean);
+  const items: { name: string; url: string }[] = [
     { name: "Start", url: siteConfig.url },
-    { name: label, url: `${siteConfig.url}${path}` },
-  ]);
+  ];
+
+  let current = "";
+  for (const seg of segments) {
+    current += `/${seg}`;
+    const label = PAGE_LABELS[current] ?? seg.replace(/-/g, " ");
+    items.push({ name: label, url: `${siteConfig.url}${current}` });
+  }
+
+  return breadcrumbSchema(items);
 }
